@@ -41,12 +41,12 @@ const Header = () => {
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
               <div>
-                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  Buy Pande
+                  Buy Panda
                 </button>
               </div>
-              <div className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
+              <div className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
                   onClick={() => setOpen(!open)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"

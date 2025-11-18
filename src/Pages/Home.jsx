@@ -4,6 +4,8 @@ import Header from "../components/Header"
 import Tokenomics from "../components/ui/Home/TokenomicsChart"
 import Marquee from "../components/Marquee"
 import Trust from "../components/ui/Home/Trust"
+import Roadmap from "../components/ui/Home/Roadmap"
+import Footer from "../components/Footer"
 
 const Home = () => {
     return (
@@ -14,6 +16,9 @@ const Home = () => {
         <Tokenomics/>
         <Marquee/>
         <Trust/>
+        <Roadmap/>
+        <Marquee/>
+        <Footer/>
         </>
     )
 }

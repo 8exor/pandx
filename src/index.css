@@ -3,20 +3,20 @@
  .mycontainer {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0px 10px;
+  padding: 0px 20px;
   width: 100%;
 }
 
 body , h1 ,h2 ,h3 ,h4 ,h5 ,h6 , span , button {
  font-family: "Russo One", sans-serif;
 }
-p , input {
+p , a, input {
    font-family: "Lato", sans-serif;
 }
 .shadow {
     box-shadow: rgba(0, 0, 0, 0.30) 2.4px 2.4px 0.2px;
 }
-.bg-graydient {
+.bg-graydient-box {
      background-color: var(--token-33c21092-8a05-4905-85e1-0e05518e6553, rgb(114, 163, 20));
     border-radius: 100px;
     box-shadow: inset 0px 4px 8px 0px var(--token-b2a7ff7a-b957-42b7-a20a-448bc74aab27, rgba(0, 0, 0, 0.32));
@@ -53,28 +53,7 @@ section.color-shadow:before {
 
     filter: blur(40px);   /* smooth shadow */
 }
-/* .pie-slice {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0% 0%;
-  border-radius: 0 1000px 1000px 0;
-}
 
-.pie-text {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: white;
-  pointer-events: none;
-  font-size: 1rem;
-} */
 .marquee {
   animation: slide 20s linear infinite;
 
@@ -90,8 +69,27 @@ section.color-shadow:before {
     transform: translateX(-50%);
   }
 }
+.bg-graydient {
+  background: linear-gradient(180deg, #BEFEB2 0%, #F5FFEE 31%, #74E926 100%);
+}
+.border-graydient {
+  position: relative;
+}
 
-
-
+.border-graydient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; 
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    white 20%,
+    white 60%,
+    transparent 100%
+  );
+}
 
 

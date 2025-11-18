@@ -4,7 +4,7 @@ const Marquee = () => {
   return (
     <>
       <div className="bg-[#72A314]">
-        <div className="overflow-hidden shadow-marquee whitespace-nowrap py-4 w-full bg-[#5B5BAC] rotate-[-2deg]">
+        <div className="overflow-hidden shadow-marquee whitespace-nowrap py-4 w-full bg-[#5B5BAC] rotate-[-2deg] relative z-999">
           <div className="marquee flex gap-10">
             {repeated.map((src, i) => (
               <img key={i} src={src} alt="$panda"  />

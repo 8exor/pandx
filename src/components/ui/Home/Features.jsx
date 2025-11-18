@@ -1,10 +1,10 @@
 const Features = () => {
   return (
     <>
-      <section className="pt-20 relative">
+      <section className="sm:pt-20 pt-0 relative">
         <div>
-            <div className="absolute top-[30px] left-0 "><img src="/assets/images/box-cloud.svg" alt="cloud" /></div>
-            <div className="absolute top-[70px] right-0"><img src="/assets/images/cloud-left.svg" alt="cloud" /></div>
+            <div className="absolute top-[30px] left-0 w-0 lg:w-[100%]"><img src="/assets/images/box-cloud.svg" alt="cloud" /></div>
+            <div className="absolute top-[70px] right-0 hidden lg:block"><img src="/assets/images/cloud-left.svg" alt="cloud" /></div>
         </div>
         <div className="mycontainer">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -23,7 +23,7 @@ const Features = () => {
             </div>
             {/* box-2 */}
             <div className=" h-fit w-full">
-              <h2 className="text-[82px] ml-[60px]  w-full min-w-[480px] leading-[82px]">
+              <h2 className="text-[82px] lg:block hidden ml-[60px]  w-full min-w-[480px] leading-[82px]">
                 How Panda Works
               </h2>
               <div className="bg-[#e5ffe6] shadow-bottom p-[36px] rounded-lg mt-15 relative">
@@ -55,10 +55,13 @@ const Features = () => {
                 <img src="/assets/images/box_tree.svg" alt="box-tree" />
               </div>
             </div>
+             <h2 className="text-[40px] md:text-[62] lg:hidden block  w-full leading-[82px]">
+                How Panda Works
+              </h2>
           </div>
         </div>
       </section>
-      <section className="color-shadow relative">
+      {/* <section className="color-shadow relative">
         <div className="relative">
                 <img className="w-full" src="/assets/images/bg.svg" alt="bg-img" />
             <div className="absolute top-[6%] left-[21%] z-[-1]">
@@ -74,7 +77,7 @@ const Features = () => {
                 <img src="assets/images/Character_run.svg" alt="Character_run.svg"/>
             </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

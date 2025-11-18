@@ -105,7 +105,7 @@ const Tokenomics = () => {
             </ResponsiveContainer>
 
             {/* Panda in center */}
-            <div className="absolute top-[13%] right-[27%] pointer-events-none">
+            <div className="absolute top-[16%] right-[27%] pointer-events-none">
               <img
                 className="w-[80%]"
                 src="/assets/images/chart_panda.svg"

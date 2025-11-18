@@ -9,9 +9,9 @@ const Banner = () => {
 
   return (
     <>
-      <div className="pt-[96px] bg-[#edffe1]">
-        <section className=" bg-[url('src/assets/images/BG_mask.svg')] bg-no-repeat bg-bottom bg-cover pt-20 relative">
-          <div className="absolute top-30 max-w-[400px] md:left-20 sm:left-10 left-0">
+      <div className="sm:pt-[96px] bg-[#edffe1]">
+        <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
+          <div className="absolute top-30 max-w-[400px]  md:left-20 sm:left-10 left-0">
             <img className="w-[90px] sm:w-[130px] md:w-full" src="/assets/images/Cloud01.svg" alt="img-cloud" />
           </div>
           <div className="absolute bottom-[40%] max-w-[250px] left-[25%]">
@@ -28,7 +28,7 @@ const Banner = () => {
               Welcome to a movement where finance meets fun, &<br /> community
               drives currency.
             </p>
-            <button className="bg-graydient hover:!bg-[#5b5ca9] m-auto mt-8  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+            <button className="bg-graydient-box hover:!bg-[#5b5ca9] m-auto mt-8  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
               <img src="/assets/images/panda.svg" alt="panda" />
               Buy Panda
             </button>
@@ -58,7 +58,7 @@ const Banner = () => {
               </div>
 
               {/* Tree */}
-              <div className="absolute top-[17%] lg:top-[-17%] sm:top-[-70]  md:top-[-73] right-0  md:right-[8%] lg:right-[2%] w-[15%] md:w-[12%] sm:w-[15%]">
+              <div className="absolute top-[17%] lg:top-[-17%] sm:top-[-20%] md:top-[-20%] lg:top-[-73] right-0  md:right-[8%] lg:right-[2%] w-[15%] md:w-[12%] sm:w-[15%]">
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
@@ -66,15 +66,15 @@ const Banner = () => {
           </div>
         </section>
       </div>
-      <section className="bg-[url('/assets/images/about_bg.svg')] bg-no-repeat bg-cover relative">
-        <div className="absolute bottom-[-50px]">
+      <section className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] lg:pb-0 bg-no-repeat bg-cover relative">
+        <div className="absolute md:bottom-[-50px] bottom-[130px] lg:w-full w-[50px]">
           <img src="/assets/images/Tree-about.svg" alt="tree-side" />
         </div>
         <div className="mycontainer">
-          <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-8 items-center justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
             <div>
-              <h2 className="text-[82px] text-left leading-20">About Us</h2>
-              <p className="text-[#4c4c4c] text-left text-xl pt-8">
+              <h2 className="lg:text-[82px]  text-[40px] sm:text-center lg:text-left sm:text-[40px] text-left sm:leading-10 leading-20">About Us</h2>
+              <p className="text-[#4c4c4c] sm:pt-8 sm:text-center lg:text-left   text-xl lg:pt-8">
                 Panda is a fast, eco-friendly crypto with meme vibes and
                 real-world muscle fun, functional, and fueled by community.
               </p>
@@ -87,17 +87,17 @@ const Banner = () => {
                 />
                 <button
                   onClick={copyText}
-                  className="bg-graydient hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
+                  className="bg-graydient-box hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "copied" : "copy"}
 
                 </button>
               </div>
             </div>
-            <div className="ml-auto relative">
+            <div className="md:ml-auto mx-auto relative">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
-              <div className="absolute bottom-[112px] left-[112px]">
-                <img src="/assets/images/Character_tree.svg" alt="tree-background" />
+              <div className="absolute sm:bottom-[112px] left-[60px] bottom-[66px] sm:left-[112px] sm:bottom-[70px] bottom:[148px] left-[20px] w-[60%]">
+                <img className="w-[60%] sm:w-[55%]" src="/assets/images/Character_tree.svg" alt="tree-background" />
               </div>
             </div>
           </div>
