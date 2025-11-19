@@ -1,7 +1,13 @@
 
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import { useState , useEffect} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
-     const [open, setOpen] = useState(false);
+    const {open, close } = useAppKit();
+    const {isConnected} = useAppKitAccount();
+    
+
+     const [openMenu, setOpenMenu] = useState(false);
       const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -43,34 +49,45 @@ const Header = () => {
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
               <div>
-                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
-                  <img src="src/assets/images/panda.svg" alt="panda" />
-                  Buy Pande
+               
+                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium" onClick={()=>{
+                  open()
+                  
+                }}>
+                  <img src="/assets/images/panda.svg" alt="panda" />
+                  Connect
                 </button>
+            
+                  <NavLink to={isConnected ? "/StakingPage" : "/"}>
+                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium" >
+                  <img src="/assets/images/panda.svg" alt="panda" />
+                  Staking
+                </button>
+                </NavLink>
               </div>
               <div className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                  <button 
-                  onClick={() => setOpen(!open)}
+                  onClick={() => setOpenMenu(!openMenu)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
-                      open ? "translate-y-[9px] rotate-45" : ""
+                      openMenu ? "translate-y-[9px] rotate-45" : ""
                     }`}
                   ></span>
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
-                      open ? "opacity-0" : "opacity-100"
+                      openMenu ? "opacity-0" : "opacity-100"
                     }`}
                   ></span>
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
-                      open ? "-translate-y-[9px] -rotate-45" : ""
+                      openMenu ? "-translate-y-[9px] -rotate-45" : ""
                     }`}
                   ></span>
                 </button>
               </div>
-                    {open && (
+                    {openMenu && (
                     <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
                        <ul className="text-center">
                         <li className="text-3xl text-[#141414] leading-14"><a href="">Home</a></li>
