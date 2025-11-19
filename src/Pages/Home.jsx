@@ -6,6 +6,9 @@ import Marquee from "../components/Marquee"
 import Trust from "../components/ui/Home/Trust"
 import Roadmap from "../components/ui/Home/Roadmap"
 import Footer from "../components/Footer"
+import Header from "../components/ui/Header"
+
+
 
 const Home = () => {
     return (
@@ -19,6 +22,7 @@ const Home = () => {
         <Roadmap/>
         <Marquee/>
         <Footer/>
+         {/* <Tokenomics/> */}
         </>
     )
 }
