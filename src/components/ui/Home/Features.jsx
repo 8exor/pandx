@@ -61,7 +61,7 @@ const Features = () => {
           </div>
         </div>
       </section>
-      {/* <section className="color-shadow relative">
+      <section className="color-shadow relative">
         <div className="relative">
                 <img className="w-full" src="/assets/images/bg.svg" alt="bg-img" />
             <div className="absolute top-[6%] left-[21%] z-[-1]">
@@ -77,7 +77,7 @@ const Features = () => {
                 <img src="assets/images/Character_run.svg" alt="Character_run.svg"/>
             </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 };

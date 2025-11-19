@@ -1,19 +1,24 @@
-import Features from "../components/ui/Home/Features"
-import Banner from "../components/ui/Home/Banner"
-import Header from "../components/Header"
-import Tokenomics from "../components/ui/Home/TokenomicsChart"
-import Marquee from "../components/Marquee"
-import Trust from "../components/ui/Home/Trust"
-import Roadmap from "../components/ui/Home/Roadmap"
-import Footer from "../components/Footer"
-import Header from "../components/ui/Header"
+
+import Header from "@components/Header.jsx"
+import Banner from "@components/ui/Home/Banner"
+import Features from "@components/ui/Home/Features"
+import Marquee from "@components/Marquee"
+import Trust from "@components/ui/Home/Trust"
+import Roadmap from "@components/ui/Home/Roadmap"
+import Footer from "@components/Footer"
+import Tokenomics from "@components/ui/Home/TokenomicsChart"
+
+
+
+
+
 
 
 
 const Home = () => {
     return (
         <>
-        <Header/>
+        <Header/>   
         <Banner/>
         <Features/>
         <Tokenomics/>
@@ -22,7 +27,6 @@ const Home = () => {
         <Roadmap/>
         <Marquee/>
         <Footer/>
-         {/* <Tokenomics/> */}
         </>
     )
 }

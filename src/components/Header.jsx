@@ -1,12 +1,7 @@
-<<<<<<<< HEAD:src/components/Header.jsx
-import { useState, useEffect } from "react";
-const Header = () => {
-  const [open, setOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
-========
 
+import { useState, useEffect } from "react";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
-import { useState , useEffect} from "react";
+// import { useState , useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
     const {open, close } = useAppKit();
@@ -15,7 +10,7 @@ const Header = () => {
 
      const [openMenu, setOpenMenu] = useState(false);
       const [isSticky, setIsSticky] = useState(false);
->>>>>>>> akash:src/components/ui/Header.jsx
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,11 +50,11 @@ const Header = () => {
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
               <div>
-<<<<<<<< HEAD:src/components/Header.jsx
-                <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+
+                {/* <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  Buy Panda
-========
+                  Buy Panda */}
+
                
                 <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium" onClick={()=>{
                   open()
@@ -67,7 +62,7 @@ const Header = () => {
                 }}>
                   <img src="/assets/images/panda.svg" alt="panda" />
                   Connect
->>>>>>>> akash:src/components/ui/Header.jsx
+
                 </button>
             
                   <NavLink to={isConnected ? "/StakingPage" : "/"}>
@@ -77,15 +72,10 @@ const Header = () => {
                 </button>
                 </NavLink>
               </div>
-<<<<<<<< HEAD:src/components/Header.jsx
               <div className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
-                  onClick={() => setOpen(!open)}
-========
-              <div className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
-                 <button 
                   onClick={() => setOpenMenu(!openMenu)}
->>>>>>>> akash:src/components/ui/Header.jsx
+
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
                   <span
@@ -105,8 +95,8 @@ const Header = () => {
                   ></span>
                 </button>
               </div>
-<<<<<<<< HEAD:src/components/Header.jsx
-              {open && (
+
+              {/* {open && (
                 <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
                   <ul className="text-center">
                     <li className="text-3xl text-[#141414] leading-14">
@@ -126,8 +116,8 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-              )}
-========
+              )} */}
+
                     {openMenu && (
                     <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
                        <ul className="text-center">
@@ -139,7 +129,7 @@ const Header = () => {
                        </ul>
                     </div>
                     )}
->>>>>>>> akash:src/components/ui/Header.jsx
+
             </div>
           </div>
         </nav>

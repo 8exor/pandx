@@ -1,0 +1,11 @@
+ {
+      "compilerOptions": {
+        "baseUrl": "src", // Base directory for absolute imports
+        "paths": {
+          "@components/*": ["components/*"], // Alias for components
+          "@utils/*": ["utils/*"], // Alias for utilities
+          "@assets/*": ["assets/*"] // Alias for assets
+        }
+      },
+      "include": ["src"] // Include source files
+    }
