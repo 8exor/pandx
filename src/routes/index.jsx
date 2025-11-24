@@ -2,6 +2,11 @@ import path from "path";
 import StakingPage from "../layouts/staking/StakingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
+import Report from "../layouts/report/Report";
+import StakingHeader from "./StakingHeader";
+import Ranking from "../layouts/rank/Ranking";
+
+
 
 
 
@@ -12,11 +17,23 @@ export default function AppRoutes (){
             path : "/",
             Component : Home
         },
+    ]
 
-        {
+    const stakingRoutes =[
+          {
             name : "StakingPage",
             path : "/StakingPage",
             Component : StakingPage
+        },
+        {
+            name : "Rank",
+            path : "/Ranking",
+            Component : Ranking,
+        },
+          {
+            name : "Report",
+            path : "/Report",
+            Component : Report
         }
     ]
 
@@ -24,9 +41,19 @@ export default function AppRoutes (){
         <Route key={i} path={path} element ={<Component/>} />
     ))
 
+    const stakeRouter = stakingRoutes.map(({name, path, Component},i)=>(
+        <Route key={i} path={path} element ={<Component/>}/>
+    ))
+
     return(
         <div>
-            <Routes>{Router}</Routes>
+            <Routes>
+                {Router}
+                <Route element={<StakingHeader/>}>
+                {stakeRouter}
+                </Route>
+                </Routes>
+
         </div>
     )
 }

@@ -77,7 +77,7 @@ const Tokenomics = () => {
     <>
       <div className="bg-gradient-to-b from-[#edffe1] pb-10 to-[#e5ffe6]">
         <section className="mycontainer">
-          <h2 className="text-[82px] text-center">Tokenomics</h2>
+          <h2 className="text-3xl md:text-[82px] text-center">Tokenomics</h2>
 
           <div className="relative">
             <ResponsiveContainer width="100%" height={700}>

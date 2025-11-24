@@ -1,16 +1,13 @@
-
 import { useState, useEffect } from "react";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
-    const {open, close } = useAppKit();
-    const {isConnected} = useAppKitAccount();
-    
+  const { open, close } = useAppKit();
+  const { isConnected } = useAppKitAccount();
 
-     const [openMenu, setOpenMenu] = useState(false);
-      const [isSticky, setIsSticky] = useState(false);
-
+  const [openMenu, setOpenMenu] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,43 +36,38 @@ const Header = () => {
               <img src="/assets/images/Logo.svg" alt="logo" />
             </div>
             <div className="flex items-center justify-between gap-5">
-              <div className="bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
+              <div className="hidden md:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
                 <img
                   className="w-[20px] h-[20]"
                   src="/assets/images/Icon.svg"
                   alt="telegram"
                 />
               </div>
-              <div className="bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
+              <div className="hidden md:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
-              <div>
 
-                {/* <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  Buy Panda */}
-
-               
-                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium" onClick={()=>{
-                  open()
-                  
-                }}>
+              <div className="hidden md:flex items-center gap-3">
+                <button
+                  className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                  onClick={() => {
+                    open();
+                  }}
+                >
                   <img src="/assets/images/panda.svg" alt="panda" />
                   Connect
+                </button>
 
-                </button>
-            
-                  <NavLink to={isConnected ? "/StakingPage" : "/"}>
-                <button className="bg-graydient hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium" >
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  Staking
-                </button>
+                <NavLink to={isConnected ? "/StakingPage" : "/"}>
+                  <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Staking
+                  </button>
                 </NavLink>
               </div>
               <div className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
                   onClick={() => setOpenMenu(!openMenu)}
-
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
                   <span
@@ -96,7 +88,7 @@ const Header = () => {
                 </button>
               </div>
 
-              {/* {open && (
+              {openMenu && (
                 <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
                   <ul className="text-center">
                     <li className="text-3xl text-[#141414] leading-14">
@@ -115,21 +107,14 @@ const Header = () => {
                       <a href="">Roadmap</a>
                     </li>
                   </ul>
+                  <NavLink to={isConnected ? "/StakingPage" : "/"} className={"flex justify-center items-center mt-5 md:hidden"}>
+                    <button className="bg-graydient-box hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                      <img src="/assets/images/panda.svg" alt="panda" />
+                      Staking
+                    </button>
+                  </NavLink>
                 </div>
-              )} */}
-
-                    {openMenu && (
-                    <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
-                       <ul className="text-center">
-                        <li className="text-3xl text-[#141414] leading-14"><a href="">Home</a></li>
-                        <li className="text-3xl text-[#141414] leading-14"><a href="">About</a></li>
-                        <li className="text-3xl text-[#141414] leading-14"><a href="">Tokenomics</a></li>
-                        <li className="text-3xl text-[#141414] leading-14"><a href="">Get Started</a></li>
-                        <li className="text-3xl text-[#141414] leading-14"><a href="">Roadmap</a></li>
-                       </ul>
-                    </div>
-                    )}
-
+              )}
             </div>
           </div>
         </nav>

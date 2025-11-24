@@ -11,8 +11,13 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+
     },
   },
+  server: {
+         host: true, // This will bind to all available network interfaces
+       },
 })
 
 

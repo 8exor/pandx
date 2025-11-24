@@ -25,6 +25,16 @@ p , a, input {
     transform-origin: 50% 50% 0px;
    
 }
+
+.bg-graydient-level {
+     background-color: var(--token-33c21092-8a05-4905-85e1-0e05518e6553, rgb(114, 163, 20));
+    box-shadow: inset 0px 4px 8px 0px var(--token-b2a7ff7a-b957-42b7-a20a-448bc74aab27, rgba(0, 0, 0, 0.32));
+    will-change: auto;
+    transform: none;
+    transform-origin: 50% 50% 0px;
+   
+}
+
 .main-grade{
     background: linear-gradient(
   to right,
@@ -92,4 +102,19 @@ section.color-shadow:before {
   );
 }
 
+body{
+  margin : 0;
+}
+
+
+.box {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border: 4px solid #a0522d; /* brown border */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+  text-align: center;
+}
 

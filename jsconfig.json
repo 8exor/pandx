@@ -4,7 +4,8 @@
         "paths": {
           "@components/*": ["components/*"], // Alias for components
           "@utils/*": ["utils/*"], // Alias for utilities
-          "@assets/*": ["assets/*"] // Alias for assets
+          "@assets/*": ["assets/*"], // Alias for assets
+          "@constants/*": ["constants/*"] // Alias for assets
         }
       },
       "include": ["src"] // Include source files

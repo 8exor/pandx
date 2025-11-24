@@ -5,24 +5,23 @@ const Banner = () => {
     navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
     setCopied(true);
     setTimeout(() => setCopied(false), 5000);
-    
   };
 
   return (
     <>
-      <div className="sm:pt-[96px] bg-[#edffe1]">
+      <div className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
-          <div className="absolute top-30 max-w-[400px]  md:left-20 sm:left-10 left-0">
-            <img className="w-[90px] sm:w-[130px] md:w-full" src="/assets/images/Cloud01.svg" alt="img-cloud" />
+          <div className="absolute top-30 max-w-[400px]  md:left-10 sm:left-10 left-0">
+            <img className="w-[90px] sm:w-[130px] md:w-[150px] lg:w-[200px] xl:w-[400px]" src="/assets/images/Cloud01.svg" alt="img-cloud" />
           </div>
-          <div className="absolute bottom-[40%] max-w-[250px] left-[25%]">
-            <img className="w-0 sm:w-[130px] md:w-full" src="/assets/images/Cloud01.svg" alt="img-cloud" />
+          <div className="absolute bottom-[40%] max-w-[250px]  left-[25%]">
+            <img className="w-0 sm:w-[130px] md:w-[100px] lg:w-[150px] xl:w-[250px]" src="/assets/images/Cloud01.svg" alt="img-cloud" />
           </div>
-          <div className="absolute top-[20%] max-w  -[200px] right-0">
-            <img className="w-[100px] md:w-full" src="/assets/images/Cloud03.svg" alt="img-cloud" />
+          <div className="absolute top-[20%] max-w-[200px] right-0">
+            <img className="w-[70px] md:w-[100px] xl:w-[200px]" src="/assets/images/Cloud03.svg" alt="img-cloud" />
           </div>
           <div className="py-20 mycontainer">
-            <h1 className="text-5xl sm:text-[64px] md:text-[120px] text-center leading-[1.1]">
+            <h1 className="text-3xl sm:text-[64px] md:text-[40px] lg:text-6xl xl:text-9xl text-center leading-[1.1]">
               The People’s <br /> Panda Coin
             </h1>
             <p className="text-[#4c4c4c] text-center text-xl pt-8">
@@ -44,7 +43,7 @@ const Banner = () => {
               </div>
 
               {/* Panda 1 */}
-              <div className="absolute top-[37%] md:left-[9%] left-[3%]  w-[23%] md:w-[12%] sm:w-[15%]">
+              <div className="absolute top-[37%] md:top-[7%] lg:top-[8%] md:left-[1%] lg:left-[2%] left-[3%]  w-[23%] md:w-[25%] sm:w-[15%] lg:w-[22%]">
                 <img src="/assets/images/panda-1.svg" alt="panda 1" className="w-full h-auto" />
               </div>
 
@@ -54,12 +53,12 @@ const Banner = () => {
               </div>
 
               {/* Panda 3 */}
-              <div className="absolute top-[14%] md:top-[20%] lg:top-[11%] lg:right-[11%] right-[10%] w-[28%] md:w-[15%] sm:w-[18%]">
+              <div className="absolute top-[14%] md:-top-[11%] lg:-top-[20%] md:right-[8%] lg:right-[11%] right-[10%] w-[28%] md:w-[25%] sm:w-[18%]">
                 <img src="/assets/images/panda03.svg" alt="panda 3" />
               </div>
 
               {/* Tree */}
-              <div className="absolute top-[17%] lg:top-[-17%] sm:top-[-20%] md:top-[-20%] lg:top-[-73] right-0  md:right-[8%] lg:right-[2%] w-[15%] md:w-[12%] sm:w-[15%]">
+              <div className="absolute top-[17%]  sm:top-[-20%] md:top-[-45%] lg:-top-[52%] right-0  md:-right-[2%] lg:-right-[2%] w-[15%] md:w-[18%] sm:w-[15%]">
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
@@ -74,7 +73,7 @@ const Banner = () => {
         <div className="mycontainer">
           <div className="grid grid-cols-1 md:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
             <div>
-              <h2 className="lg:text-[82px]  text-[40px] sm:text-center lg:text-left sm:text-[40px] text-left sm:leading-10 leading-20">About Us</h2>
+              <h2 className="lg:text-[82px]  text-[40px] text-center lg:text-left sm:text-[40px] md:text-left sm:leading-10 leading-20">About Us</h2>
               <p className="text-[#4c4c4c] sm:pt-8 sm:text-center lg:text-left   text-xl lg:pt-8">
                 Panda is a fast, eco-friendly crypto with meme vibes and
                 real-world muscle fun, functional, and fueled by community.
@@ -97,7 +96,7 @@ const Banner = () => {
             </div>
             <div className="md:ml-auto mx-auto relative">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
-              <div className="absolute sm:bottom-[112px] left-[60px] bottom-[66px] sm:left-[112px] sm:bottom-[70px] bottom:[148px] left-[20px] w-[60%]">
+              <div className="absolute sm:bottom-[95px] left-[75px] bottom-[90px] sm:left-[80px] sm:bottom-[70px] lg:bottom-[100px] lg:left-[110px] bottom:[148px] w-[60%]">
                 <img className="w-[60%] sm:w-[55%]" src="/assets/images/Character_tree.svg" alt="tree-background" />
               </div>
             </div>
