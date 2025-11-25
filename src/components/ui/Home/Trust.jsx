@@ -1,60 +1,81 @@
 const Trust = () => {
   return (
     <>
-      {/* <section > */}
-        {/* <div className="relative"> */}
-          {/* <h2 className="text-[82px] z-999  absolute top-0 left-0 right-0 text-center">
-            Why Trust PANDA?
-          </h2> */}
-         {/* <div className=" bg-[url('/assets/images/trust_bg.svg.svg')] bg-cover bg-no-repeat w-full h-full"> */}
-             {/* <img src="/assets/images/trust_bg.svg.svg" alt="" /> */}
-             {/* <div className="absolute top-[20%] left-[30%]">
-                  <div className="relative z-9">
-                   <img src="assets/images/rectangle.svg" alt="rectangle" />
-                        <div className="absolute top-[45%] left-0 right-0 text-center">
-                                <h3 className="text-[36px]">Public Team</h3>
-                                <p className="text-[24px] text-[#4c4c4c]">No anonymous founders verified</p>
-                        </div>
-                  </div>
-             </div> */}
+      <section >
+         
+        <div 
+  className="relative w-full bg-[url('/assets/images/trust_bg.svg.svg')] bg-cover bg-center py-30 md:py-50">
+ <h2 className="lg:text-[82px] py-6  text-[30px] sm:text-[40px]  absolute top-10 left-0 right-0 text-center" data-aos="slide-up">
+            Why Trust Pandx?
+          </h2>
+  {/* cards wrapper */}
+  <div className="flex flex-col items-center gap-16" data-aos="zoom-in">
 
-             {/*  */}
-              {/* <div className="absolute top-[40%] left-[30%]">
-                  <div className="relative z-1">
-                   <img src="assets/images/rectangle-2.svg" alt="rectangle" />
-                        <div className="absolute top-[50%] left-0 right-0 text-center">
-                                <h3 className="text-[36px]">Public Team</h3>
-                                <p className="text-[24px] text-[#4c4c4c]">No anonymous founders verified</p>
-                        </div>
-                  </div>
-             </div> */}
-             {/*  */}
+    {/* CARD 1 */}
+    <div className="relative">
+      <img
+        className="w-[300px] sm:w-[400px]  relative z-2 md:w-[500px] lg:w-full" 
+        src="assets/images/rectangle.svg" 
+        alt="rectangle" 
+      />
+      <div className="absolute z-2 top-[40px] md:top-[50px] lg:top-[60px] inset-0 flex flex-col items-center justify-center px-[30px]">
+        <h3 className="text-[18px] md:text-[28px] lg:text-[38px]">About Contracts</h3>
+        <p className="text-[16px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
+          Fully Verified Smart Contracts &
+          User Can Stake/Unstake Anytime
+        </p>
+      </div>
+    </div>
 
-             {/* <div className="absolute top-[60%] left-[30%]">
-                  <div className="relative">
-                   <img src="assets/images/rectangle-2.svg" alt="rectangle" />
-                        <div className="absolute top-[50%] left-0 right-0 text-center">
-                                <h3 className="text-[36px]">Public Team</h3>
-                                <p className="text-[24px] text-[#4c4c4c]">No anonymous founders verified</p>
-                        </div>
-                  </div>
-             </div> */}
-             {/* last panda run & half panda */}
-             {/* <div className="absolute bottom-0 left-[20%]">
-                <img className="w-[60px] md:w-full" src="assets/images/Character_run.svg" alt="" />
-             </div> */}
+    {/* CARD 2 */}
+    <div className="relative mt-[-100px]">
+      <img 
+        className="w-[320px] relative z-1 sm:w-[400px] md:w-[500px] lg:w-full" 
+        src="assets/images/rectangle-2.svg" 
+        alt="rectangle" 
+      />
+      <div className="absolute top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[30px]">
+        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS
+(Inter-Planetary File System) </h3>
+        <p className="text-[16px] lg:text-[20px] md:text-[18px] text-center text-[#4c4c4c]">
+        The InterPlanetary File System (IPFS) is a Peer-to-Peer, Decentralized system for storing and sharing files, websites, and data
+        </p>
+      </div>
+    </div>
 
-             {/* <div className="absolute bottom-0 right-0">
-                <img className="w-[60px] md:w-full" src="assets/images/half_panda.svg" alt="" />
-             </div> */}
-         {/* </div> */}
-        {/* </div> */}
-      {/* </section> */}
+    {/* CARD 3 */}
+    <div className="relative mt-[-100px]">
+      <img 
+        className="w-[320px] sm:w-[400px] md:w-[500px] lg:w-full" 
+        src="assets/images/rectangle-2.svg" 
+        alt="rectangle" 
+      />
+      <div className="absolute top-[40px] md:top-[80px] lg:top-[30%] inset-0 flex flex-col items-center justify-center px-[30px]">
+        <h3 className="text-[18px] md:text-[28px] lg:text-[38px]">100% Real & Transparent</h3>
+        <p className="text-[16px] md:text-[22px] lg:text-[24px]  text-center text-[#4c4c4c]">
+          Open source system – Nobody can STOP, HIDE or CHANGE anything
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  {/* bottom characters */}
+  <div className="absolute bottom-0 left-[28%]" data-aos="zoom-in">
+    <img className="w-[60px] md:w-[200px] lg:w-[220px]" src="assets/images/Character_run.svg" alt="character" />
+  </div>
+
+  <div className="absolute bottom-0 right-0" data-aos="zoom-in">
+    <img className="w-[40px] md:w-[100px]" src="assets/images/half_panda.svg" alt="half-panda" />
+  </div>
+</div>
+
+      </section>
 
 
 
 
-      <section className="relative bg-[#efffe5] h-screen xl:h-full xl:bg-transparent">
+      {/* <section className="relative bg-[#efffe5] h-screen xl:h-full xl:bg-transparent">
               <img src="/assets/images/trustBg.svg" alt="" className="w-full  object-contain md:object-cover bg-no-repeat absolute bottom-0  xl:static" />
            <h2 className="text-4xl md:text-7xl absolute top-13 xl:top-20 text-center w-full">Why Trust Panda ?</h2>
           <div className="mycontainer xl:absolute xl:top-75 xl:left-1/2 xl:transform xl:-translate-x-1/2">
@@ -85,7 +106,7 @@ const Trust = () => {
         
 
        
-      </section>
+      </section> */}
 
   
   

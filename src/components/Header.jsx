@@ -33,15 +33,17 @@ const Header = () => {
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div>
-              <img src="/assets/images/Logo.svg" alt="logo" />
+             <a href=" https://swap.qerra.network/" target="blank"> <img src="/assets/images/Logo.svg" alt="logo" /></a>
             </div>
             <div className="flex items-center justify-between gap-5">
               <div className="hidden md:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
-                <img
+               <a href=" https://t.me/pandxdao" target="blank">
+                 <img
                   className="w-[20px] h-[20]"
                   src="/assets/images/Icon.svg"
                   alt="telegram"
                 />
+               </a>
               </div>
               <div className="hidden md:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
