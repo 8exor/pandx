@@ -34,11 +34,10 @@ const Trust = () => {
         src="assets/images/rectangle-2.svg" 
         alt="rectangle" 
       />
-      <div className="absolute top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[30px]">
-        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS
-(Inter-Planetary File System) </h3>
+      <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[30px]">
+        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS </h3>
         <p className="text-[16px] lg:text-[20px] md:text-[18px] text-center text-[#4c4c4c]">
-        The InterPlanetary File System (IPFS) is a Peer-to-Peer, Decentralized system for storing and sharing files, websites, and data
+        IPFS is a decentralized peer-to-peer system for storing and sharing files across the web
         </p>
       </div>
     </div>

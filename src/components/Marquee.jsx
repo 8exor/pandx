@@ -1,5 +1,5 @@
 const Marquee = () => {
-  const icons = ["/assets/images/$pande.svg", "/assets/images/hash.svg"];
+  const icons = ["/assets/images/-Pandx.svg", "/assets/images/hash.svg"];
   const repeated = Array.from({ length: 20 }).flatMap(() => icons);
   return (
     <>
@@ -7,7 +7,7 @@ const Marquee = () => {
         <div className="overflow-hidden shadow-marquee whitespace-nowrap py-4 w-full bg-[#5B5BAC] rotate-[-2deg] relative z-999">
           <div className="marquee flex gap-10">
             {repeated.map((src, i) => (
-              <img key={i} src={src} alt="$panda"  />
+              <img key={i} src={src} alt="$Pandx"  />
             ))}
           </div>
         </div>

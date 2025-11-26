@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`py-6 w-full z-50 transition-all duration-500 ${
+        className={`py-6 w-full z-9999 transition-all duration-500 ${
           isSticky
             ? "fixed top-0 left-0 bg-[#b8fea4] shadow-lg"
             : "absolute bg-[#C5FF9E]"
@@ -66,6 +66,12 @@ const Header = () => {
                     Staking
                   </button>
                 </NavLink>
+                <a href=" https://swap.qerra.network/" target="blank">
+                 <button className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                   Buy $Pandx
+                  </button>
+                  </a>
               </div>
               <div className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
