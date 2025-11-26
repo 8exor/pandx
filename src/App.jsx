@@ -4,6 +4,11 @@ import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
 import { mainnet, arbitrum, bscTestnet } from "@reown/appkit/networks";
 import AppRoutes from "./routes";
 import { BrowserRouter } from "react-router-dom";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
+
 // import Header from "./components/ui/Header";
 
 // 1. Get projectId
@@ -33,12 +38,19 @@ createAppKit({
 });
 
 function App() {
+  const [queryClient] = useState(() => new QueryClient());
+
+  console.log({queryClient})
 
   return (
     <>
+    <Toaster/>
+      <QueryClientProvider client={queryClient}>
     <BrowserRouter>
    <AppRoutes/>
    </BrowserRouter>
+     <ReactQueryDevtools initialIsOpen={false} />
+     </QueryClientProvider>
     </>
   )
 }

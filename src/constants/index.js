@@ -19,17 +19,17 @@ export const dappNavLinks = [
 export const stakers = [
   {
     id: "registered",
-    title: "Registered Users 1000",
+    title: "Registered Users",
     img: "/assets/icons/registeredUser.svg",
   },
   {
     id: "stakers",
-    title: "Total Stakers 5000",
+    title: "Total Stakers ",
     img: "/assets/icons/stakers.svg",
   },
   {
     id: "registered",
-    title: "Total Holders 3000",
+    title: "Total Holders",
     img: "/assets/icons/stakers.svg",
   },
 ];

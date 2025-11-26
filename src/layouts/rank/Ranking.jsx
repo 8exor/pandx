@@ -8,6 +8,7 @@ const Ranking = () => {
         "max cap",
         "daily yield",
         "directs",
+        "boostx",
         "level open",
         "team req",
         "total team"
@@ -20,6 +21,7 @@ const Ranking = () => {
             maxCap: 5000,
             dailyYield: "7%",
             directs: 3,
+            boostx: "right",
             levelOpen: "Level 2",
             teamReq: 100,
             totalTeam: 250
@@ -30,6 +32,7 @@ const Ranking = () => {
             maxCap: 7000,
             dailyYield: "8%",
             directs: 4,
+            boostx: "right",
             levelOpen: "Level 3",
             teamReq: 150,
             totalTeam: 350
@@ -40,6 +43,7 @@ const Ranking = () => {
             maxCap: 7000,
             dailyYield: "8%",
             directs: 4,
+            boostx: "cross",
             levelOpen: "Level 3",
             teamReq: 150,
             totalTeam: 350
@@ -51,6 +55,7 @@ const Ranking = () => {
             maxCap: 7000,
             dailyYield: "8%",
             directs: 4,
+            boostx: "cross",
             levelOpen: "Level 3",
             teamReq: 150,
             totalTeam: 350
@@ -70,7 +75,7 @@ const Ranking = () => {
                                 {tableHeadings.map((heading, index) => (
                                     <th
                                         key={index}
-                                        className="px-5 py-8 text-[18px] uppercase text-black text-center"
+                                        className="px-5 py-8 text-[18px] uppercase text-black text-center font-[Russo One]"
                                     >
                                         {heading}
                                     </th>
@@ -85,12 +90,21 @@ const Ranking = () => {
                                         <td key={cellIndex} className="p-1">
                                             <div className="mx-2 my-2 p-2 border border-black shadow rounded-md 
                                                 text-center flex justify-center items-center gap-1 
-                                                hover:bg-green-200">
+                                                hover:bg-green-200 font-[Lato] font-bold">
                                                 {key === "rank" ? (
                                                     <>
                                                         <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4" />
                                                         <span>{value}</span>
                                                     </>
+                                                ) : key === "boostx" ? (
+                                                    <img
+                                                        src={value === "right"
+                                                            ? "/assets/images/check1.svg"
+                                                            : "/assets/images/cancel1.svg"}
+                                                        alt='boostx'
+                                                        className='w-6 h-6'
+
+                                                    />
                                                 ) : (
                                                     value
                                                 )}

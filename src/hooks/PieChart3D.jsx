@@ -16,16 +16,21 @@ const CustomPieChart = () => {
     chart.hiddenState.properties.opacity = 0;
 
     chart.data = [
-      { category: "Symbol $PANDE", value: 50 },
-      { category: "Total Supply", value: 35 },
-      { category: "Staking Rewards", value: 15 },
-      { category: "Liquidity Locked", value: 45 },
+      {  category: "[font-size:28px]Presale on Launchpad[/]\n[font-size:px]1%[/]",    value: 50},
+      { category: "[font-size:28px]Total Supply\n[font-size:px]1,000,000,000[/]", value: 35 },
+      { category: "[font-size:28px]Liquidity Locked\n[font-size:px]upto 15%APY[/]", value: 15 },
+      { category: "[font-size:28px]Staking Rewards\n[font-size:px]99%[/]", value: 45 },
       
     ];
 
     const series = chart.series.push(new am4charts.PieSeries3D());
     series.dataFields.value = "value";
     series.dataFields.category = "category";
+    series.labels.template.text = "{category}";
+series.slices.template.tooltipText = "";
+    // series.labels.template.textFormatter = new am4core.TextFormatter();
+
+   
 
     // Custom colors
     series.colors.list = [

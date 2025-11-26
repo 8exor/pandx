@@ -12,7 +12,7 @@ export async function setAccessToken(token){
 }
 
 export async function getAccessToken(){
-  return  await Cookies.set("ACCESS_TOKEN", token)
+  return  await Cookies.get("ACCESS_TOKEN")
 }
 
 export async function deletCookies(){

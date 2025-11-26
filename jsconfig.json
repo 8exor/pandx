@@ -2,10 +2,18 @@
       "compilerOptions": {
         "baseUrl": "src", // Base directory for absolute imports
         "paths": {
-          "@components/*": ["components/*"], // Alias for components
-          "@utils/*": ["utils/*"], // Alias for utilities
           "@assets/*": ["assets/*"], // Alias for assets
-          "@constants/*": ["constants/*"] // Alias for assets
+          "@components/*": ["components/*"],
+          "@config/*": ["config/*"], // Alias for components
+          "@constants/*": ["constants/*"], // Alias for constants
+          "@hooks/*": ["hooks/*"],
+          "@pages/*": ["pages/*"],
+          "@routes/*": ["routes/*"],
+          "@services/*": ["services/*"], // Alias for assets
+          "@utils/*": ["utils/*"], // Alias for utilities
+         
+        
+          
         }
       },
       "include": ["src"] // Include source files
