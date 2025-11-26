@@ -18,22 +18,23 @@ const Footer = () => {
               <div className="flex items-center justify-center gap-2  md:gap-8 py-10">
                 <div>
                   <a href="https://swap.qerra.network/" target="blank">
-                   <button className="bg-graydient-box flex md:block hidden hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-md font-medium">
+                   <button className="bg-graydient-box  md:block hidden hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
                     <img src="/assets/images/panda.svg" alt="Pandx" />
-                    Buy Pandx
+                   Buy $Pandx
                   </button>
                   </a>
-                 
                 </div>
                 <div>
                   <img src="assets/images/panda_face.svg" alt="Pandx" />
                 </div>
                 <div className="bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
+                  <a href="https://t.me/pandxdao" target="blank">
                   <img
                     className="w-[20px] h-[20]"
                     src="/assets/images/Icon.svg"
                     alt="telegram"
                   />
+                    </a>
                 </div>
                 <div className="bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                   <a href="https://t.me/pandxdao" target="blank"><img src="/assets/images/telegram.svg" alt="telegram" /></a>
@@ -45,7 +46,7 @@ const Footer = () => {
           <div className="mycontainer">
             <div className="flex flex-wrap justify-between items-center gap-5 pt-8  border-graydient" >
               <div>
-                <img src="assets/images/Logo.svg" alt="" />
+                <a href=" https://swap.qerra.network/" target="blank"> <img src="/assets/images/Logo.svg" alt="logo" /></a>
               </div>
               <div>
                 <ul className="flex items-center gap-4">

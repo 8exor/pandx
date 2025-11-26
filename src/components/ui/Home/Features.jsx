@@ -22,7 +22,7 @@ const Features = () => {
                 Pandx lives on a high-performance blockchain — BSC — offering ultra-low fees and lightning-fast transaction speeds.
               </p>
               <div className="absolute top-[20px] sm:top-0 right-[-112px] lg:right-[-23%] lg:top-[-14%]">
-                <img
+                <img2px
                   className="w-[80%] lg:w-full"
                   src="/assets/images/box_tree.svg"
                   alt="box-tree"
@@ -31,7 +31,7 @@ const Features = () => {
             </div>
             {/* box-2 */}
             <div className=" h-fit w-full">
-              <h2 className="text-[82px]  lg:block hidden ml-[60px] animate__animated animate__fadeInUp  w-full min-w-[480px] leading-[82px]"  data-aos="slide-up" d>
+              <h2 className="text-[82px]  lg:block hidden ml-[60px]  w-full min-w-[480px] leading-[82px]"  data-aos="slide-up" >
                 How Pandx Works
               </h2>
               <div className="bg-[#e5ffe6]   animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg mt-[10px] lg:mt-15 relative"  data-aos="zoom-in">
@@ -109,7 +109,7 @@ const Features = () => {
               alt="Character_bag.svg"
             />
           </div>
-          <div className="absolute top-[60%] left-[35%]" data-aos="zoom-in">
+          <div className="absolute top-[62%] left-[35%]" data-aos="zoom-in">
             <img
               className="w-[50px] sm:w-[110px] lg:w-[170px]"
               src="assets/images/Character_run.svg"

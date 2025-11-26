@@ -11,6 +11,7 @@ const Trust = () => {
           </h2>
   {/* cards wrapper */}
   <div className="flex flex-col items-center gap-16" data-aos="zoom-in">
+
     {/* CARD 1 */}
     <div className="relative">
       <img
@@ -26,6 +27,7 @@ const Trust = () => {
         </p>
       </div>
     </div>
+
     {/* CARD 2 */}
     <div className="relative mt-[-100px]">
       <img 
@@ -33,14 +35,14 @@ const Trust = () => {
         src="assets/images/rectangle-2.svg" 
         alt="rectangle" 
       />
-      <div className="absolute top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[30px]">
-        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS
-(Inter-Planetary File System) </h3>
+      <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[30px]">
+        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS </h3>
         <p className="text-[16px] lg:text-[20px] md:text-[18px] text-center text-[#4c4c4c]">
-        The InterPlanetary File System (IPFS) is a Peer-to-Peer, Decentralized system for storing and sharing files, websites, and data
+        IPFS is a decentralized peer-to-peer system for storing and sharing files across the web
         </p>
       </div>
     </div>
+
     {/* CARD 3 */}
     <div className="relative mt-[-100px]">
       <img 
@@ -55,16 +57,24 @@ const Trust = () => {
         </p>
       </div>
     </div>
+
   </div>
+
   {/* bottom characters */}
   <div className="absolute bottom-0 left-[28%]" data-aos="zoom-in">
     <img className="w-[60px] md:w-[200px] lg:w-[220px]" src="assets/images/Character_run.svg" alt="character" />
   </div>
+
   <div className="absolute bottom-0 right-0" data-aos="zoom-in">
     <img className="w-[40px] md:w-[100px]" src="assets/images/half_panda.svg" alt="half-panda" />
   </div>
 </div>
+
       </section>
+
+
+
+
       {/* <section className="relative bg-[#efffe5] h-screen xl:h-full xl:bg-transparent">
               <img src="/assets/images/trustBg.svg" alt="" className="w-full  object-contain md:object-cover bg-no-repeat absolute bottom-0  xl:static" />
            <h2 className="text-4xl md:text-7xl absolute top-13 xl:top-20 text-center w-full">Why Trust Panda ?</h2>
@@ -93,6 +103,7 @@ const Trust = () => {
         
        
       </section> */}
+
   
   
     </>
