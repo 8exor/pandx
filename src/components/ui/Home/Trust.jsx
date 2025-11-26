@@ -1,3 +1,4 @@
+
 const Trust = () => {
   return (
     <>
@@ -82,11 +83,9 @@ const Trust = () => {
             <img src="/assets/images/rectangle.svg" className="absolute top-30 w-full md:w-sm md:left-[24%] lg:left-[30%] xl:top-30 xl:w-[500px] text-center z-10" alt="" />
             <h2 className="absolute top-52 w-full text-center text-2xl z-20 xl:text-3xl xl:top-60">Public Team</h2>
             <p className="absolute top-62 w-full text-center text-xl z-20 xl:top-70 ">No anonymous founders verified</p>
-
              <img src="/assets/images/rectangle-2.svg" className="absolute top-60 w-full md:w-sm md:left-[24%] lg:left-[30%] xl:w-[500px] xl:top-71  text-center z-7" alt="" />
             <h2 className="absolute top-86 w-full text-center text-2xl z-8 xl:top-105 xl:text-3xl">Transparent</h2>
             <p className="absolute top-96 w-full text-center text-xl z-8 xl:top-117">Milestones tracked in real time</p>
-
                <img src="/assets/images/rectangle-2.svg" className="absolute top-97 w-full md:w-sm md:left-[24%] lg:left-[30%] xl:w-[500px] xl:top-120 text-center " alt="" />
             <h2 className="absolute top-123 w-full text-center text-2xl xl:text-3xl xl:top-153">Open Source</h2>
             <p className="absolute top-133 w-full text-center text-xl xl:top-165">Open code you can verify by yourself</p>
@@ -97,21 +96,17 @@ const Trust = () => {
              <div className="absolute bottom-0 left-0 lg:left-30 xl:left-20 ">
                 <img className="w-[130px] md:w-40 xl:w-[300px]" src="assets/images/Character_run.svg" alt="" />
              </div>
-
              <div className="absolute bottom-0 right-10 lg:right-30 xl:right-30">
                 <img className="w-[130px] md:w-40 xl:w-[300px]" src="assets/images/Character_bag.svg" alt="" />
              </div>
          </div>
         
-
        
       </section> */}
 
   
   
-
     </>
   );
 };
-
 export default Trust;

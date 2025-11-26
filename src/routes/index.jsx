@@ -1,7 +1,7 @@
 import path from "path";
 import StakingPage from "../layouts/staking/StakingPage";
 import { Route, Routes } from "react-router-dom";
-import Home from "../Pages/Home";
+import Home from "../pages/Home";
 import Report from "../layouts/report/Report";
 import StakingHeader from "./StakingHeader";
 import Ranking from "../layouts/rank/Ranking";
