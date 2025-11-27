@@ -11,7 +11,7 @@ export async function setAccessToken(token){
   return  await Cookies.set("ACCESS_TOKEN", token)
 }
 
-export async function getAccessToken(){
+export async function getAccessToken(){ 
   return  await Cookies.get("ACCESS_TOKEN")
 }
 
