@@ -22,8 +22,7 @@ const Trust = () => {
       <div className="absolute z-2 top-[40px] md:top-[50px] lg:top-[60px] inset-0 flex flex-col items-center justify-center px-[30px]">
         <h3 className="text-[18px] md:text-[28px] lg:text-[38px]">About Contracts</h3>
         <p className="text-[16px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
-          Fully Verified Smart Contracts &
-          User Can Stake/Unstake Anytime
+         Fully Verified & Renounced Smart Contracts + User Can Stake/Unstake Anytime
         </p>
       </div>
     </div>
@@ -38,7 +37,7 @@ const Trust = () => {
       <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[30px]">
         <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS </h3>
         <p className="text-[16px] lg:text-[20px] md:text-[18px] text-center text-[#4c4c4c]">
-        IPFS is a decentralized peer-to-peer system for storing and sharing files across the web
+        IPFS is a 100% Decentralized peer-to-peer system for storing and sharing files across the web – UNSTOPPABLE
         </p>
       </div>
     </div>
@@ -61,12 +60,12 @@ const Trust = () => {
   </div>
 
   {/* bottom characters */}
-  <div className="absolute bottom-0 left-[28%]" data-aos="zoom-in">
-    <img className="w-[60px] md:w-[200px] lg:w-[220px]" src="assets/images/Character_run.svg" alt="character" />
+  <div className="absolute bottom-0 left-[2%] sm:left-[20%] md:left-[10%] lg:left-[12%] xl:left-[25%] xl:left-[27%] " data-aos="zoom-in">
+    <img className="w-[80px] sm:w-[145px] md:w-[200px] lg:w-[220px]" src="assets/images/Character_run.svg" alt="character" />
   </div>
 
-  <div className="absolute bottom-0 right-0" data-aos="zoom-in">
-    <img className="w-[40px] md:w-[100px]" src="assets/images/half_panda.svg" alt="half-panda" />
+  <div className="absolute bottom-0 right-[2%] sm:right-[22%] md:right-[10%] lg:right-[16%] xl:right-[26%]  xl:right-[28%]" data-aos="zoom-in">
+    <img className="w-[80px] sm:w-[145px] md:w-[200px]" src="/assets/images/Character_bag.svg" alt="half-panda" />
   </div>
 </div>
 

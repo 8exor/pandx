@@ -108,7 +108,7 @@ const Roadmap = () => {
               {copied ? "copied" : "copy"}
             </button>
           </div>
-          <h2 className="text-4xl hidden  lg:block  sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]" data-aos="slide-up">
+          <h2 className="text-4xl hidden xl:block   sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]" data-aos="slide-up">
             Pandx Roadmap
           </h2>
         </div>
@@ -222,11 +222,13 @@ const Roadmap = () => {
           {/* MOBILE / TABLET VERSION */}
 
         </div>
-         <div className="bg-[url(assets/images/Roadmap_ground.svg)] bg-no-repeat bg-bottom">
-           <h2 className="text-4xl block pt-6  lg:hidden sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center">
+         <div className="bg-[#d8feccab]">
+           <h2 className="text-4xl pt-[60px] block xl:hidden sm:text-5xl md:text-6xl lg:text-[82px] leading-tight  text-center">
             Pandx Roadmap
           </h2>
-        <div className="xl:hidden  mycontainer h-full  grid grid-cols-1 sm:grid-cols-2 !py-10 !gap-5">
+         <div className="bg-[url(assets/images/Roadmap_ground.svg)] py-0 md:py-20 bg-no-repeat xl:hidden bg-center">
+         
+        <div className="  mycontainer h-full  grid grid-cols-1 sm:grid-cols-2 !py-10 !gap-5">
           {/* card 1 */}
 
           {roadmapArray?.map((road, i) => (
@@ -236,7 +238,7 @@ const Roadmap = () => {
                 className=" mx-auto" data-aos="zoom-in"
                 alt=""
               />
-              <div className="absolute top-0 left-5 lg:left-[80px] p-6 sm:p-8" data-aos="zoom-in" >
+              <div className="absolute top-0 left-5 md:left-[20px] lg:left-[80px] p-6 sm:p-8" data-aos="zoom-in" >
                 <h3 className="text-md sm:text-xl mb-3">{road?.title}</h3>
                 <ul className="space-y-2 text-[#4c4c4c] sm:px-4 px-0 text-sm">
                   <li className="flex items-center gap-2">
@@ -256,6 +258,7 @@ const Roadmap = () => {
             </div>
           ))}
         </div>
+         </div>
          </div>
       </section>
     </>
