@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 const Banner = () => {
@@ -9,12 +9,12 @@ const Banner = () => {
     setTimeout(() => setCopied(false), 5000);
   };
   useEffect(() => {
-  AOS.init({
-    duration: 1200, 
-    once: false,
-    easing: "ease-in-out",
-  });
-}, []);
+    AOS.init({
+      duration: 1200,
+      once: false,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   return (
     <>
@@ -52,10 +52,7 @@ const Banner = () => {
 
               {/* Floor Image */}
               <div className="pt-20">
-                <img
-                  src="/assets/images/floor.svg"
-                  alt="floor"
-                />
+                <img src="/assets/images/floor.svg" alt="floor" />
               </div>
 
               {/* Panda 1 */}
@@ -78,7 +75,6 @@ const Banner = () => {
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
-
           </div>
         </section>
       </div>
@@ -102,21 +98,25 @@ const Banner = () => {
                   className="bg-graydient-box w-full sm:w-fit hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "copied" : "copy"}
-
                 </button>
               </div>
             </div>
             <div className="lg:ml-auto mx-auto  animate__animated animate__zoomIn relative" data-aos="zoom-in">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
-              <div className="absolute sm:bottom-[100px] animate__animated animate__zoomIn left-[65px] bottom-[70px] sm:left-[110px] sm:bottom-[70px] lg:bottom-[100px] lg:left-[110px] bottom:[148px] w-[60%]" data-aos="zoom-in">
-                <img className="w-[60%] sm:w-[55%]" src="/assets/images/Character_tree.svg" alt="tree-background" />
+              <div
+                className="absolute sm:bottom-[100px] animate__animated animate__zoomIn left-[65px] bottom-[70px] sm:left-[110px] sm:bottom-[70px] lg:bottom-[100px] lg:left-[110px] bottom:[148px] w-[60%]"
+                data-aos="zoom-in"
+              >
+                <img
+                  className="w-[60%] sm:w-[55%]"
+                  src="/assets/images/Character_tree.svg"
+                  alt="tree-background"
+                />
               </div>
             </div>
           </div>
         </div>
-        
       </section>
-     
     </>
   );
 };
