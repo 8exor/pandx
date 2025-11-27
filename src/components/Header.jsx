@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`py-6 w-full z-50 transition-all duration-500 ${
+        className={`py-6 w-full z-9999 transition-all duration-500 ${
           isSticky
             ? "fixed top-0 left-0 bg-[#b8fea4] shadow-lg"
             : "absolute bg-[#C5FF9E]"
@@ -39,11 +39,13 @@ const Header = () => {
             </div>
             <div className="flex items-center justify-between gap-5">
               <div className="hidden md:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
-                <img
+               <a href="https://t.me/pandxdao" target="blank">
+                 <img
                   className="w-[20px] h-[20]"
                   src="/assets/images/Icon.svg"
                   alt="telegram"
                 />
+               </a>
               </div>
               <div className="hidden md:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
@@ -116,10 +118,16 @@ const Header = () => {
                       <a href="">Roadmap</a>
                     </li>
                   </ul>
+                  <a className="flex justify-center items-center mt-6 md:hidden" href=" https://swap.qerra.network/" target="blank">
+                  <button className="bg-graydient-box hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Buy $Pandx
+                  </button>
+                </a>
                   <NavLink
                     to={isConnected ? "/StakingPage" : "/"}
                     className={
-                      "flex justify-center items-center mt-5 md:hidden"
+                      "flex justify-center items-center mt-6 md:hidden"
                     }
                   >
                     <button className="bg-graydient-box hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
@@ -128,7 +136,7 @@ const Header = () => {
                     </button>
                   </NavLink>
                   <button
-                    className="md:hidden mt-5  mx-auto bg-graydient-box  hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                    className="md:hidden mt-6  mx-auto bg-graydient-box  hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
                       setOpenMenu(false);
                       setOpenLoginModal(true);

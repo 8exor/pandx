@@ -10,19 +10,19 @@ const CustomPieChart = () => {
     let chart = am4core.create("chartdiv", am4charts.PieChart);
 
     chart.data = [
-      { Labels: "Presale on Launchpad\n1%", value: 25 },
-      { Labels: "Staking Rewards\n Up to 15% APY", value: 25 },
-      { Labels: "Liquidity Locked\n100% for 1 year", value: 25 },
-      { Labels: "Staking Rewards\n99%", value: 25 },
+      { Labels: "Presale on Launchpad\n1%", value: 1 },
+      { Labels: "Staking Rewards\n Up to 15% APY", value: 99 },
+      // { Labels: "Liquidity Locked\n100% for 1 year", value: 25 },
+      // { Labels: "Staking Rewards\n99%", value: 25 },
     ];
 
     chart.innerRadius = am4core.percent(30);
 
     chart.colors.list = [
-      am4core.color("#5b5bac"),
+      // am4core.color("#5b5bac"),
       am4core.color("#6f5f93"),
       am4core.color("#72A315"),
-      am4core.color("#6f5f93"),
+      // am4core.color("#6f5f93"),
     ];
 
   
