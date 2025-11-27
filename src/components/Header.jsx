@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
-import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
+import {
+  useAppKit,
+  useAppKitAccount,
+  useAppKitProvider,
+  useDisconnect,
+} from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
+import { ethers } from "ethers";
 const Header = () => {
   const { open, close } = useAppKit();
   const { isConnected } = useAppKitAccount();
+  const { walletProvider } = useAppKitProvider("eip155");
+  const { disconnect } = useDisconnect();
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -23,6 +31,22 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleDisconnet = async () => {
+    try {
+      const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
+      console.log(ethersProvider);
+      const sign = await ethersProvider.getSigner();
+      console.log(sign);
+      const txn = await sign.signMessage("are you sure you want to disconnect");
+      if (txn) {
+        disconnect();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <header
@@ -48,16 +72,16 @@ const Header = () => {
               <div className="hidden md:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
-
+              {console.log("is it connected :", isConnected)}
               <div className="hidden md:flex items-center gap-3">
                 <button
                   className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
                   onClick={() => {
-                    setOpenLoginModal(true);
+                    isConnected ? handleDisconnet() : setOpenLoginModal(true);
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  Connect
+                  {isConnected ? "Disconnect" : " Connect"}
                 </button>
 
                 <NavLink to={"/StakingPage"}>
@@ -72,7 +96,6 @@ const Header = () => {
                     Buy $Pandx
                   </button>
                 </a>
-                
               </div>
               <div className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
@@ -98,7 +121,7 @@ const Header = () => {
               </div>
 
               {openMenu && (
-                <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg z-50">
+                <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg ">
                   <ul className="text-center">
                     <li className="text-3xl text-[#141414] leading-14">
                       <a href="">Home</a>

@@ -4,8 +4,12 @@ import { useState } from "react";
 import { REPORTS } from "@services/panda.api.services";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
+import StakingHead from "./StakingHead";
+import { useAppKitAccount } from "@reown/appkit/react";
+
 
 export default function Staking() {
+  const {address} = useAppKitAccount();
   const [stakePopup, setStakePopup] = useState(false);
   const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
 
@@ -20,43 +24,14 @@ export default function Staking() {
 
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1320px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-10 mt-4">
-      <div
-        className="-mt-1 w-full max-w-[1320px] bg-[#49498A] p-8 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
-            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-4 text-center md:text-left"
-      >
-        <p onClick={() => setStakePopup(true)}>My Stake $</p>
-        <p>Daily 0.50%</p>
-        <p>Daily $10</p>
-
-        <p className="flex flex-col items-center md:items-start">
-          Max Cap
-          <div className="bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] w-20 h-3 rounded-2xl mt-1"></div>
-        </p>
-        <p>Total Gain $</p>
-      </div>
-
-      <div className="flex justify-center w-full max-w-[1320px] mx-auto relative sm:-mt-6 sm:-mb-6 -mt-3 -mb-3 z-30 ">
-        <div
-          className="w-full bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] 
-                   font-bold text-black py-1 px-2 rounded-[12px] 
-                  relative overflow-visible"
-        >
-          {" "}
-          Total Burning 60%
-          {/* TOP BLEND */}
-          <div className="absolute top-[-20px] left-0 right-0 h-[20px] opacity-80"></div>
-          {/* BOTTOM BLEND */}
-          <div className="absolute bottom-[-20px] left-0 right-0 h-[20px] opacity-80"></div>
-        </div>
-      </div>
-
+      <StakingHead/>
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div
           className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] 
                         h-auto md:h-[900px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
         >
           <div className="flex flex-col md:flex-row justify-center items-center text-black gap-3 md:gap-40 mt-4 sm:mt-15 w-full">
-            <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-sm py-6 px-3">
+            <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-sm py-6 px-3" onClick={()=>setStakePopup(true)}>
               My Rank
             </button>
             <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-sm p-3">
@@ -76,7 +51,7 @@ export default function Staking() {
           className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB]
                 h-auto md:h-[900px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
         >
-          <h1 className="text-xl flex justify-center text-center md:text-left my-4 md:my-15">
+          <h1 className="text-xl flex justify-center text-center md:text-left my-4 md:my-8">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
           </h1>
           <img
@@ -84,43 +59,44 @@ export default function Staking() {
             className="w-[150px] sm:w-[196px] h-auto mx-auto mt-6 md:mt-32"
           />
           <div className="w-[260px] sm:w-[300px] p-4 mx-auto mt-15 bg-[#BFFEB0] text-center rounded-sm">
-            Total AirDrop {data?.qerra_airdrop} $QRA
+            Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
-          <div>
-             <table className="mx-auto mt-10 ">
-              <thead className=" text-black bg-[#BFFEB0]">
-                <tr className="w-full flex gap-10 items-center justify-between">
-                  <th>sr</th>
-                  <th>Username</th>
-                  <th>Status</th>
-                  <th>$QRA AirDrop</th>
+          <div className=" mt-10 rounded-md overflow-auto scrollbar-custom max-h-[300px]  ">
+            <table className="w-full  ">
+              <thead className="sticky top-0 text-black  rounded-md shadow-xl">
+                <tr className="w-full flex gap-10 items-center justify-between p-4  rounded-md  bg-[#BFFEB0]  ">
+                  <th className="font-normal">sr</th>
+                  <th className="font-normal ">Username</th>
+                  <th className="font-normal ">Status</th>
+                  <th className="font-normal ">$QRA AirDrop</th>
                 </tr>
               </thead>
-              <tr>
-                <tbody className="space-y-4">
-                  {data?.child_air_logs?.map((child, index) => (
-                    <>
-                      <tr
-                        key={index}
-                        className="w-full flex gap-10 items-center justify-between"
-                      >
-                        <td lassName="capitalize text-base font-medium p-3   max-sm:w-30 text-white text-left">
-                          {index + 1}
-                        </td>
-                        <td className="capitalize text-base font-medium p-3  max-sm:w-30 text-black ">
-                          {child?.airdrop_child_user?.username}
-                        </td>
-                        <td className="capitalize text-base font-medium p-3  max-sm:w-30 text-black ">
-                          "To be claimed"
-                        </td>
-                        <td className="capitalize text-base font-medium p-3  max-sm:w-30 text-black ">
-                          {child?.airdrop_child_user?.qerra_airdrop}
-                        </td>
-                      </tr>
-                    </>
-                  ))}
-                </tbody>
-              </tr>
+
+              <tbody className="w-full">
+                {data?.child_air_logs?.map((child, index) => (
+                  <>
+                    <tr
+                      key={index}
+                      className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                    >
+                      <td lassName="capitalize text-base font-medium max-sm:w-30 text-white text-left">
+                        {index + 1}
+                      </td>
+                      <td className="capitalize  font-medium max-sm:w-30 text-black text-left ">
+                        {child?.airdrop_child_user?.username}
+                      </td>
+                      <td className="capitalize text-base font-medium max-sm:w-30 text-black ">
+                        <span className="inline-flex items-center rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400 inset-ring inset-ring-red-400/20">
+                          To be claimed
+                        </span>
+                      </td>
+                      <td className="capitalize text-base font-medium max-sm:w-30 text-black ">
+                        {Number(child?.airdrop_child_user?.qerra_airdrop).toFixed(0)}
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
@@ -134,23 +110,27 @@ export default function Staking() {
               className="p-6 bg-[#C5FF9E] w-full max-w-[300px] h-[200px] rounded-sm text-black"
               onClick={(e) => e.stopPropagation()} //  clicking inside won't close popup
             >
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex justify-between items-center space-y-4">
                 <div>
-                  <h1>Wallet Address</h1>
-                  <input type="text" placeholder="Undefined...undefined" />
+                  <h3>Wallet Address</h3>
+                  <span className="">{`${address.substring(0,5)}....${address.substring(36,42)}`}</span>
                 </div>
                 <div>
-                  <img src="./assets/images/copy-link 1.svg" alt="copy" />
+                    <button>
+                      <img src="/assets/icons/copy.svg" alt="copy" />
+                    </button>
                 </div>
               </div>
 
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex justify-between items-center ">
                 <div>
-                  <h1>Referral Link</h1>
-                  <input type="text" placeholder="Narn00" />
+                  <h3>Referral Link</h3>
+                  <span>Akash</span>
                 </div>
                 <div>
-                  <img src="./assets/images/copy-link 1.svg" alt="copy" />
+                  <button>
+                      <img src="/assets/icons/copy.svg" alt="copy" />
+                    </button>
                 </div>
               </div>
             </div>

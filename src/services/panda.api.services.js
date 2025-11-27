@@ -13,4 +13,5 @@ export const TRANSACTIONS = {
 export const REPORTS = {
   dashboardData: "report/dashboard-data",
    airdropData  : "report/airdrop-data",
+   userInfo : "report/user-info"
 };

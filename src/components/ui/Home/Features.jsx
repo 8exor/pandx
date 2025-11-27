@@ -22,7 +22,7 @@ const Features = () => {
                 Pandx lives on a high-performance blockchain — BSC — offering ultra-low fees and lightning-fast transaction speeds.
               </p>
               <div className="absolute top-[20px] sm:top-0 right-[-112px] lg:right-[-23%] lg:top-[-14%]">
-                <img2px
+                <img
                   className="w-[80%] lg:w-full"
                   src="/assets/images/box_tree.svg"
                   alt="box-tree"
