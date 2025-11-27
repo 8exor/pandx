@@ -7,13 +7,13 @@ const Features = () => {
             <img src="/assets/images/box-cloud.svg" alt="cloud" />
           </div>
           <div className="absolute top-[70px] right-0 hidden lg:block">
-            <img src="/assets/images/cloud-left.svg" alt="cloud" />
+            <img className="lg:w-[200px] xl:w-full" src="/assets/images/cloud-left.svg" alt="cloud" />
           </div>
         </div>
 
         <div className="mycontainer ">
           <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-5 mt-[-80px] lg:mt-0">
-            <div className="bg-[#e5ffe6]  animate__animated animate__zoomIn shadow-bottom overflow-x-clip xl:overflow-x-visible p-[36px] rounded-lg h-fit relative" data-aos="zoom-in">
+            <div className="bg-[#e5ffe6] min-h-[280px]  h-fit  animate__animated animate__zoomIn shadow-bottom overflow-x-clip xl:overflow-x-visible p-[36px] rounded-lg h-fit relative" data-aos="zoom-in">
               <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
                 Speed and <br />
                 Security
@@ -21,9 +21,9 @@ const Features = () => {
               <p className="lg:text-2xl text-xl pt-2 leading-[26px] lg:leading-[29px] text-[#4c4c4c]">
                 Pandx lives on a high-performance blockchain — BSC — offering ultra-low fees and lightning-fast transaction speeds.
               </p>
-              <div className="absolute top-[20px] sm:top-0 right-[-112px] lg:right-[-23%] lg:top-[-14%]">
+              <div className="absolute md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-32%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-4%] lg:top-[1%]">
                 <img
-                  className="w-[80%] lg:w-full"
+                  className="sm:w-[88%] xl:w-full lg:w-full w-[95%]"
                   src="/assets/images/box_tree.svg"
                   alt="box-tree"
                 />
@@ -34,7 +34,7 @@ const Features = () => {
               <h2 className="text-[82px]  lg:block hidden ml-[60px]  w-full min-w-[480px] leading-[82px]"  data-aos="slide-up" >
                 How Pandx Works
               </h2>
-              <div className="bg-[#e5ffe6]   animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg mt-[10px] lg:mt-15 relative"  data-aos="zoom-in">
+              <div className="bg-[#e5ffe6] min-h-[280px]  h-fit   animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg mt-[10px] lg:mt-15 relative"  data-aos="zoom-in">
                 <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
                   Real Yield,
                   <br /> Not Hype
@@ -42,9 +42,9 @@ const Features = () => {
                 <p className="lg:text-2xl text-xl pt-2 leading-[26px] lg:leading-[29px] text-[#4c4c4c]">
                  With staking and influence marketing, earn PANDX through yield farming and grow yourself.
                 </p>
-                <div className="absolute  right-[-112px] top-[20px] sm:top-0  lg:right-[-23%] lg:top-[-14%]">
+                <div className="absolute md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-32%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
                   <img
-                    className="w-[80%] lg:w-full"
+                    className="ssm:w-[88%] xl:w-full lg:w-full w-[95%]"
                     src="/assets/images/box_tree.svg"
                     alt="box-tree"
                   />
@@ -53,7 +53,7 @@ const Features = () => {
             </div>
 
             {/* box 3 */}
-            <div className="bg-[#e5ffe6]   animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg h-fit mt-[10px] lg:mt-[380px] relative"data-aos="zoom-in">
+            <div className="bg-[#e5ffe6] min-h-[280px]  h-fit  animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg h-fit mt-[10px] lg:mt-[380px] relative"data-aos="zoom-in">
               <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
                 Community
                 <br /> First
@@ -61,9 +61,9 @@ const Features = () => {
               <p className="lg:text-2xl text-xl leading-[26px] lg:leading-[29px] pt-2 text-[#4c4c4c]">
                PANDX DAO empowers real holders and true rank achievers of helder community who have proven themselves.
               </p>
-              <div className="absolute right-[-112px] top-[20px] sm:top-0  lg:top-[-14%]">
+              <div className="absolute md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-32%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
                 <img
-                  className="w-[80%] lg:w-full"
+                  className="sm:w-[88%] xl:w-full lg:w-full w-[95%]"
                   src="/assets/images/box_tree.svg"
                   alt="box-tree"
                 />
