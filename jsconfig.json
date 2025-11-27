@@ -5,7 +5,8 @@
           "@assets/*": ["assets/*"], // Alias for assets
           "@components/*": ["components/*"],
           "@config/*": ["config/*"], // Alias for components
-          "@constants/*": ["constants/*"], // Alias for constants
+          "@constants/*": ["constants/*"],
+          "@contexts/*": ["contexts/*"], // Alias for contexts
           "@hooks/*": ["hooks/*"],
           "@pages/*": ["pages/*"],
           "@routes/*": ["routes/*"],

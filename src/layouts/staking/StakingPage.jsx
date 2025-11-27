@@ -9,7 +9,7 @@ const StakingPage = () => {
   console.log("Inside the staking page");
 
   const {data} = useQuery({
-    queryKey : ['dashboardData'],
+    queryKey : ["dashboarData"],
     queryFn : async()=>{
     const {data} = await axiosInstance.get(REPORTS.dashboardData);
     return data?.data;

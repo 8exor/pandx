@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage({ setOpenLoginModal }) {
   const { open } = useAppKit();
+  const [clickedOnLogin, setClickedOnLogin] = useState(false);
   const { isConnected, address } = useAppKitAccount();
   const [userName, setUserName] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -65,6 +66,7 @@ export default function LoginPage({ setOpenLoginModal }) {
     },
     onSuccess : async(data)=>{
         toast.success(data?.message);
+        LoginUser.mutate({"wallet_address" : address})
     },
     onError : (error)=>{
         if(error?.status === 0)
@@ -90,12 +92,22 @@ export default function LoginPage({ setOpenLoginModal }) {
     onError  : (error)=>{
              if(error?.status === 0)
             toast.error(error?.message)
+          setAccessToken("")
+          navigateToStaking("/")
     }
   })
 
+
+  useEffect(()=>{
+    console.log("what is is connected :", isConnected)
+    if(isConnected && clickedOnLogin){
+LoginUser.mutate({"wallet_address" : address})
+    }
+  },[isConnected])
+
   return (
     <div className="fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
-      <div className="w-full max-w-md p-7 py-10  bg-[#C5FF9E] border border-black rounded-md">
+      <div className="z-50 w-full max-w-md p-7 py-10  bg-[#C5FF9E] border border-black rounded-md">
         <button className="flex justify-end w-full" onClick={()=>setOpenLoginModal(false)}>
           <img className="invert w-7" src="/assets/icons/close.svg" alt="clsoe" />
         </button>
@@ -220,7 +232,10 @@ export default function LoginPage({ setOpenLoginModal }) {
 
           <button
             className="  bg-[#ccf1b3] text-[#5b5bac] p-2 w-full  border border-black  rounded-md cursor-pointer"
-            onClick={()=>LoginUser.mutate({"wallet_address" : address})}
+            onClick={async()=>{
+         open();
+         setClickedOnLogin(true)
+            }}
           >
            Login
           </button>

@@ -124,3 +124,65 @@ body{
     transform-origin: 50% 50% 0px;
    
 }
+
+
+
+/* Custom scrollbar */
+.scrollbar-custom {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #72A315; /* thumb + track */
+}
+
+/* Chrome/Edge/Safari */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px; 
+  height: 6px;
+}
+
+/* HIDE ARROW BUTTONS — full selector list */
+.scrollbar-custom::-webkit-scrollbar-button,
+.scrollbar-custom::-webkit-scrollbar-button:start,
+.scrollbar-custom::-webkit-scrollbar-button:end,
+.scrollbar-custom::-webkit-scrollbar-button:increment,
+.scrollbar-custom::-webkit-scrollbar-button:decrement,
+.scrollbar-custom::-webkit-scrollbar-button:start:increment,
+.scrollbar-custom::-webkit-scrollbar-button:start:decrement,
+.scrollbar-custom::-webkit-scrollbar-button:end:increment,
+.scrollbar-custom::-webkit-scrollbar-button:end:decrement {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Thumb */
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #72A315; /* Tailwind blue-500 */
+  border-radius: 10px;
+}
+
+/* Track */
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: #72A315; /* Tailwind blue-100 */
+}
+
+
+
+.loader {
+    width: 28px;
+    height: 28px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 

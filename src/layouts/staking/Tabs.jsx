@@ -153,7 +153,12 @@ toast.error(error?.message || "Error Occurred")
             className="bg-[#72A314] text-white px-6 sm:px-10 py-2 sm:py-4 rounded-sm border border-[#181724] font-extralight text-center"
             onClick={() => staking.mutate({ stake_amount: stakeAmount })}
           >
-            Submit
+           {
+            staking?.isPending ? 
+            <span className="loader"></span>
+            :
+            "submit"
+           }
           </button>
         </div>
       </div>
