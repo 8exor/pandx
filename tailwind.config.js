@@ -5,3 +5,4 @@
         require('tailwind-scrollbar'),
       ],
     };
+    

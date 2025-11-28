@@ -36,9 +36,9 @@ const Roadmap = () => {
 
   return (
     <>
-      <section className="md:py-20 py-10 bg-[url(assets/images/Get_Started_bg.svg)] bg-cover bg-no-repeat   bg-top">
+      <section className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
         <div className="mycontainer">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center" data-aos="slide-up" >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pt-10" data-aos="slide-up" >
             Getting Started <br /> is Simple
           </h2>
           <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10 pt-10 pb-8">
@@ -124,10 +124,10 @@ const Roadmap = () => {
               alt=""
             />
             {/* card 1 */}
-            <div className="absolute top-[-5%] left-[36%]" data-aos="zoom-in">
+            <div className="absolute top-[-2%] left-[36%]" data-aos="zoom-in">
               <div className="relative z-9">
-                <img className="w-full h-[280px]" src="assets/images/card_board.svg" alt="rectangle" />
-                <div className="absolute top-[20%]  px-[60px]">
+                <img className="w-full h-[252px]" src="assets/images/card_board.svg" alt="rectangle" />
+                <div className="absolute top-[15%]  px-[40px]">
                   <h3 className="text-[26px]">Q2 – 2025 – Preparation</h3>
                   <div className="flex items-center gap-2 px-2 mt-2">
                     <img src="assets/images/white_star.svg" alt="" />
@@ -149,10 +149,10 @@ const Roadmap = () => {
               </div>
             </div>
             {/* card 2 */}
-            <div className="absolute top-[4%] right-[11%]" data-aos="zoom-in">
+            <div className="absolute top-[7%] mac-right-3 right-[11%]" data-aos="zoom-in">
               <div className="relative z-9">
-                <img className="w-full h-[280px]" src="assets/images/card_board.svg" alt="rectangle" />
-                <div className="absolute top-[20%] px-[60px]">
+                <img className="w-full h-[250px]" src="assets/images/card_board.svg" alt="rectangle" />
+                <div className="absolute top-[15%] px-[40px]">
                   <h3 className="text-[26px]">Q3 – 2025 – Expansion</h3>
                   <div className="flex items-center gap-2 px-2 mt-2">
                     <img src="assets/images/white_star.svg" alt="" />
@@ -172,10 +172,10 @@ const Roadmap = () => {
               </div>
             </div>
             {/* card 3 */}
-            <div className="absolute top-[37%] left-[10%]" data-aos="zoom-in">
+            <div className="absolute top-[40%] left-[10%]" data-aos="zoom-in">
               <div className="relative z-9">
-                <img className="w-full h-[280px]"  src="assets/images/card_board.svg" alt="rectangle" />
-                <div className="absolute top-[20%] px-[60px]">
+                <img className="w-full h-[250px]"  src="assets/images/card_board.svg" alt="rectangle" />
+                <div className="absolute top-[15%] px-[40px]">
                   <h3 className="text-[26px]">Q4 – 2025 – Growth</h3>
                   <div className="flex items-center gap-2 px-2 mt-2">
                     <img src="assets/images/white_star.svg" alt="" />
@@ -195,10 +195,10 @@ const Roadmap = () => {
               </div>
             </div>
             {/* card 4 */}
-            <div className="absolute top-[49%] right-[36%]" data-aos="zoom-in">
+            <div className="absolute mac top-[52%] right-[36%]" data-aos="zoom-in">
               <div className="relative z-9">
-                <img className="w-full h-[280px]"  src="assets/images/card_board.svg" alt="rectangle" />
-                <div className="absolute top-[20%] px-[60px]">
+                <img className="w-full h-[250px]"  src="assets/images/card_board.svg" alt="rectangle" />
+                <div className="absolute top-[15%] px-[40px]">
                   <h3 className="text-[26px]">Q1 – 2026 – Growth</h3>
                   <div className="flex items-center gap-2 px-2 mt-2">
                     <img src="assets/images/white_star.svg" alt="" />
