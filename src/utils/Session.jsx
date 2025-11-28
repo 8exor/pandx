@@ -15,6 +15,6 @@ export async function getAccessToken(){
   return  await Cookies.get("ACCESS_TOKEN")
 }
 
-export async function deletCookies(){
-    cookieStore.delete("ACCESS_TOKEN")
+export async function deleteCookies(){
+   await Cookies.remove("ACCESS_TOKEN")
 }

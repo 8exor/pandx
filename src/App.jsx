@@ -40,7 +40,7 @@ createAppKit({
 function App() {
   const [queryClient] = useState(() => new QueryClient());
 
-  console.log({queryClient})
+
 
   return (
     <>

@@ -1,8 +1,11 @@
 import axios from "axios";
 import { ENV } from "../config/env.config";
-import { getAccessToken } from "./Session";
+import { deleteCookies, getAccessToken } from "./Session";
+import { useDisconnect } from "@reown/appkit/react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-console.log({ fffff: ENV.apiBaseUrl });
+// console.log({ fffff: ENV.apiBaseUrl });
 
 
 const axiosInstance = axios.create({
@@ -40,14 +43,15 @@ axiosInstance.interceptors.response.use(
   },
   async function (error) {
     console.log({ee1:error})
-    // const { disconnect } = useDisconnect();
-    if (error.response && error.response.status === 401) {
-      // await deleteCookies();
-      // const getToken = await getAccessToken();
-      // if (!getToken) {
-      //   disconnect();
-      // }
-      console.error("Unauthorized, logging out...");
+    const { disconnect } = useDisconnect();
+    if (error.status === 401) {
+      await deleteCookies();
+      const getToken = await getAccessToken();
+      console.log("what is get token : ", getToken)
+      if (!getToken) {
+        disconnect();
+      }
+      console.log("Unauthorized, logging out...");
     }
     return Promise.reject(error?.response?.data);
   }

@@ -1,0 +1,24 @@
+import React from 'react'
+
+export default function Withdrawl() {
+  return (
+    <div className="px-4 mt-6 sm:px-6">
+        <div className="flex flex-col items-center justify-between gap-3 p-3 bg-white border border-black rounded-sm sm:flex-row">
+          <p className="w-full text-center sm:text-left sm:w-auto">
+            Available $90
+          </p>
+          <button className="bg-[#72A314] w-full sm:w-auto px-4 py-2 rounded-sm text-white font-extralight text-center">
+            Max
+          </button>
+        </div>
+
+        <p className="mt-3 text-center sm:text-left">5% Pool Free</p>
+
+        <div className="flex justify-center mt-6">
+          <button className="bg-[#72A314] text-white px-6 sm:px-10 py-2 sm:py-3 rounded-sm border border-[#181724] font-extralight text-center">
+            Submit
+          </button>
+        </div>
+      </div>
+  )
+}

@@ -10,11 +10,11 @@ const DashboardHeader = () => {
       <main className="max-w-[1360px] mx-auto flex justify-between items-center">
         <img src="/assets/images/Logo.svg" alt="logo" />
 
-        <ul className="hidden md:flex justify-between items-center gap-5">
+        <ul className="items-center justify-between hidden gap-40 md:flex">
           {dappNavLinks?.map((navlink, index) => (
             <li key={index}>
               <NavLink to={navlink?.link}>
-                {navlink?.title}
+             <span>{navlink?.title}</span>
               </NavLink>
             </li>
           ))}
