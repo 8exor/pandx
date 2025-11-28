@@ -58,8 +58,8 @@ const Header = () => {
       >
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
-            <div>
-              <img src="/assets/images/Logo.svg" alt="logo" />
+            <div className="logo">
+             <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" /></a>
             </div>
             <div className="flex items-center justify-between gap-5">
               <div className="hidden md:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
