@@ -35,9 +35,9 @@ const Header = () => {
   const handleDisconnet = async () => {
     try {
       const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
-      console.log(ethersProvider);
+
       const sign = await ethersProvider.getSigner();
-      console.log(sign);
+
       const txn = await sign.signMessage("are you sure you want to disconnect");
       if (txn) {
         disconnect();
@@ -50,9 +50,9 @@ const Header = () => {
   return (
     <>
       <header
-        className={`py-6 w-full z-9999 transition-all duration-500 ${
+        className={`py-6 w-full z-30 transition-all duration-500 ${
           isSticky
-            ? "fixed top-0 left-0 bg-[#b8fea4] shadow-lg"
+            ? "fixed top-0 left-0 bg-[#C5FF9E] shadow-lg"
             : "absolute bg-[#C5FF9E]"
         }`}
       >
@@ -71,11 +71,11 @@ const Header = () => {
                 />
                </a>
               </div>
-              <div className="hidden md:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
+              <div className="hidden lg:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
-              {console.log("is it connected :", isConnected)}
-              <div className="hidden md:flex items-center gap-3">
+         
+              <div className="items-center hidden gap-3 lg:flex">
                 <button
                   className="bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
                   onClick={() => {
@@ -141,7 +141,7 @@ const Header = () => {
                       <a href="">Roadmap</a>
                     </li>
                   </ul>
-                  <a className="flex justify-center items-center mt-6 md:hidden" href=" https://swap.qerra.network/" target="blank">
+                  <a className="flex items-center justify-center mt-6 lg:hidden" href=" https://swap.qerra.network/" target="blank">
                   <button className="bg-graydient-box hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
@@ -150,7 +150,7 @@ const Header = () => {
                   <NavLink
                     to={isConnected ? "/StakingPage" : "/"}
                     className={
-                      "flex justify-center items-center mt-6 md:hidden"
+                      "flex justify-center items-center mt-6 lg:hidden"
                     }
                   >
                     <button className="bg-graydient-box hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
@@ -159,7 +159,7 @@ const Header = () => {
                     </button>
                   </NavLink>
                   <button
-                    className="md:hidden mt-6  mx-auto bg-graydient-box  hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                    className="lg:hidden mt-6  mx-auto bg-graydient-box  hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
                       setOpenMenu(false);
                       setOpenLoginModal(true);

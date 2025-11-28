@@ -54,6 +54,10 @@ export const myRank = [
 ];
 
 export const myLevel = [
+   {
+    title: "BOOSTX",
+    value: "$100",
+  },
   {
     title: "My Level",
     value: "10",

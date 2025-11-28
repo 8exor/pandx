@@ -7,8 +7,6 @@ import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function LoginPage({ setOpenLoginModal }) {
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
@@ -21,8 +19,8 @@ export default function LoginPage({ setOpenLoginModal }) {
   });
   const [isUserNameChecked, setIsUserNameChecked] = useState(false);
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
-  
-  const navigateToStaking = useNavigate();
+
+  const navigate = useNavigate();
 
   const checkUserName = useMutation({
     mutationFn: async (formData) => {
@@ -60,66 +58,72 @@ export default function LoginPage({ setOpenLoginModal }) {
   });
 
   const registerUser = useMutation({
-    mutationFn  : async(formData)=>{
-        const {data} = await axiosInstance.post(AUTH?.signUp, formData);
-        return data;
-    },
-    onSuccess : async(data)=>{
-        toast.success(data?.message);
-        LoginUser.mutate({"wallet_address" : address})
-    },
-    onError : (error)=>{
-        if(error?.status === 0)
-            toast.error(error?.error)
-    }
-
-  })
-
-  const LoginUser = useMutation({
-    mutationFn : async(formData)=>{
-      const {data} = await axiosInstance.post(AUTH?.login, formData);
+    mutationFn: async (formData) => {
+      const { data } = await axiosInstance.post(AUTH?.signUp, formData);
       return data;
     },
-    onSuccess : async(data)=>{
+    onSuccess: async (data) => {
       toast.success(data?.message);
-      console.log(data)
-
-      console.log(data?.data?.token);
-      setAccessToken(data?.data?.token)
-     navigateToStaking("/StakingPage")
-     setOpenLoginModal(false);
+      LoginUser.mutate({ wallet_address: address });
     },
-    onError  : (error)=>{
-             if(error?.status === 0)
-            toast.error(error?.message)
-          setAccessToken("")
-          navigateToStaking("/")
-    }
-  })
+    onError: (error) => {
+      if (error?.status === 0) toast.error(error?.error);
+    },
+  });
 
+  const LoginUser = useMutation({
+    mutationFn: async (formData) => {
+      const { data } = await axiosInstance.post(AUTH?.login, formData);
+      return data;
+    },
+    onSuccess: async (data) => {
+      toast.success(data?.message);
+    
+  
+      setAccessToken(data?.data?.token);
+      navigate("/StakingPage");
+      setOpenLoginModal(false);
+    },
+    onError: (error) => {
+      if (error?.status === 0){
+      toast.error(error?.message)
+      }
+    },
+  });
 
-  useEffect(()=>{
-    console.log("what is is connected :", isConnected)
-    if(isConnected && clickedOnLogin){
-LoginUser.mutate({"wallet_address" : address})
+  useEffect(() => {
+  
+    if (isConnected && clickedOnLogin) {
+      LoginUser.mutate({ wallet_address: address });
     }
-  },[isConnected])
+  }, [isConnected]);
 
   return (
     <div className="fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
       <div className="z-50 w-full max-w-md p-7 py-10  bg-[#C5FF9E] border border-black rounded-md">
-        <button className="flex justify-end w-full" onClick={()=>setOpenLoginModal(false)}>
-          <img className="invert w-7" src="/assets/icons/close.svg" alt="clsoe" />
+        <button
+          className="flex justify-end w-full"
+          onClick={() => setOpenLoginModal(false)}
+        >
+          <img
+            className="invert w-7"
+            src="/assets/icons/close.svg"
+            alt="clsoe"
+          />
         </button>
         <div className=" mt-10 relative flex items-center justify-between w-full p-3 rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
-          <div className="absolute -top-5 left-0 md:-top-17 ">
-            <img className="w-20 md:w-35" src="/assets/images/gift.svg" alt="" />
+          <div className="absolute left-0 -top-5 md:-top-17 ">
+            <img
+              className="w-20 md:w-35"
+              src="/assets/images/gift.svg"
+              alt=""
+            />
           </div>
 
           <div className="text-[#ffffff] flex-1 font-semibold flex justify-end">
             <span className=" text-md sm:text-xl">
               Join Now & Get <br />
-              <span className="text-bg-graydient-box font-semibold text-xl sm:text-2xl">
+              <span className="text-xl font-semibold text-bg-graydient-box sm:text-2xl">
                 $100 TRIAL FUND
               </span>
             </span>
@@ -146,7 +150,7 @@ LoginUser.mutate({"wallet_address" : address})
         >
           <input
             type="text"
-            className="w-full outline-none text-black placeholder-black"
+            className="w-full text-black placeholder-black outline-none"
             placeholder="Character 4-9 Length"
             maxLength={9}
             minLength={4}
@@ -165,17 +169,19 @@ LoginUser.mutate({"wallet_address" : address})
               checkUserName.mutate({ username: userName });
             }}
           >
-            {
-           userName ?
-            isUserNameChecked? (
-              <img
-                className="rounded-full w-7  mx-auto"
-                src="/assets/images/check.gif"
-                alt="gif"
-              />
+            {userName ? (
+              isUserNameChecked ? (
+                <img
+                  className="mx-auto rounded-full w-7"
+                  src="/assets/images/check.gif"
+                  alt="gif"
+                />
+              ) : (
+                "check"
+              )
             ) : (
               "check"
-            ) : "check" }
+            )}
           </button>
         </div>
 
@@ -186,7 +192,7 @@ LoginUser.mutate({"wallet_address" : address})
         >
           <input
             type="text"
-            className="w-full outline-none text-black placeholder-black"
+            className="w-full text-black placeholder-black outline-none"
             placeholder="*Referral Code"
             value={referralCode}
             minLength={4}
@@ -208,7 +214,7 @@ LoginUser.mutate({"wallet_address" : address})
             {referralCode ? (
               isReferralCodeChecked ? (
                 <img
-                  className="rounded-full w-7  mx-auto"
+                  className="mx-auto rounded-full w-7"
                   src="/assets/images/check.gif"
                   alt="gif"
                 />
@@ -221,23 +227,28 @@ LoginUser.mutate({"wallet_address" : address})
           </button>
         </div>
 
-        <div className="mt-5 flex items-center gap-7 justify-between">
-          <button className="bg-[#5b5bac] text-white font-light p-2 w-full  border border-black  rounded-md cursor-pointer" onClick={()=>registerUser.mutate({
-            "wallet_address": address,
-            "username" : userName,
-            "referral" : referralCode,
-          })}>
+        <div className="flex items-center justify-between mt-5 gap-7">
+          <button
+            className="bg-[#5b5bac] text-white font-light p-2 w-full  border border-black  rounded-md cursor-pointer"
+            onClick={() =>
+              registerUser.mutate({
+                wallet_address: address,
+                username: userName,
+                referral: referralCode,
+              })
+            }
+          >
             Register
           </button>
 
           <button
             className="  bg-[#ccf1b3] text-[#5b5bac] p-2 w-full  border border-black  rounded-md cursor-pointer"
-            onClick={async()=>{
-         open();
-         setClickedOnLogin(true)
+            onClick={async () => {
+              open();
+              setClickedOnLogin(true);
             }}
           >
-           Login
+            Login
           </button>
         </div>
       </div>

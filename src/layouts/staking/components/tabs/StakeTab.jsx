@@ -1,0 +1,157 @@
+import React from 'react'
+import  { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import axiosInstance from "@utils/axiosInstance";
+import { TRANSACTIONS } from "@services/panda.api.services";
+import toast from "react-hot-toast";
+import { Contract, ethers } from "ethers";
+import Abi from "@utils/abi/tokenAllowance.abi.json"
+import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
+
+export default function StakeTab() {
+  const [stakeAmount, setStakeAmount] = useState("");
+  const { address, isConnected } = useAppKitAccount();
+  const { walletProvider } = useAppKitProvider("eip155");
+
+ const staking = useMutation({
+    mutationFn: async (formdata) => {
+      const { data } = await axiosInstance.post(
+        TRANSACTIONS?.getStakeTransaction,
+        formdata
+      );
+      return data;
+    },
+    onSuccess: async (data) => {
+      try {
+        // debugger;
+        const approvalAddress = data?.data?.stakeApproval?.to;
+        const allowanceAddress = data?.data?.stakeInvest?.to;
+   
+        const ethersProvider = new ethers.providers.Web3Provider(
+          walletProvider
+        );
+   
+        const signer = await ethersProvider.getSigner();
+   
+        const contract = new Contract(approvalAddress, Abi, signer);
+   
+        const allowance = await contract.allowance(address, allowanceAddress);
+ 
+        if (Number(allowance) < Number(stakeAmount)) {
+        //   console.log({
+        //     from: data?.data?.stakeApproval?.from,
+        //     to: data?.data?.stakeApproval?.to,
+        //     gasPrice: data?.data?.stakeApproval?.gasPrice,
+        //     gasLimit: data?.data?.stakeApproval?.gasLimit,
+        //     data: data?.data?.stakeApproval?.data,
+        //   });
+          const approval = await signer?.sendTransaction({
+            from: data?.data?.stakeApproval?.from,
+            to: data?.data?.stakeApproval?.to,
+            gasPrice: data?.data?.stakeApproval?.gasPrice,
+            gasLimit: data?.data?.stakeApproval?.gasLimit,
+            data: data?.data?.stakeApproval?.data,
+          });
+          await approval.wait();
+     
+        }
+        // console.log({
+        //   from: data?.data?.stakeInvest?.from,
+        //   to: data?.data?.stakeInvest?.to,
+        //   gasPrice: data?.data?.stakeInvest?.gasPrice,
+        //   gasLimit: data?.data?.stakeInvest?.gasLimit,
+        //   data: data?.data?.stakeInvest?.data,
+        //   value: data?.data?.stakeInvest?.value,
+        // });
+        const invest = await signer?.sendTransaction({
+          from: data?.data?.stakeInvest?.from,
+          to: data?.data?.stakeInvest?.to,
+          gasPrice: data?.data?.stakeInvest?.gasPrice,
+          gasLimit: data?.data?.stakeInvest?.gasLimit,
+          data: data?.data?.stakeInvest?.data,
+          value: data?.data?.stakeInvest?.value,
+        });
+        await invest.wait();
+  ;
+
+        submitHash.mutate({
+        "txn_hash" : invest?.hash,
+        "token_amount" : stakeAmount
+        })
+      } catch (error) {
+        console.log({ error });
+      }
+    },
+    onError: (error) => {toast.error(error?.message || "Error occurred")}
+  });
+
+   const submitHash = useMutation({
+    mutationFn : async(formdata)=>{
+        const {data} = await axiosInstance.post(TRANSACTIONS?.submitStakeHash, formdata);
+        return data;
+    },
+    onSuccess : async(data)=>{
+      toast.success(data?.message);
+    },
+    onError:(error)=>{
+toast.error(error?.message || "Error Occurred")
+    }
+  })
+
+  return (
+
+      <div className="px-4 mt-8 mb-10 sm:px-6">
+        <div className="flex flex-col justify-between gap-4 mb-8 sm:flex-row">
+          <div className="w-full sm:max-w-[200px]">
+            <p className="text-sm sm:text-base">$PANDX in wallet</p>
+            <div className="w-full bg-[#BFFEB0] px-2 py-2 rounded-sm text-center">
+              0.00
+            </div>
+          </div>
+          <div className="w-full sm:max-w-[200px]">
+            <p className="text-sm sm:text-base">Current Worth</p>
+            <div className="w-full bg-[#BFFEB0] px-2 py-2 rounded-sm text-center">
+              $0
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 rounded-sm border border-black gap-4">
+          <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-start">
+            <img
+              src="/assets/images/pandalogofinalcopy.svg"
+              alt="panda"
+              className="w-8 h-8 rounded-full"
+            />
+            <input
+              type="text"
+              className="w-full outline-none"
+              value={stakeAmount}
+              onChange={(e) => setStakeAmount(e.target.value)}
+            />
+          </div>
+          <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-end">
+            <div className="bg-[#72A314] px-4 py-2 rounded-sm text-white font-extralight cursor-pointer text-center">
+              MAX
+            </div>
+            <p className="font-bold">$PANDX</p>
+          </div>
+        </div>
+        <div className="flex justify-center mt-6">
+          <button
+            className="bg-[#72A314] text-white px-6 sm:px-10 py-2 sm:py-4 rounded-sm border border-[#181724] font-extralight text-center"
+            onClick={() => staking.mutate({ stake_amount: stakeAmount })}
+          >
+           {
+            staking?.isPending ? 
+            <span className="loader"></span>
+            :
+            "submit"
+           }
+          </button>
+        </div>
+      </div>
+  )
+
+}

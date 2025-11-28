@@ -14,7 +14,7 @@ const {data} = useQuery({
         return data;
     }
 })
-console.log("data in the userinfor context :",data)
+
 
 return (
     <UserInfoContext.Provider value={data}>

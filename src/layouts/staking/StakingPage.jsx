@@ -1,12 +1,12 @@
 import React from 'react';
-import Staking from './Staking';
+import Staking from './components/Staking';
 import { stakers } from '@constants/index';
 import { useQuery } from "@tanstack/react-query";
 import { AUTH, REPORTS } from '@services/panda.api.services';
 import axiosInstance from '@utils/axiosInstance';
 
 const StakingPage = () => {
-  console.log("Inside the staking page");
+
 
   const {data} = useQuery({
     queryKey : ["dashboarData"],
@@ -15,7 +15,7 @@ const StakingPage = () => {
     return data?.data;
     }
   })
-  console.log(data);
+
 
 
 
@@ -31,15 +31,15 @@ const StakingPage = () => {
         {stakers.map((user, index) => (
           <div 
             key={user.id + user.title} 
-            className='flex flex-col sm:flex-row items-center sm:items-center px-3 py-2 gap-2 w-full sm:w-auto rounded-lg'
+            className='flex flex-col items-center w-full gap-2 px-3 py-2 rounded-lg sm:flex-row sm:items-center sm:w-auto'
           >
             <img 
               src={user.img} 
               alt={user.title} 
-              className='w-12 h-12 sm:w-8 sm:h-8 object-cover'
+              className='object-cover w-12 h-12 sm:w-8 sm:h-8'
             />
          
-           <span className='text-black text-center sm:text-left'>{`${user.title} ${Object.values(data ||{})[index]}`}</span>
+           <span className='text-center text-black sm:text-left'>{`${user.title} ${Object.values(data ||{})[index]}`}</span>
          
             
           </div>
