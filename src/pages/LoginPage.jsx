@@ -1,4 +1,4 @@
-import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
+import { useAppKit, useAppKitAccount, useDisconnect } from "@reown/appkit/react";
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
@@ -19,6 +19,7 @@ export default function LoginPage({ setOpenLoginModal }) {
   });
   const [isUserNameChecked, setIsUserNameChecked] = useState(false);
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
+    const { disconnect } = useDisconnect();
 
   const navigate = useNavigate();
 
@@ -88,6 +89,8 @@ export default function LoginPage({ setOpenLoginModal }) {
       if (error?.status === 0){
       toast.error(error?.message)
       }
+      disconnect();
+      
     },
   });
 

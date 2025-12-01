@@ -15,6 +15,39 @@ export default function Staking() {
   const [stakePopup, setStakePopup] = useState(false);
   const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
   const {handleCopy} = CopyToClipBaord();
+  // const [clikcedTab, setClickedTab] = useState("stake")
+    const [activeTab, setActiveTab] = useState({
+      mainTabs : "stake",
+      incomeTabs : "DAILY$",
+    });
+
+  const [incomeReports, setIncomeReports] = useState({});
+
+const tableConfig = {
+  stake : {
+    headers : ["Sr No", "Date", "Stacked Amt$", "Status", "Total Withdrawal"]
+  },
+  unstake : {
+    headers : ["Sr No", "Date", "Stacked Amt$", "Unstaked Amt$", "Status", "Total Withdrawal"]
+  },
+  withdrawal : {
+    headers : ["Sr No", "Date", "Withdrawal Amt$", "Status", "Total Withdrawal"]
+  },
+  p2p : {
+    headers : ["Sr No", "Date", "P2P Amt$", "Status", "Total Withdrawal"]
+  },
+  incomeReports : {
+    "DAILY$" : ["Sr No", "Date", "Username", "Daily$", "Amt$", "Note"],
+    "DIRECT" : ["Sr No", "Date", "Username", "Direct", "Amt$", "Note"],
+    "BOOSTX" : ["Sr No", "Date", "Username", "BOOSTX", "Amt$", "Note"],
+    "LEVEL" : ["Sr No", "Date", "Username", "Level", "Amt$", "Note"],
+    "RANK" : ["Sr No", "Date", "Username", "Rank", "Amt$", "Note"],
+    "UNIPOLE" : ["Sr No", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
+  }
+
+  }
+
+
 
   const { data } = useQuery({
     queryKey: ["airdropData"],
@@ -32,10 +65,10 @@ export default function Staking() {
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
         >
           <div className="flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row md:gap-40 sm:mt-15">
-            <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-sm py-6 px-3" onClick={()=>setStakePopup(true)}>
+            <button className="bg-[#BFFEB0] rounded-full shine hover:scale-110 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-6 px-3" onClick={()=>setStakePopup(true)}>
               My Rank
             </button>
-            <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-sm p-3">
+            <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3">
               Upgrade next rank & get 0.60%
             </button>
           </div>
@@ -45,7 +78,7 @@ export default function Staking() {
             alt="panda"
             className="flex justify-center items-center w-[148px] h-[189px] m-auto mt-8 sm:mt-16"
           />
-          <Tabs/>
+          <Tabs activeTab={activeTab} setActiveTab ={setActiveTab} setIncomeReports={setIncomeReports}/>
         </div>
 
         <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
@@ -64,7 +97,7 @@ export default function Staking() {
             <table className="w-full ">
               <thead className="sticky top-0 text-black rounded-md shadow-xl">
                 <tr className="w-full flex gap-10 items-center justify-between p-4  rounded-md  bg-[#BFFEB0]  ">
-                  <th className="font-normal">sr</th>
+                  <th className="font-normal">Sr No</th>
                   <th className="font-normal ">Username</th>
                   <th className="font-normal ">Status</th>
                   <th className="font-normal ">$QRA AirDrop</th>
@@ -78,7 +111,7 @@ export default function Staking() {
                       key={index}
                       className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
                     >
-                      <td lassName="capitalize text-base font-medium max-sm:w-30 text-white text-left">
+                      <td className="text-base font-medium text-left text-white capitalize max-sm:w-30">
                         {index + 1}
                       </td>
                       <td className="font-medium text-left text-black capitalize max-sm:w-30 ">
@@ -138,7 +171,7 @@ export default function Staking() {
           </div>
         )}
       </div>
-        <StakingTable/>
+        <StakingTable activeTab={activeTab} tableConfig={tableConfig} incomeReports={incomeReports}/>
     </div>
   );
 }

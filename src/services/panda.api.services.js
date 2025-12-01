@@ -8,6 +8,8 @@ export const AUTH = {
 export const TRANSACTIONS = {
   getStakeTransaction: "transactions/get-stake-transaction",
   submitStakeHash: "transactions/submit-stake-hash",
+  createP2PStake :  "transactions/create-p2p-stake",
+  submitP2pHash   : "transactions/submit-p2p-hash"
 };
 
 export const REPORTS = {

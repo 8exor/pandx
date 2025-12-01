@@ -14,9 +14,7 @@
     "@reown/appkit": "^1.8.14",
     "@reown/appkit-adapter-ethers5": "^1.8.14",
     "@tailwindcss/vite": "^4.1.17",
-
     "@tanstack/react-query": "^5.90.11",
-
     "@tanstack/react-query-devtools": "^5.91.1",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
@@ -30,7 +28,6 @@
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.9.6",
     "recharts": "^3.4.1",
-    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.17",
     "wowjs": "^1.1.3"
   },
