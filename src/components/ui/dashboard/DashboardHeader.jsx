@@ -8,7 +8,7 @@ const DashboardHeader = () => {
   return (
     <header className=" w-full bg-[#C5FF9E] p-3 ">
       <main className="max-w-[1360px] mx-auto flex justify-between items-center">
-        <img src="/assets/images/Logo.svg" alt="logo" />
+        <img className="w-45" src="/assets/images/Logo.png" alt="logo" />
 
         <ul className="items-center justify-between hidden gap-40 md:flex">
           {dappNavLinks?.map((navlink, index) => (
