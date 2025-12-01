@@ -5,13 +5,16 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 const PieChart = () => {
   const [isMobile, setIsMobile] = useState(false);
-
+  const [istab , setIsTab] = useState (false);
   // Detect screen size
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 1025);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
+
+    // const checkTab = () => setIsTab(window.innerWidth <= 1025);
+    // checkTab()
 
   }, []);
 
@@ -78,36 +81,36 @@ const PieChart = () => {
     pieSeries.labels.template.maxWidth = 300;
     // pieSeries.labels.template.text = "{category}";
 
-    pieSeries.events.on("validated", () => {
-      const cx = chart.pixelWidth / 2;  // chart center X
-      const cy = chart.pixelHeight / 2; // chart center Y
+    // pieSeries.events.on("validated", () => {
+    //   const cx = chart.pixelWidth / 2;  // chart center X
+    //   const cy = chart.pixelHeight / 2; // chart center Y
 
-      const tipPositions = [
-        { xOffset: -1280, yOffset: -60 },    // slice 0 → right -- third
-        { xOffset: -630, yOffset: -708 },   // slice 1 → left -- second
-        // { xOffset: -500, yOffset: -645 },   // slice 2 → top -- first
-        // { xOffset: -1190, yOffset: -605 }     // slice 3 → bottom -- fourth
-      ];
+    //   const tipPositions = [
+    //     { xOffset: -1280, yOffset: -60 },    // slice 0 → right -- third
+    //     { xOffset: -630, yOffset: -708 },   // slice 1 → left -- second
+    //     // { xOffset: -500, yOffset: -645 },   // slice 2 → top -- first
+    //     // { xOffset: -1190, yOffset: -605 }     // slice 3 → bottom -- fourth
+    //   ];
 
-      pieSeries.slices.each((slice, index) => {
-        if (slice.tipCircle) slice.tipCircle.dispose();
+    //   pieSeries.slices.each((slice, index) => {
+    //     if (slice.tipCircle) slice.tipCircle.dispose();
 
-        const circle = chart.seriesContainer.createChild(am4core.Circle);
-        circle.radius = 6;
-        circle.fill = am4core.color("#ffffff");
-        circle.stroke = am4core.color("#000000");
-        circle.strokeWidth = 2;
+    //     const circle = chart.seriesContainer.createChild(am4core.Circle);
+    //     circle.radius = 6;
+    //     circle.fill = am4core.color("#ffffff");
+    //     circle.stroke = am4core.color("#000000");
+    //     circle.strokeWidth = 2;
 
-        // position relative to chart center
-        circle.x = cx + tipPositions[index].xOffset;
-        circle.y = cy + tipPositions[index].yOffset;
-        if (isMobile) {
-          circle.visible = false;
-        }
+    //     // position relative to chart center
+    //     circle.x = cx + tipPositions[index].xOffset;
+    //     circle.y = cy + tipPositions[index].yOffset;
+    //     if (isMobile) {
+    //       circle.visible = false;
+    //     }
 
-        slice.tipCircle = circle;
-      });
-    });
+    //     slice.tipCircle = circle;
+    //   });
+    // });
 
     // Mobile: position 2 labels up, 2 labels down
     if (isMobile) {
@@ -135,9 +138,9 @@ const PieChart = () => {
       <img
         src="assets/images/PandaTokenGroup.svg"
         alt="logo"
-        className="absolute sm:top-[36%] sm:left-[50%] top-[30%] left-[50%] translate-x-[-50%] sm:w-[250px] w-[100px] z-10 pointer-none"
+        className="absolute sm:top-[35%] md:top-[35%] lg:top-[37%] sm:left-[50%] top-[26%] mac-top-38 left-[50%] translate-x-[-50%] sm:w-[180px] w-[100px] z-10 pointer-none"
       />
-      <div id="pieDiv" className="w-full h-[400px] sm:h-[850px] sm:pb-20"></div>
+      <div id="pieDiv" className="w-full h-[400px] sm:h-[600px] pb-10 "></div>
     </div>
   );
 };
