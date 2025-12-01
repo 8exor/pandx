@@ -97,21 +97,21 @@ const Features = () => {
           </div>
           <div className="absolute top-[44%] left-[4%]">
             <img
-              className="w-[65px] sm:w-[130px] mac-w-85 lg:w-full"
+              className="w-[65px] sm:w-[130px] mac-w-85 lg:w-[185px] xl:w-full"
               src="assets/images/Charactertree.svg"
               alt="Charactertree.svg"
             />
           </div>
           <div className="absolute top-[61%] left-[4%]" data-aos="zoom-in">
             <img
-              className="w-[55px] mac-w-65 sm:w-[120px] lg:w-[260px]"
+              className="w-[55px] mac-w-65 sm:w-[120px]  lg:w-[150px] xl:w-[260px]"
               src="/assets/images/Character_bag.svg"
               alt="Character_bag.svg"
             />
           </div>
-          <div className="absolute top-[62%] left-[35%]" data-aos="zoom-in">
+          <div className="absolute sm:top-[54%] xl:top-[60%] top-[62%] left-[35%]" data-aos="zoom-in">
             <img
-              className="w-[50px] mac-w-50 sm:w-[110px] lg:w-[170px]"
+              className="w-[50px] mac-w-50 sm:w-[110px] lg:w-[145px] xl:w-[200px]"
               src="assets/images/Character_run.svg"
               alt="Character_run.svg"
             />

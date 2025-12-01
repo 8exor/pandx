@@ -14,9 +14,9 @@ const Footer = () => {
 
               {/* mobile view */}
               <div className="md:hidden block">
-               <button className="bg-graydient-box mx-auto mt-5  hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-md font-medium">
+               <button className="bg-[#5f5f81]   rounded-full shine hover:scale-110 mx-auto mt-5   duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-md font-medium">
                     <img src="/assets/images/panda.svg" alt="Pandx" />
-                    Buy $Pandxxx
+                    Buy $Pandx
                   </button>
                 
                     <img className="mx-auto mt-4" src="assets/images/panda_face.svg" alt="Pandx" />
@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="flex items-center justify-center gap-2  md:gap-8 pt-10">
                 <div>
                   <a href="https://swap.qerra.network/" target="blank">
-                   <button className="bg-graydient-box  md:block hidden hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
+                   <button className="bg-[#5f5f81]   rounded-full shine hover:scale-110  md:block hidden   duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
                     <img src="/assets/images/panda.svg" alt="Pandx" />
                    Buy $Pandx
                   </button>
@@ -75,8 +75,8 @@ const Footer = () => {
                 <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" />
                 </a>
               </div>
-              <div>
-                <ul className="flex items-center gap-4">
+              <div className="w-full sm:w-auto">
+                <ul className="flex items-center gap-4 justify-between">
                   <li>
                     <a
                       className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out  text-[16px]  md:text-[20px] font-bold"

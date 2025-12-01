@@ -103,7 +103,7 @@ const Roadmap = () => {
 
             <button
               onClick={copyText}
-              className="bg-graydient-box w-full sm:w-fit hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-full shadow-sm transition"
+              className="bg-[#5f5f81]   rounded-full shine hover:scale-110 w-full sm:w-fit hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
               {copied ? "copied" : "copy"}
             </button>

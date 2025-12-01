@@ -42,7 +42,7 @@ const Banner = () => {
             Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together
             </p>
             <a href="https://swap.qerra.network/" target="_blank">
-              <button className="bg-graydient-box relative hover:!bg-[#5b5ca9] m-auto mt-8  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+              <button className="bg-[#5f5f81]   rounded-full shine hover:scale-110  relative  m-auto mt-8  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
               <img src="/assets/images/panda.svg" alt="panda" />
               Buy Pandx
             </button>
@@ -95,7 +95,7 @@ const Banner = () => {
               
                 <button
                   onClick={copyText}
-                  className="bg-graydient-box w-full sm:w-fit hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
+                  className="bg-[#5f5f81] rounded-full shine hover:scale-110 w-full sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "copied" : "copy"}
                 </button>
