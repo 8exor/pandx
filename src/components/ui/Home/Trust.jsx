@@ -19,9 +19,9 @@ const Trust = () => {
         src="assets/images/rectangle.svg" 
         alt="rectangle" 
       />
-      <div className="absolute z-2 top-[30px] md:top-[50px] lg:top-[60px] inset-0 flex flex-col items-center justify-center px-[30px]">
+      <div className="absolute z-2 top-[30px] md:top-[50px] lg:top-[60px] inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[52px]">
         <h3 className="text-[18px] md:text-[28px] lg:text-[38px]">About Contracts</h3>
-        <p className="text-[15px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
+        <p className="text-[14px] px-[5px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
          Fully Verified & Renounced Smart Contracts + User Can Stake/Unstake Anytime
         </p>
       </div>
@@ -34,9 +34,9 @@ const Trust = () => {
         src="assets/images/rectangle-2.svg" 
         alt="rectangle" 
       />
-      <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[30px]">
-        <h3 className="text-[18px] md:text-[24px] lg:text-[30px] text-center">Power by IPFS </h3>
-        <p className="text-[15px] lg:text-[20px] md:text-[18px] text-center text-[#4c4c4c]">
+      <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] lg:px-[52px]">
+        <h3 className="text-[18px] md:text-[24px] lg:text-[38px] text-center">Power by IPFS </h3>
+        <p className="text-[14px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
         IPFS is a 100% Decentralized peer-to-peer system for storing and sharing files across the web – UNSTOPPABLE
         </p>
       </div>
@@ -49,9 +49,9 @@ const Trust = () => {
         src="assets/images/rectangle-2.svg" 
         alt="rectangle" 
       />
-      <div className="absolute  top-[40px] md:top-[80px] lg:top-[30%] inset-0 flex flex-col items-center justify-center px-[30px]">
+      <div className="absolute  top-[40px] md:top-[80px] lg:top-[30%] inset-0 flex flex-col items-center justify-center px-[36px] sm:px-[52px]">
         <h3 className="text-[18px] md:text-[28px] lg:text-[38px]">100% Real & Transparent</h3>
-        <p className="text-[15px] md:text-[22px] lg:text-[24px]  text-center text-[#4c4c4c]">
+        <p className="text-[14px] md:text-[22px] lg:text-[24px]  text-center text-[#4c4c4c]">
           Open source system – Nobody can STOP, HIDE or CHANGE anything
         </p>
       </div>
