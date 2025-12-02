@@ -71,7 +71,7 @@ const Banner = () => {
               </div>
 
               {/* Tree */}
-              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[44%] top-[24%] sm:top-[-10%]  md:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[15%] top-[24%] sm:top-[-10%]  md:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
