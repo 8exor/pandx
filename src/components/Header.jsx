@@ -77,7 +77,7 @@ const Header = () => {
          
               <div className="items-center hidden gap-3 lg:flex">
                 <button
-                  className="bg-[#5f5f81] hover:scale-110 transition duration-300 shine rounded-full duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                  className="btn-primary shine  py-3 px-6 flex gap-2 text-white text-lg font-medium"
                   onClick={() => {
                     isConnected ? handleDisconnet() : setOpenLoginModal(true);
                   }}
@@ -95,7 +95,7 @@ const Header = () => {
 
 
                 <NavLink to={"/StakingPage"}>
-                  <button className=" bg-[#5f5f81]   rounded-full shine hover:scale-110 duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className=" btn-primary shine  py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Staking
                   </button>
@@ -103,13 +103,13 @@ const Header = () => {
 
                 
                 <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="bg-[#5f5f81]  shine rounded-full   hover:scale-110 duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className="btn-primary shine py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
                 </a>
               </div>
-              <div className="bg-[#5f5f81]  hover:scale-110   shine rounded-full     duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
+              <div className="btn-primary shine  h-13 w-13 flex items-center justify-center !rounded-full">
                 <button
                   onClick={() => setOpenMenu(!openMenu)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
@@ -151,8 +151,8 @@ const Header = () => {
                       <a href="">Roadmap</a>
                     </li>
                   </ul>
-                  <a className="flex items-center justify-center mt-6 lg:hidden" href=" https://swap.qerra.network/" target="blank">
-                  <button className="bg-[#5f5f81]  shine rounded-full    hover:scale-110  hover:!bg-[#5b5ca9] duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <a className="flex items-center justify-center  lg:hidden" href=" https://swap.qerra.network/" target="blank">
+                  <button className="bg-[#5f5f81]  shine rounded-full      py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
