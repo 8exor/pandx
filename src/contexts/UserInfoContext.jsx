@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, useState } from "react"
 import {useQuery} from '@tanstack/react-query'
 import axiosInstance from "@utils/axiosInstance";
 import { REPORTS } from "@services/panda.api.services";
@@ -6,6 +6,7 @@ import { REPORTS } from "@services/panda.api.services";
 export const UserInfoContext = createContext(null);
 
 export const UserInfoProvider =({children})=>{
+    const[isLogin, setLogin] = useState("");
 
 const {data:userData, isLoading, error} = useQuery({
     queryKey : ["userData"],

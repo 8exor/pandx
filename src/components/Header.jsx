@@ -77,7 +77,7 @@ const Header = () => {
          
               <div className="items-center hidden gap-3 lg:flex">
                 <button
-                  className="btn-primary   py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                  className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
                     isConnected ? handleDisconnet() : setOpenLoginModal(true);
                   }}
@@ -93,23 +93,23 @@ const Header = () => {
                   </button>
                 </NavLink> */}
 
-
+{isConnected &&
                 <NavLink to={"/StakingPage"}>
-                  <button className=" btn-primary   py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Staking
                   </button>
                 </NavLink>
-
+}
                 
                 <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="btn-primary  py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
                 </a>
               </div>
-              <div className="btn-primary   h-13 w-13 flex items-center justify-center rounded-full">
+              <div className="flex items-center justify-center rounded-full btn-primary h-13 w-13">
                 <button
                   onClick={() => setOpenMenu(!openMenu)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
@@ -151,23 +151,23 @@ const Header = () => {
                       <a href="">Roadmap</a>
                     </li>
                   </ul>
-                  <a className="flex items-center justify-center  lg:hidden" href=" https://swap.qerra.network/" target="blank">
-                  <button className="btn-primary     py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <a className="flex items-center justify-center lg:hidden" href=" https://swap.qerra.network/" target="blank">
+                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
                 </a>
-                  <NavLink
+                {isConnected &&  <NavLink
                     to={isConnected ? "/StakingPage" : "/"}
                     className={
                       "flex justify-center items-center mt-6 lg:hidden"
                     }
                   >
-                    <button className="btn-primary py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                    <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Staking
                     </button>
-                  </NavLink>
+                  </NavLink>}
                   <button
                     className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
@@ -176,7 +176,7 @@ const Header = () => {
                     }}
                   >
                     <img src="/assets/images/panda.svg" alt="panda" />
-                    Register
+                    Connect
                   </button>
                 </div>
               )}
