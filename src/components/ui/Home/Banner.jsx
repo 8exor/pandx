@@ -56,7 +56,7 @@ const Banner = () => {
               </div>
 
               {/* Panda 1 */}
-              <div className="absolute  top-[45%] lg:top-[7%] lg:top-[8%] lg:left-[1%] lg:left-[2%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
+              <div className="absolute  top-[45%] sm:top-[37%] lg:top-[12%] lg:left-[1%] sm:left-[6%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
                 <img src="/assets/images/panda-1.svg" alt="panda 1" className="w-full h-auto" />
               </div>
 
@@ -102,10 +102,10 @@ const Banner = () => {
                 </button>
               </div>
             </div>
-            <div className="lg:ml-auto mx-auto  animate__animated animate__zoomIn relative" data-aos="zoom-in">
+            <div className="lg:ml-auto mx-auto relative" data-aos="zoom-in">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
               <div
-                className="absolute sm:bottom-[21%] animate__animated animate__zoomIn left-[21%] bottom-[21%] sm:left-[24%] lg:bottom-[21%] lg:left-[110px] bottom:[148px] w-[60%]"
+                className="absolute sm:bottom-[21%] left-[21%] bottom-[21%] sm:left-[24%] lg:bottom-[21%] lg:left-[110px] bottom:[148px] w-[60%]"
                 data-aos="zoom-in"
               >
                 <img

@@ -18,11 +18,11 @@ const Home = () => {
         <Header/>   
         <Banner/>
         <Features/>
-        {/* <Chart/> */}
-        {/* <Marquee/> */}
-        {/* <Trust/> */}
-        {/* <Roadmap/> */}
-        {/* <Marquee/> */}
+        <Chart/>
+        <Marquee/>
+        <Trust/>
+        <Roadmap/>
+        <Marquee/>
         <Footer/>
         </>
     )
