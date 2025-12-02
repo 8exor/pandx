@@ -4,7 +4,7 @@ import axiosInstance from '@utils/axiosInstance'
 import { REPORTS } from '@services/panda.api.services'
 import { act } from 'react'
 
-export default function IncomeReport({activeTab, setActiveTab, setIncomeReports}) {
+export default function IncomeReport({activeTab, setActiveTab}) {
 
     const {data} = useQuery({
         queryKey : ["incomeReports"],

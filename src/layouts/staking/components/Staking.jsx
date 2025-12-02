@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { REPORTS } from "@services/panda.api.services";
 import { useQuery } from "@tanstack/react-query";
@@ -8,6 +8,8 @@ import { useAppKitAccount } from "@reown/appkit/react";
 import Tabs from "./Tabs";
 import CopyToClipBaord from "@hooks/CopyToClipBoard";
 import StakingTable from "./StakingTable";
+import { useLocation } from "react-router-dom";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 
 
 export default function Staking() {
@@ -15,13 +17,15 @@ export default function Staking() {
   const [stakePopup, setStakePopup] = useState(false);
   const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
   const {handleCopy} = CopyToClipBaord();
+  const {userData} = useContext(UserInfoContext)
+  const location = useLocation();
   // const [clikcedTab, setClickedTab] = useState("stake")
     const [activeTab, setActiveTab] = useState({
       mainTabs : "stake",
       incomeTabs : "DAILY$",
     });
 
-  const [incomeReports, setIncomeReports] = useState({});
+
 
 const tableConfig = {
   stake : {
@@ -64,9 +68,12 @@ const tableConfig = {
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
         >
-          <div className="flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row md:gap-40 sm:mt-15">
+          <div className="flex flex-col items-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-15">
             <button className="bg-[#BFFEB0] rounded-full shine hover:scale-110 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-6 px-3" onClick={()=>setStakePopup(true)}>
               My Rank
+            </button>
+             <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3 py-6 blink-text">
+             Active
             </button>
             <button className="bg-[#BFFEB0] m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3">
               Upgrade next rank & get 0.60%
@@ -78,7 +85,7 @@ const tableConfig = {
             alt="panda"
             className="flex justify-center items-center w-[148px] h-[189px] m-auto mt-8 sm:mt-16"
           />
-          <Tabs activeTab={activeTab} setActiveTab ={setActiveTab} setIncomeReports={setIncomeReports}/>
+          <Tabs activeTab={activeTab} setActiveTab ={setActiveTab} />
         </div>
 
         <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
@@ -147,7 +154,7 @@ const tableConfig = {
               <div className="flex items-center justify-between space-y-4">
                 <div>
                   <h3>Wallet Address</h3>
-                  <span className="">{`${address.substring(0,5)}....${address.substring(36,42)}`}</span>
+                  <span className="">{address ? `${address.substring(0,5)}....${address.substring(36,42) }` : "No address found"}</span>
                 </div>
                 <div>
                     <button onClick={()=>handleCopy(address)}>
@@ -159,7 +166,7 @@ const tableConfig = {
               <div className="flex items-center justify-between ">
                 <div>
                   <h3>Referral Link</h3>
-                  <span>Akash</span>
+                  <span>{userData?.data?.username}</span>
                 </div>
                 <div>
                   <button>
@@ -171,7 +178,7 @@ const tableConfig = {
           </div>
         )}
       </div>
-        <StakingTable activeTab={activeTab} tableConfig={tableConfig} incomeReports={incomeReports}/>
+        <StakingTable activeTab={activeTab} tableConfig={tableConfig} />
     </div>
   );
 }

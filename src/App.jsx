@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { UserInfoProvider } from '@contexts/UserInfoContext';
 
 // import Header from "./components/ui/Header";
 
@@ -44,12 +45,15 @@ function App() {
 
   return (
     <>
-    <Toaster/>
+ 
       <QueryClientProvider client={queryClient}>
+         <UserInfoProvider>
+    <Toaster/>
     <BrowserRouter>
    <AppRoutes/>
    </BrowserRouter>
      <ReactQueryDevtools initialIsOpen={false} />
+     </UserInfoProvider>
      </QueryClientProvider>
     </>
   )

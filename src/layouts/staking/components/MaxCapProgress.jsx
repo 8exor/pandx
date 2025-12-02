@@ -11,7 +11,8 @@ export default function MaxCapProgress({ value }) {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <span className="text-white font-bold text-lg">Max Cap</span>
+      <span className="text-[16px] sm:text-[18px] 
+        md:text-[20px] font-normal">Max Cap</span>
 
       <div className="w-32 h-3 rounded-full bg-[#26316A] overflow-hidden">
         <div

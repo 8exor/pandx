@@ -1,7 +1,26 @@
 import React from 'react'
+  import {useQuery} from "@tanstack/react-query"
+  import axiosInstance from '@utils/axiosInstance'
+  import { REPORTS } from '@services/panda.api.services'
+import { is } from '@amcharts/amcharts4/core'
+import TableSkeleton from '@hooks/TableSkelton'
 
-export default function StakingTable({activeTab, tableConfig, incomeReports}) {
- console.log("what are the reports : ", incomeReports)
+export default function StakingTable({activeTab, tableConfig}) {
+
+
+
+     const {data, isLoading} = useQuery({
+        queryKey : ["incomeReports"],
+        queryFn : async()=>{
+            const {data} = await axiosInstance.get(`${REPORTS?.incomeReports}?incomeId=${1}`)
+            return data;
+        }
+    })
+    console.log("yamte kudasai :", data?.data?.rows)
+
+const incomeData =  data?.data?.rows ;
+console.log("Are you ever going to be false : ", isLoading)
+
   return (
     <div className='w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5 border border-[#6f6fb5] rounded-md'>
     
@@ -31,25 +50,39 @@ export default function StakingTable({activeTab, tableConfig, incomeReports}) {
 
               <tbody className="w-full">
                
-                  <>
+              { 
+             (activeTab?.mainTabs === "incomeReports" && activeTab?.incomeTabs === "DAILY$" ) &&
+                incomeData?.map((incomeData, index)=>
+                  !isLoading ?
+                 <>
                     <tr
                      
-                      className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      key={index}
                     >
-                      <td className="text-base font-medium text-left text-white capitalize max-sm:w-30">
-                  
+                      <td className="text-base font-medium text-left text-black capitalize max-sm:w-30">
+                        {index + 1}
                       </td>
                       <td className="font-medium text-left text-black capitalize max-sm:w-30 ">
-                    
+                    {/* {new Date(incomeData?.date)} */} "date"
                       </td>
                       <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
-                       
+                       {incomeData?.username}
                       </td>
                       <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
-                    
+                        "1.5 "
+                      </td>
+                        <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
+                        {incomeData?.staking?.amt_usd}
+                      </td>
+                        <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
+                        {incomeData?.note}
                       </td>
                     </tr>
                   </>
+                  :
+                  <TableSkeleton rows={5} columns={5}/>
+                )}
          
               </tbody>
             </table>
