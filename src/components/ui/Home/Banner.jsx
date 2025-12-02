@@ -56,22 +56,22 @@ const Banner = () => {
               </div>
 
               {/* Panda 1 */}
-              <div className="absolute  top-[45%] sm:top-[37%] lg:top-[12%] lg:left-[1%] sm:left-[6%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[38%]  top-[45%] sm:top-[40%] md:top-[37%] lg:top-[12%] xl:top-[7%] lg:left-[1%] sm:left-[6%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
                 <img src="/assets/images/panda-1.svg" alt="panda 1" className="w-full h-auto" />
               </div>
 
               {/* Panda 2 */}
-              <div className="absolute top-[50%] sm:top-[22%]   lg:top-[20%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[44%]  top-[50%] md:top-[22%] sm:top-[27%]  lg:top-[25%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
                 <img src="/assets/images/panda02.svg" alt="panda 2" className="w-full h-auto" />
               </div>
 
               {/* Panda 3 */}
-              <div className="absolute top-[24%]  lg:-top-[11%] lg:-top-[20%] lg:right-[8%] lg:right-[11%] right-[10%] w-[28%] lg:w-[25%] sm:w-[18%]" data-aos="zoom-in">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[14%] top-[24%] sm:top-[19%] md:top-[14%]   lg:-top-[18%] lg:right-[8%] lg:right-[11%] right-[10%] w-[28%] lg:w-[25%] sm:w-[18%]" data-aos="zoom-in">
                 <img src="/assets/images/panda03.svg" alt="panda 3" />
               </div>
 
               {/* Tree */}
-              <div className="absolute top-[24%]  sm:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[44%] top-[24%] sm:top-[-10%]  md:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
@@ -79,11 +79,16 @@ const Banner = () => {
          </div>
         </section>
       </div>
-      <section className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover relative">
-        <div className="absolute   bottom-[18%] sm:bottom-[14%] md:bottom-[11%] lg:bottom-[5%] xl:bottom-[6%]">
+      <section className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover ">
+      <div className="relative mycontainer">
+        {/* <div className="absolute   bottom-[18%] sm:bottom-[14%] md:bottom-[11%] lg:bottom-[5%] xl:bottom-[6%]">
+          <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
+        </div> */}
+      </div>
+        <div className="mycontainer relative">
+            <div className="absolute   bottom-[-4%] xl:left-[-11%]  left-0">
           <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
         </div>
-        <div className="mycontainer">
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
             <div className=" animate__animated animate__fadeInUp" data-aos="slide-up">
               <h2 className="lg:text-[82px] xl:text-left  text-[40px] text-center lg:text-center sm:text-[40px]   sm:leading-10 leading-20">About Us</h2>
@@ -96,7 +101,7 @@ const Banner = () => {
               
                 <button
                   onClick={copyText}
-                  className="bg-[#5f5f81] rounded-full shine hover:scale-110 w-full sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
+                  className="btn-primary shine sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "copied" : "copy"}
                 </button>

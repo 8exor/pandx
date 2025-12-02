@@ -25,7 +25,7 @@ p , a, input {
     transform-origin: 50% 50% 0px;
    
 } */
-.shine {
+/* .shine {
   position: relative;
   overflow: hidden;
 }
@@ -53,7 +53,7 @@ p , a, input {
     left: 150%;
   }
 }
-
+ */
 
 .bg-graydient-level {
      background-color: var(--token-33c21092-8a05-4905-85e1-0e05518e6553, rgb(114, 163, 20));
@@ -260,21 +260,27 @@ body{
   transition: all 0.3s ease;
 }
 
-.outer-cont:hover::before {
+.btn-primary:hover::before {
   filter: blur(15px);
 }
 
-.outer-cont:active::before {
+.btn-primary:active::before {
   filter: blur(5px);
   transform: translateY(1px);
 }
 
-.outer-cont:active {
+.btn-primary:active {
   box-shadow:
     inset 0px 0px 5px #ffffffa9,
     inset 0px 35px 30px #000;
   margin-top: 3px;
 }
+
+
+
+
+
+
 .btn-success {
     background-image: linear-gradient(to right,
      #65a02a,

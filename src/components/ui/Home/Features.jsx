@@ -13,7 +13,7 @@ const Features = () => {
 
         <div className="mycontainer ">
           <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-5 mt-[-80px] lg:mt-0">
-            <div className="bg-[#e5ffe6] min-h-[280px]  h-fit  animate__animated animate__zoomIn shadow-bottom overflow-x-clip xl:overflow-x-visible p-[36px] rounded-lg h-fit relative" data-aos="zoom-in">
+            <div className="bg-[#e5ffe6] min-h-[280px]  h-fit   shadow-bottom overflow-x-clip xl:overflow-x-visible p-[36px] rounded-lg h-fit relative" data-aos="zoom-in">
               <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
                 Speed and <br />
                 Security
@@ -21,7 +21,7 @@ const Features = () => {
               <p className="lg:text-2xl break-all text-xl pt-2 leading-[26px] lg:leading-[29px] text-[#4c4c4c]">
                 Pandx lives on a high-performance blockchain — BSC — offering ultra-low fees and lightning-fast transaction speeds.
               </p>
-              <div className="absolute md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-4%] lg:top-[1%]">
+              <div className="absolute  md:right-[-28%]  [@media_(min-width:375px)_and_(max-width:425px)]:right-[-25%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
                 <img
                   className="sm:w-[88%] xl:w-full lg:w-full w-[90%]"
                   src="/assets/images/box_tree.svg"
@@ -42,7 +42,7 @@ const Features = () => {
                 <p className="lg:text-2xl break-all text-xl pt-2 leading-[26px] lg:leading-[29px] text-[#4c4c4c]">
                  With staking and influence marketing, earn PANDX through yield farming and grow yourself.
                 </p>
-                <div className="absolute md:right-[-27%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
+                <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:right-[-25%] md:right-[-27%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
                   <img
                     className="ssm:w-[88%] xl:w-full lg:w-full w-[90%]"
                     src="/assets/images/box_tree.svg"
@@ -61,7 +61,7 @@ const Features = () => {
               <p className="lg:text-2xl break-all text-xl leading-[26px] lg:leading-[29px] pt-2 text-[#4c4c4c]">
                PANDX DAO empowers real holders and true rank achievers of helder community who have proven themselves.
               </p>
-              <div className="absolute md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:right-[-25%]  md:right-[-28%] lg:right-[-26%] xl:right-[-24%] lg:right-[-80px] top-0  right-[-33%] sm:top-[20px] sm:top-0 md:top-[2%] xl:top-[-10%] lg:top-[1%]">
                 <img
                   className="sm:w-[88%] xl:w-full lg:w-full w-[90%]"
                   src="/assets/images/box_tree.svg"

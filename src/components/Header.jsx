@@ -62,7 +62,7 @@ const Header = () => {
              <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" /></a>
             </div>
             <div className="flex items-center justify-between gap-5">
-              <div className="hidden hover:scale-110 md:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
+              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
                <a href="https://t.me/pandxdao" target="blank">
                  <img
                   className="w-[20px] h-[20]"
@@ -71,13 +71,13 @@ const Header = () => {
                 />
                </a>
               </div>
-              <div className="hidden hover:scale-110  lg:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
+              <div className="hidden hover:scale-110  sm:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
          
               <div className="items-center hidden gap-3 lg:flex">
                 <button
-                  className="btn-primary shine  py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                  className="btn-primary   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                   onClick={() => {
                     isConnected ? handleDisconnet() : setOpenLoginModal(true);
                   }}
@@ -95,7 +95,7 @@ const Header = () => {
 
 
                 <NavLink to={"/StakingPage"}>
-                  <button className=" btn-primary shine  py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className=" btn-primary   py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Staking
                   </button>
@@ -103,13 +103,13 @@ const Header = () => {
 
                 
                 <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="btn-primary shine py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className="btn-primary  py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
                 </a>
               </div>
-              <div className="btn-primary shine  h-13 w-13 flex items-center justify-center !rounded-full">
+              <div className="btn-primary   h-13 w-13 flex items-center justify-center rounded-full">
                 <button
                   onClick={() => setOpenMenu(!openMenu)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
@@ -152,7 +152,7 @@ const Header = () => {
                     </li>
                   </ul>
                   <a className="flex items-center justify-center  lg:hidden" href=" https://swap.qerra.network/" target="blank">
-                  <button className="bg-[#5f5f81]  shine rounded-full      py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                  <button className="btn-primary     py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
@@ -163,13 +163,13 @@ const Header = () => {
                       "flex justify-center items-center mt-6 lg:hidden"
                     }
                   >
-                    <button className="bg-[#5f5f81]  shine rounded-full      hover:scale-110 duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+                    <button className="btn-primary py-3 px-6 flex gap-2 text-white text-lg font-medium">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Staking
                     </button>
                   </NavLink>
                   <button
-                    className="lg:hidden mt-6  mx-auto hover:scale-110  shine rounded-full      hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium"
+                    className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
                       setOpenMenu(false);
                       setOpenLoginModal(true);

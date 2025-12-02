@@ -23,8 +23,8 @@ const PieChart = () => {
 
     const chart = am4core.create("pieDiv", am4charts.PieChart3D);
     chart.data = [
-      { category: "Persale on launchpad", value:1 },
-      { category: "Staking Rewards", value: 99 },
+      { category: "Persale on Launchpad", value:1},
+      { category: "Staking Rewards", value:  99},
       // { category: "Liquidity Locked\n[gray]100% for 1 year[/]", value: 25 },
       // { category: "Symbol\n[gray]$Panda[/]", value: 30 }
     ];
@@ -32,8 +32,15 @@ const PieChart = () => {
     const pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = "value";
     pieSeries.dataFields.category = "category";
+    
     chart.depth = 15;
     chart.angle = 10;
+
+ pieSeries.labels.template.adapter.add("textOutput", function (_, target) {
+  let percent = Math.round(target.dataItem.values.value.percent);
+  let category = target.dataItem.category;
+  return `${category}: ${percent}%`;
+});
 
     // =============================================
     pieSeries.events.on("validated", () => {
