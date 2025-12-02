@@ -20,6 +20,8 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
     { key: "stake", label: "Stake" },
     { key: "unstake", label: "Unstake" },
     { key: "withdrawal", label: "Withdrawal" },
+    { key: "compound", label: "Compound" },
+
     { key: "p2p", label: "P2P" },
     { key: "incomeReports", label: "IncomeReport" },
   ];
@@ -51,8 +53,8 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
             <button
               key={index}
               onClick={() => setActiveTab({...activeTab, mainTabs : tab.key })}
-              className={`p-2 md:p-4 min-w-[110px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
-                activeTab?.mainTabs === tab.key ? "bg-white" : "bg-[#BFFEB0]"
+              className={`p-2 md:p-2 min-w-[170px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
+                activeTab?.mainTabs === tab.key ? "bg-white" : "bg-[#BFFEB0] btn-primary "
               } hover:bg-white`}
             >
               {tab.label}
