@@ -103,21 +103,21 @@ toast.error(error?.message || "Error Occurred")
 
       <div className="px-4 mt-8 mb-10 sm:px-6">
         <div className="flex flex-col justify-between gap-4 mb-8 sm:flex-row">
-          <div className="w-full sm:max-w-[200px]">
+          <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
-            <div className="w-full bg-[#BFFEB0] px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+            <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
               0.00
             </div>
           </div>
-          <div className="w-full sm:max-w-[200px]">
+          <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">Current Worth</p>
-            <div className="w-full bg-[#BFFEB0] px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+            <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
               $0
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 rounded-sm border border-black gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 rounded-full border border-black gap-4">
           <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-start">
             <img
               src="/assets/images/pandalogofinalcopy.svg"
@@ -132,7 +132,7 @@ toast.error(error?.message || "Error Occurred")
             />
           </div>
           <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-end">
-            <div className="bg-[#72A314] px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center">
+            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center">
               MAX
             </div>
             <p className="font-bold">$PANDX</p>
@@ -140,7 +140,7 @@ toast.error(error?.message || "Error Occurred")
         </div>
         <div className="flex justify-center mt-6">
           <button
-            className="bg-[#72A314] text-white px-6 sm:px-10 py-2 sm:py-4 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
+            className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
             onClick={() => staking.mutate({ stake_amount: stakeAmount })}
           >
            {

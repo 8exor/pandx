@@ -13,6 +13,7 @@ export default function LoginPage({ setOpenLoginModal }) {
   const { isConnected, address } = useAppKitAccount();
   const [userName, setUserName] = useState("");
   const [referralCode, setReferralCode] = useState("");
+  const [pasteReferralCode, setPasteReferralCode] = useState("");
   const [showError, setShowError] = useState({
     userName: false,
     referralCode: false,
@@ -22,6 +23,15 @@ export default function LoginPage({ setOpenLoginModal }) {
     const { disconnect } = useDisconnect();
 
   const navigate = useNavigate();
+
+  const pasteButton=async()=>{
+try {
+  const text = await navigator.clipboard.readText();
+  setPasteReferralCode(text);
+} catch (error) {
+  toast.error("Permission to paste was denied or clipboard is empty.")
+}
+  }
 
   const checkUserName = useMutation({
     mutationFn: async (formData) => {
@@ -41,6 +51,16 @@ export default function LoginPage({ setOpenLoginModal }) {
       allowScroll();
     },
   });
+
+  const validateReferralCode=()=>{
+      if (referralCode.length > 9 || referralCode.length < 4) {
+                setShowError({ ...showError, referralCode: true });
+                return toast.error(
+                  "The username must be between 4 and 9 characters long."
+                );
+              }
+              checkReferralCode.mutate({ username: referralCode });
+  }
 
   const checkReferralCode = useMutation({
     mutationFn: async (formData) => {
@@ -163,6 +183,7 @@ export default function LoginPage({ setOpenLoginModal }) {
           <button
             className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
             onClick={() => {
+
               if (userName.length > 9 || userName.length < 4) {
                 setShowError({ ...showError, userName: true });
                 return toast.error(
@@ -205,13 +226,10 @@ export default function LoginPage({ setOpenLoginModal }) {
           <button
             className={`bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer`}
             onClick={() => {
-              if (referralCode.length > 9 || referralCode.length < 4) {
-                setShowError({ ...showError, referralCode: true });
-                return toast.error(
-                  "The username must be between 4 and 9 characters long."
-                );
-              }
-              checkReferralCode.mutate({ username: referralCode });
+              isReferralCodeChecked ?
+            validateReferralCode()
+            :
+            pasteButton()
             }}
           >
             {referralCode ? (
