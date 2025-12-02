@@ -5,20 +5,20 @@ import { REPORTS } from "@services/panda.api.services";
 
 export const UserInfoContext = createContext(null);
 
-export const UserInfoProivder =()=>{
+export const UserInfoProvider =({children})=>{
 
-const {data} = useQuery({
+const {data:userData, isLoading, error} = useQuery({
     queryKey : ["userData"],
     queryFn : async()=>{
         const {data} = await axiosInstance.get(REPORTS.userInfo);
         return data;
     }
 })
-
+console.log("is the user using data : ", userData)
 
 return (
-    <UserInfoContext.Provider value={data}>
-
+    <UserInfoContext.Provider value={{userData, isLoading, error}}>
+        {children}
     </UserInfoContext.Provider>
 )
 

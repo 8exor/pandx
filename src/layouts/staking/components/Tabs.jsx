@@ -39,7 +39,7 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
       <P2p/>
     ),
     incomeReports: (
-     <IncomeReport activeTab={activeTab} setActiveTab={setActiveTab} setIncomeReports={setIncomeReports} />
+     <IncomeReport activeTab={activeTab} setActiveTab={setActiveTab} />
     ),
   };
 

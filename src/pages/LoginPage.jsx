@@ -82,7 +82,7 @@ export default function LoginPage({ setOpenLoginModal }) {
     
   
       setAccessToken(data?.data?.token);
-      navigate("/StakingPage");
+      navigate("/StakingPage", {state : userName});
       setOpenLoginModal(false);
     },
     onError: (error) => {
@@ -136,7 +136,7 @@ export default function LoginPage({ setOpenLoginModal }) {
           <p className="">
             {isConnected
               ? `${address.substring(0, 10)}.....${address.substring(32, 42)}`
-              : " wallet Address"}{" "}
+              : "Connect Your Wallet"}{" "}
           </p>
           <button
             className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
@@ -154,7 +154,7 @@ export default function LoginPage({ setOpenLoginModal }) {
           <input
             type="text"
             className="w-full text-black placeholder-black outline-none"
-            placeholder="Character 4-9 Length"
+            placeholder="Choose Username"
             maxLength={9}
             minLength={4}
             value={userName}
@@ -180,10 +180,10 @@ export default function LoginPage({ setOpenLoginModal }) {
                   alt="gif"
                 />
               ) : (
-                "check"
+                "Validate"
               )
             ) : (
-              "check"
+              "Validate"
             )}
           </button>
         </div>
@@ -196,7 +196,7 @@ export default function LoginPage({ setOpenLoginModal }) {
           <input
             type="text"
             className="w-full text-black placeholder-black outline-none"
-            placeholder="*Referral Code"
+            placeholder="*Enter Referral Code"
             value={referralCode}
             minLength={4}
             maxLength={9}
@@ -222,7 +222,7 @@ export default function LoginPage({ setOpenLoginModal }) {
                   alt="gif"
                 />
               ) : (
-                "check"
+                "Validate"
               )
             ) : (
               "Paste"

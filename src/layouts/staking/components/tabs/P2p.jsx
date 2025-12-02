@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
-import { TRANSACTIONS } from "@services/panda.api.services";
-import { ethers } from "ethers";
+import { AUTH, TRANSACTIONS } from "@services/panda.api.services";
+import { Contract, ethers } from "ethers";
 import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
 import { EthersProvider } from "@reown/appkit-adapter-ethers5";
 import p2pAllowance from "@utils/abi/p2pAllowance.abi.json"
 import toast from "react-hot-toast";
+import { data, useLocation } from "react-router-dom";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 
 export default function P2p() {
    const { walletProvider } = useAppKitProvider("eip155");
      const { address, isConnected } = useAppKitAccount();
-       const [p2pAmount, setp2pAmount] = useState("");
+       const [p2pAmount, setp2pAmount] = useState('');
+       const [userName, setUserName] = useState("");
+
+ 
+const validateUserName = useMutation({
+  mutationFn : async(formdata)=>{
+    const {data} = await axiosInstance.post(AUTH?.verifyUserName, formdata);
+    return data;
+  },
+  onSuccess : (data)=>{
+    toast.success(data?.message);
+  },
+  onError : (error)=>{
+    toast.error(error?.message || "Invalid username")
+  }
+})
+
+
 
 const p2pTransaction = useMutation({
  mutationFn : async(formdata)=>{
@@ -20,24 +39,19 @@ const p2pTransaction = useMutation({
  },
  onSuccess : async(data)=>{
   try {
+    debugger
     const approvalAddress = data?.data?.stakeApproval?.to;
     const allowanceAddress = data?.data?.stakeInvest?.to;
-    const provider = new ethers.providers.Web3Provider(walletProvider)
+    const provider = new ethers.providers.Web3Provider(walletProvider);
+       
 
     const signer = await provider.getSigner();
-    const contract = new Contract(approvalAddress, p2pAllowance, signer );
-    const allowance = await contract.allowance(address, allowanceAddress);
-    if(Number(allowance) < Number(p2pAmount)){
-      const approval = await signer?.sendTransaction({
-        from : data?.data?.stakeApproval?.from,
-        to : data?.data?.stakeApproval?.to,
-        gasPrice : data?.data?.stakeApproval?.gasPrice,
-        gasLimit : data?.data?.stakeApproval?.gasLimit,
-        data : data?.data?.stakeApproval?.data
-      })
-      await approval.wait();
-    }
-
+// console.log({ from : data?.data?.stakeInvest?.from,
+//       to : data?.data?.stakeInvest?.to,
+//       gasPrice : data?.data?.stakeInvest?.gasPrice,
+//       gasLimit : data?.data?.stakeInvest?.data,
+//       value : data?.data?.stakeInvest?.value})
+      
     const invest = await signer?.sendTransaction({
       from : data?.data?.stakeInvest?.from,
       to : data?.data?.stakeInvest?.to,
@@ -48,7 +62,7 @@ const p2pTransaction = useMutation({
     await invest.wait();
     p2pHash.mutate({
       "txn_hash" : invest?.hash,
-      "token_amount" : p2pAmount
+      "username" : userName
     })
   } catch (error) {
     console.log({error})
@@ -82,20 +96,21 @@ const p2pHash = useMutation({
           type="text"
           placeholder="Enter UserName"
           className="w-full sm:w-[60%] px-2 py-1 rounded-sm outline-none"
-          onChange={(e)=>setp2pAmount(e.target.value)}
+          onChange={(e)=>setUserName(e.target.value)}
         />
 
         <button
           className="bg-[#72A314] w-full sm:w-[25%] px-2 py-1 sm:px-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight"
+          onClick={()=>validateUserName.mutate({"username" : userName})}
         >
           Validate
         </button>
       </div>
-      <div className="flex flex-col items-center justify-between gap-3 p-2 mb-4 bg-white border border-black rounded-sm sm:flex-row">
+      <div className="flex flex-col items-center justify-between gap-2 p-2 mb-4 bg-white border border-black rounded-sm sm:flex-row">
         <p className="w-full text-center sm:text-left sm:w-auto">
           Available $60
         </p>
-
+        <input type="text" className="w-full md:max-w-[150px] lg:max-w-[270px] xl:max-w-[420px] outline-none" value={p2pAmount} onChange={(e)=>setp2pAmount(e.target.value)} />
         <button
           className="bg-[#72A314] w-full sm:w-auto px-2 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight"
         >
@@ -109,7 +124,7 @@ const p2pHash = useMutation({
       <div className="flex justify-center mb-4">
         <button
           className="bg-[#72A314] text-white px-3 sm:px-10 py-1 sm:py-3 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight"
-          onClick={()=>p2pTransaction.mutate({"username" : "name", "token_amount": p2pAmount})}
+          onClick={()=>p2pTransaction.mutate({"username" : userName, "token_amount": p2pAmount})}
         >
           Submit
         </button>
