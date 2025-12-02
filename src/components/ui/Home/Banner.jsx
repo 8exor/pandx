@@ -20,8 +20,8 @@ const Banner = () => {
     <>
       <div className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
-
-          <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">            
+         <div className="mycontainer ">
+           <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">            
             <img className="w-[90px] sm:w-[130px] lg:w-[200px]    2xl:w-[400px]" src="/assets/images/Cloud01.svg" alt="img-cloud" />
           </div>
 
@@ -42,7 +42,7 @@ const Banner = () => {
             Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together
             </p>
             <a href="https://swap.qerra.network/" target="_blank">
-              <button className="bg-[#5f5f81]   rounded-full shine hover:scale-110  relative  m-auto mt-8  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
+              <button className=" btn-primary shine mt-6 mx-auto  py-3 px-6 flex gap-2 text-white text-lg font-medium">
               <img src="/assets/images/panda.svg" alt="panda" />
               Buy Pandx
             </button>
@@ -56,26 +56,27 @@ const Banner = () => {
               </div>
 
               {/* Panda 1 */}
-              <div className="absolute  top-[37%] lg:top-[7%] lg:top-[8%] lg:left-[1%] lg:left-[2%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
+              <div className="absolute  top-[45%] lg:top-[7%] lg:top-[8%] lg:left-[1%] lg:left-[2%] left-[3%]  w-[23%]  sm:w-[15%] lg:w-[22%]" data-aos="zoom-in">
                 <img src="/assets/images/panda-1.svg" alt="panda 1" className="w-full h-auto" />
               </div>
 
               {/* Panda 2 */}
-              <div className="absolute top-[45%] sm:top-[22%]   lg:top-[20%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
+              <div className="absolute top-[50%] sm:top-[22%]   lg:top-[20%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
                 <img src="/assets/images/panda02.svg" alt="panda 2" className="w-full h-auto" />
               </div>
 
               {/* Panda 3 */}
-              <div className="absolute top-[14%]  lg:-top-[11%] lg:-top-[20%] lg:right-[8%] lg:right-[11%] right-[10%] w-[28%] lg:w-[25%] sm:w-[18%]" data-aos="zoom-in">
+              <div className="absolute top-[24%]  lg:-top-[11%] lg:-top-[20%] lg:right-[8%] lg:right-[11%] right-[10%] w-[28%] lg:w-[25%] sm:w-[18%]" data-aos="zoom-in">
                 <img src="/assets/images/panda03.svg" alt="panda 3" />
               </div>
 
               {/* Tree */}
-              <div className="absolute top-[17%]  sm:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
+              <div className="absolute top-[24%]  sm:top-[-20%] lg:top-[-45%] lg:-top-[52%] right-0  lg:-right-[2%] lg:-right-[2%] w-[15%] lg:w-[18%] sm:w-[15%]">
                 <img src="/assets/images/Tree.svg" alt="Tree"/>
               </div>
             </div>
           </div>
+         </div>
         </section>
       </div>
       <section className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover relative">
@@ -104,7 +105,7 @@ const Banner = () => {
             <div className="lg:ml-auto mx-auto  animate__animated animate__zoomIn relative" data-aos="zoom-in">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
               <div
-                className="absolute sm:bottom-[100px] animate__animated animate__zoomIn left-[65px] bottom-[70px] sm:left-[110px] sm:bottom-[70px] lg:bottom-[100px] lg:left-[110px] bottom:[148px] w-[60%]"
+                className="absolute sm:bottom-[21%] animate__animated animate__zoomIn left-[21%] bottom-[21%] sm:left-[24%] lg:bottom-[21%] lg:left-[110px] bottom:[148px] w-[60%]"
                 data-aos="zoom-in"
               >
                 <img

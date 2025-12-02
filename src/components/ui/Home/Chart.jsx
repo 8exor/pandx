@@ -23,8 +23,8 @@ const PieChart = () => {
 
     const chart = am4core.create("pieDiv", am4charts.PieChart3D);
     chart.data = [
-      { category: "Total supply\n[gray]100000000 PANDA[/]", value: 1 },
-      { category: "Staking Rewards\n[gray]Upto 100% APY[/]", value: 99 },
+      { category: "Persale on launchpad", value:1 },
+      { category: "Staking Rewards", value: 99 },
       // { category: "Liquidity Locked\n[gray]100% for 1 year[/]", value: 25 },
       // { category: "Symbol\n[gray]$Panda[/]", value: 30 }
     ];
