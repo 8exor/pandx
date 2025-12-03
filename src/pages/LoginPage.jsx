@@ -16,6 +16,7 @@ import FullPageLoader from "@hooks/FullPageLoader";
 export default function LoginPage({ setOpenLoginModal }) {
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
+  const [clickedOnConnect, setClickedOnConnect] = useState(false);
   const { isConnected, address } = useAppKitAccount();
   const [userName, setUserName] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -148,7 +149,7 @@ export default function LoginPage({ setOpenLoginModal }) {
     if (isConnected && clickedOnLogin) {
       LoginUser.mutate({ wallet_address: address });
     }
-  }, [isConnected]);
+  }, [isConnected && clickedOnLogin]);
 
   useEffect(() => {
     setIsReferralCodeChecked(false);
@@ -157,6 +158,12 @@ export default function LoginPage({ setOpenLoginModal }) {
   useEffect(()=>{
     setIsUserNameChecked(false);
   },[userName])
+
+  useEffect(()=>{
+    if(!clickedOnLogin && clickedOnConnect){
+    open()
+    }
+  },[clickedOnConnect])
 
   return (
   <>
@@ -199,7 +206,7 @@ export default function LoginPage({ setOpenLoginModal }) {
           </p>
           <button
             className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
-            onClick={() => open()}
+            onClick={() => {setClickedOnLogin(false); setClickedOnConnect(true)}}
           >
             Connect wallet
           </button>
