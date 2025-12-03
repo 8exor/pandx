@@ -144,6 +144,7 @@ useEffect(() => {
                   onClick={() => setOpenMenu(!openMenu)}
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
+               
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
                       openMenu ? "translate-y-[9px] rotate-45" : ""
