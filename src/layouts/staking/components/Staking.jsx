@@ -17,6 +17,7 @@ export default function Staking() {
   const [stakePopup, setStakePopup] = useState(false);
   const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
   const {handleCopy} = CopyToClipBaord();
+
   const {userData} = useContext(UserInfoContext)
   const location = useLocation();
   // const [clikcedTab, setClickedTab] = useState("stake")
@@ -71,16 +72,16 @@ const tableConfig = {
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-10 mt-4">
       <StakingHead/>
       <div className="flex flex-col items-center justify-between md:flex-row">
-        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
+        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px] xl:h-[750px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
         >
           <div className="flex flex-col items-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
             <button className="bg-[#BFFEB0] btn-primary  rounded-full shine hover:scale-110 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-3 px-3" onClick={()=>setStakePopup(true)}>
               My Rank
             </button>
              <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3 py-3 blink-text">
-             Active
+             {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
-            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-1">
+            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-1 text-sm">
               Upgrade next rank & get 0.60%
             </button>
           </div>
@@ -93,7 +94,7 @@ const tableConfig = {
           <Tabs activeTab={activeTab} setActiveTab ={setActiveTab} />
         </div>
 
-        <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[900px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
+        <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px]  xl:h-[750px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
         >
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left md:my-2">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
@@ -105,7 +106,7 @@ const tableConfig = {
           <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-25 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
-          <div className=" mt-15 rounded-md overflow-auto scrollbar-custom max-h-[300px]  ">
+          <div className=" mt-15 rounded-md overflow-auto scrollbar-custom max-h-[200px]  ">
             <table className="w-full ">
               <thead className="sticky top-0 text-black rounded-md shadow-xl">
                 <tr className="w-full flex gap-10 items-center justify-between p-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
@@ -123,7 +124,7 @@ const tableConfig = {
                       key={index}
                       className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
                     >
-                      <td className="text-base font-medium text-left text-white capitalize max-sm:w-30">
+                      <td className="text-base font-medium text-left text-black capitalize max-sm:w-30">
                         {index + 1}
                       </td>
                       <td className="font-medium text-left text-black capitalize max-sm:w-30 ">

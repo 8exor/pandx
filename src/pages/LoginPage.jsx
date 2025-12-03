@@ -1,11 +1,16 @@
-import { useAppKit, useAppKitAccount, useDisconnect } from "@reown/appkit/react";
-import React, { useEffect, useState } from "react";
+import {
+  useAppKit,
+  useAppKitAccount,
+  useDisconnect,
+} from "@reown/appkit/react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "../services/panda.api.services";
 import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
 import { useNavigate } from "react-router-dom";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 
 export default function LoginPage({ setOpenLoginModal }) {
   const { open } = useAppKit();
@@ -20,18 +25,19 @@ export default function LoginPage({ setOpenLoginModal }) {
   });
   const [isUserNameChecked, setIsUserNameChecked] = useState(false);
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
-    const { disconnect } = useDisconnect();
+  const { disconnect } = useDisconnect();
+  const { isLogin, setIsLogin } = useContext(UserInfoContext);
 
   const navigate = useNavigate();
 
-  const pasteButton=async()=>{
-try {
-  const text = await navigator.clipboard.readText();
-  setPasteReferralCode(text);
-} catch (error) {
-  toast.error("Permission to paste was denied or clipboard is empty.")
-}
-  }
+  const pasteButton = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setReferralCode(text);
+    } catch (error) {
+      toast.error("Permission to paste was denied or clipboard is empty.");
+    }
+  };
 
   const checkUserName = useMutation({
     mutationFn: async (formData) => {
@@ -52,15 +58,14 @@ try {
     },
   });
 
-  const validateReferralCode=()=>{
-      if (referralCode.length > 9 || referralCode.length < 4) {
-                setShowError({ ...showError, referralCode: true });
-                return toast.error(
-                  "The username must be between 4 and 9 characters long."
-                );
-              }
-              checkReferralCode.mutate({ username: referralCode });
-  }
+  const validateReferralCode = () => {
+    if (!referralCode) {
+      console.log({ referralCode });
+      setShowError({ ...showError, referralCode: true });
+      return toast.error("Username is required.");
+    }
+    checkReferralCode.mutate({ username: referralCode });
+  };
 
   const checkReferralCode = useMutation({
     mutationFn: async (formData) => {
@@ -99,24 +104,21 @@ try {
     },
     onSuccess: async (data) => {
       toast.success(data?.message);
-    
-  
+      await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-      navigate("/StakingPage", {state : userName});
+      navigate("/StakingPage", { state: userName });
       setOpenLoginModal(false);
     },
     onError: (error) => {
-      if (error?.status === 0){
-      toast.error(error?.message)
+      if (error?.status === 0 && clickedOnLogin) {
+        toast.error(error?.message);
       }
       disconnect();
-      
     },
   });
 
   useEffect(() => {
-  
-    if (isConnected && clickedOnLogin) {
+    if (isConnected) {
       LoginUser.mutate({ wallet_address: address });
     }
   }, [isConnected]);
@@ -169,7 +171,7 @@ try {
         <div
           className={`bg-[#ccf1b3] mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${
             showError?.userName && "border-red-600"
-          }`}
+          } `}
         >
           <input
             type="text"
@@ -181,9 +183,10 @@ try {
             onChange={(e) => setUserName(e.target.value)}
           />
           <button
-            className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
+            className={`bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${
+              isUserNameChecked && "border-green-900 bg-green-600"
+            }`}
             onClick={() => {
-
               if (userName.length > 9 || userName.length < 4) {
                 setShowError({ ...showError, userName: true });
                 return toast.error(
@@ -193,19 +196,13 @@ try {
               checkUserName.mutate({ username: userName });
             }}
           >
-            {userName ? (
-              isUserNameChecked ? (
-                <img
-                  className="mx-auto rounded-full w-7"
-                  src="/assets/images/check.gif"
-                  alt="gif"
-                />
-              ) : (
-                "Validate"
-              )
-            ) : (
-              "Validate"
-            )}
+            {userName
+              ? isUserNameChecked
+                ? "Validated"
+                : checkUserName?.isPending
+                ? "Validating..."
+                : "Validate"
+              : "Validate"}
           </button>
         </div>
 
@@ -226,10 +223,7 @@ try {
           <button
             className={`bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer`}
             onClick={() => {
-              isReferralCodeChecked ?
-            validateReferralCode()
-            :
-            pasteButton()
+              referralCode ? validateReferralCode() : pasteButton();
             }}
           >
             {referralCode ? (

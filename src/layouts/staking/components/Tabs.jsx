@@ -48,7 +48,7 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
   return (
     <div>
       <div className="flex flex-col items-center mt-12">
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-5">
           {tabs.map((tab, index) => (
             <button
               key={index}

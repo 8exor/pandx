@@ -41,7 +41,7 @@ export default function P2p() {
       try {
         const provider = new ethers.providers.Web3Provider(walletProvider);
         console.log({ provider });
-        debugger
+  
         const signer = await provider.getSigner();
         console.log({ signer });
         console.log({
@@ -56,7 +56,8 @@ export default function P2p() {
           from: data?.data?.stakeInvest?.from,
           to: data?.data?.stakeInvest?.to,
           gasPrice: data?.data?.stakeInvest?.gasPrice,
-          gasLimit: data?.data?.stakeInvest?.data,
+          gasLimit: data?.data?.stakeInvest?.gasLimit,
+          data: data?.data?.stakeInvest?.data,
           value: data?.data?.stakeInvest?.value,
         });
 
@@ -64,8 +65,10 @@ export default function P2p() {
         await data3.wait();
 
         p2pHash.mutate({
-          txn_hash: invest?.hash,
+          txn_hash: data3?.hash,
           username: userName,
+          token_amount: p2pAmount,
+
         });
       } catch (error) {
         console.log({ error });
