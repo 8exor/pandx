@@ -198,7 +198,7 @@ export default function LoginPage({ setOpenLoginModal }) {
             </span>
           </div>
         </div>
-        <div className={`bg-[#ccf1b3]  mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${showError?.walletAddress && "border-red-600" } `}>
+        <div className={`bg-[#ccf1b3] w-full mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${showError?.walletAddress && "border-red-600" } `}>
           <p >
             {isConnected
               ? `${address.substring(0, 10)}.....${address.substring(32, 42)}`
@@ -278,8 +278,8 @@ export default function LoginPage({ setOpenLoginModal }) {
               ? isReferralCodeChecked
                 ? "Validated"
                 : checkReferralCode?.isPending
-                ? "validating"
-                : "validate"
+                ? "Validating"
+                : "Validate"
               : "Paste"}
           </button>
         </div>

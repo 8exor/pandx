@@ -83,7 +83,7 @@ const DashboardHeader = () => {
         }
         {
           openMenu && 
-            <div className="sm:hidden absolute top-18 left-0 w-full right-0  p-4 bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
+            <div className="sm:hidden absolute top-18 left-0 w-full right-0  p-4  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
              <ul className="text-center">
           {dappNavLinks?.map((navlink, index) => (
             <li key={index}>
@@ -93,13 +93,15 @@ const DashboardHeader = () => {
             </li>
           ))}
         </ul>
+        <div className="flex items-center justify-center w-full mt-5">
            <button
-          className="hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
+          className="flex gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
           onClick={() => handleDisconnet()}
         >
           <img src="/assets/images/panda.svg" alt="panda" />
         LOGOUT
         </button>
+        </div>
         </div>
         }
       </main>

@@ -11,7 +11,7 @@ export default function ReportPool() {
     const [startDate, setStartDate] = useState(new Date())
 
   return (
-    <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-15 p-7'>
+    <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7'>
      <div className='grid items-center justify-between grid-cols-1 gap-10 md:grid-cols-3 lg-grid-cols-4 lg:grid-cols-6 lg:grid-rows-2 '>
         {
             reportPool?.map((pool, i)=>(
