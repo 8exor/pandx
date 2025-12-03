@@ -5,7 +5,7 @@ const Trust = () => {
       <section >
          
         <div 
-  className="relative w-full bg-[url('/assets/images/trust_bg.svg.svg')] bg-cover bg-center py-10 md:py-40">
+  className="relative w-full bg-[url('/assets/images/trust_bg.svg.svg')] bg-cover bg-center py-10 md:py-50">
  <h2 className="lg:text-[82px] py-6  text-[30px] sm:text-[40px]  absolute top-10 left-0 right-0 text-center" data-aos="slide-up">
             Why Trust Pandx?
           </h2>

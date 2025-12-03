@@ -3,7 +3,8 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-const PieChart = () => {
+const PieChart = ({tokenomicsRef}) => {
+
   const [isMobile, setIsMobile] = useState(false);
   const [istab , setIsTab] = useState (false);
   // Detect screen size
@@ -139,7 +140,7 @@ const PieChart = () => {
   }, [isMobile]);
 
   return (
-    <div className="relative w-full bg-[#e5ffd4]">
+    <div ref={tokenomicsRef} className="relative w-full bg-[#e5ffd4]">
       <h1 className="w-full text-center text-2xl sm:text-7xl">Tokenomics</h1>
       <p className="w-full text-center text-[14px] sm:text-xl pt-5">100,000,000 $PANDX</p>
       <img
