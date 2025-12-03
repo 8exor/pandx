@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect  , useref} from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-const Banner = () => {
+
+const Banner = ({ aboutRef , homeRef}) => {
   const [copied, setCopied] = useState(false);
   const copyText = () => {
     navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
@@ -18,7 +19,7 @@ const Banner = () => {
 
   return (
     <>
-      <div className="pt-[96px] bg-[#edffe1]">
+      <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
          <div className="mycontainer ">
            <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">            
@@ -42,7 +43,7 @@ const Banner = () => {
             Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together
             </p>
             <a href="https://swap.qerra.network/" target="_blank">
-              <button className=" btn-primary shine mt-6 mx-auto  py-3 px-6 flex gap-2 text-white text-lg font-medium">
+              <button className=" btn-primary  mt-6 mx-auto  py-3 px-6 flex gap-2 text-white text-lg font-medium">
               <img src="/assets/images/panda.svg" alt="panda" />
               Buy Pandx
             </button>
@@ -79,14 +80,14 @@ const Banner = () => {
          </div>
         </section>
       </div>
-      <section className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover ">
+      <section  ref={aboutRef} className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover ">
       <div className="relative mycontainer">
         {/* <div className="absolute   bottom-[18%] sm:bottom-[14%] md:bottom-[11%] lg:bottom-[5%] xl:bottom-[6%]">
           <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
         </div> */}
       </div>
-        <div className="mycontainer relative">
-            <div className="absolute   bottom-[-4%] xl:left-[-11%]  left-0">
+        <div  className="mycontainer relative">
+            <div className="absolute hidden sm:block  bottom-[-4%] xl:left-[-11%]  left-0">
           <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
         </div>
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
@@ -96,12 +97,12 @@ const Banner = () => {
                 Pandx is a fast, eco-friendly staking project with meme vibes and real-world muscle — fun, functional, and powered by a real community
               </p>
               <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-2xl flex-wrap lg:flex-nowrap">
-                <p className="break-all">0x2170Ed0880ac9A755fd29B2688956BD959F933F8</p>
+                <p className="break-all text-center">0x2170Ed0880ac9A755fd29B2688956BD959F933F8</p>
                   
               
                 <button
                   onClick={copyText}
-                  className="btn-primary shine sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
+                  className="btn-primary !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "copied" : "copy"}
                 </button>

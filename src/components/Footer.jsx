@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="flex items-center justify-center gap-2  md:gap-8 pt-10">
                 <div>
                   <a href="https://swap.qerra.network/" target="blank">
-                   <button className="btn-primary shine   md:block hidden   duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
+                   <button className="btn-primary   md:block hidden   duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
                     <img src="/assets/images/panda.svg" alt="Pandx" />
                    Buy $Pandx
                   </button>
