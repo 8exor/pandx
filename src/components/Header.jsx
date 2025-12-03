@@ -105,7 +105,7 @@ useEffect(() => {
                 <img src="/assets/images/telegram.svg" alt="telegram" />
               </div>
          
-              <div className="items-center hidden gap-3 lg:flex">
+              <div className="items-center hidden gap-10 lg:flex">
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {

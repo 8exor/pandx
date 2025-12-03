@@ -23,7 +23,7 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
     { key: "compound", label: "Compound" },
 
     { key: "p2p", label: "P2P" },
-    { key: "incomeReports", label: "IncomeReport" },
+    { key: "incomeReports", label: "Income Report" },
   ];
   
   const renderContent = {

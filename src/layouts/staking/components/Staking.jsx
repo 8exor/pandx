@@ -10,52 +10,66 @@ import CopyToClipBaord from "@hooks/CopyToClipBoard";
 import StakingTable from "./StakingTable";
 import { useLocation } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
-
+import toast from "react-hot-toast";
 
 export default function Staking() {
-  const {address} = useAppKitAccount();
+  const { address } = useAppKitAccount();
   const [stakePopup, setStakePopup] = useState(false);
   const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
-  const {handleCopy} = CopyToClipBaord();
+  const [ handleCopy ] = CopyToClipBaord();
 
-  const {userData} = useContext(UserInfoContext)
+  const { userData } = useContext(UserInfoContext);
   const location = useLocation();
   // const [clikcedTab, setClickedTab] = useState("stake")
-    const [activeTab, setActiveTab] = useState({
-      mainTabs : "stake",
-      incomeTabs : "DAILY$",
-    });
+  const [activeTab, setActiveTab] = useState({
+    mainTabs: "stake",
+    incomeTabs: "DAILY$",
+  });
 
-
-
-const tableConfig = {
-  stake : {
-    headers : ["Sr No", "Date", "Stacked Amt$", "Status", "Total Withdrawal"]
-  },
-  unstake : {
-    headers : ["Sr No", "Date", "Stacked Amt$", "Unstaked Amt$", "Status", "Total Withdrawal"]
-  },
-  withdrawal : {
-    headers : ["Sr No", "Date", "Withdrawal Amt$", "Status", "Total Withdrawal"]
-  },
-    compound : {
-    headers : ["Sr No", "Date", "Withdrawal Amt$", "Status", "Total Withdrawal"]
-  },
-  p2p : {
-    headers : ["Sr No", "Date", "P2P Amt$", "Status", "Total Withdrawal"]
-  },
-  incomeReports : {
-    "DAILY$" : ["Sr No", "Date", "Username", "Daily$", "Amt$", "Note"],
-    "DIRECT" : ["Sr No", "Date", "Username", "Direct", "Amt$", "Note"],
-    "BOOSTX" : ["Sr No", "Date", "Username", "BOOSTX", "Amt$", "Note"],
-    "LEVEL" : ["Sr No", "Date", "Username", "Level", "Amt$", "Note"],
-    "RANK" : ["Sr No", "Date", "Username", "Rank", "Amt$", "Note"],
-    "UNIPOLE" : ["Sr No", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
-  }
-
-  }
-
-
+  const tableConfig = {
+    stake: {
+      headers: ["Sr No", "Date", "Stacked Amt$", "Status", "Total Withdrawal"],
+    },
+    unstake: {
+      headers: [
+        "Sr No",
+        "Date",
+        "Stacked Amt$",
+        "Unstaked Amt$",
+        "Status",
+        "Total Withdrawal",
+      ],
+    },
+    withdrawal: {
+      headers: [
+        "Sr No",
+        "Date",
+        "Withdrawal Amt$",
+        "Status",
+        "Total Withdrawal",
+      ],
+    },
+    compound: {
+      headers: [
+        "Sr No",
+        "Date",
+        "Withdrawal Amt$",
+        "Status",
+        "Total Withdrawal",
+      ],
+    },
+    p2p: {
+      headers: ["Sr No", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
+    },
+    incomeReports: {
+      DAILY$: ["Sr No", "Date", "Daily $", "Amt $", "Note"],
+      DIRECT: ["Sr No", "Date", "Direct Referral", "Amt $", "Note"],
+      BOOSTX: ["Sr No", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
+      LEVEL: ["Sr No", "Date", "Username", "Level", "Amt$", "Note"],
+      RANK: ["Sr No", "Date", "Username", "Rank", "Amt$", "Note"],
+      "UNI-POOL": ["Sr No", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
+    },
+  };
 
   const { data } = useQuery({
     queryKey: ["airdropData"],
@@ -65,21 +79,67 @@ const tableConfig = {
     },
   });
 
-
-
-
   return (
-    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-10 mt-4">
-      <StakingHead/>
+    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-4 mt-4">
+      <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
-        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px] xl:h-[750px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none"
-        >
-          <div className="flex flex-col items-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
-            <button className="bg-[#BFFEB0] btn-primary  rounded-full shine hover:scale-110 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-3 px-3" onClick={()=>setStakePopup(true)}>
+        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px] xl:h-[700px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
+          <div className="relative flex flex-col items-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
+            <button
+              className=" bg-[#BFFEB0] btn-primary  rounded-full shine hover:scale-110 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-3 px-3"
+              onClick={() => setStakePopup(true)}
+            >
               My Rank
             </button>
-             <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3 py-3 blink-text">
-             {userData?.data?.is_active ? "Active" : "Inactive"}
+            {stakePopup && (
+              <>
+              <div
+                className="fixed inset-0 flex items-center justify-center z-35"
+                onClick={() => setStakePopup(false)} //  background click closes popup
+              />
+                <div
+                  className="absolute top-0 z-40  left-0 p-2 bg-[#C5FF9E] w-full max-w-[200px] h-[130px] rounded-md text-black"
+                  onClick={(e) => e.stopPropagation()} //  clicking inside won't close popup
+                >
+                  <div className="flex items-center justify-between space-y-4">
+                    <div>
+                      <h3>Wallet Address</h3>
+                      <span className="">
+                        {address
+                          ? `${address.substring(0, 5)}....${address.substring(
+                              36,
+                              42
+                            )}`
+                          : "No address found"}
+                      </span>
+                    </div>
+                    <div>
+                      <button onClick={() => handleCopy(address)}>
+                        <img src="/assets/icons/copy.svg" alt="copy" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between ">
+                    <div>
+                      <h3>Referral Link</h3>
+                      <span>{userData?.data?.username}</span>
+                    </div>
+                    <div>
+                      <button onClick={()=>handleCopy(userData?.data?.username)}>
+                        <img src="/assets/icons/copy.svg" alt="copy" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </>
+            )}
+            <button
+              className={`${
+                userData?.data?.is_active ? "btn-primary " : "btn-red"
+              } m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-3 py-3 blink-text`}
+            >
+              {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
             <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-110 duration-300 ease-in-out p-1 text-sm">
               Upgrade next rank & get 0.60%
@@ -89,24 +149,23 @@ const tableConfig = {
           <img
             src="/assets/images/pandaDash.svg"
             alt="panda"
-            className="flex justify-center items-center w-[148px] h-[189px] m-auto mt-8 sm:mt-16"
+            className="flex justify-center items-center w-[150px]  m-auto mt-8 sm:mt-8 "
           />
-          <Tabs activeTab={activeTab} setActiveTab ={setActiveTab} />
+          <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
-        <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px]  xl:h-[750px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6"
-        >
-          <h1 className="flex justify-center my-4 text-xl text-center md:text-left md:my-2">
+        <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[850px]  xl:h-[700px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
+          <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
           </h1>
           <img
             src="/assets/images/qqlogo.svg"
-            className="w-[150px] sm:w-[196px] h-auto mx-auto mt-6 md:mt-22"
+            className="w-[150px] sm:w-[196px] h-auto mx-auto mt-6 md:mt-10"
           />
-          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-25 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
+          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-15 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
-          <div className=" mt-15 rounded-md overflow-auto scrollbar-custom max-h-[200px]  ">
+          <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[230px]  ">
             <table className="w-full ">
               <thead className="sticky top-0 text-black rounded-md shadow-xl">
                 <tr className="w-full flex gap-10 items-center justify-between p-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
@@ -136,7 +195,9 @@ const tableConfig = {
                         </span>
                       </td>
                       <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
-                        {Number(child?.airdrop_child_user?.qerra_airdrop).toFixed(0)}
+                        {Number(
+                          child?.airdrop_child_user?.qerra_airdrop
+                        ).toFixed(0)}
                       </td>
                     </tr>
                   </>
@@ -145,46 +206,8 @@ const tableConfig = {
             </table>
           </div>
         </div>
-
-      
-
-        {stakePopup && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-            onClick={() => setStakePopup(false)} //  background click closes popup
-          >
-            <div
-              className="p-6 bg-[#C5FF9E] w-full max-w-[300px] h-[200px] rounded-sm text-black"
-              onClick={(e) => e.stopPropagation()} //  clicking inside won't close popup
-            >
-              <div className="flex items-center justify-between space-y-4">
-                <div>
-                  <h3>Wallet Address</h3>
-                  <span className="">{address ? `${address.substring(0,5)}....${address.substring(36,42) }` : "No address found"}</span>
-                </div>
-                <div>
-                    <button onClick={()=>handleCopy(address)}>
-                      <img src="/assets/icons/copy.svg" alt="copy" />
-                    </button>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between ">
-                <div>
-                  <h3>Referral Link</h3>
-                  <span>{userData?.data?.username}</span>
-                </div>
-                <div>
-                  <button>
-                      <img src="/assets/icons/copy.svg" alt="copy" />
-                    </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-        <StakingTable activeTab={activeTab} tableConfig={tableConfig} />
+      <StakingTable activeTab={activeTab} tableConfig={tableConfig} />
     </div>
   );
 }

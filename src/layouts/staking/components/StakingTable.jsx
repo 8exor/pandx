@@ -16,10 +16,10 @@ export default function StakingTable({activeTab, tableConfig}) {
             return data;
         }
     })
-    console.log("yamte kudasai :", data?.data?.rows)
+  
 
 const incomeData =  data?.data?.rows ;
-console.log("Are you ever going to be false : ", isLoading)
+
 
   return (
     <div className='w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5 border border-[#6f6fb5] rounded-md'>
