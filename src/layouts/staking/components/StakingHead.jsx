@@ -4,6 +4,8 @@ import axiosInstance from '@utils/axiosInstance';
 import { REPORTS } from '@services/panda.api.services';
 import MaxCapProgress from './MaxCapProgress';
 import toast from 'react-hot-toast';
+import { ProgressBar } from './ProgressBar';
+
 
 export default function StakingHead() {
 
@@ -23,7 +25,7 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
   return (
    <>
     <div
-        className="relative mt-15 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
+        className="relative mt-2 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
             flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-4 text-center md:text-left "
       >
       <div/>
@@ -39,18 +41,19 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
 
 
        <div className="flex justify-center w-full max-w-[1360px] mx-auto relative  z-30 ">
-        <div
+        {/* <div
           className="w-full bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] 
                    font-bold text-black py-1 px-2 
                   relative overflow-visible"
         >
           {" "}
-          Total Burning 60%
+          Total Burning 60% */}
           {/* TOP BLEND */}
-          <div className="absolute top-[-20px] left-0 right-0 h-[20px] opacity-80"></div>
+          {/* <div className="absolute top-[-20px] left-0 right-0 h-[20px] opacity-80"></div> */}
           {/* BOTTOM BLEND */}
-          <div className="absolute bottom-[-20px] left-0 right-0 h-[20px] opacity-80"></div>
-        </div>
+          {/* <div className="absolute bottom-[-20px] left-0 right-0 h-[20px] opacity-80"></div> */}
+        {/* </div> */}
+            <ProgressBar label="Total Burning" value={50} />
       </div>
 
 

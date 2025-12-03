@@ -345,7 +345,7 @@ body{
   }
 }
 
-.shine {
+/* .shine {
 position: relative;
 overflow: hidden;
 }
@@ -372,7 +372,7 @@ left: -100%;
 100% {
 left: 150%;
 }
-}
+} */
 
 
 
@@ -436,3 +436,156 @@ left: 150%;
     inset 0px 35px 30px #000;
   margin-top: 3px;
 }
+
+
+.btn-red {
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(90deg, #ffffff, #FF0000, #ffffff); /* soft red gradient */
+  border-radius: 12px;
+  color: black;
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0px 0px 5px #ffffff96,
+    inset 0px 35px 30px #FF0000, /* red inset highlight */
+    0px 5px 10px #00000070;
+}
+
+.btn-red::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 12px;
+  filter: blur(0);
+  z-index: -1;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.btn-red:hover::before {
+  filter: blur(15px);
+  box-shadow: 0 0 20px #FF0000; /* soft red glow on hover */
+}
+
+.btn-red:active::before {
+  filter: blur(5px);
+  transform: translateY(1px);
+}
+
+.btn-red:active {
+  box-shadow:
+    inset 0px 0px 5px #ffffffa9,
+    inset 0px 35px 30px #FF0000; /* darker red on click */
+  margin-top: 3px;
+}
+
+
+
+.progress-container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background: #ddd;
+  /* border-radius: 6px; */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Centered label across full bar */
+.progress-text {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #000;
+  pointer-events: none;
+}
+
+/* Animated fill */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e98c, #b4ffb6);
+  transition: width 1.2s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;   /* 🔥 This keeps shimmer inside the filled area */
+}
+
+/* Shimmer animation */
+.loading-animation::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+
+.btn-purple {
+  border: none;
+  cursor: pointer;
+  position: relative;
+background: linear-gradient(171deg,rgba(91, 91, 172, 1) 10%, rgba(255, 255, 255, 1) 100%);/* soft purple gradient */
+  border-radius: 12px;
+  color: black;
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0px 0px 5px #ffffff96,
+    inset 0px 35px 30px rgba(91, 91, 172, 1)  /* purple inset highlight */
+    0px 5px 10px #00000070;
+}
+
+.btn-purple::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 12px;
+  filter: blur(0);
+  z-index: -1;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.btn-purple:hover::before {
+  filter: blur(15px);
+  box-shadow: 0 0 20px rgba(91, 91, 172, 1) ; /* soft purple glow on hover */
+}
+
+.btn-purple:active::before {
+  filter: blur(5px);
+  transform: translateY(1px);
+}
+
+.btn-purple:active {
+  box-shadow:
+    inset 0px 0px 5px #ffffffa9,
+    inset 0px 35px 30px rgba(91, 91, 172, 1) ; /* darker purple on click */
+  margin-top: 3px;
+}
+
+
+
