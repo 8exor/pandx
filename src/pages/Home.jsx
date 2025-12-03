@@ -6,24 +6,27 @@ import Marquee from "@components/Marquee"
 import Trust from "@components/ui/Home/Trust"
 import Roadmap from "@components/ui/Home/Roadmap"
 import Footer from "@components/Footer"
-import Tokenomics from "@components/ui/Home/TokenomicsChart"
-import PieChart3D from "../hooks/PieChart3D"
 import Chart from "@components/ui/Home/Chart"
-
-
-
+import ScrollToTop from "@components/ui/Home/ScrollToTop"
+import { useRef } from "react";
 const Home = () => {
+    const aboutRef = useRef(null);
+    const tokenomicsRef = useRef(null);
+    const getStartedRef = useRef(null);
+    const roadmapRef = useRef(null);
+    const homeRef = useRef(null);
     return (
         <>
-        <Header/>   
-        <Banner/>
+        <Header  getStartedRef={getStartedRef} roadmapRef={roadmapRef} tokenomicsRef={tokenomicsRef} aboutRef={aboutRef} homeRef={homeRef}/>   
+        <Banner homeRef={homeRef} aboutRef={aboutRef} />
         <Features/>
-        <Chart/>
+        <Chart tokenomicsRef={tokenomicsRef}/>
         <Marquee/>
         <Trust/>
-        <Roadmap/>
+        <Roadmap roadmapRef={roadmapRef} getStartedRef={getStartedRef}/>
         <Marquee/>
         <Footer/>
+        <ScrollToTop/>
         </>
     )
 }

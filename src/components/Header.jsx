@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef } from "react";
 import {
   useAppKit,
   useAppKitAccount,
@@ -9,7 +9,18 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
-const Header = () => {
+const Header = ({ aboutRef , tokenomicsRef , getStartedRef , roadmapRef , homeRef } ) => {
+    const scrollTo = (section) => {
+    const refs = {
+      home: homeRef ,
+      about: aboutRef,
+      tokenomics: tokenomicsRef,
+      getStarted: getStartedRef,
+      roadmap: roadmapRef,
+    };
+
+    refs[section].current?.scrollIntoView({ behavior: "smooth" });
+  };
   const { open, close } = useAppKit();
   const { isConnected } = useAppKitAccount();
   const { walletProvider } = useAppKitProvider("eip155");
@@ -18,19 +29,38 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const menuRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+useEffect(() => {
+  // Scroll listener
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+  const handleClickOutside = (event) => {
+   if (menuRef.current && !menuRef.current.contains(event.target)) {
+  setOpenMenu(false);  // ✅ close menu
+}
+
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  if (openMenu) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  // Cleanup
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [openMenu]);
+
 
   const handleDisconnet = async () => {
     try {
@@ -93,14 +123,14 @@ const Header = () => {
                   </button>
                 </NavLink> */}
 
-{isConnected &&
+          {isConnected &&
                 <NavLink to={"/StakingPage"}>
                   <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Staking
                   </button>
                 </NavLink>
-}
+          }
                 
                 <a href=" https://swap.qerra.network/" target="blank">
                   <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
@@ -133,22 +163,22 @@ const Header = () => {
               </div>
 
               {openMenu && (
-                <div className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg ">
-                  <ul className="text-center">
+                <div ref={menuRef} className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg ">
+                  <ul className="text-center" onClick={(e) => e.stopPropagation()}>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <a href="">Home</a>
+                    <button onClick={() => { scrollTo("home"); setOpenMenu(false); }}> Home</button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <a href="">About</a>
+                      <button onClick={() => { scrollTo("about"); setOpenMenu(false); }}>About</button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <a href="">Tokenomics</a>
+                      <button onClick={() => { scrollTo("tokenomics"); setOpenMenu(false); }}>Tokenomics</button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <a href="">Get Started</a>
+                     <button onClick={() => { scrollTo("getStarted"); setOpenMenu(false); }}>Get Started</button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <a href="">Roadmap</a>
+                      <button onClick={()=>{ scrollTo("roadmap"); setOpenMenu(false); }}>Roadmap</button>
                     </li>
                   </ul>
                   <a className="flex items-center justify-center lg:hidden" href=" https://swap.qerra.network/" target="blank">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-const Roadmap = () => {
+const Roadmap = ({getStartedRef ,  roadmapRef}) => {
   const [copied, setCopied] = useState(false);
   const copyText = () => {
     navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
@@ -36,7 +36,7 @@ const Roadmap = () => {
 
   return (
     <>
-      <section className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
+      <section ref={getStartedRef} className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
         <div className="mycontainer">
           <h2
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pt-10"
@@ -53,7 +53,7 @@ const Roadmap = () => {
               <div className="border-[#66a22a] bg-[#5b5ca9] border-[5px] px-15 py-5 rounded-xl p-4">
                 <img className="m-auto" src="assets/images/wallet.svg" alt="" />
               </div>
-              <h3 className="text-[24px] pt-4 leading-[26px]">
+              <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
                 Fund with $QRA/$HLDR
               </h3>
             </div>
@@ -66,7 +66,7 @@ const Roadmap = () => {
                 <img className="m-auto" src="assets/images/fund.svg" alt="" />
               </div>
               <a href="https://swap.qerra.network/" target="blank">
-                <h3 className="text-[24px] pt-4 leading-[26px]">
+                <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
                   Connect to our Partner DEX – qerraSWAP
                 </h3>
               </a>
@@ -83,7 +83,7 @@ const Roadmap = () => {
                   alt=""
                 />
               </div>
-              <h3 className="text-[24px] pt-4 leading-[26px]">
+              <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
                 Buy $PANDX & join the hYBRID Ecosystem
               </h3>
             </div>
@@ -125,7 +125,7 @@ const Roadmap = () => {
         </div>
       </section>
 
-      <section className=" pb-2 bg-[#d8feccab]">
+      <section ref={roadmapRef} className=" pb-2 bg-[#d8feccab]">
         <div className="relative">
           {/* DESKTOP VERSION */}
           <div className="hidden xl:block relative">
