@@ -167,7 +167,7 @@ const handleClickOutside = (event) => {
                 <img className="w-[18px] h-[18px]" src="/assets/images/telegram.svg" alt="telegram" />
               </div>
          
-              <div className="items-center hidden gap-3 lg:flex">
+              <div className="items-center hidden gap-10 lg:flex">
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
@@ -198,6 +198,8 @@ const handleClickOutside = (event) => {
                   <button className="flex items-center gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
+                    <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
+                    qerraSwap
                   </button>
                 </a>
               </div>
@@ -206,6 +208,7 @@ const handleClickOutside = (event) => {
                 
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
+               
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
                       openMenu ? "translate-y-[9px] rotate-45" : ""

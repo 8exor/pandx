@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import  { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -8,11 +8,13 @@ import toast from "react-hot-toast";
 import { Contract, ethers } from "ethers";
 import Abi from "@utils/abi/tokenAllowance.abi.json"
 import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
+import { UserInfoContext } from '@contexts/UserInfoContext';
 
 export default function StakeTab() {
   const [stakeAmount, setStakeAmount] = useState("");
   const { address, isConnected } = useAppKitAccount();
   const { walletProvider } = useAppKitProvider("eip155");
+  const {userData} = useContext(UserInfoContext) 
 
  const staking = useMutation({
     mutationFn: async (formdata) => {
@@ -101,18 +103,18 @@ toast.error(error?.message || "Error Occurred")
 
   return (
 
-      <div className="px-4 mt-8 mb-10 sm:px-6">
-        <div className="flex flex-col justify-between gap-4 mb-8 sm:flex-row">
+      <div className="px-4 mt-1 mb-1 sm:px-6">
+        <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
             <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
-              0.00
+              {Number(userData?.data?.wallet_balance).toFixed(0)}
             </div>
           </div>
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">Current Worth</p>
             <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
-              $0
+              {Number(userData?.data?.wallet_balance * userData?.data?.token_price).toFixed(2)}
             </div>
           </div>
         </div>
@@ -138,14 +140,14 @@ toast.error(error?.message || "Error Occurred")
             <p className="font-bold">$PANDX</p>
           </div>
         </div>
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-2">
           <button
             className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
             onClick={() => staking.mutate({ stake_amount: stakeAmount })}
           >
            {
             staking?.isPending ? 
-            <span className="loader"></span>
+            "submitting...."
             :
             "submit"
            }

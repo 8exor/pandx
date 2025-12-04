@@ -11,8 +11,8 @@ export default function ReportPool() {
     const [startDate, setStartDate] = useState(new Date())
 
   return (
-    <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-15 p-7'>
-     <div className='grid items-center justify-between grid-cols-1 gap-10 md:grid-cols-3 lg-grid-cols-4 lg:grid-cols-4 lg:grid-rows-3 '>
+    <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7'>
+     <div className='grid items-center justify-between grid-cols-1 gap-10 md:grid-cols-3 lg-grid-cols-4 lg:grid-cols-6 lg:grid-rows-2 '>
         {
             reportPool?.map((pool, i)=>(
                 <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
@@ -41,7 +41,7 @@ export default function ReportPool() {
       { pickDate ? <DatePicker selected={startDate} onChange={(date)=>setStartDate(date)}/>
         :
         <>
-        <img src="/assets/icons/calendar.svg" alt="calendar" />
+        <img src="/assets/icons/calendar.svg" alt='calendar' />
         <span className='text-sm font-Lato'>Pick a Date</span>
         </>
 

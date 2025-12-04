@@ -18,7 +18,7 @@ const {data:userData, isLoading, error} = useQuery({
 console.log("is the user using data : ", userData)
 
 return (
-    <UserInfoContext.Provider value={{userData, isLoading, error}}>
+    <UserInfoContext.Provider value={{userData, isLoading, error, setLogin, isLogin}}>
         {children}
     </UserInfoContext.Provider>
 )

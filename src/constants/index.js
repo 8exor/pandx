@@ -51,6 +51,22 @@ export const myRank = [
     title: "My Team",
     value: "1000",
   },
+   {
+    title: "BOOSTX",
+    value: "$100",
+  },
+  {
+    title: "My Level",
+    value: "10",
+  },
+  {
+    title: "UNI-POOL",
+    value: "$100",
+  },
+  {
+    title: "Total Gain",
+    value: "$100",
+  },
 ];
 
 export const myLevel = [
