@@ -14,7 +14,7 @@ const Features = () => {
         <div className="mycontainer ">
           <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-5 mt-[-80px] lg:mt-0">
             <div className="bg-[#e5ffe6] min-h-[280px]  h-fit   shadow-bottom overflow-x-clip xl:overflow-x-visible p-[36px] rounded-lg h-fit relative" data-aos="zoom-in">
-              <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
+              <h3 className="lg:text-4xl text-2xl leading:[20px] z-10 relative lg:leading-[40px]">
                 Speed and <br />
                 Security
               </h3>
@@ -35,7 +35,7 @@ const Features = () => {
                 How Pandx Works
               </h2>
               <div className="bg-[#e5ffe6] min-h-[280px]  h-fit   animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg mt-0 md-[10px] lg:mt-15 relative"  data-aos="zoom-in">
-                <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
+                <h3 className="lg:text-4xl text-2xl leading:[20px] z-10 relative lg:leading-[40px]">
                   Real Yield,
                   <br /> Not Hype
                 </h3>
@@ -54,7 +54,7 @@ const Features = () => {
 
             {/* box 3 */}
             <div className="bg-[#e5ffe6] min-h-[280px]  h-fit  animate__animated animate__zoomIn overflow-x-clip xl:overflow-x-visible shadow-bottom p-[36px] rounded-lg h-fit mt-[10px] lg:mt-[380px] relative"data-aos="zoom-in">
-              <h3 className="lg:text-4xl text-2xl leading:[20px] lg:leading-[40px]">
+              <h3 className="lg:text-4xl z-10 relative text-2xl leading:[20px] lg:leading-[40px]">
                 Community
                 <br /> First
               </h3>
@@ -80,7 +80,7 @@ const Features = () => {
                -z-10"
           ></div>
 
-          <h2 className="relative   z-10 text-[32px] sm:text-[62px] leading-[52px]"   data-aos="zoom-in">
+          <h2 className="relative   z-10 lg:text-[82px]   text-[30px] sm:text-[40px]  sm:leading-10 leading-20"   data-aos="zoom-in">
             How Pandx Works
           </h2>
         </div>

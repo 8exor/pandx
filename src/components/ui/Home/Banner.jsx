@@ -36,7 +36,7 @@ const Banner = ({ aboutRef , homeRef}) => {
 
           <div className="py-20 mycontainer">
            <div className="animate__animated animate__zoomIn" data-aos="zoom-in">
-             <h1 className="text-3xl  relative sm:text-[64px] lg:text-[40px] lg:text-6xl xl:text-9xl text-center leading-[1.1]">
+             <h1 className="text-4xl  relative sm:text-[64px]  lg:text-6xl xl:text-9xl text-center leading-[1.1]">
               The People’s Pandx Coin
             </h1>
             <p className="text-[#4c4c4c] text-center text-xl sm:pt-8 pt-4 max-w-[600px] w-full m-auto">
@@ -62,7 +62,7 @@ const Banner = ({ aboutRef , homeRef}) => {
               </div>
 
               {/* Panda 2 */}
-              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[44%]  top-[50%] md:top-[22%] sm:top-[27%]  lg:top-[25%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
+              <div className="absolute [@media_(min-width:375px)_and_(max-width:425px)]:top-[44%]  top-[50%] md:top-[22%] sm:top-[27%]  lg:top-[21%] right-[36%] w-[14%] lg:w-[12%] sm:w-[15%]" data-aos="zoom-in">
                 <img src="/assets/images/panda02.svg" alt="panda 2" className="w-full h-auto" />
               </div>
 
@@ -92,7 +92,7 @@ const Banner = ({ aboutRef , homeRef}) => {
         </div>
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
             <div className=" animate__animated animate__fadeInUp" data-aos="slide-up">
-              <h2 className="lg:text-[82px] xl:text-left  text-[40px] text-center lg:text-center sm:text-[40px]   sm:leading-10 leading-20">About Us</h2>
+              <h2 className="lg:text-[82px] xl:text-left  text-[30px] text-center lg:text-center sm:text-[40px]   sm:leading-10 leading-20">About Us</h2>
               <p className="text-[#4c4c4c] xl:text-left sm:pt-8 text-center lg:text-center   text-xl lg:pt-8">
                 Pandx is a fast, eco-friendly staking project with meme vibes and real-world muscle — fun, functional, and powered by a real community
               </p>

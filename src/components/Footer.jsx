@@ -5,7 +5,7 @@ const Footer = () => {
         <section className="bg-graydient relative pb-8 pt-20">
           <div className="mycontainer text-center">
             <div className="md:py-15 pt-15" data-aos="slide-up">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center">
+              <h2 className="text-[30px] sm:text-5xl md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center">
                 Join the Movement
               </h2>
               <p className="lg:text-2xl text-xl text-[#4a4a4a] w-full lg:max-w-[700px] max-w-[500px] m-auto pt-2">
@@ -61,7 +61,7 @@ const Footer = () => {
                   />
                     </a>
                 </div>
-                <div className="bg-white md:block hidden  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
+                <div className="bg-white md:block hidden  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black transform-gpu shadow rotate-6">
                   <a href="https://t.me/pandxdao" target="blank"><img src="/assets/images/telegram.svg" alt="telegram" /></a>
                 </div>
               </div>
