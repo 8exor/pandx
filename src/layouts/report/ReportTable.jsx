@@ -6,14 +6,15 @@ const datas = [];
 const userInfoLoading = false;
   const tableDataKeys = [
     "username",
-    "Self volume",
-    "Self Package",
-    "rank",
-    "total direct",
+    "Self $",
+    "Directs",
+    "BoostX",
+    "Rank",
     // "team vol",
-    "total team vol",
-    "wallet address",
-    "Start date",
+    "Level",
+    "Total Team	",
+    "Team Vol",
+    "Withdrawals"
   ];
   return (
     <div>
@@ -30,9 +31,9 @@ const userInfoLoading = false;
               <table className="w-full rounded-lg divide-background">
                 <thead className="sticky top-0 text-black btn-primary">
                   <tr className="w-full mb-4 text-left text-black rounded-lg">
-                    <th className="capitalize text-base font-medium p-5 max-md:w-[150px] flex-[1_1_300]">
+                    {/* <th className="capitalize text-base font-medium p-5 max-md:w-[150px] flex-[1_1_300]">
                       Sr No
-                    </th>
+                    </th> */}
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
@@ -61,9 +62,9 @@ const userInfoLoading = false;
                             key={index}
                             className="rounded-lg bg-midgray hover:bg-border-color group/item"
                           >
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_150] text-sm font-normal p-5 py-2 text-white text-left">
+                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_150] text-sm font-normal p-5 py-2 text-white text-left">
                               {index + 1}
-                            </td>
+                            </td> */}
                             <td
                               onClick={() => updateState(data?.child)}
                               className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left"

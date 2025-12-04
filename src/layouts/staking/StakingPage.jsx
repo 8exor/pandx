@@ -57,10 +57,9 @@ const StakingPage = () => {
 
   return (
     <>
-    {
-      buyPandx ?
-      <BuyPandaPopUp setBuyPandx={setBuyPandx}/>
-      :
+
+     
+  
       <div className="sm:w-full h-full min-h-screen bg-[#eaffdd] py-5">
         {/* Stakers section */}
         {/* <div className='sm:w-full flex flex-wrap gap-4 justify-between max-w-[1360px] sm:mx-auto mx-2  
@@ -83,8 +82,9 @@ const StakingPage = () => {
           </div>
         ))}
       </div> */}
-
-   
+{
+    buyPandx &&
+      <BuyPandaPopUp setBuyPandx={setBuyPandx}/>}
           <Staking />
 
           {/* <div className="flex items-center justify-center w-full mt-30">
@@ -99,7 +99,7 @@ const StakingPage = () => {
           </div> */}
 
       </div>
-      }
+ 
     </>
   );
 };

@@ -103,17 +103,17 @@ toast.error(error?.message || "Error Occurred")
 
   return (
 
-      <div className="px-4 mt-1 mb-1 sm:px-6">
+      <div className="px-4 mt-1 mb-1 sm:px-15">
         <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
-            <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+            <div className="w-full sm:max-w-[110px] bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
               {Number(userData?.data?.wallet_balance).toFixed(0)}
             </div>
           </div>
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">Current Worth</p>
-            <div className="w-full bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+            <div className="w-full sm:max-w-[110px] bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
               {Number(userData?.data?.wallet_balance * userData?.data?.token_price).toFixed(2)}
             </div>
           </div>

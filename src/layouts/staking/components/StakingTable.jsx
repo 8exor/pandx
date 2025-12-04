@@ -66,9 +66,9 @@ const incomeData =  data?.data?.rows ;
                       <td className="font-medium text-left text-black capitalize max-sm:w-30 ">
                     {/* {new Date(incomeData?.date)} */} "date"
                       </td>
-                      <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
+                      {/* <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
                        {incomeData?.username}
-                      </td>
+                      </td> */}
                       <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
                         "1.5 "
                       </td>
