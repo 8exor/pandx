@@ -36,10 +36,10 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
 
   return (
     <>
-      <section ref={getStartedRef} className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
+      <section  ref={getStartedRef}  className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
         <div className="mycontainer">
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pt-10"
+            className="text-[30px]  md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center pt-10"
             data-aos="slide-up"
           >
             Getting Started <br /> is Simple
@@ -53,7 +53,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               <div className="border-[#66a22a] bg-[#5b5ca9] border-[5px] px-15 py-5 rounded-xl p-4">
                 <img className="m-auto" src="assets/images/wallet.svg" alt="" />
               </div>
-              <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
+              <h3 className="text-[20px] text-center sm:text-[24px] pt-4 leading-[26px]">
                 Fund with $QRA/$HLDR
               </h3>
             </div>
@@ -66,7 +66,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
                 <img className="m-auto" src="assets/images/fund.svg" alt="" />
               </div>
               <a href="https://swap.qerra.network/" target="blank">
-                <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
+                <h3 className="text-[20px] text-center sm:text-[24px] pt-4 leading-[26px]">
                   Connect to our Partner DEX – qerraSWAP
                 </h3>
               </a>
@@ -83,7 +83,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
                   alt=""
                 />
               </div>
-              <h3 className="text-[20px] sm:text-[24px] pt-4 leading-[26px]">
+              <h3 className="text-[20px] text-center sm:text-[24px] pt-4 leading-[26px]">
                 Buy $PANDX & join the hYBRID Ecosystem
               </h3>
             </div>
@@ -105,7 +105,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
             </div> */}
           </div>
           <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-2xl flex-wrap md:flex-nowrap">
-            <p className="break-all">
+            <p className="break-all text-center">
               0x2170Ed0880ac9A755fd29B2688956BD959F933F8
             </p>
 
@@ -116,8 +116,8 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               {copied ? "copied" : "copy"}
             </button>
           </div>
-          <h2
-            className="text-4xl hidden xl:block   sm:text-5xl md:text-6xl lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]"
+          <h2 
+            className="text-[30px] hidden xl:block   md:text-[40px] lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]"
             data-aos="slide-up"
           >
             Pandx Roadmap
@@ -267,7 +267,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
           {/* MOBILE / TABLET VERSION */}
         </div>
         <div className="bg-[#d8feccab]">
-          <h2 className="text-4xl pt-[60px] block xl:hidden sm:text-5xl md:text-6xl lg:text-[82px] leading-tight  text-center">
+          <h2 className="text-[30px] pt-[60px] block xl:hidden  md:text-[40px] lg:text-[82px] leading-tight  text-center">
             Pandx Roadmap
           </h2>
           <div className="bg-[url(assets/images/Roadmap_ground.svg)] bg-cover py-10 md:py-20 bg-no-repeat xl:hidden bg-center">

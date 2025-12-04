@@ -121,19 +121,20 @@ const PieChart = ({tokenomicsRef}) => {
     // });
 
     // Mobile: position 2 labels up, 2 labels down
-    if (isMobile) {
-      pieSeries.labels.template.adapter.add("dy", (dy, target) => {
-        const index = target.dataItem.index;
-        return index < 2 ? -50 : 50; // adjust as needed
+   if (isMobile) {
+  // Labels hide
+  pieSeries.labels.template.disabled = true;
 
-      });
-      pieSeries.ticks.template.disabled = true;   // ← Mobile par ticks hide
-      // pieSeries.labels.template.fontSize = 14;
-      pieSeries.labels.template.disabled = true;
+  // Ticks hide
+  pieSeries.ticks.template.disabled = true;
 
+  // Enable legend
+  chart.legend = new am4charts.Legend();
 
-      chart.legend = new am4charts.Legend();
-    }
+  // Legend me percentage WITHOUT decimal
+  chart.legend.valueLabels.template.text = "{value.percent.formatNumber('#')}%";
+}
+
 
 
     return () => chart.dispose();
@@ -141,7 +142,7 @@ const PieChart = ({tokenomicsRef}) => {
 
   return (
     <div ref={tokenomicsRef} className="relative w-full bg-[#e5ffd4]">
-      <h1 className="w-full text-center text-2xl sm:text-7xl">Tokenomics</h1>
+      <h1 className="w-full text-center text-[30px] md:text-[40px] lg:text-[82px]">Tokenomics</h1>
       <p className="w-full text-center text-[14px] sm:text-xl pt-5">100,000,000 $PANDX</p>
       <img
         src="assets/images/PandaTokenGroup.svg"

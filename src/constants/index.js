@@ -122,3 +122,12 @@ export const reportPool = [
     value: "$3050",
   },
 ];
+export const headerLogos = [
+  {img: "assets/images/BSCSCAN.svg"},
+  {img:"assets/images/start-up.svg"},
+  {img:"assets/images/qerra-logo.png"},
+  {img:"assets/images/Dextool.svg"},
+  {img:"assets/images/dex-screener.svg"},
+  {img:"assets/images/fire.svg"},
+  {img:"assets/images/ppt.svg"}
+]

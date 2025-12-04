@@ -9,18 +9,54 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
+import { headerLogos } from "@constants/index";
 const Header = ({ aboutRef , tokenomicsRef , getStartedRef , roadmapRef , homeRef } ) => {
-    const scrollTo = (section) => {
-    const refs = {
-      home: homeRef ,
-      about: aboutRef,
-      tokenomics: tokenomicsRef,
-      getStarted: getStartedRef,
-      roadmap: roadmapRef,
-    };
+  //   const scrollTo = (section) => {
+  //   const refs = {
+  //     home: homeRef ,
+  //     about: aboutRef,
+  //     tokenomics: tokenomicsRef,
+  //     getStarted: getStartedRef,
+  //     roadmap: roadmapRef,
+  //   };
 
-    refs[section].current?.scrollIntoView({ behavior: "smooth" });
+  //   refs[section].current?.scrollIntoView({ behavior: "smooth" , block: "center"  });
+  // };
+const scrollTo = (section, offset = 0, isCenter = false) => {
+  const refs = {
+    home: homeRef,
+    about: aboutRef,
+    tokenomics: tokenomicsRef,
+    getStarted: getStartedRef,
+    roadmap: roadmapRef,
   };
+
+  const element = refs[section].current;
+  
+  if (element) {
+    const elementPosition = element.getBoundingClientRect().top +  window.pageYOffset -250; // Get position relative to the document
+
+    let offsetPosition;
+    
+    if (isCenter) {
+      // Calculate center position of the section in the viewport
+      const centerOffset = (window.innerHeight / 0) - (element.clientHeight / 200);
+      offsetPosition = elementPosition - centerOffset;
+    } else {
+      // Apply custom offset provided by the user
+      offsetPosition = elementPosition - offset;
+    }
+
+    // Scroll to the calculated position
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth", // Smooth scroll
+    });
+  }
+};
+
+
+
   const { open, close } = useAppKit();
   const { isConnected } = useAppKitAccount();
   const { walletProvider } = useAppKitProvider("eip155");
@@ -30,10 +66,12 @@ const Header = ({ aboutRef , tokenomicsRef , getStartedRef , roadmapRef , homeRe
   const [openMenu, setOpenMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+
 
 
 useEffect(() => {
-  // Scroll listener
+  // Scroll listenerblock: "start" 
   const handleScroll = () => {
     if (window.scrollY > 50) {
       setIsSticky(true);
@@ -41,12 +79,17 @@ useEffect(() => {
       setIsSticky(false);
     }
   };
-  const handleClickOutside = (event) => {
-   if (menuRef.current && !menuRef.current.contains(event.target)) {
-  setOpenMenu(false);  // ✅ close menu
-}
+const handleClickOutside = (event) => {
+  if (
+    menuRef.current &&
+    !menuRef.current.contains(event.target) &&
+    buttonRef.current &&
+    !buttonRef.current.contains(event.target)
+  ) {
+    setOpenMenu(false);
+  }
+};
 
-  };
 
   window.addEventListener("scroll", handleScroll);
 
@@ -91,18 +134,37 @@ useEffect(() => {
             <div className="logo">
              <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" /></a>
             </div>
+
+
+            {/* icons section start  */}
+           
+
+
+
+            {/*  icons section end  */}
             <div className="flex items-center justify-between gap-5">
-              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
+               <div className="flex gap-2 hidden xl:flex">
+  {headerLogos.map((item, index) => (
+    <li 
+      key={index} 
+      className="h-9 flex items-center justify-center border w-9 rounded-full border-[#00d990] 
+                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
+    >
+      <img className="h-5 w-5 cursor-pointer" src={item.img} alt="logo icon" />
+    </li>
+  ))}
+</div>
+              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
                <a href="https://t.me/pandxdao" target="blank">
                  <img
-                  className="w-[20px] h-[20]"
+                  className="w-[18px] h-[18px]"
                   src="/assets/images/Icon.svg"
                   alt="telegram"
                 />
                </a>
               </div>
-              <div className="hidden hover:scale-110  sm:block bg-white  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
-                <img src="/assets/images/telegram.svg" alt="telegram" />
+              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
+                <img className="w-[18px] h-[18px]" src="/assets/images/telegram.svg" alt="telegram" />
               </div>
          
               <div className="items-center hidden gap-3 lg:flex">
@@ -133,15 +195,15 @@ useEffect(() => {
           }
                 
                 <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                  <button className="flex items-center gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
                 </a>
               </div>
-              <div className="flex items-center justify-center rounded-full btn-primary h-13 w-13">
+              <div  ref={buttonRef}    onClick={() => setOpenMenu(!openMenu)} className="flex items-center justify-center rounded-full btn-primary h-13 w-13">
                 <button
-                  onClick={() => setOpenMenu(!openMenu)}
+                
                   className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
                 >
                   <span
@@ -208,6 +270,17 @@ useEffect(() => {
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Connect
                   </button>
+                 <div className="flex gap-2 justify-center mt-5 xl:hidden">
+  {headerLogos.map((item, index) => (
+    <li 
+      key={index} 
+      className="h-9 flex items-center justify-center border w-9 rounded-full border-[#00d990]
+                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
+    >
+      <img className="h-5 w-5 cursor-pointer" src={item.img} alt="logo icon" />
+    </li>
+  ))}
+</div>
                 </div>
               )}
             </div>
@@ -220,3 +293,4 @@ useEffect(() => {
 };
 
 export default Header;
+

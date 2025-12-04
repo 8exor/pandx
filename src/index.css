@@ -232,13 +232,13 @@ body{
   position: relative;
   background: linear-gradient(90deg, #ffffff, #edfee1, #ffffff);
   border-radius: 12px;
-  color: #ffffff;
+  color: #000000;
   transition: all 0.3s ease;
   box-shadow: 
     inset 0px 0px 5px #ffffff96,
     inset 0px 35px 30px #72a315,
     0px 5px 10px #00000070;
-  text-shadow: 1px 1px 1px #000;
+  /* text-shadow: 1px 1px 1px #000; */
 }
 
 .btn-primary::before {
@@ -275,11 +275,6 @@ body{
     inset 0px 35px 30px #000;
   margin-top: 3px;
 }
-
-
-
-
-
 
 /* .btn-success {
     background-image: linear-gradient(to right,
