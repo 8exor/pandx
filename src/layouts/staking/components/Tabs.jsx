@@ -12,18 +12,19 @@ import UnstakeTab from "./tabs/UnstakeTab";
 import Withdrawl from "./tabs/Withdrawl";
 import P2p from "./tabs/P2p";
 import IncomeReport from "./tabs/IncomeReport";
+import Compound from "./tabs/Compound";
 
 // const [activeTab, setActiveTab] = useState("stake");
 const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
 
   const tabs = [
     { key: "stake", label: "Stake" },
-    { key: "unstake", label: "Unstake" },
+    { key: "unstake", label: "Un-Stake" },
     { key: "withdrawal", label: "Withdrawal" },
     { key: "compound", label: "Compound" },
 
     { key: "p2p", label: "P2P" },
-    { key: "incomeReports", label: "IncomeReport" },
+    { key: "incomeReports", label: "Income Report" },
   ];
   
   const renderContent = {
@@ -36,6 +37,9 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
     ),
     withdrawal: (
     <Withdrawl/>
+    ),
+    compound : (
+    <Compound/>
     ),
     p2p: (
       <P2p/>

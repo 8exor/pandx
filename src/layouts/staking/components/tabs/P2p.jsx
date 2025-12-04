@@ -97,28 +97,14 @@ export default function P2p() {
 
   return (
     <div className="w-full px-2 mt-5 sm:px-4">
-      <div className="flex flex-col items-center justify-between gap-3 p-2 mb-4 bg-white border border-black rounded-sm sm:flex-row">
-        <input
-          type="text"
-          placeholder="Enter UserName"
-          className="w-full sm:w-[60%] px-2 py-1 rounded-sm outline-none"
-          onChange={(e) => setUserName(e.target.value)}
-        />
-
-        <button
-          className="bg-[#72A314] btn-primary  w-full sm:w-[25%] px-1 py-1 sm:px-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight"
-          onClick={() => validateUserName.mutate({ username: userName })}
-        >
-          Validate
-        </button>
-      </div>
-      <div className="flex flex-col items-center justify-between gap-2 p-2 mb-4 bg-white border border-black rounded-sm sm:flex-row">
+      <div className="flex flex-wrap items-center justify-between gap-2 lg:flex-nowrap">
+       <div className="flex flex-col items-center justify-between w-full gap-2 p-2 mb-4 bg-white border border-black rounded-sm lg:w-auto sm:flex-row">
         <p className="w-full text-center sm:text-left sm:w-auto">
           Available $60
         </p>
         <input
           type="text"
-          className="w-full md:max-w-[150px] lg:max-w-[270px] xl:max-w-[420px] outline-none"
+          className="w-full md:max-w-[150px] lg:max-w-[270px] xl:max-w-[130px]  border border-black md:border-none rounded-md p-1"
           value={p2pAmount}
           onChange={(e) => setp2pAmount(e.target.value)}
         />
@@ -126,6 +112,22 @@ export default function P2p() {
           Max
         </button>
       </div>
+      <div className="flex flex-col items-center justify-between w-full gap-3 p-2 mb-4 bg-white border border-black rounded-sm md:w-full lg:w-auto sm:flex-row">
+        <input
+          type="text"
+          placeholder="Enter UserName"
+          className="w-full sm:w-[60%] px-2 py-1  outline-none border border-black md:border-none rounded-md"
+          onChange={(e) => setUserName(e.target.value)}
+        />
+
+        <button
+          className="bg-[#72A314] btn-primary text-md w-full sm:w-[43%] xl:w-[35%]  py-1 sm:px-2 sm:py-1 lg:py-3 xl:py-1   rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight"
+          onClick={() => validateUserName.mutate({ username: userName })}
+        >
+          Validate
+        </button>
+      </div>
+     </div>
       <p className="mb-4 font-semibold text-center uppercase sm:text-left">
         P2P unlimited and free
       </p>
