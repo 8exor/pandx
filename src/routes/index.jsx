@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Report from "../layouts/report/Report";
 import StakingHeader from "./StakingHeader";
 import Ranking from "../layouts/rank/Ranking";
+import LoginPage from "@pages/LoginPage";
 
 
 
@@ -34,7 +35,13 @@ export default function AppRoutes (){
             name : "Report",
             path : "/Report",
             Component : Report
-        }
+        },
+        //  {
+        //     name : "login",
+        //     path : "/login",
+        //     Component : LoginPage
+        // },
+ 
     ]
 
     const Router = routes.map(({name, path, Component},i)=>(

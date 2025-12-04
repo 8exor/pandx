@@ -1,4 +1,4 @@
-import { useState, useEffect ,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   useAppKit,
   useAppKitAccount,
@@ -10,7 +10,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
 import { headerLogos } from "@constants/index";
-const Header = ({ aboutRef , tokenomicsRef , getStartedRef , roadmapRef , homeRef } ) => {
+const Header = ({
+  aboutRef,
+  tokenomicsRef,
+  getStartedRef,
+  roadmapRef,
+  homeRef,
+}) => {
   //   const scrollTo = (section) => {
   //   const refs = {
   //     home: homeRef ,
@@ -22,40 +28,40 @@ const Header = ({ aboutRef , tokenomicsRef , getStartedRef , roadmapRef , homeRe
 
   //   refs[section].current?.scrollIntoView({ behavior: "smooth" , block: "center"  });
   // };
-const scrollTo = (section, offset = 0, isCenter = false) => {
-  const refs = {
-    home: homeRef,
-    about: aboutRef,
-    tokenomics: tokenomicsRef,
-    getStarted: getStartedRef,
-    roadmap: roadmapRef,
-  };
+  const scrollTo = (section, offset = 0, isCenter = false) => {
+    const refs = {
+      home: homeRef,
+      about: aboutRef,
+      tokenomics: tokenomicsRef,
+      getStarted: getStartedRef,
+      roadmap: roadmapRef,
+    };
 
-  const element = refs[section].current;
-  
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top +  window.pageYOffset -250; // Get position relative to the document
+    const element = refs[section].current;
 
-    let offsetPosition;
-    
-    if (isCenter) {
-      // Calculate center position of the section in the viewport
-      const centerOffset = (window.innerHeight / 0) - (element.clientHeight / 200);
-      offsetPosition = elementPosition - centerOffset;
-    } else {
-      // Apply custom offset provided by the user
-      offsetPosition = elementPosition - offset;
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset - 100; // Get position relative to the document
+
+      let offsetPosition;
+
+      if (isCenter) {
+        // Calculate center position of the section in the viewport
+        const centerOffset =
+          window.innerHeight / 0 - element.clientHeight / 200;
+        offsetPosition = elementPosition - centerOffset;
+      } else {
+        // Apply custom offset provided by the user
+        offsetPosition = elementPosition - offset;
+      }
+
+      // Scroll to the calculated position
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth", // Smooth scroll
+      });
     }
-
-    // Scroll to the calculated position
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth", // Smooth scroll
-    });
-  }
-};
-
-
+  };
 
   const { open, close } = useAppKit();
   const { isConnected } = useAppKitAccount();
@@ -68,42 +74,38 @@ const scrollTo = (section, offset = 0, isCenter = false) => {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
+  useEffect(() => {
+    // Scroll listenerblock: "start"
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    const handleClickOutside = (event) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setOpenMenu(false);
+      }
+    };
 
+    window.addEventListener("scroll", handleScroll);
 
-useEffect(() => {
-  // Scroll listenerblock: "start" 
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
+    if (openMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
     }
-  };
-const handleClickOutside = (event) => {
-  if (
-    menuRef.current &&
-    !menuRef.current.contains(event.target) &&
-    buttonRef.current &&
-    !buttonRef.current.contains(event.target)
-  ) {
-    setOpenMenu(false);
-  }
-};
 
-
-  window.addEventListener("scroll", handleScroll);
-
-  if (openMenu) {
-    document.addEventListener("mousedown", handleClickOutside);
-  }
-
-  // Cleanup
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, [openMenu]);
-
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openMenu]);
 
   const handleDisconnet = async () => {
     try {
@@ -132,42 +134,35 @@ const handleClickOutside = (event) => {
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div className="logo">
-             <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" /></a>
+              <a href=" https://swap.qerra.network/" target="blank">
+                <img
+                  className="md:w-[180px] w-[120px]"
+                  src="/assets/images/Logo.png"
+                  alt="logo"
+                />
+              </a>
             </div>
 
-
-            {/* icons section start  */}
-           
-
-
-
-            {/*  icons section end  */}
             <div className="flex items-center justify-between gap-5">
-               <div className="flex gap-2 hidden xl:flex">
-  {headerLogos.map((item, index) => (
-    <li 
-      key={index} 
-      className="h-9 flex items-center justify-center border w-9 rounded-full border-[#00d990] 
-                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
-    >
-      <img className="h-5 w-5 cursor-pointer" src={item.img} alt="logo icon" />
-    </li>
-  ))}
-</div>
+             
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
-               <a href="https://t.me/pandxdao" target="blank">
-                 <img
-                  className="w-[18px] h-[18px]"
-                  src="/assets/images/Icon.svg"
-                  alt="telegram"
-                />
-               </a>
+                <a href="https://t.me/pandxdao" target="blank">
+                  <img
+                    className="w-[18px] h-[18px]"
+                    src="/assets/images/Icon.svg"
+                    alt="telegram"
+                  />
+                </a>
               </div>
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
-                <img className="w-[18px] h-[18px]" src="/assets/images/telegram.svg" alt="telegram" />
+                <img
+                  className="w-[18px] h-[18px]"
+                  src="/assets/images/telegram.svg"
+                  alt="telegram"
+                />
               </div>
-         
-              <div className="items-center hidden gap-10 lg:flex">
+
+              <div className="items-center hidden gap-3 lg:flex">
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
@@ -177,7 +172,7 @@ const handleClickOutside = (event) => {
                   <img src="/assets/images/panda.svg" alt="panda" />
                   {isConnected ? "Disconnect" : " Connect"}
                 </button>
-{/* 
+                {/* 
                 <NavLink to={"/StakingPage"}>
                   <button className="bg-[#5f5f81]  shine rounded-full hover:!bg-[#5b5ca9]  duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-lg font-medium">
                     <img src="/assets/images/panda.svg" alt="panda" />
@@ -185,30 +180,26 @@ const handleClickOutside = (event) => {
                   </button>
                 </NavLink> */}
 
-          {isConnected &&
-                <NavLink to={"/StakingPage"}>
-                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                {isConnected && (
+                  <NavLink to={"/StakingPage"}>
+                    <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                      <img src="/assets/images/panda.svg" alt="panda" />
+                      Staking
+                    </button>
+                  </NavLink>
+                )}
+
+                <a href="https://swap.qerra.network/" target="blank"> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center w-full">
                     <img src="/assets/images/panda.svg" alt="panda" />
-                    Staking
-                  </button>
-                </NavLink>
-          }
-                
-                <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="flex items-center gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                    Buy $Pandx
-                    <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
-                    qerraSwap
-                  </button>
-                </a>
+                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
+                  </button></a>
               </div>
-              <div  ref={buttonRef}    onClick={() => setOpenMenu(!openMenu)} className="flex items-center justify-center rounded-full btn-primary h-13 w-13">
-                <button
-                
-                  className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
-                >
-               
+              <div
+                ref={buttonRef}
+                onClick={() => setOpenMenu(!openMenu)}
+                className="flex items-center justify-center rounded-full btn-primary h-13 w-13"
+              >
+                <button className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group">
                   <span
                     className={`block h-[2px] w-full bg-white rounded transition-all duration-300 ease-in-out ${
                       openMenu ? "translate-y-[9px] rotate-45" : ""
@@ -228,41 +219,89 @@ const handleClickOutside = (event) => {
               </div>
 
               {openMenu && (
-                <div ref={menuRef} className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg ">
-                  <ul className="text-center" onClick={(e) => e.stopPropagation()}>
+                <div
+                  ref={menuRef}
+                  className="absolute top-20 left-0 w-full right-0 mt-2 p-4 bg-[#C5FF9E] rounded shadow-lg "
+                >
+                  <ul
+                    className="text-center"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <li className="text-3xl text-[#141414] leading-14">
-                    <button onClick={() => { scrollTo("home"); setOpenMenu(false); }}> Home</button>
+                      <button
+                        onClick={() => {
+                          scrollTo("home");
+                          setOpenMenu(false);
+                        }}
+                      >
+                        {" "}
+                        Home
+                      </button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <button onClick={() => { scrollTo("about"); setOpenMenu(false); }}>About</button>
+                      <button
+                        onClick={() => {
+                          scrollTo("about");
+                          setOpenMenu(false);
+                        }}
+                      >
+                        About
+                      </button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <button onClick={() => { scrollTo("tokenomics"); setOpenMenu(false); }}>Tokenomics</button>
+                      <button
+                        onClick={() => {
+                          scrollTo("tokenomics");
+                          setOpenMenu(false);
+                        }}
+                      >
+                        Tokenomics
+                      </button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                     <button onClick={() => { scrollTo("getStarted"); setOpenMenu(false); }}>Get Started</button>
+                      <button
+                        onClick={() => {
+                          scrollTo("getStarted");
+                          setOpenMenu(false);
+                        }}
+                      >
+                        Get Started
+                      </button>
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
-                      <button onClick={()=>{ scrollTo("roadmap"); setOpenMenu(false); }}>Roadmap</button>
+                      <button
+                        onClick={() => {
+                          scrollTo("roadmap");
+                          setOpenMenu(false);
+                        }}
+                      >
+                        Roadmap
+                      </button>
                     </li>
                   </ul>
-                  <a className="flex items-center justify-center lg:hidden" href=" https://swap.qerra.network/" target="blank">
-                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                    Buy $Pandx
-                  </button>
-                </a>
-                {isConnected &&  <NavLink
-                    to={isConnected ? "/StakingPage" : "/"}
-                    className={
-                      "flex justify-center items-center mt-6 lg:hidden"
-                    }
+                  <a
+                    className="flex items-center justify-center lg:hidden"
+                    href=" https://swap.qerra.network/"
+                    target="blank"
                   >
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
-                      Staking
+                      Buy $Pandx
                     </button>
-                  </NavLink>}
+                  </a>
+                  {isConnected && (
+                    <NavLink
+                      to={isConnected ? "/StakingPage" : "/"}
+                      className={
+                        "flex justify-center items-center mt-6 lg:hidden"
+                      }
+                    >
+                      <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                        <img src="/assets/images/panda.svg" alt="panda" />
+                        Staking
+                      </button>
+                    </NavLink>
+                  )}
                   <button
                     className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
@@ -273,17 +312,6 @@ const handleClickOutside = (event) => {
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Connect
                   </button>
-                 <div className="flex gap-2 justify-center mt-5 xl:hidden">
-  {headerLogos.map((item, index) => (
-    <li 
-      key={index} 
-      className="h-9 flex items-center justify-center border w-9 rounded-full border-[#00d990]
-                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
-    >
-      <img className="h-5 w-5 cursor-pointer" src={item.img} alt="logo icon" />
-    </li>
-  ))}
-</div>
                 </div>
               )}
             </div>
@@ -296,4 +324,3 @@ const handleClickOutside = (event) => {
 };
 
 export default Header;
-

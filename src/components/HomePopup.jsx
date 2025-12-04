@@ -31,10 +31,9 @@ const HomePopup = () => {
         </div>
         <h2 className="text-2xl text-white mb-3">Please Connect Your Wallet</h2>
        <ul className="flex justify-center gap-5 items-center mt-5">
-        <li> <button  onClick={() => navigate("/login")} className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
+        <li> <button  onClick={() =>("/login")} className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
                     Login
                   </button></li>
-     
        <li>
          <button className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
                     
