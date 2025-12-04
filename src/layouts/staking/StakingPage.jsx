@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Staking from "./components/Staking";
 import { stakers } from "@constants/index";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -10,12 +10,14 @@ import {
   useDisconnect,
 } from "@reown/appkit/react";
 import { UserInfoContext } from "@contexts/UserInfoContext";
+import BuyPandaPopUp from "./BuyPandaPopUp";
 
 const StakingPage = () => {
   const { open } = useAppKit();
   const { disconnect } = useDisconnect();
   const { isConnected, address } = useAppKitAccount();
   const {isLogin} =useContext(UserInfoContext)
+  const [buyPandx, setBuyPandx] = useState(true);
 
   const { data } = useQuery({
     queryKey: ["dashboarData"],
@@ -55,6 +57,10 @@ const StakingPage = () => {
 
   return (
     <>
+    {
+      buyPandx ?
+      <BuyPandaPopUp setBuyPandx={setBuyPandx}/>
+      :
       <div className="sm:w-full h-full min-h-screen bg-[#eaffdd] py-5">
         {/* Stakers section */}
         {/* <div className='sm:w-full flex flex-wrap gap-4 justify-between max-w-[1360px] sm:mx-auto mx-2  
@@ -93,6 +99,7 @@ const StakingPage = () => {
           </div> */}
 
       </div>
+      }
     </>
   );
 };

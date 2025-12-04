@@ -3,6 +3,7 @@
 import { myLevel, myRank } from '../../constants'
 import React from 'react'
 import ReportPool from './ReportPool'
+import ReportTable from './ReportTable'
 
 const Report = () => {
   return (
@@ -30,6 +31,7 @@ const Report = () => {
       }
   </div> */}
   <ReportPool/>
+  <ReportTable/>
     </div>
     </div>
   )

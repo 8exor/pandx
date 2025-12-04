@@ -26,11 +26,11 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
    <>
     <div
         className="relative mt-2 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
-            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-4 text-center md:text-left "
+            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-2 text-center md:text-left "
       >
-      <div/>
-        <img className='absolute left-0 w-30 -top-12' src="/assets/images/gift.svg" alt="gift" />
-        <p >My Trial Stake ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
+      <div className='ml-50'/>
+        <img className='absolute left-5 w-30 -top-12' src="/assets/images/gift.svg" alt="gift" />
+        <p >Trial Bonus ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
           <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
         <p>Daily 0.5%</p>
         <p>Daily $0.5</p>
