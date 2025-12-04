@@ -49,19 +49,8 @@ const DashboardHeader = () => {
         </ul>
 
 <div className="flex items-center gap-5">
-        <NavLink to={"https://swap.qerra.network/"} target="blank">
-        <button
-          className="items-center justify-between hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
-         
-        >
-          <img src="/assets/images/panda.svg" alt="panda" />
-          Buy $PANDX
-          <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
-          qerraSwap
-        </button>
-   </NavLink>
- 
-          <button
+
+   <button
           className="hidden gap-2 p-3 text-lg font-medium text-center text-white duration-300 ease-in-out md:flex btn-star"
              onClick={() => setStakePopup(!stakePopup)} 
         >
@@ -111,6 +100,20 @@ const DashboardHeader = () => {
                 </div>
             </>
             )}
+
+        <NavLink to={"https://swap.qerra.network/"} target="blank">
+        <button
+          className="items-center justify-between hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
+         
+        >
+          <img src="/assets/images/panda.svg" alt="panda" />
+          Buy $PANDX
+          <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
+          qerraSwap
+        </button>
+   </NavLink>
+ 
+       
        
          <button
           className="hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"

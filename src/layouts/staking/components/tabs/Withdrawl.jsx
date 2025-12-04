@@ -1,15 +1,75 @@
 import { UserInfoContext } from '@contexts/UserInfoContext'
-import React, { useContext } from 'react'
+import { useAppKitProvider } from '@reown/appkit/react';
+import { TRANSACTIONS } from '@services/panda.api.services';
+import { useMutation } from '@tanstack/react-query';
+import axiosInstance from '@utils/axiosInstance';
+import { ethers } from 'ethers';
+import React, { useContext, useState } from 'react'
+import toast from 'react-hot-toast';
+import { data } from 'react-router-dom';
 
 export default function Withdrawl() {
+    const { walletProvider } = useAppKitProvider("eip155");
 const {userData} = useContext(UserInfoContext);
+const [withdrawalAmount, setWithdrawalAmount] = useState("");
+
+const withdrawaling = useMutation({
+  mutationFn : async(Formdata)=>{
+    const {data} = await axiosInstance.post(TRANSACTIONS.withdrawal, Formdata);
+    return data;
+  },
+  onSuccess : async(data)=>{
+try {
+  const provider = new ethers.providers.Web3Provider(walletProvider);
+  console.log({provider});
+  const signer = await provider.getSigner();
+  const txn = await signer.sendTransaction({
+    from : data?.data?.from,
+    to : data?.data?.to,
+    gasPrice : data?.data?.gasPrice,
+    gasLimit : data?.data?.gasLimit,
+    data : data?.data?.data,
+    value : data?.data?.value,
+  })
+
+  await txn.wait();
+
+  withdrawalHash.mutate({
+    "fund_hash" : txn?.hash,
+    "amount" : withdrawalAmount,
+  })
+} catch (error) {
+  
+}
+    toast.success(data?.message);
+
+  },
+  onError : (error)=>{
+    toast.error(error?.message);
+    console.log(error)
+  }
+})
+
+const withdrawalHash = useMutation({
+  mutationFn : async(formdata)=>{
+    const {data} = await axiosInstance.post(TRANSACTIONS?.submitFundHash, formdata);
+    return data;
+  },
+  onSuccess : async(data)=>{
+    toast.success(data?.message);
+  },
+  onError : (error)=>{
+    toast.error(error?.message)
+  }
+})
 
   return (
-    <div className="px-4 mt-6 sm:px-6">
-        <div className="flex flex-col items-center justify-between gap-3 p-3 bg-white border border-black rounded-sm sm:flex-row">
+    <div className="px-4 mt-6 sm:px-15">
+        <div className="flex flex-col items-center justify-between gap-3 p-3 bg-white border border-black rounded-full sm:flex-row">
           <p className="w-full text-center sm:text-left sm:w-auto">
-            Available $90
+            Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
+          <input type="text" className='outline-none ' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
           <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             Max
           </button>
@@ -18,7 +78,7 @@ const {userData} = useContext(UserInfoContext);
         <p className="mt-3 text-center sm:text-left">5% Pool Free</p>
 
         <div className="flex justify-center mt-6">
-          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center">
+          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})} >
             Submit
           </button>
         </div>

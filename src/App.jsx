@@ -1,7 +1,7 @@
 import './App.css'
 import { createAppKit } from "@reown/appkit/react";
 import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
-import { mainnet, arbitrum, bscTestnet } from "@reown/appkit/networks";
+import { mainnet, arbitrum, bscTestnet, sepolia } from "@reown/appkit/networks";
 import AppRoutes from "./routes";
 import { BrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -28,7 +28,7 @@ const metadata = {
 createAppKit({
   adapters: [new Ethers5Adapter()],
   metadata,
-  networks : [bscTestnet],
+  networks : [sepolia],
   projectId,
   features: {
      analytics: true,

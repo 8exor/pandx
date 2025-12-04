@@ -10,9 +10,11 @@ export const TRANSACTIONS = {
   submitStakeHash: "transactions/submit-stake-hash",
   createP2PStake: "transactions/create-p2p-stake",
   submitP2pHash: "transactions/submit-p2p-hash",
-  compound : "transactions/compound",
+  compound: "transactions/compound",
   createUnstakeTransaction: "transactions/create-unstake-transaction",
   submiteUnstakeHash: "transactions/submit-unstake-hash",
+  withdrawal : "transactions/withdrawal",
+  submitFundHash : "transactions/submit-fund-hash"
 };
 
 export const REPORTS = {
@@ -21,3 +23,7 @@ export const REPORTS = {
   userInfo: "report/user-info",
   incomeReports: "report/income-reports",
 };
+
+
+
+

@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 export default function BuyPandaPopUp({setBuyPandx}) {
   return (
-      <div className="fixed z-50 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000ed] flex justify-center items-center">
-          <div className="flex flex-col items-center p-5 border border-white max-md:p-5 w-fit max-sm:w-full rounded-2xl">
-            <div className='flex justify-end w-full '>
+      <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full max-md:p-2">
+          <div className="flex flex-col items-center p-5 border bg-[#00000075]  border-white max-md:p-5 w-fit max-sm:w-full rounded-2xl">
+            <div className='flex justify-end w-full ' >
             <button onClick={()=>setBuyPandx(false)}>
                 <img src="/assets/icons/close.svg" alt="close" />
             </button>
