@@ -5,7 +5,6 @@ import Home from "../pages/Home";
 import Report from "../layouts/report/Report";
 import StakingHeader from "./StakingHeader";
 import Ranking from "../layouts/rank/Ranking";
-import LoginPage from "@pages/LoginPage";
 
 
 
