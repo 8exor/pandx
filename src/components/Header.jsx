@@ -189,7 +189,7 @@ const Header = ({
                   </NavLink>
                 )}
 
-                <a href="https://swap.qerra.network/" target="blank"> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center w-full">
+                <a href="https://swap.qerra.network/" target="blank"> <button className="flex gap-2 sm:px-6 hidden px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center w-full">
                     <img src="/assets/images/panda.svg" alt="panda" />
                    Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
                   </button></a>
