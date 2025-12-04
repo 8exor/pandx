@@ -1,6 +1,9 @@
-import React from 'react'
+import { UserInfoContext } from '@contexts/UserInfoContext'
+import React, { useContext } from 'react'
 
 export default function Withdrawl() {
+const {userData} = useContext(UserInfoContext);
+
   return (
     <div className="px-4 mt-6 sm:px-6">
         <div className="flex flex-col items-center justify-between gap-3 p-3 bg-white border border-black rounded-sm sm:flex-row">

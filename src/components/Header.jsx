@@ -133,9 +133,11 @@ useEffect(() => {
           }
                 
                 <a href=" https://swap.qerra.network/" target="blank">
-                  <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                  <button className="flex items-center gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
+                    <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
+                    qerraSwap
                   </button>
                 </a>
               </div>

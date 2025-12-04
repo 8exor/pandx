@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { dappNavLinks } from "../../../constants";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAppKitProvider, useDisconnect } from "@reown/appkit/react";
+import { useAppKitAccount, useAppKitProvider, useDisconnect } from "@reown/appkit/react";
 import { ethers } from "ethers";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 
 const DashboardHeader = () => {
+    const { address } = useAppKitAccount();
+
+      const { userData } = useContext(UserInfoContext);
   const[openMenu, setOpenMenu] = useState(false);
+    const [stakePopup, setStakePopup] = useState(false);
     const { walletProvider } = useAppKitProvider("eip155");
   const { disconnect } = useDisconnect();
   const navigate = useNavigate();
@@ -29,9 +34,11 @@ const DashboardHeader = () => {
   return (
     <header className=" w-full bg-[#C5FF9E] p-3 ">
       <main className="max-w-[1360px] mx-auto flex justify-between items-center">
+        <div>
         <img className="w-45" src="/assets/images/Logo.png" alt="logo" />
+        </div>
 
-        <ul className="items-center justify-between hidden gap-5 xl:gap-40 md:flex">
+        <ul className="items-center justify-between hidden gap-5 xl:ml-50 xl:gap-10 md:flex">
           {dappNavLinks?.map((navlink, index) => (
             <li key={index}>
               <NavLink to={navlink?.link}>
@@ -41,6 +48,70 @@ const DashboardHeader = () => {
           ))}
         </ul>
 
+<div className="flex items-center gap-5">
+        <NavLink to={"https://swap.qerra.network/"} target="blank">
+        <button
+          className="items-center justify-between hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
+         
+        >
+          <img src="/assets/images/panda.svg" alt="panda" />
+          Buy $PANDX
+          <img className="w-5 h-5" src="/assets/images/qerra.png" alt="qerra" />
+          qerraSwap
+        </button>
+   </NavLink>
+ 
+          <button
+          className="hidden gap-2 p-3 text-lg font-medium text-center text-white duration-300 ease-in-out md:flex btn-star"
+             onClick={() => setStakePopup(!stakePopup)} 
+        >
+          <img src="/assets/images/star 1.svg" alt="star" />
+        </button>
+       
+            {stakePopup && (
+              <>
+              <div
+                className="fixed inset-0 flex items-center justify-center z-35"
+                onClick={() => setStakePopup(false)} //  background click closes popup
+              />
+                <div
+                  className="absolute top-18 z-40  right-95 p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[120px] rounded-md text-black border border-black"
+               
+                >
+                  <div className="flex items-center justify-between ">
+                    <div>
+                      <h3>Wallet Address</h3>
+                      <span className="text-sm">
+                        {address
+                          ? `${address.substring(0, 5)}....${address.substring(
+                              36,
+                              42
+                            )}`
+                          : "No address found"}
+                      </span>
+                    </div>
+                    <div>
+                      <button onClick={() => handleCopy(address)}>
+                        <img className="w-7" src="/assets/icons/copy.svg" alt="copy" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between ">
+                    <div>
+                      <h3>Referral Link</h3>
+                      <span className="text-sm">{userData?.data?.username}</span>
+                    </div>
+                    <div>
+                      <button onClick={()=>handleCopy(userData?.data?.username)}>
+                        <img className="w-7" src="/assets/icons/copy.svg" alt="copy" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </>
+            )}
+       
          <button
           className="hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
           onClick={() => handleDisconnet()}
@@ -48,14 +119,8 @@ const DashboardHeader = () => {
           <img src="/assets/images/panda.svg" alt="panda" />
         LOGOUT
         </button>
-
-        <button
-          className="hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
-          onClick={() => open()}
-        >
-          <img src="/assets/images/panda.svg" alt="panda" />
-          Buy $PANDX
-        </button>
+</div>
+    
         {
            <div className="md:hidden bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
                 <button
