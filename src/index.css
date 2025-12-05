@@ -13,9 +13,11 @@ body , h1 ,h2 ,h3 ,h4 ,h5 ,h6 , span , button {
 p , a, input {
    font-family: "Lato", sans-serif;
 }
+
 .shadow {
     box-shadow: rgba(0, 0, 0, 0.30) 2.4px 2.4px 0.2px;
 }
+
 /* .bg-graydient-box {
      background-color: var(--token-33c21092-8a05-4905-85e1-0e05518e6553, rgb(114, 163, 20));
     border-radius: 100px;
@@ -88,7 +90,7 @@ section.color-shadow:before {
         rgba(200, 255, 200, 0.25) 500px, 
     );
 
-    filter: blur(40px);  
+    filter: blur(40px);
 }
 
 .marquee {
@@ -194,6 +196,23 @@ body{
   background-color: #72A315; /* Tailwind blue-100 */
 }
 
+/* .btn-success {
+    background-image: linear-gradient(to right,
+     #65a02a,
+     #4CAF50);
+  box-shadow: 0 0px 0px 0 rgba(49, 196, 81, 0.85);
+    transition: 0.3s ease;
+    border-radius: 25px;
+} */
+
+/* .btn-success:hover {
+  background-image: linear-gradient(
+    to right,
+    #4CAF50,
+    #65a02a 
+  );
+  transform: scale(1.05);
+} */
 
 
 .loader {
@@ -204,6 +223,23 @@ body{
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
+/* .btn-success {
+    background-image: linear-gradient(to right,
+     #65a02a,
+     #4CAF50);
+  box-shadow: 0 0px 0px 0 rgba(49, 196, 81, 0.85);
+    transition: 0.3s ease;
+    border-radius: 25px;
+} */
+
+/* .btn-success:hover {
+  background-image: linear-gradient(
+    to right,
+    #4CAF50,
+    #65a02a 
+  );
+  transform: scale(1.05);
+} */
     animation: rotation 1s linear infinite;
     }
 
@@ -250,13 +286,8 @@ body{
   filter: blur(0);
   z-index: -1;
   box-shadow: none;
-  background: conic-gradient(
-    #00000000 80deg,
-    #40baf7,
-    #f34ad7,
-    #5bfcc4,
-    #00000000 280deg
-  );
+  background: conic-gradient(#00000000 80deg, #494a8800, #494a8800, #62557a00, #00000000 280deg);
+
   transition: all 0.3s ease;
 }
 

@@ -9,7 +9,6 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
-import { headerLogos } from "@constants/index";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -17,17 +16,6 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-  //   const scrollTo = (section) => {
-  //   const refs = {
-  //     home: homeRef ,
-  //     about: aboutRef,
-  //     tokenomics: tokenomicsRef,
-  //     getStarted: getStartedRef,
-  //     roadmap: roadmapRef,
-  //   };
-
-  //   refs[section].current?.scrollIntoView({ behavior: "smooth" , block: "center"  });
-  // };
   const scrollTo = (section, offset = 0, isCenter = false) => {
     const refs = {
       home: homeRef,
@@ -185,9 +173,16 @@ const Header = ({
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Staking
-                    </button>
+                    </button> 
                   </NavLink>
                 )}
+
+
+               <button onClick={() => setOpenLoginModal(true)}  className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
+                    Sign up
+                  </button>
+
+
 
                 <a href="https://swap.qerra.network/" target="blank"> <button className="flex gap-2 sm:px-6 hidden px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center w-full">
                     <img src="/assets/images/panda.svg" alt="panda" />
