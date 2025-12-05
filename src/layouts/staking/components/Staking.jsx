@@ -85,25 +85,25 @@ export default function Staking() {
       <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px] lg:h-[720px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
-          <div className="relative flex flex-col items-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
+          <div className="relative flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
             <div
-              className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px]  py-3 px-1"
+              className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px]  py-2 px-1"
             >
-              My Rank
+          
               <div className="flex items-center justify-center gap-1">
             <img className="w-4" src="/assets/images/star 1.svg" alt="star" />
-            <span className="text-xl">{userData?.data?.rank_id}</span>
+            <span className="text-sm">{userData?.data?.rank_id}</span>
             </div>
             </div>
          
             <button
               className={`${
                 userData?.data?.is_active ? "btn-primary " : "btn-red"
-              } m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out p-3 py-3 blink-text`}
+              } m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  py-2 px-1 blink-text`}
             >
               {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
-            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[300px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out p-1 text-sm" onClick={()=>navigate("/Ranking")}>
+            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-xs py-1" onClick={()=>navigate("/Ranking")}>
               Upgrade next rank & get 0.60%
             </button>
           </div>
@@ -116,15 +116,19 @@ export default function Staking() {
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
-        <div className="right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px]  lg:h-[720px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
+        <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px]  lg:h-[720px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
           </h1>
+   
+          <div className="mx-auto mb-5 circle-animate-logo">
           <img
-            src="/assets/images/qqlogo.svg"
-            className="w-[150px] sm:w-[196px] h-auto mx-auto mt-6 md:mt-10"
+            src="/assets/images/qerralogo.svg"
+            className="w-[150px] sm:w-[136px] h-auto mt-6 md:mt-10"
           />
-          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-15 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
+          </div>
+        
+          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-24 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">

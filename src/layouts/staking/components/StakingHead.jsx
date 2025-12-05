@@ -36,6 +36,7 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
         <p>Daily $0.5</p>
         {/* <p>Total Gain ${Number(data?.data?.trail_income).toFixed(1)}</p> */}
            <MaxCapProgress value={maxCap}/>
+        <div/>
       </div>
 
 

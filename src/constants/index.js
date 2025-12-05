@@ -2,7 +2,7 @@ export const dappNavLinks = [
   {
     id: "wallet",
     title: "WALLET",
-    link: "",
+    link: "/StakingPage",
   },
   {
     id: "rank",

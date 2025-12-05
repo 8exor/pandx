@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 
-export default function LoginPage({ setOpenLoginModal }) {
+export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
   const [clickedOnConnect, setClickedOnConnect] = useState(false);
@@ -165,14 +165,16 @@ export default function LoginPage({ setOpenLoginModal }) {
     }
   },[clickedOnConnect])
 
+
+
   return (
   <>
   {LoginUser?.isPending && <FullPageLoader/>}
-    <div className="fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
+    <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
       <div className="z-50 w-full max-w-md p-4 py-4  bg-[#C5FF9E] border border-black rounded-md">
         <button
           className="flex justify-end w-full"
-          onClick={() => setOpenLoginModal(false)}
+          onClick={() => {setOpenLoginModal(false); setShow(false)}}
         >
           <img
             className="invert w-7"

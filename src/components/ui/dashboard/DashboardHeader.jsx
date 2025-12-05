@@ -4,10 +4,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAppKitAccount, useAppKitProvider, useDisconnect } from "@reown/appkit/react";
 import { ethers } from "ethers";
 import { UserInfoContext } from "@contexts/UserInfoContext";
+import CopyToClipBaord from "@hooks/CopyToClipBoard";
 
 const DashboardHeader = () => {
     const { address } = useAppKitAccount();
-
+    const [isCopied, handleCopy] = CopyToClipBaord();
       const { userData } = useContext(UserInfoContext);
   const[openMenu, setOpenMenu] = useState(false);
     const [stakePopup, setStakePopup] = useState(false);
@@ -48,9 +49,9 @@ const DashboardHeader = () => {
           ))}
         </ul>
 
-<div className="flex items-center gap-5">
-
-   <button
+<div className="relative flex items-center gap-5 ">
+     
+         <button
           className="hidden gap-2 p-3 text-lg font-medium text-center text-white duration-300 ease-in-out md:flex btn-star"
              onClick={() => setStakePopup(!stakePopup)} 
         >
@@ -60,24 +61,35 @@ const DashboardHeader = () => {
             {stakePopup && (
               <>
               <div
-                className="fixed inset-0 flex items-center justify-center z-35"
+                className="fixed flex items-center justify-center z-35"
                 onClick={() => setStakePopup(false)} //  background click closes popup
               />
                 <div
-                  className="absolute top-18 z-40  right-95 p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[120px] rounded-md text-black border border-black"
+                  className=" absolute top-15 -left-17 z-40   p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[160px] rounded-md text-black border border-black"
                
                 >
+                    <div className="flex items-center justify-between ">
+                    <div>
+                      <h3>Username</h3>
+                      <p className="text-sm font-medium">{userData?.data?.username}</p>
+                    </div>
+                    <div>
+                      <button onClick={()=>handleCopy(userData?.data?.username)}>
+                        <img className="w-7" src="/assets/icons/copy.svg" alt="copy" />
+                      </button>
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between ">
                     <div>
                       <h3>Wallet Address</h3>
-                      <span className="text-sm">
+                      <p className="text-sm">
                         {address
                           ? `${address.substring(0, 5)}....${address.substring(
                               36,
                               42
                             )}`
                           : "No address found"}
-                      </span>
+                      </p>
                     </div>
                     <div>
                       <button onClick={() => handleCopy(address)}>
@@ -89,7 +101,7 @@ const DashboardHeader = () => {
                   <div className="flex items-center justify-between ">
                     <div>
                       <h3>Referral Link</h3>
-                      <span className="text-sm">{userData?.data?.username}</span>
+                      <p className="text-sm">{userData?.data?.username}</p>
                     </div>
                     <div>
                       <button onClick={()=>handleCopy(userData?.data?.username)}>
@@ -97,6 +109,7 @@ const DashboardHeader = () => {
                       </button>
                     </div>
                   </div>
+                  
                 </div>
             </>
             )}
