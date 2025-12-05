@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { UserInfoProvider } from '@contexts/UserInfoContext';
-import HomePopup from '@components/HomePopup';
+
 
 // import Header from "./components/ui/Header";
 
@@ -54,7 +54,7 @@ function App() {
      <ReactQueryDevtools initialIsOpen={false} />
      </UserInfoProvider>
      </QueryClientProvider>
-     <HomePopup/>
+   
     </>
   )
 }

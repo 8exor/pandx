@@ -8,6 +8,7 @@ import Roadmap from "@components/ui/Home/Roadmap"
 import Footer from "@components/Footer"
 import Chart from "@components/ui/Home/Chart"
 import ScrollToTop from "@components/ui/Home/ScrollToTop"
+import HomePopup from '@components/HomePopup';
 import { useRef } from "react";
 const Home = () => {
     const aboutRef = useRef(null);
@@ -27,6 +28,7 @@ const Home = () => {
         <Marquee/>
         <Footer/>
         <ScrollToTop/>
+          <HomePopup/>
         </>
     )
 }
