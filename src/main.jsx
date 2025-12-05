@@ -21,7 +21,7 @@ const metadata = {
 createAppKit({
   adapters: [new Ethers5Adapter()],
   metadata,
-  networks : [bscTestnet],
+  networks : [sepolia],
   projectId,
   features: {
      analytics: true,

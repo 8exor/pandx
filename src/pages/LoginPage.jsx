@@ -12,6 +12,7 @@ import { setAccessToken } from "@utils/Session";
 import { useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
+import TypeWriterEffect from "@hooks/TypeWriterEffect";
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { open } = useAppKit();
@@ -30,6 +31,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
   const { disconnect } = useDisconnect();
   const { isLogin, setIsLogin } = useContext(UserInfoContext);
+
+  
+
 
   const navigate = useNavigate();
 
@@ -140,8 +144,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     onError: (error) => {
       if (error?.status === 0 && clickedOnLogin) {
         toast.error(error?.message);
+        // disconnect();
       }
-      disconnect();
     },
   });
 
@@ -149,7 +153,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     if (isConnected && clickedOnLogin) {
       LoginUser.mutate({ wallet_address: address });
     }
-  }, [isConnected && clickedOnLogin]);
+  }, [isConnected ]);
 
   useEffect(() => {
     setIsReferralCodeChecked(false);
@@ -182,7 +186,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             alt="clsoe"
           />
         </button>
-        <div className=" mt-5 relative flex items-center justify-between w-full p-3 rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
+        <div className=" mt-5 relative flex items-center justify-between w-full p-3 h-full min-h-20 rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
+          <div/>
           <div className="absolute left-0 -top-5 md:-top-17 ">
             <img
               className="w-20 md:w-35"
@@ -191,12 +196,12 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             />
           </div>
 
-          <div className="text-[#ffffff] flex-1 font-semibold flex justify-end">
-            <span className=" text-md sm:text-xl">
-              Join Now & Get <br />
-              <span className="text-xl font-semibold text-bg-graydient-box sm:text-2xl">
-                $100 TRIAL FUND
-              </span>
+          <div className="text-[#ffffff] w-full max-w-[200px] font-semibold flex justify-start">
+            <span className=" text-md sm:text-xl" >
+                <TypeWriterEffect text={
+                  " Join Now & Get 100 TRIAL FUND" 
+                } delay={150}/>
+                
             </span>
           </div>
         </div>

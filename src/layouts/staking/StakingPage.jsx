@@ -11,6 +11,7 @@ import {
 } from "@reown/appkit/react";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import BuyPandaPopUp from "./BuyPandaPopUp";
+import { getAccessToken } from "@utils/Session";
 
 const StakingPage = () => {
   const { open } = useAppKit();
@@ -18,6 +19,9 @@ const StakingPage = () => {
   const { isConnected, address } = useAppKitAccount();
   const {isLogin} =useContext(UserInfoContext)
   const [buyPandx, setBuyPandx] = useState(true);
+
+  
+
 
   const { data } = useQuery({
     queryKey: ["dashboarData"],
@@ -27,33 +31,8 @@ const StakingPage = () => {
     },
   });
 
-  const LoginUser = useMutation({
-    mutationFn: async (formData) => {
-      const { data } = await axiosInstance.post(AUTH?.login, formData);
-      return data;
-    },
-    onSuccess: async (data) => {
-      toast.success(data?.message);
 
-      setAccessToken(data?.data?.token);
-    },
-    onError: (error) => {
-      if (error?.status === 0 && clickedOnLogin) {
-        toast.error(error?.message);
-      }
-      disconnect();
-    },
-  });
 
-  // useEffect(() => {
-
-  //   if (isConnected) {
-  //     alert("Hey !!!")
-  //     LoginUser.mutate({ wallet_address: address });
-  //   }
-  // }, [isConnected]);
-
-  console.log("what is connecteing : ", isConnected)
 
   return (
     <>

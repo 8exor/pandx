@@ -14,6 +14,7 @@ const HomePopup = () => {
   const [loginModal, setOpenLoginModal] = useState(false);
     const { disconnect } = useDisconnect();
       const { open } = useAppKit();
+      const [loginWithPopUp, setLoginWithPopUp] = useState(false);
 
         const { isConnected, address } = useAppKitAccount();
 
@@ -28,16 +29,7 @@ const HomePopup = () => {
   const closePopup = () => setShow(false);
 
 
-const handleConnect = async () => {
-    try {
-      await open();  
-       // <- let Web3Modal finish updating first
-      // avoid setting React state inside the same tick
-  
-    } catch (e) {
-      console.error(e);
-    }
-  };
+
 
 
  const LoginUser = useMutation({
@@ -60,10 +52,10 @@ const handleConnect = async () => {
     },
   });
   useEffect(() => {
-    if (isConnected ) {
+    if (isConnected && loginWithPopUp ) {
       LoginUser.mutate({ wallet_address: address });
     }
-  }, [isConnected ]);
+  }, [isConnected && loginWithPopUp ]);
 
   console.log("why are you not connectinggggg > .",isConnected)
 
@@ -91,7 +83,8 @@ const handleConnect = async () => {
         </div>
         <h2 className="mb-3 text-2xl text-white">Please Connect Your Wallet</h2>
        <ul className="flex items-center justify-center gap-5 mt-5">
-        <li> <button  onClick={()=>{handleConnect();}} className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
+        <li> <button  onClick={()=>{open();  
+      setLoginWithPopUp(true);}} className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
                     Login
                   </button></li>
        <li>
