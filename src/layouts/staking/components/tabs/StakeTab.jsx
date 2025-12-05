@@ -121,12 +121,12 @@ toast.error(error?.message || "Error Occurred")
 
         <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 rounded-full border border-black gap-4">
           <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-start">
-          <p className="w-full text-center sm:text-left sm:w-auto">
+          <p className="flex-1 w-full text-center sm:text-left sm:w-auto">
             Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
             <input
               type="text"
-              className="outline-none "
+              className=""
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
             />

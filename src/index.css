@@ -250,13 +250,6 @@ body{
   filter: blur(0);
   z-index: -1;
   box-shadow: none;
-  background: conic-gradient(
-    #00000000 80deg,
-    #40baf7,
-    #f34ad7,
-    #5bfcc4,
-    #00000000 280deg
-  );
   transition: all 0.3s ease;
 }
 
@@ -700,5 +693,41 @@ background: linear-gradient(171deg,rgba(91, 91, 172, 1) 10%, rgba(255, 255, 255,
 
   to {
     rotate: 360deg;
+  }
+}
+
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #fff; /* cursor */
+  animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+  animation-delay: 3s; /* starts after typing ends */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }

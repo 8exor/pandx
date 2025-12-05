@@ -31,7 +31,7 @@ export default function Compound() {
           <p className="w-full text-center sm:text-left sm:w-auto">
             Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
-          <input type="text" className='max-w-sm outline-none ' value={compoundAmount} onChange={(e)=>setCompoundAmount(e.target.value)} />
+          <input type="text" className='' value={compoundAmount} onChange={(e)=>setCompoundAmount(e.target.value)} />
           <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             Max
           </button>

@@ -80,6 +80,9 @@ export default function Staking() {
     },
   });
 
+  const upgrade = userData?.data?.rank_id ==1 && "0.60%" || userData?.data?.rank_id ==2 && "0.70%" || userData?.data?.rank_id ==3 && "0.80%" || userData?.data?.rank_id ==4 && "0.90%" || userData?.data?.rank_id ==5 && "1.00%"
+
+
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-4 mt-4">
       <StakingHead />
@@ -103,8 +106,10 @@ export default function Staking() {
             >
               {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
-            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-xs py-1" onClick={()=>navigate("/Ranking")}>
-              Upgrade next rank & get 0.60%
+            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-xs py-3" onClick={()=>navigate("/Ranking")}>
+              
+            Upgrade Rank & Get {upgrade}
+
             </button>
           </div>
 

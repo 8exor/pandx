@@ -9,7 +9,11 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
-import { headerLogos } from "@constants/index";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@utils/axiosInstance";
+import { AUTH } from "@services/panda.api.services";
+import toast from "react-hot-toast";
+import { setAccessToken } from "@utils/Session";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -17,17 +21,6 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-  //   const scrollTo = (section) => {
-  //   const refs = {
-  //     home: homeRef ,
-  //     about: aboutRef,
-  //     tokenomics: tokenomicsRef,
-  //     getStarted: getStartedRef,
-  //     roadmap: roadmapRef,
-  //   };
-
-  //   refs[section].current?.scrollIntoView({ behavior: "smooth" , block: "center"  });
-  // };
   const scrollTo = (section, offset = 0, isCenter = false) => {
     const refs = {
       home: homeRef,
@@ -64,11 +57,12 @@ const Header = ({
   };
 
   const { open, close } = useAppKit();
-  const { isConnected } = useAppKitAccount();
+  const { isConnected, address } = useAppKitAccount();
   const { walletProvider } = useAppKitProvider("eip155");
   const { disconnect } = useDisconnect();
   const [openLoginModal, setOpenLoginModal] = useState(false);
-
+  const [clickedOnConnect, setClickedOnConnect] = useState(false);
+  const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
@@ -122,6 +116,33 @@ const Header = ({
     }
   };
 
+ const LoginUser = useMutation({
+    mutationFn: async (formData) => {
+      const { data } = await axiosInstance.post(AUTH?.login, formData);
+      return data;
+    },
+    onSuccess: async (data) => {
+      toast.success(data?.message);
+      // await new Promise((p) => setTimeout(p, 3000));
+      setAccessToken(data?.data?.token);
+      navigate("/StakingPage");
+    },
+    onError: (error) => {
+      if (error?.status === 0 && clickedOnConnect) {
+        toast.error(error?.message);
+        // disconnect();
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (isConnected && clickedOnConnect) {
+      LoginUser.mutate({ wallet_address: address});
+    }
+  }, [isConnected]);
+
+
+
   return (
     <>
       <header
@@ -166,7 +187,8 @@ const Header = ({
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
-                    isConnected ? handleDisconnet() : setOpenLoginModal(true);
+                    isConnected ? handleDisconnet() :   open();
+                      setClickedOnConnect(true);
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
@@ -185,11 +207,18 @@ const Header = ({
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Staking
-                    </button>
+                    </button> 
                   </NavLink>
                 )}
 
-                <a href="https://swap.qerra.network/" target="blank"> <button className="flex gap-2 sm:px-6 hidden px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center w-full">
+
+               <button onClick={() => setOpenLoginModal(true)}  className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
+                    Sign up
+                  </button>
+
+
+
+                <a href="https://swap.qerra.network/" target="blank"> <button className="flex items-center justify-center hidden w-full gap-2 px-2 py-3 text-sm text-white sm:px-6 sm:text-lg btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                    Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
                   </button></a>
@@ -305,8 +334,8 @@ const Header = ({
                   <button
                     className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
-                      setOpenMenu(false);
-                      setOpenLoginModal(true);
+                      open();
+                      setClickedOnConnect(true)
                     }}
                   >
                     <img src="/assets/images/panda.svg" alt="panda" />
