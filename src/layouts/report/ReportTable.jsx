@@ -20,9 +20,9 @@ const userInfoLoading = false;
     <div>
        <div
           id="scroll-bar"
-          className="w-full mt-8 overflow-x-auto overflow-y-auto max-h-[700px] cursor-pointer"
+          className="w-full mt-8 overflow-x-auto overflow-y-auto max-h-[700px] cursor-pointer "
         >
-          <div className="w-full max-w-[100px] min-w-full">
+          <div className="w-full max-w-[100px] min-w-full ">
             {userInfoLoading ? (
               <div className="flex justify-center">
                loading....
@@ -37,7 +37,7 @@ const userInfoLoading = false;
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-base font-medium p-5 max-md:w-[150px] flex-[1_1_300]"
+                          className="capitalize text-base font-medium p-5 px-10 max-md:w-[150px] flex-[1_1_300]"
                           key={index}
                         >
                           {data}

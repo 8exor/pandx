@@ -123,12 +123,12 @@ export default function Staking() {
    
           <div className="mx-auto mb-5 circle-animate-logo">
           <img
-            src="/assets/images/qqlogo.svg"
-            className="w-[150px] sm:w-[196px] h-auto mt-6 md:mt-10"
+            src="/assets/images/qerralogo.svg"
+            className="w-[150px] sm:w-[136px] h-auto mt-6 md:mt-10"
           />
           </div>
         
-          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-15 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
+          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-24 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">

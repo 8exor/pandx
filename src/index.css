@@ -666,7 +666,7 @@ background: linear-gradient(171deg,rgba(91, 91, 172, 1) 10%, rgba(255, 255, 255,
 
 .circle-animate-logo img {
   display: block;
-  width: 100%;
+  /* width: 100%; */
   aspect-ratio: 1;
   object-fit: cover;
   object-position: top;
