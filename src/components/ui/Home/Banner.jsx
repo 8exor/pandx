@@ -22,11 +22,11 @@ const Banner = ({ aboutRef, homeRef }) => {
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
-         <ul className=" absolute left-[7%]">
+         <ul className=" fixed hidden  bg-[#eaffe2] border-[2px]  border-[#75ac3f] lg:flex flex-col gap-4 rounded-lg p-[10px] py-[20px] z-30 left-[1%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
                   <li
                     key={index}
-                    className="h-9 mt-4 flex items-center justify-center border w-9 rounded-full border-[#00d990] 
+                    className="h-9 animate-float flex items-center justify-center border w-9 rounded-full border-[#00d990] 
                  hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
                   >
                     <img
@@ -37,6 +37,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                   </li>
                 ))}
               </ul>
+
           <div className="mycontainer ">
             <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">
               <img
@@ -70,15 +71,15 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <h1 className="text-4xl  relative sm:text-[64px]  lg:text-6xl xl:text-9xl text-center leading-[1.1]">
                   The People’s Pandx Coin
                 </h1>
-                <p className="text-[#4c4c4c] text-center text-xl sm:pt-8 pt-4 max-w-[600px] w-full m-auto">
+                <p className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[600px] w-full m-auto">
                   Welcome to a movement where finance meets fun and community
                   drives growth — where staking meets influence, earn more, grow
                   faster, and win together
                 </p>
-               <a href="https://swap.qerra.network/" target="blank" className="flex justify-center mt-5"> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+               <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
                     <img src="/assets/images/panda.svg" alt="panda" />
                    Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a>
+                  </button></a> 
               </div>
               <div className="relative w-full max-w-[1200px] md:mt-[40px] mx-auto">
                 {/* Floor Image */}
@@ -146,7 +147,7 @@ const Banner = ({ aboutRef, homeRef }) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
             <div
-              className=" animate__animated animate__fadeInUp"
+              className="animate"
               data-aos="slide-up"
             >
               <h2 className="lg:text-[82px] xl:text-left  text-[30px] text-center lg:text-center sm:text-[40px]   sm:leading-10 leading-20">
