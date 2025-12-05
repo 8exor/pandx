@@ -35,6 +35,7 @@ export default function AppRoutes (){
             path : "/Report",
             Component : Report
         },
+
         //  {
         //     name : "login",
         //     path : "/login",
