@@ -155,13 +155,13 @@ const Header = ({
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div className="logo">
-              <a href=" https://swap.qerra.network/" target="blank">
+             <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
                   src="/assets/images/Logo.png"
                   alt="logo"
                 />
-              </a>
+               </NavLink>
             </div>
 
             <div className="flex items-center justify-between gap-5">
