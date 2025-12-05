@@ -65,13 +65,13 @@ const DashboardHeader = () => {
                 onClick={() => setStakePopup(false)} //  background click closes popup
               />
                 <div
-                  className=" absolute top-15 left-0 z-40   p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[160px] rounded-md text-black border border-black"
+                  className=" absolute top-15 -left-17 z-40   p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[160px] rounded-md text-black border border-black"
                
                 >
                     <div className="flex items-center justify-between ">
                     <div>
                       <h3>Username</h3>
-                      <span className="text-sm">{userData?.data?.username}</span>
+                      <p className="text-sm font-medium">{userData?.data?.username}</p>
                     </div>
                     <div>
                       <button onClick={()=>handleCopy(userData?.data?.username)}>
@@ -82,14 +82,14 @@ const DashboardHeader = () => {
                   <div className="flex items-center justify-between ">
                     <div>
                       <h3>Wallet Address</h3>
-                      <span className="text-sm">
+                      <p className="text-sm">
                         {address
                           ? `${address.substring(0, 5)}....${address.substring(
                               36,
                               42
                             )}`
                           : "No address found"}
-                      </span>
+                      </p>
                     </div>
                     <div>
                       <button onClick={() => handleCopy(address)}>
@@ -101,7 +101,7 @@ const DashboardHeader = () => {
                   <div className="flex items-center justify-between ">
                     <div>
                       <h3>Referral Link</h3>
-                      <span className="text-sm">{userData?.data?.username}</span>
+                      <p className="text-sm">{userData?.data?.username}</p>
                     </div>
                     <div>
                       <button onClick={()=>handleCopy(userData?.data?.username)}>
