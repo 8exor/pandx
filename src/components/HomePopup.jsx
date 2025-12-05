@@ -95,11 +95,15 @@ const handleConnect = async () => {
                     Login
                   </button></li>
        <li>
+
+         
+
          <button className="flex gap-2 px-6 py-3 text-lg text-white btn-primary" onClick={()=>{
            setOpenLoginModal(true)
           //  setShow(false);
           }}>
                     
+
                     Sign up
                   </button>
        </li>
