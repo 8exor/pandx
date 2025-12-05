@@ -116,7 +116,7 @@ const Header = ({
     }
   };
 
- const LoginUser = useMutation({
+  const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
       return data;
@@ -137,11 +137,9 @@ const Header = ({
 
   useEffect(() => {
     if (isConnected && clickedOnConnect) {
-      LoginUser.mutate({ wallet_address: address});
+      LoginUser.mutate({ wallet_address: address });
     }
   }, [isConnected]);
-
-
 
   return (
     <>
@@ -155,17 +153,17 @@ const Header = ({
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div className="logo">
-              <a href=" https://swap.qerra.network/" target="blank">
+
+               <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
                   src="/assets/images/Logo.png"
                   alt="logo"
                 />
-              </a>
+               </NavLink>
             </div>
 
             <div className="flex items-center justify-between gap-5">
-             
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
                 <a href="https://t.me/pandxdao" target="blank">
                   <img
@@ -187,8 +185,8 @@ const Header = ({
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
-                    isConnected ? handleDisconnet() :   open();
-                      setClickedOnConnect(true);
+                    isConnected ? handleDisconnet() : open();
+                    setClickedOnConnect(true);
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
@@ -207,21 +205,30 @@ const Header = ({
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Staking
-                    </button> 
+                    </button>
                   </NavLink>
                 )}
 
+                <button
+                  onClick={() => setOpenLoginModal(true)}
+                  className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
+                >
+                  Sign up
+                </button>
 
-               <button onClick={() => setOpenLoginModal(true)}  className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
-                    Sign up
-                  </button>
-
-
-
-                <a href="https://swap.qerra.network/" target="blank"> <button className="flex items-center justify-center hidden w-full gap-2 px-2 py-3 text-sm text-white sm:px-6 sm:text-lg btn-primary">
+                <a href="https://swap.qerra.network/" target="blank">
+                  {" "}
+                  <button className="flex items-center justify-center hidden w-full gap-2 px-2 py-3 text-sm text-white sm:px-6 sm:text-lg btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
-                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a>
+                    Buy $PANDX{" "}
+                    <img
+                      className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
+                      src="/assets/images/qerra.png"
+                      alt="panda"
+                    />
+                    qerraSWAP
+                  </button>
+                </a>
               </div>
               <div
                 ref={buttonRef}
@@ -335,7 +342,7 @@ const Header = ({
                     className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
                     onClick={() => {
                       open();
-                      setClickedOnConnect(true)
+                      setClickedOnConnect(true);
                     }}
                   >
                     <img src="/assets/images/panda.svg" alt="panda" />
