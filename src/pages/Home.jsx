@@ -10,6 +10,7 @@ import Chart from "@components/ui/Home/Chart"
 import ScrollToTop from "@components/ui/Home/ScrollToTop"
 import HomePopup from '@components/HomePopup';
 import { useRef } from "react";
+import HomePopup from "@components/HomePopup"
 const Home = () => {
     const aboutRef = useRef(null);
     const tokenomicsRef = useRef(null);
@@ -18,6 +19,7 @@ const Home = () => {
     const homeRef = useRef(null);
     return (
         <>
+        <HomePopup/>
         <Header  getStartedRef={getStartedRef} roadmapRef={roadmapRef} tokenomicsRef={tokenomicsRef} aboutRef={aboutRef} homeRef={homeRef}/>   
         <Banner homeRef={homeRef} aboutRef={aboutRef} />
         <Features/>

@@ -5,6 +5,9 @@ import Home from "../pages/Home";
 import Report from "../layouts/report/Report";
 import StakingHeader from "./StakingHeader";
 import Ranking from "../layouts/rank/Ranking";
+import LoginPage from "@pages/LoginPage";
+import { Component } from "@amcharts/amcharts4/core";
+import HomePopup from "@components/HomePopup";
 
 
 
@@ -16,6 +19,12 @@ export default function AppRoutes (){
             name : "Home",
             path : "/",
             Component : Home
+        },
+     
+         {
+            name : "login",
+            path : "/login",
+            Component : LoginPage
         },
     ]
 
@@ -35,12 +44,7 @@ export default function AppRoutes (){
             path : "/Report",
             Component : Report
         },
-
-        //  {
-        //     name : "login",
-        //     path : "/login",
-        //     Component : LoginPage
-        // },
+        
  
     ]
 

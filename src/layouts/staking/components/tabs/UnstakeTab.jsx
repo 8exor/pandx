@@ -54,11 +54,11 @@ const unstakeHash = useMutation({
           </button>
         </div>
 
-        <div className="flex items-center gap-2 mt-3">
-          <input type="checkbox"  checked ={isChecked} onChange={(e)=>setIsChecked(e.target.value)} />
+        <div className="flex items-center gap-3 mt-3 leading-0">
+          <input type="checkbox" className='scale-200'  checked ={isChecked} onChange={(e)=>setIsChecked(e.target.checked)} />
           <div>
         
-          <span className='font-light '>Please confirm if you want to proceed with unstaking. Once you unstake, your ID will be permanently deactivated.
+          <span className='text-sm font-light'>Please confirm if you want to proceed with unstaking. Once you unstake, your ID will be permanently deactivated.
             </span>
           </div>
         </div>
