@@ -22,7 +22,7 @@ const Banner = ({ aboutRef, homeRef }) => {
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
-         <ul className=" fixed hidden  bg-[#eaffe2] border-[2px]  border-[#75ac3f] lg:flex flex-col gap-4 rounded-lg p-[10px] py-[20px] z-30 left-[1%]"  data-aos="slide-up">
+         <ul className=" fixed hidden  bg-[#eaffe2] border-[2px]  border-[#75ac3f] lg:flex flex-col gap-4 rounded-lg px-[10px] pb-[40px] pt-[20px] z-30 left-[1.5%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
                   <li
                     key={index}
