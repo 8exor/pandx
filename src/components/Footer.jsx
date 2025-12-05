@@ -14,10 +14,12 @@ const Footer = () => {
 
               {/* mobile view */}
               <div className="md:hidden block">
-               <button className="btn-primary shine mx-auto mt-5   duration-300 ease-in-out py-3 px-6 flex gap-2 text-white text-md font-medium">
-                    <img src="/assets/images/panda.svg" alt="Pandx" />
-                    Buy $Pandx
-                  </button>
+               <div className="mt-5">
+                   <a href="https://swap.qerra.network/" target="blank" className="flex justify-center "> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
+                  </button></a>
+                </div>
                 
                     <img className="mx-auto mt-4" src="assets/images/panda_face.svg" alt="Pandx" />
                      <div className="flex justify-center gap-4 mt-4">
@@ -40,14 +42,12 @@ const Footer = () => {
               </div>
               </div>
               {/* mobile view end  */}
-              <div className="flex items-center justify-center gap-2  md:gap-8 pt-10">
-                <div>
-                  <a href="https://swap.qerra.network/" target="blank">
-                   <button className="btn-primary   md:block hidden   duration-300 ease-in-out py-3 px-6 md:flex gap-2 text-white text-md font-medium">
-                    <img src="/assets/images/panda.svg" alt="Pandx" />
-                   Buy $Pandx
-                  </button>
-                  </a>
+              <div className="flex items-center justify-center gap-2 mt-5  md:gap-8">
+                <div className="hidden md:block">
+                   <a href="https://swap.qerra.network/" target="blank" className="flex justify-center "> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
+                  </button></a>
                 </div>
                 <div className="md:block hidden">
                   <img src="assets/images/panda_face.svg" alt="Pandx" />

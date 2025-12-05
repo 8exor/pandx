@@ -15,7 +15,7 @@ const HomePopup = () => {
 
   return (
     <div
-      className="fixed z-50 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000ed] flex justify-center items-center"
+      className="fixed z-50 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000b0] flex justify-center items-center"
       onClick={closePopup} // click outside closes
     >
       <div
@@ -31,7 +31,7 @@ const HomePopup = () => {
         </div>
         <h2 className="text-2xl text-white mb-3">Please Connect Your Wallet</h2>
        <ul className="flex justify-center gap-5 items-center mt-5">
-        <li> <button  onClick={() =>("/login")} className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
+        <li> <button className="flex gap-2 px-6 py-3 text-lg  text-white btn-primary">
                     Login
                   </button></li>
        <li>
