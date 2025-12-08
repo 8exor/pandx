@@ -1,8 +1,8 @@
-import React from 'react'
+import { UserInfoContext } from '@contexts/UserInfoContext';
+import React, { useContext } from 'react'
 
 export default function ReportTable() {
-
-const datas = [];
+const {teamData} = useContext(UserInfoContext);
 const userInfoLoading = false;
   const tableDataKeys = [
     "username",
@@ -37,7 +37,7 @@ const userInfoLoading = false;
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-base font-medium p-5 px-10 max-md:w-[150px] flex-[1_1_300]"
+                          className="capitalize text-base font-medium p-5  max-md:w-[150px] flex-[1_1_300]"
                           key={index}
                         >
                           {data}
@@ -46,13 +46,13 @@ const userInfoLoading = false;
                     })}
                   </tr>
                 </thead>
-                <tbody className="space-y-4">
-                  {datas?.length == 0 ? (
+                <tbody className="space-y-10">
+                  {teamData?.data?.child?.length == 0 ? (
                     <tr>
                       <td colSpan={9} className="w-full p-10 text-center rounded-lg bg-midgray hover:bg-border-color group/item">No Data Found</td>
                     </tr>
                   ) : (
-                    datas?.map(
+                    teamData?.data?.child?.map(
                       (
                         data,
                         index
@@ -60,24 +60,24 @@ const userInfoLoading = false;
                         return (
                           <tr
                             key={index}
-                            className="bg-green-500 rounded-lg bg-midgray hover:bg-border-color group/item"
+                            className="rounded-lg hover:bg-border-color bg-[#c4ffa1]  group/item"
                           >
-                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_150] text-sm font-normal p-5 py-2 text-white text-left">
+                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_150] text-sm font-normal p-5 py-2 text-black text-left">
                               {index + 1}
                             </td> */}
                             <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left"
+                              // onClick={() => updateState(data?.child)}
+                              className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0   text-black text-center"
                             >
                               {data?.child}
                             </td>
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
                               $
                               {Number(
                                 data?.child_user?.total_invested
                               )?.toFixed(2)}
                             </td>
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
                               {data?.child_user?.stakings[0]?.plan_id ? (
                                 <div className="flex items-center gap-2">
                                   <Image
@@ -106,18 +106,29 @@ const userInfoLoading = false;
                               ) : (
                                 "-"
                               )}
-                            </td>
+                            </td> */}
 
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
                               {eliteStatusData[
                                 Number(data?.child_user?.rank_id) - 1
                               ]?.rank ?? "-"}
-                            </td>
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            </td> */}
+                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
                               {data?.child_user?.total_directs}
                             </td>
-
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-3  text-white text-left">
+                               <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
+                              {data?.child_user?.booster_income}
+                            </td>
+                             <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
+                              {data?.child_user?.rank_id}
+                            </td>
+                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
+                              {data?.child_user?.eligible_level}
+                            </td>
+                              <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-black text-center">
+                              {data?.child_user?.total_team}
+                            </td>
+                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-3  text-black text-center">
                               <p className="w-full px-3 py-1 text-center rounded-md cursor-pointer bg-secondary text-background">
                                 {data?.child_user?.total_team_business
                                   ? Number(
@@ -126,7 +137,7 @@ const userInfoLoading = false;
                                   : 0}
                               </p>
                             </td>
-                            <td className="capitalize flex gap-2 max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            {/* <td className="capitalize flex gap-2 max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
                               {data?.child_user?.wallet_address?.slice(0, 6)}...
                               {data?.child_user?.wallet_address?.slice(-6)}
                               <span className="invisible group-hover/item:visible">
@@ -152,10 +163,10 @@ const userInfoLoading = false;
                                   />
                                 </svg>
                               </span>
-                            </td>
-                            <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
+                            </td> */}
+                            {/* <td className="capitalize max-md:w-[150px] flex-[1_1_300] text-sm font-normal p-5 py-0  text-white text-left">
                               {dateFormate(data?.child_user?.active_date)}
-                            </td>
+                            </td> */}
                           </tr>
                         );
                       }

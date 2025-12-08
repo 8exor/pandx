@@ -54,10 +54,10 @@ const DashboardHeader = () => {
           ))}
           <li>
               <button
-            className="hidden gap-2 p-3 text-lg font-medium text-center text-white duration-300 ease-in-out md:flex btn-star "
+            className="flex items-center justify-center p-3 text-lg font-medium text-center text-white duration-300 ease-in-out btn-star animate-bounce "
             onClick={() => setStakePopup(!stakePopup)}
           >
-            <img src="/assets/images/star 1.svg" alt="star" />
+            <img className="" src="/assets/images/star 1.svg" alt="star" />
           </button>
             {stakePopup && (
             <>
@@ -160,7 +160,7 @@ const DashboardHeader = () => {
         </div>
 
         {
-          <div className="md:hidden bg-graydient-box hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
+          <div className="md:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
             <button
               onClick={() => setOpenMenu(!openMenu)}
               className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
@@ -184,11 +184,15 @@ const DashboardHeader = () => {
           </div>
         }
         {openMenu && (
-          <div className="sm:hidden absolute top-18 left-0 w-full right-0  p-4  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
+          <div className="md:hidden absolute top-18 left-0 w-full right-0  p-4  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
             <ul className="text-center">
               {dappNavLinks?.map((navlink, index) => (
                 <li key={index}>
-                  <NavLink to={navlink?.link}>{navlink?.title}</NavLink>
+                  <NavLink to={navlink?.link}>
+                    <span>
+                    {navlink?.title}
+                    </span>
+                    </NavLink>
                 </li>
               ))}
             </ul>

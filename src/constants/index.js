@@ -1,7 +1,7 @@
 export const dappNavLinks = [
   {
-    id: "wallet",
-    title: "WALLET",
+    id: "staking",
+    title: "STAKING",
     link: "/StakingPage",
   },
   {
@@ -13,6 +13,11 @@ export const dappNavLinks = [
     id: "reports",
     title: "REPORTS",
     link: "/Report",
+  },
+    {
+    id: "how to",
+    title: "HOW TO",
+    link: "",
   },
 ];
 
@@ -88,56 +93,58 @@ export const myLevel = [
   },
 ];
 
-export const reportPool = [
-  {
-    title: "Self Vol",
-    value: "$50",
-  },
-  {
-    title: "Rank",
-    value: "STAR 1",
-  },
-  {
-    title: "Direct",
-    value: "10",
-  },
-  {
-    title: "Direct Vol",
-    value: "$1000",
-  },
-  {
-    title: "Direct Reward",
-    value: "$50",
-  },
-  {
-    title: "Total Team",
-    value: "10",
-  },
-  {
-    title: "Total Vol",
-    value: "$10000",
-  },
-  {
-    title: "Level",
-    value: "6",
-  },
-  {
-    title: "Level Reward",
-    value: "$1000",
-  },
-  {
-    title: "UNI-Pool Reward",
-    value: "$2000",
-  },
-  {
-    title: "Capping",
-    value: "25%",
-  },
-  {
-    title: "Total Gain",
-    value: "$3050",
-  },
-];
+
+
+// export const reportPool = [
+//   {
+//     title: "Self Vol",
+//     value: "$50",
+//   },
+//   {
+//     title: "Rank",
+//     value: "STAR 1",
+//   },
+//   {
+//     title: "Direct",
+//     value: "10",
+//   },
+//   {
+//     title: "Direct Vol",
+//     value: "$1000",
+//   },
+//   {
+//     title: "Direct Reward",
+//     value: "$50",
+//   },
+//   {
+//     title: "Total Team",
+//     value: "10",
+//   },
+//   {
+//     title: "Total Vol",
+//     value: "$10000",
+//   },
+//   {
+//     title: "Level",
+//     value: "6",
+//   },
+//   {
+//     title: "Level Reward",
+//     value: "$1000",
+//   },
+//   {
+//     title: "UNI-Pool Reward",
+//     value: "$2000",
+//   },
+//   {
+//     title: "Capping",
+//     value: "25%",
+//   },
+//   {
+//     title: "Total Gain",
+//     value: "$3050",
+//   },
+// ];
 export const headerLogos = [
   {img: "assets/images/BSCSCAN.svg"},
   {img:"assets/images/start-up.svg"},
@@ -147,3 +154,8 @@ export const headerLogos = [
   {img:"assets/images/fire.svg"},
   {img:"assets/images/ppt.svg"}
 ]
+
+export const taskNote = {
+  title : "NOTE:",
+  des : " ⭐COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS!⭐"
+}

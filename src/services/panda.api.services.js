@@ -13,8 +13,8 @@ export const TRANSACTIONS = {
   compound: "transactions/compound",
   createUnstakeTransaction: "transactions/create-unstake-transaction",
   submiteUnstakeHash: "transactions/submit-unstake-hash",
-  withdrawal : "transactions/withdrawal",
-  submitFundHash : "transactions/submit-fund-hash"
+  withdrawal: "transactions/withdrawal",
+  submitFundHash: "transactions/submit-fund-hash",
 };
 
 export const REPORTS = {
@@ -22,8 +22,6 @@ export const REPORTS = {
   airdropData: "report/airdrop-data",
   userInfo: "report/user-info",
   incomeReports: "report/income-reports",
+  profile: "report/profile",
+  teamInfo : "report/team-info",
 };
-
-
-
-
