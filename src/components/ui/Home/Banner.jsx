@@ -22,15 +22,15 @@ const Banner = ({ aboutRef, homeRef }) => {
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
-         <ul className=" fixed hidden  bg-[#eaffe2] border-[2px]  border-[#75ac3f] lg:flex flex-col gap-4 rounded-lg px-[10px] pb-[40px] pt-[20px] z-30 left-[1.5%]"  data-aos="slide-up">
+         <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
                   <li
                     key={index}
-                    className="h-9 animate-float flex items-center justify-center border w-9 rounded-full border-[#00d990] 
+                    className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center justify-center border mt-2 rounded-full border-[#00d990] 
                  hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
                   >
                     <img
-                      className="h-5 w-5 cursor-pointer"
+                      className="md:h-5 md:w-5 h-2 w-2 cursor-pointer"
                       src={item.img}
                       alt="logo icon"
                     />
@@ -49,7 +49,7 @@ const Banner = ({ aboutRef, homeRef }) => {
 
             <div className="absolute xl:bottom-[35%] bottom-[40%] 2xl:bottom-[40%] max-w-[230px]   left-[25%] md:left-[20%]  lg:left-[22%] xl:left-[25%]">
               <img
-                className="w-0 sm:w-[130px] lg:w-[100px] lg:w-[200px] "
+                className="w-0 sm:w-[130px] lg:w-[100px] lg:w-[200px]"
                 src="/assets/images/Cloud01.svg"
                 alt="img-cloud"
               />
