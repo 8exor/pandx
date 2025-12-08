@@ -167,7 +167,23 @@ body{
 /* Chrome/Edge/Safari */
 .scrollbar-custom::-webkit-scrollbar {
   width: 6px; 
-  height: 6px;
+  height: 6px;/* .btn-success {
+    background-image: linear-gradient(to right,
+     #65a02a,
+     #4CAF50);
+  box-shadow: 0 0px 0px 0 rgba(49, 196, 81, 0.85);
+    transition: 0.3s ease;
+    border-radius: 25px;
+} */
+
+/* .btn-success:hover {
+  background-image: linear-gradient(
+    to right,
+    #4CAF50,
+    #65a02a 
+  );
+  transform: scale(1.05);
+} */
 }
 
 /* HIDE ARROW BUTTONS — full selector list */
@@ -250,7 +266,7 @@ body{
     100% {
         transform: rotate(360deg);
     }
-    } 
+    }
 .get-started-section {
   background-image:
     linear-gradient( 180deg, rgba(198, 255, 159, 1) 0%,  rgba(230, 255, 210, 0.8) 9%,  rgba(255, 255, 255, 0) 60%  ), url("/assets/images/Get_Started_bg3.svg"),
@@ -667,23 +683,24 @@ background: linear-gradient(171deg,rgba(91, 91, 172, 1) 10%, rgba(255, 255, 255,
   margin-top: 3px;
 }
 .animate-float {
-	animation: animate-float 3s linear infinite;
+	 animation: animate-float 3s ease-in-out infinite;
 	transform: translate(0)
 }
-
 @keyframes animate-float {
-	0% {
-		transform: translateY(20px)
-	}
-
-	50% {
-		transform: translateY(0)
-	}
-
-	to {
-		transform: translateY(20px)
-	}
+  0% {
+    transform: translateY(0);        /* center */
+  }
+  33% {
+    transform: translateY(-20px);     /* up */
+  }
+  66% {
+    transform: translateY(15px);      /* down */
+  }
+  100% {
+    transform: translateY(0);        /* back to center smoothly */
+  }
 }
+
 
 .circle-animate-logo {
   position: relative;

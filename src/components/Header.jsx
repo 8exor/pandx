@@ -162,7 +162,8 @@ const Header = ({
                </NavLink>
             </div>
 
-            <div className="flex items-center justify-between gap-5">
+            <div className="flex items-center justify-between gap-7">
+             
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
                 <a href="https://t.me/pandxdao" target="blank">
                   <img
@@ -180,7 +181,7 @@ const Header = ({
                 />
               </div>
 
-              <div className="items-center hidden gap-3 lg:flex">
+              <div className="items-center hidden gap-7 mr-[-25px] lg:flex">
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
@@ -198,7 +199,6 @@ const Header = ({
                     Staking
                   </button>
                 </NavLink> */}
-
                 {isConnected && (
                   <NavLink to={"/StakingPage"}>
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
