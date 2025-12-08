@@ -60,7 +60,7 @@ const userInfoLoading = false;
                         return (
                           <tr
                             key={index}
-                            className="rounded-lg bg-midgray hover:bg-border-color group/item"
+                            className="bg-green-500 rounded-lg bg-midgray hover:bg-border-color group/item"
                           >
                             {/* <td className="capitalize max-md:w-[150px] flex-[1_1_150] text-sm font-normal p-5 py-2 text-white text-left">
                               {index + 1}
