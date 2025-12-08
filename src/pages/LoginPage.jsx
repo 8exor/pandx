@@ -199,7 +199,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
           <div className="text-[#ffffff] w-full max-w-[200px] font-semibold flex justify-start">
             <span className=" text-md sm:text-xl" >
                 <TypeWriterEffect text={
-                  " Join Now & Get 100 TRIAL FUND" 
+                  " Join Now & Get $100 TRIAL FUND" 
                 } delay={150}/>
                 
             </span>

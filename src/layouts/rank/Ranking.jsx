@@ -1,92 +1,104 @@
-import React from 'react';
+import Marquee from '@components/Marquee';
+import { taskNote } from '@constants/index';
+import { UserInfoContext } from '@contexts/UserInfoContext';
+import MaxCapProgress from '@layouts/staking/components/MaxCapProgress';
+import React, { useContext } from 'react';
 
 const Ranking = () => {
 
+    const {userData} = useContext(UserInfoContext);
+
     const tableHeadings = [
         "Rank",
-        "Self VOL",
-        "max cap",
+        "Self STAKING",
         "daily %",
-        "directs",
-        "current level",
-        "boostx",
-        "team req",
-        "total team"
+        "directs referrals",
+        "level open",
+        // "boostx",
+        "team",
+        "total team",
+        "capping",
     ];
 
     const tableData = [
         {
             rank: 1,
             vol: "$50",
-            maxCap: "x2",
             "daily %": "0.50%",
             directs: "-",
             "  current level": "-",
-            boostx: "-",
+            // boostx: "-",
             teamReq: "-",
-            totalTeam: "-"
+            totalTeam: "-",
+            capping : "x2",
         },
         {
             rank: 2,
             vol: "$250",
-            maxCap: "x2",
             "daily %": "0.60%",
             directs: "3",
-            " current level": "Level 3",
-            boostx: "right",
-            teamReq: 7,
-            totalTeam: 10
+            " current level": "3",
+            // boostx: "right",
+            teamReq: "7 COUNT TILL 3RD LVL",
+            totalTeam: 10,
+            capping: "x2",
         },
         {
             rank: 3,
             vol: "$500",
-            maxCap: "x3",
             "daily %": "0.70%",
             directs: 5,
-            " current level": "Level 5",
-            boostx: "cross",
-            teamReq: 20,
-            totalTeam: 25
+            " current level": "5",
+            // boostx: "cross",
+            teamReq: "20 COUNT TILL 5th LVL",
+            totalTeam: 25,
+            capping: "x3",
         }
         ,
         {
             rank: 4,
             vol: "$1000",
-            maxCap: "x3",
             "daily %": "0.80%",
             directs: 8,
-            " current level": "Level 10",
-            boostx: "cross",
-            teamReq: 50,
-            totalTeam: 58
+            " current level": "8",
+            // boostx: "cross",
+            teamReq: "62 COUNT TILL 8th LVL",
+            totalTeam: 58,
+            capping: "x3",
         },
            {
             rank: 5,
             vol: "$2500",
-            maxCap: "x3",
             "daily %": "0.90%",
-            directs: 12,
-            " current level": "Level 12",
-            boostx: "cross",
-            teamReq: 75,
-            totalTeam: 87
+            directs: 10,
+            " current level": "10",
+            // boostx: "cross",
+            teamReq: "115 COUNT TILL 10th LVL",
+            totalTeam: 87,
+            capping: "x3",
         },
            {
             rank: 6,
             vol: "$5000",
-            maxCap: "x3",
             "daily %": "1.00%",
             directs: 15,
-            "current level": "Level 15",
-            boostx: "cross",
-            teamReq: 135,
-            totalTeam: 150
+            "current level": "15",
+            // boostx: "cross",
+            teamReq: "185 COUNT TILL 15th LVL",
+            totalTeam: 150,
+            capping: "x3",
         }
     ];
 
     return (
-        <div className="bg-[#F7FFF2] min-h-screen py-10 px-2">
-            <div className="w-full max-w-[1340px] bg-[#E6FFD5] m-auto border border-black rounded-xl overflow-hidden">
+        <div className="bg-[#F7FFF2] min-h-screen  px-2">
+            <div className='w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3'>
+                <span className='blink-text'>{taskNote?.title}</span>
+               <marquee behavior="" direction="">
+              {taskNote?.des}
+              </marquee>
+            </div>
+            <div className="w-full max-w-[1340px] bg-[#E6FFD5] m-auto border border-black rounded-xl overflow-hidden mt-5">
 
                 {/* DESKTOP TABLE */}
                 <div className="hidden w-full overflow-x-auto md:block">
@@ -110,7 +122,7 @@ const Ranking = () => {
                                 <tr key={rowIndex}>
                                     {Object.entries(row).map(([key, value], cellIndex) => (
                                         <td key={cellIndex} className="p-1">
-                                            <div className="mx-2 my-2 p-2 border border-black shadow rounded-md 
+                                            <div className="mx-2 my-2 p-2  border border-black shadow rounded-md 
                                                 text-center flex justify-center items-center gap-1 
                                                 hover:bg-green-200 font-[Lato] font-bold">
                                                 {key === "rank" ? (
@@ -128,7 +140,11 @@ const Ranking = () => {
 
                                                     />
                                                 ) : (
-                                                    value
+
+                                                 <div className='flex items-center gap-2' >
+                                                    {value}
+                                                    {key === "capping" && <MaxCapProgress maxCap={false} value={userData?.data?.used_capping}/>}
+                                                 </div>
                                                 )}
                                             </div>
                                         </td>

@@ -8,6 +8,7 @@
           "@constants/*": ["constants/*"],
           "@contexts/*": ["contexts/*"], // Alias for contexts
           "@hooks/*": ["hooks/*"],
+          "@layouts/*":["layouts/*"],
           "@pages/*": ["pages/*"],
           "@routes/*": ["routes/*"],
           "@services/*": ["services/*"], // Alias for assets

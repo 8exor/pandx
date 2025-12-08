@@ -25,7 +25,7 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
   return (
    <>
     <div
-        className="relative mt-2 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
+        className="relative mt-10 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
             flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-2 text-center md:text-left "
       >
       <div className='ml-50'/>
@@ -35,7 +35,7 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
         <p>Daily 0.5%</p>
         <p>Daily $0.5</p>
         {/* <p>Total Gain ${Number(data?.data?.trail_income).toFixed(1)}</p> */}
-           <MaxCapProgress value={maxCap}/>
+           <MaxCapProgress value={maxCap} maxCap={true}/>
         <div/>
       </div>
 
