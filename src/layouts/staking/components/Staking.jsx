@@ -11,6 +11,7 @@ import StakingTable from "./StakingTable";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import toast from "react-hot-toast";
+import { taskNote } from "@constants/index";
 
 export default function Staking() {
   const { address } = useAppKitAccount();
@@ -29,13 +30,13 @@ export default function Staking() {
 
   const tableConfig = {
     stake: {
-      headers: ["Sr No", "Date", "Stacked Amt$", "Status", "Total Withdrawal"],
+      headers: ["Sr No", "Date", "Staked Amt$", "Status", "Total Withdrawal"],
     },
     unstake: {
       headers: [
         "Sr No",
         "Date",
-        "Stacked Amt$",
+        "Staked Amt$",
         "Unstaked Amt$",
         "Status",
         "Total Withdrawal",
@@ -84,7 +85,13 @@ export default function Staking() {
 
 
   return (
-    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2 md:mt-4 mt-4">
+    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto sm:mx-auto mx-2">
+        <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3'>
+                      <span className='blink-text'>{taskNote?.title}</span>
+                     <marquee behavior="" direction="">
+                    {taskNote?.des}
+                    </marquee>
+                  </div>
       <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px] lg:h-[720px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">

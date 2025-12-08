@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function MaxCapProgress({ value }) {
+export default function MaxCapProgress({ value, maxCap }) {
   const [width, setWidth] = useState("0%");
 
   useEffect(() => {
@@ -11,10 +11,10 @@ export default function MaxCapProgress({ value }) {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <span className="text-[16px] sm:text-[18px] 
-        md:text-[20px] font-normal">Max Cap</span>
+    {maxCap &&  <span className="text-[16px] sm:text-[18px] 
+        md:text-[20px] font-normal">Max Cap</span>}
 
-      <div className="w-32 h-3 rounded-full bg-[#26316A] overflow-hidden">
+      <div className={`${maxCap ? "w-32" : "w-15"} h-3 rounded-full bg-[#26316A] overflow-hidden`}>
         <div
           className="h-full bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] rounded-full transition-all duration-[1500ms] ease-out"
           style={{ width }}

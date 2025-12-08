@@ -1,7 +1,7 @@
 import { useState, useEffect, useref } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { headerLogos } from "@constants/index";
+import { headerLogos, taskNote } from "@constants/index";
 
 const Banner = ({ aboutRef, homeRef }) => {
   const [copied, setCopied] = useState(false);
@@ -21,6 +21,12 @@ const Banner = ({ aboutRef, homeRef }) => {
   return (
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
+           <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3'>
+                              <span className='blink-text'>{taskNote?.title}</span>
+                             <marquee behavior="" direction="">
+                            {taskNote?.des}
+                            </marquee>
+                          </div>
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
@@ -137,7 +143,7 @@ const Banner = ({ aboutRef, homeRef }) => {
           <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
         </div> */}
         </div>
-        <div className="mycontainer relative">
+        <div className="relative mycontainer">
           <div className="absolute hidden sm:block  bottom-[-4%] xl:left-[-11%]  left-0">
             <img
               className="w-[60px] sm:w-[150px] lg:w-[200px]"
@@ -145,7 +151,7 @@ const Banner = ({ aboutRef, homeRef }) => {
               alt="tree-side"
             />
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-6 sm:py-20 gap-8 items-center justify-between">
+          <div className="grid items-center justify-between grid-cols-1 gap-8 py-6 lg:grid-cols-1 xl:grid-cols-2 sm:py-20">
             <div
               className="animate"
               data-aos="slide-up"
@@ -159,7 +165,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                 community
               </p>
               <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-2xl flex-wrap lg:flex-nowrap">
-                <p className="break-all text-center">
+                <p className="text-center break-all">
                   0x2170Ed0880ac9A755fd29B2688956BD959F933F8
                 </p>
 
@@ -171,7 +177,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                 </button>
               </div>
             </div>
-            <div className="lg:ml-auto mx-auto relative" data-aos="zoom-in">
+            <div className="relative mx-auto lg:ml-auto" data-aos="zoom-in">
               <img src="/assets/images/tree_bg.svg" alt="tree-background" />
               <div
                 className="absolute sm:bottom-[21%] left-[21%] bottom-[21%] sm:left-[24%] lg:bottom-[21%] lg:left-[110px] bottom:[148px] w-[60%]"
