@@ -104,20 +104,34 @@ toast.error(error?.message || "Error Occurred")
   return (
 
       <div className="px-4 mt-1 mb-1 ">
+        {/* <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
+          <div className="w-full sm:max-w-[150px]">
+            <p className="text-sm sm:text-base">$PANDX in wallet</p>
+            <div className="w-full sm:max-w-[110px] bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+          
+            </div>
+          </div>
+          <div className="w-full sm:max-w-[150px]">
+            <p className="text-sm sm:text-base">Current Worth</p>
+            <div className="w-full sm:max-w-[110px] bg-[#BFFEB0] btn-primary  px-2 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-center">
+              {Number(userData?.data?.wallet_balance * userData?.data?.token_price).toFixed(2)}
+            </div>
+          </div>
+        </div> */}
 
-        {/* <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 md:rounded-full border border-black gap-4">
-          <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-start">
-          <p className="flex-1 w-full text-center sm:text-left sm:w-auto">
+        <div className="items-center justify-between w-full max-w-full gap-4 px-4 py-3 mx-auto bg-white border border-black lg:flex rounded-xl">
+          <div className="items-center justify-center w-full gap-3 lg:flex">
+          <p className="block w-full text-center ">
             Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
             <input
               type="text"
-              className=""
+              className="w-full mt-2 border border-black rounded-full"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-center w-full gap-3 sm:w-auto sm:justify-end">
+          <div className="flex items-center justify-center w-full mt-3 lg:mt-0">
             <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center">
               MAX
             </div>

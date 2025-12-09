@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.40",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.6",
+    "@mui/x-date-pickers": "^8.21.0",
     "@reown/appkit": "^1.8.14",
     "@reown/appkit-adapter-ethers5": "^1.8.14",
     "@tailwindcss/vite": "^4.1.17",
@@ -19,6 +23,7 @@
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "chart.js": "^4.5.1",
+    "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
     "ethers": "^5.7.2",
     "js-cookie": "^3.0.5",

@@ -19,6 +19,7 @@ const DashboardHeader = () => {
   const { walletProvider } = useAppKitProvider("eip155");
   const { disconnect } = useDisconnect();
   const navigate = useNavigate();
+  const [activeNav, setActiveNav] = useState(false);
 
   const handleDisconnet = async () => {
     try {
@@ -44,15 +45,15 @@ const DashboardHeader = () => {
           <img className="w-45" src="/assets/images/Logo.png" alt="logo" />
         </div>
         <div className="relative">
-          <ul className="items-center justify-between hidden gap-5 xl:ml-10 xl:gap-10 xl:flex">
-            {dappNavLinks?.map((navlink, index) => (
-              <li key={index}>
-                <NavLink to={navlink?.link}>
-                  <span>{navlink?.title}</span>
-                </NavLink>
-              </li>
-            ))}
-            <li>
+        <ul className="items-center justify-between hidden gap-5 xl:ml-10 xl:gap-10 xl:flex">
+          {dappNavLinks?.map((navlink, index) => (
+            <li key={index}>
+              <NavLink to={navlink?.link} onClick={()=>setActiveNav(navlink?.title)}>
+                <span className="">{navlink?.title}</span>
+              </NavLink>
+            </li>
+          ))}
+          <li>
               <button
                 className="flex items-center justify-center p-3 text-lg font-medium text-center text-white duration-300 ease-in-out btn-star animate-bounce "
                 onClick={() => setStakePopup(!stakePopup)}
@@ -152,9 +153,7 @@ const DashboardHeader = () => {
             <img src="/assets/images/panda.svg" alt="panda" />
             LOGOUT
           </button>
-        </div>
-
-        {
+            {
           <div className="xl:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
             <button
               onClick={() => setOpenMenu(!openMenu)}
@@ -178,6 +177,9 @@ const DashboardHeader = () => {
             </button>
           </div>
         }
+        </div>
+
+      
         {openMenu && (
           <div className="xl:hidden gap-[10px] absolute top-18 left-0 w-full right-0  p-10  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
             <ul className="text-center">
