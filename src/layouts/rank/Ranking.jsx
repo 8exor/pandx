@@ -37,7 +37,7 @@ const Ranking = () => {
             vol: "$250",
             "daily %": "0.60%",
             directs: "3",
-            " current level": "3",
+            " current level": "3 Levels",
             // boostx: "right",
             teamReq: "7 ",
             totalTeam: 10,
@@ -48,7 +48,7 @@ const Ranking = () => {
             vol: "$500",
             "daily %": "0.70%",
             directs: 5,
-            " current level": "5",
+            " current level": "5 Levels",
             // boostx: "cross",
             teamReq: "20",
             totalTeam: 25,
@@ -60,7 +60,7 @@ const Ranking = () => {
             vol: "$1000",
             "daily %": "0.80%",
             directs: 8,
-            " current level": "8",
+            " current level": "8 Levels",
             // boostx: "cross",
             teamReq: "62",
             totalTeam: 70,
@@ -71,7 +71,7 @@ const Ranking = () => {
             vol: "$2500",
             "daily %": "0.90%",
             directs: 10,
-            " current level": "10",
+            " current level": "10 Levels",
             // boostx: "cross",
             teamReq: "115",
             totalTeam: 125,
@@ -82,7 +82,7 @@ const Ranking = () => {
             vol: "$5000",
             "daily %": "1.00%",
             directs: 15,
-            "current level": "15",
+            "current level": "15 Levels",
             // boostx: "cross",
             teamReq: "185",
             totalTeam: 200,
@@ -109,7 +109,7 @@ const Ranking = () => {
                                 {tableHeadings.map((heading, index) => (
                                     <th
                                         key={index}
-                                        className="px-5 py-8 text-[18px] uppercase text-black text-center font-[Russo One] lg:max-w-20 md:max-w-40"
+                                        className="px-5 py-2 text-[18px] uppercase text-black text-center font-[Russo One] lg:max-w-20 md:max-w-40"
                                     >
                                         {heading}
                                     </th>

@@ -137,7 +137,7 @@ toast.error(error?.message || "Error Occurred")
             </div>
             <p className="font-bold">${Number(userData?.data?.wallet_balance).toFixed(0)}</p>
           </div>
-        </div> */}
+        </div> 
 
 
 
@@ -148,7 +148,7 @@ toast.error(error?.message || "Error Occurred")
 
          <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 md:rounded-full rounded-lg border border-black gap-4">
           <div className="flex items-center justify-between w-full gap-3 sm:w-auto sm:justify-start">
-          <p className=" w-full text-left sm:text-left sm:w-auto">
+          <p className="w-full text-left sm:text-left sm:w-auto">
             Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
             <input
@@ -160,7 +160,7 @@ toast.error(error?.message || "Error Occurred")
           </div>
 
 
-          <div className="flex items-center justify-between w-full gap-3 sm:w-auto sm:mt-0 mt-2">
+          <div className="flex items-center justify-between w-full gap-3 mt-2 sm:w-auto sm:mt-0">
             <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center">
               MAX
             </div>

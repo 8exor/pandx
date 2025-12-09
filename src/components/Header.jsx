@@ -130,7 +130,7 @@ const Header = ({
     onError: (error) => {
       if (error?.status === 0 && clickedOnConnect) {
         toast.error(error?.message);
-        // disconnect();
+        disconnect();
       }
     },
   });
