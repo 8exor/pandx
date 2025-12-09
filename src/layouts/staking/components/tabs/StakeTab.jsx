@@ -119,7 +119,9 @@ toast.error(error?.message || "Error Occurred")
           </div>
         </div> */}
 
-        <div className="items-center justify-between w-full max-w-full gap-4 px-4 py-3 mx-auto bg-white border border-black lg:flex rounded-xl">
+        
+
+        {/* <div className="items-center justify-between w-full max-w-full gap-4 px-4 py-3 mx-auto bg-white border border-black lg:flex rounded-xl">
           <div className="items-center justify-center w-full gap-3 lg:flex">
           <p className="block w-full text-center ">
             Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
@@ -139,6 +141,7 @@ toast.error(error?.message || "Error Occurred")
           </div>
         </div> 
 
+ */}
 
 
 
