@@ -103,7 +103,7 @@ toast.error(error?.message || "Error Occurred")
 
   return (
 
-      <div className="px-4 mt-1 mb-1 ">
+      <div className="px-4 mt-1 mb-1 lg:px-15 ">
         {/* <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
@@ -119,7 +119,7 @@ toast.error(error?.message || "Error Occurred")
           </div>
         </div> */}
 
-        
+
 
         {/* <div className="items-center justify-between w-full max-w-full gap-4 px-4 py-3 mx-auto bg-white border border-black lg:flex rounded-xl">
           <div className="items-center justify-center w-full gap-3 lg:flex">
