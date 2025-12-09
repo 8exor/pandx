@@ -131,7 +131,7 @@ const userInfoLoading = false;
                   </div>
       
  <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7 px-1 xl:px-11'>
-     <div className='grid items-center justify-between grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2 '>
+     <div className='grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2'>
         {
             reportPool?.map((pool, i)=>(
                 <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
@@ -165,7 +165,7 @@ const userInfoLoading = false;
 
    <div
           id="scroll-bar"
-          className="w-full mt-8 py-10 overflow-x-auto overflow-y-auto max-h-[700px] cursor-pointer "
+          className="w-full  py-10 overflow-x-auto overflow-y-auto max-h-[700px] cursor-pointer "
         >
           <div className="w-full max-w-[100px] min-w-full ">
             {userInfoLoading ? (
@@ -174,8 +174,8 @@ const userInfoLoading = false;
               </div>
             ) : (
               <table className="w-full rounded-lg divide-background">
-                <thead className="sticky top-0 text-black btn-primary">
-                  <tr className="flex justify-between w-full text-left text-black rounded-lg">
+                <thead className="sticky top-0 text-black ">
+                  <tr className="flex justify-between w-full text-left text-black rounded-lg btn-primary">
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
