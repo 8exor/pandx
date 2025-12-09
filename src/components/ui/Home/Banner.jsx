@@ -21,10 +21,10 @@ const Banner = ({ aboutRef, homeRef }) => {
   return (
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
-           <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3'>
+           <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3 text-xl'>
                               <span className='blink-text'>{taskNote?.title}</span>
-                             <marquee behavior="" direction="">
-                            {taskNote?.des}
+                             <marquee behavior=""  direction="">
+                            {taskNote?.des2}
                             </marquee>
                           </div>
         <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">

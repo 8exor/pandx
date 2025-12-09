@@ -30,7 +30,7 @@ const Ranking = () => {
             // boostx: "-",
             teamReq: "-",
             totalTeam: "-",
-            capping : "x2",
+            capping : "2X",
         },
         {
             rank: 2,
@@ -39,9 +39,9 @@ const Ranking = () => {
             directs: "3",
             " current level": "3",
             // boostx: "right",
-            teamReq: "7 COUNT TILL 3RD LVL",
+            teamReq: "7 ",
             totalTeam: 10,
-            capping: "x2",
+            capping: "2X",
         },
         {
             rank: 3,
@@ -50,9 +50,9 @@ const Ranking = () => {
             directs: 5,
             " current level": "5",
             // boostx: "cross",
-            teamReq: "20 COUNT TILL 5th LVL",
+            teamReq: "20",
             totalTeam: 25,
-            capping: "x3",
+            capping: "3X",
         }
         ,
         {
@@ -62,9 +62,9 @@ const Ranking = () => {
             directs: 8,
             " current level": "8",
             // boostx: "cross",
-            teamReq: "62 COUNT TILL 8th LVL",
-            totalTeam: 58,
-            capping: "x3",
+            teamReq: "62",
+            totalTeam: 70,
+            capping: "3X",
         },
            {
             rank: 5,
@@ -73,9 +73,9 @@ const Ranking = () => {
             directs: 10,
             " current level": "10",
             // boostx: "cross",
-            teamReq: "115 COUNT TILL 10th LVL",
-            totalTeam: 87,
-            capping: "x3",
+            teamReq: "115",
+            totalTeam: 125,
+            capping: "3X",
         },
            {
             rank: 6,
@@ -84,17 +84,17 @@ const Ranking = () => {
             directs: 15,
             "current level": "15",
             // boostx: "cross",
-            teamReq: "185 COUNT TILL 15th LVL",
-            totalTeam: 150,
-            capping: "x3",
+            teamReq: "185",
+            totalTeam: 200,
+            capping: "3X",
         }
     ];
 
     return (
         <div className="bg-[#F7FFF2] min-h-screen  px-2">
-            <div className='w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3'>
+            <div className='w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3 text-xl'>
                 <span className='blink-text'>{taskNote?.title}</span>
-               <marquee behavior="" direction="">
+               <marquee behavior="alternate" scrollamount="10" direction="">
               {taskNote?.des}
               </marquee>
             </div>
@@ -105,11 +105,11 @@ const Ranking = () => {
                     <table className="w-full border-collapse">
 
                         <thead className="bg-[linear-gradient(90deg,rgba(191,254,175,1)_0%,rgba(194,255,166,1)_50%,rgba(196,255,160,1)_100%)]">
-                            <tr className="border-b-2 border-black">
+                            <tr className="w-full border-b-2 border-black ">
                                 {tableHeadings.map((heading, index) => (
                                     <th
                                         key={index}
-                                        className="px-5 py-8 text-[18px] uppercase text-black text-center font-[Russo One]"
+                                        className="px-5 py-8 text-[18px] uppercase text-black text-center font-[Russo One] lg:max-w-20 md:max-w-40"
                                     >
                                         {heading}
                                     </th>
@@ -119,9 +119,9 @@ const Ranking = () => {
 
                         <tbody>
                             {tableData.map((row, rowIndex) => (
-                                <tr key={rowIndex}>
+                                <tr className='' key={rowIndex}>
                                     {Object.entries(row).map(([key, value], cellIndex) => (
-                                        <td key={cellIndex} className="p-1">
+                                        <td key={cellIndex} className="p-1 ">
                                             <div className="mx-2 my-2 p-2  border border-black shadow rounded-md 
                                                 text-center flex justify-center items-center gap-1 
                                                 hover:bg-green-200 font-[Lato] font-bold">
