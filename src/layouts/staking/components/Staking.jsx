@@ -95,7 +95,7 @@ export default function Staking() {
       <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px] lg:h-[720px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
-          <div className="relative flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
+          {/* <div className="relative flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
             <div
               className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px]  py-2 px-1"
             >
@@ -109,11 +109,41 @@ export default function Staking() {
             <button
               className={`${
                 userData?.data?.is_active ? "btn-primary " : "btn-red"
-              } m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  py-2 px-1 blink-text`}
+              } m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full text-sm shine hover:scale-105 duration-300 ease-in-out  py-2 px-1 blink-text`}
             >
               {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
             <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-xs py-3" onClick={()=>navigate("/Ranking")}>
+              
+            Upgrade Rank & Get {upgrade}
+
+            </button>
+          </div>
+
+          <img
+            src="/assets/images/pandaDash.svg"
+            alt="panda"
+            className="flex justify-center items-center w-[150px]  m-auto mt-8 sm:mt-8 "
+          /> */}
+          <div className="relative grid sm:gris-cols-2 lg:grid-cols-2 xl:grid-cols-3 items-center justify-center w-full gap-3 mt-4 text-black sm:mt-2">
+            <div
+              className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px]  py-2 px-1"
+            >
+          
+              <div className="flex items-center justify-center gap-1">
+            <img className="w-4" src="/assets/images/star 1.svg" alt="star" />
+            <span className="text-sm">{userData?.data?.rank_id}</span>
+            </div>
+            </div>
+         
+            <button
+              className={`${
+                userData?.data?.is_active ? "btn-primary " : "btn-red"
+              } m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full text-sm shine hover:scale-105 duration-300 ease-in-out  py-2 px-1 blink-text`}
+            >
+              {userData?.data?.is_active ? "Active" : "Inactive"}
+            </button>
+            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-sm py-3" onClick={()=>navigate("/Ranking")}>
               
             Upgrade Rank & Get {upgrade}
 
@@ -130,7 +160,7 @@ export default function Staking() {
 
         <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[750px]  lg:h-[720px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
-            QRA AIRDROP LIVE - EARN UNLIMITED $QRA
+            QRA AIRDROP LIVE - EARN UNLIMITED $QRApppp
           </h1>
    
           <div className="mx-auto mb-5 circle-animate-logo">

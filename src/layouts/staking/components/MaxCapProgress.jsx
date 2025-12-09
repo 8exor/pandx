@@ -10,8 +10,8 @@ export default function MaxCapProgress({ value, maxCap }) {
   }, [value]);
 
   return (
-    <div className="flex flex-col items-center gap-2">
-    {maxCap &&  <span className="text-[16px] sm:text-[18px] 
+    <div className="flex flex-col items-center gap-2 mr-auto">
+    {maxCap &&  <span className="text-[16px] w-full text-center sm:text-[18px] 
         md:text-[20px] font-normal">Max Cap</span>}
 
       <div className={`${maxCap ? "w-32" : "w-15"} h-3 rounded-full bg-[#26316A] overflow-hidden`}>

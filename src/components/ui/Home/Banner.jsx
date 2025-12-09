@@ -33,7 +33,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                   <li
                     key={index}
                     className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center justify-center border mt-2 rounded-full border-[#00d990] 
-                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-110 duration-300 ease-in-out"
+                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-120 duration-300 ease-in-out"
                   >
                     <img
                       className="md:h-5 md:w-5 h-2 w-2 cursor-pointer"

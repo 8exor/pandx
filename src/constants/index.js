@@ -152,7 +152,9 @@ export const headerLogos = [
   {img:"assets/images/Dextool.svg"},
   {img:"assets/images/dex-screener.svg"},
   {img:"assets/images/fire.svg"},
-  {img:"assets/images/ppt.svg"}
+  {img:"assets/images/ppt.svg"},
+  {img:"assets/images/meet.png"}
+  
 ]
 
 export const taskNote = {
