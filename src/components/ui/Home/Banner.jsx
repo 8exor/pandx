@@ -22,7 +22,7 @@ const Banner = ({ aboutRef, homeRef }) => {
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
            <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3 text-xl'>
-                              <span className='blink-text'>{taskNote?.title}</span>
+                              {/* <span className='blink-text'>{taskNote?.title}</span> */}
                              <marquee behavior=""  direction="">
                             {taskNote?.des2}
                             </marquee>
