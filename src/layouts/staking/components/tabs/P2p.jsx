@@ -41,7 +41,7 @@ export default function P2p() {
       try {
         const provider = new ethers.providers.Web3Provider(walletProvider);
         console.log({ provider });
-  
+
         const signer = await provider.getSigner();
         console.log({ signer });
         console.log({
@@ -68,7 +68,6 @@ export default function P2p() {
           txn_hash: data3?.hash,
           username: userName,
           token_amount: p2pAmount,
-
         });
       } catch (error) {
         console.log({ error });
@@ -96,38 +95,48 @@ export default function P2p() {
   });
 
   return (
-    <div className="w-full px-2 mt-5 sm:px-15">
-      <div className="flex flex-wrap items-center justify-between gap-2 lg:flex-nowrap">
-       <div className="flex items-center justify-between flex-1 w-full gap-2 p-2 mb-4 bg-white border border-black rounded-full ">
-        <p className="w-full text-center sm:text-left sm:w-auto">
-          Available $60
-        </p>
-        <input
-          type="text"
-          className=" md:max-w-[150px] lg:max-w-[270px] xl:max-w-[40px]  border border-black md:border-none rounded-md p-1 "
-          value={p2pAmount}
-          onChange={(e) => setp2pAmount(e.target.value)}
-        />
-        <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight">
-          Max
-        </button>
-      </div>
-      <div className="flex-col items-center justify-between flex-1 w-full gap-3 p-2 mb-4 bg-white border border-black rounded-full md:w-full lg:w-auto sm:flex-row">
-        <input
-          type="text"
-          placeholder="Enter UserName"
-          className="w-full sm:w-[60%] px-2 py-1  outline-none border border-black md:border-none rounded-md"
-          onChange={(e) => setUserName(e.target.value)}
-        />
+    <div className="w-full px-2 mt-5 lg:px-15">
+      <div className="grid grid-cols-1 sm:grid-cols-1  md:grid-cols-2 items-center justify-between gap-2 ">
 
-        <button
-          className="bg-[#72A314] btn-primary text-md w-full sm:w-[43%] xl:w-[35%]  py-1 sm:px-2 sm:py-1 lg:py-3 xl:py-1   rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight"
-          onClick={() => validateUserName.mutate({ username: userName })}
-        >
-          Validate
-        </button>
+
+        <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
+          <p className="w-full text-center sm:text-left sm:w-auto text-sm" >
+            Available $60
+          </p>
+          <input
+            type="text"
+            className="border border-[2px] p-1 border-gray-500 rounded-lg"
+            value={p2pAmount}
+            onChange={(e) => setp2pAmount(e.target.value)}
+          />
+          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1 text-sm rounded-full  text-white font-extralight">
+            Max
+          </button>
+        </div>
+
+
+
+        <div className="flex flex-col xl:flex-row gap-2 p-2 mb-4 bg-white border border-black rounded-lg p-[14px] xl:rounded-full ">
+          <input
+            type="text"
+            placeholder="Enter UserName"
+            className="border border-[2px] w-full xl:max-w-[110px] border-gray-500 rounded-lg text-sm p-1"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+
+          <button
+            className="bg-[#72A314] btn-primary text-sm w-full  py-1 sm:px-2 sm:py-1 lg:py-3 xl:py-1   rounded-full  text-white font-extralight"
+            onClick={() => validateUserName.mutate({ username: userName })}
+          >
+            Validate
+          </button>
+        </div>
+
+
+
       </div>
-     </div>
+
+
       <p className="mb-4 font-semibold text-center uppercase sm:text-left">
         P2P unlimited and free
       </p>
