@@ -7,6 +7,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { UserInfoProvider } from '@contexts/UserInfoContext';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
 // import Header from "./components/ui/Header";
@@ -20,6 +22,7 @@ function App() {
     <>
  
       <QueryClientProvider client={queryClient}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
          <UserInfoProvider>
     <Toaster/>
     <BrowserRouter>
@@ -27,6 +30,7 @@ function App() {
    </BrowserRouter>
      <ReactQueryDevtools initialIsOpen={false} />
      </UserInfoProvider>
+         </LocalizationProvider>
      </QueryClientProvider>
 
     </>

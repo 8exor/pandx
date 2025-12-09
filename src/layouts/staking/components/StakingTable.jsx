@@ -4,6 +4,7 @@ import React from 'react'
   import { REPORTS } from '@services/panda.api.services'
 import { is } from '@amcharts/amcharts4/core'
 import TableSkeleton from '@hooks/TableSkelton'
+import toast from 'react-hot-toast'
 
 export default function StakingTable({activeTab, tableConfig}) {
 
@@ -14,7 +15,10 @@ export default function StakingTable({activeTab, tableConfig}) {
         queryFn : async()=>{
             const {data} = await axiosInstance.get(`${REPORTS?.incomeReports}?incomeId=${1}`)
             return data;
-        }
+        },
+        // throwOnError : (error)=>{
+        //       toast.error(error)
+        // }
     })
   
 

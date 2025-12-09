@@ -19,6 +19,7 @@ const DashboardHeader = () => {
   const { walletProvider } = useAppKitProvider("eip155");
   const { disconnect } = useDisconnect();
   const navigate = useNavigate();
+  const [activeNav, setActiveNav] = useState(false);
 
   const handleDisconnet = async () => {
     try {
@@ -44,11 +45,11 @@ const DashboardHeader = () => {
           <img className="w-45" src="/assets/images/Logo.png" alt="logo" />
         </div>
         <div className="relative">
-        <ul className="items-center justify-between hidden gap-5 xl:ml-10 xl:gap-10 md:flex">
+        <ul className="items-center justify-between hidden gap-5 xl:ml-10 xl:gap-10 xl:flex">
           {dappNavLinks?.map((navlink, index) => (
             <li key={index}>
-              <NavLink to={navlink?.link}>
-                <span>{navlink?.title}</span>
+              <NavLink to={navlink?.link} onClick={()=>setActiveNav(navlink?.title)}>
+                <span className="">{navlink?.title}</span>
               </NavLink>
             </li>
           ))}
@@ -157,10 +158,8 @@ const DashboardHeader = () => {
             <img src="/assets/images/panda.svg" alt="panda" />
             LOGOUT
           </button>
-        </div>
-
-        {
-          <div className="md:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
+            {
+          <div className="xl:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
             <button
               onClick={() => setOpenMenu(!openMenu)}
               className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
@@ -183,8 +182,11 @@ const DashboardHeader = () => {
             </button>
           </div>
         }
+        </div>
+
+      
         {openMenu && (
-          <div className="md:hidden absolute top-18 left-0 w-full right-0  p-4  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
+          <div className="xl:hidden absolute top-18 left-0 w-full right-0  p-4  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
             <ul className="text-center">
               {dappNavLinks?.map((navlink, index) => (
                 <li key={index}>
