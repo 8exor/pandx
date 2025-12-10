@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   server: {
-         host: true, // This will bind to all available network interfaces
+         host: true, // This will bind to all Avl network interfaces
        },
 })
 
