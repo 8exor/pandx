@@ -220,21 +220,21 @@ function releaseConfettiInside() {
     setTimeout(() => c.remove(), 2200);
   }
 }
-useEffect(()=>{
-  animate('.animateDiv', {
-  width: '100%', // from '48px' to '25%',
-  y: '-2rem', // from '0px' to '15rem',
-  x:"0rem",
-  rotate: '.01turn', // from `0deg` to '.75turn',
-//  loop: true,
-  duration: 1000,
-  easing: 'easeInOutQuad',
-  onBegin : ()=>{
-    releaseConfettiInside();
-  }
-});
+// useEffect(()=>{
+//   animate('.animateDiv', {
+//   width: '100%', // from '48px' to '25%',
+//   y: '-2rem', // from '0px' to '15rem',
+//   x:"0rem",
+//   rotate: '.01turn', // from `0deg` to '.75turn',
+// //  loop: true,
+//   duration: 1000,
+//   easing: 'easeInOutQuad',
+//   onBegin : ()=>{
+//     releaseConfettiInside();
+//   }
+// });
 
-},[])
+// },[])
 
   return (
     <>
@@ -258,13 +258,13 @@ useEffect(()=>{
             <div />
             <div className="absolute left-0 -top-5 md:-top-17 ">
             
-            <div className="w-20 p-3 btn-primary animateDiv"></div>
-            <div className="w-20 h-20 md:w-30 md:h-30  p-3 bg-[url('/assets/images/gift.svg')] bg-cover bg-center"></div>
-              {/* <img
+            {/* <div className="w-20 p-3 btn-primary animateDiv"></div>
+            <div className="w-20 h-20 md:w-30 md:h-30  p-3 bg-[url('/assets/images/gift.svg')] bg-cover bg-center"></div> */}
+              <img
               className="w-20 md:w-35"
               src="/assets/images/gift.svg"
               alt=""
-            /> */}
+            />
           {/* <GiftFlapConfetti/> */}
             </div>
 
