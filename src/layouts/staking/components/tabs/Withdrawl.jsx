@@ -66,12 +66,18 @@ const withdrawalHash = useMutation({
   return (
     <div className="px-4 mt-6 lg:px-15">
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between gap-3 p-3 bg-white border border-black rounded-lg w-full sm:rounded-full">
-          <p className="w-full text-center sm:text-left sm:w-auto">
-            Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
+
+
+          <p className=" text-center  w-[60px] sm:w-full  sm:text-left">
+            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
-          <input  type="text" className='border border-[2px] border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
-          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+
+
+          <input  type="text" className='border border-[2px] p-1 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
+
+
+          <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             Max
           </button>
         </div>

@@ -100,8 +100,8 @@ export default function P2p() {
 
 
         <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
-          <p className="w-full text-center sm:text-left sm:w-auto text-sm" >
-            Available $60
+          <p className="w-full text-center sm:text-left  text-sm" >
+            Avl $60
           </p>
           <input
             type="text"
@@ -116,16 +116,16 @@ export default function P2p() {
 
 
 
-        <div className="flex flex-col xl:flex-row gap-2 p-2 mb-4 bg-white border border-black rounded-lg p-[14px] xl:rounded-full ">
+        <div className="flex flex-col xl:flex-row gap-2 md:gap-6 p-2 mb-4 bg-white border border-black rounded-lg p-[14px] xl:rounded-full ">
           <input
             type="text"
             placeholder="Enter UserName"
-            className="border border-[2px] w-full xl:max-w-[110px] border-gray-500 rounded-lg text-sm p-1"
+            className="border border-[2px] w-full xl:max-w-[118px] border-gray-500 rounded-lg text-sm p-1"
             onChange={(e) => setUserName(e.target.value)}
           />
 
           <button
-            className="bg-[#72A314] btn-primary text-sm w-full  py-1 sm:px-2 sm:py-1 lg:py-3 xl:py-1   rounded-full  text-white font-extralight"
+            className="bg-[#72A314] btn-primary text-sm w-full  py-2    rounded-full  text-white font-extralight"
             onClick={() => validateUserName.mutate({ username: userName })}
           >
             Validate

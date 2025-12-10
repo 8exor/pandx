@@ -124,7 +124,7 @@ toast.error(error?.message || "Error Occurred")
         {/* <div className="items-center justify-between w-full max-w-full gap-4 px-4 py-3 mx-auto bg-white border border-black lg:flex rounded-xl">
           <div className="items-center justify-center w-full gap-3 lg:flex">
           <p className="block w-full text-center ">
-            Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
             <input
               type="text"
@@ -149,14 +149,14 @@ toast.error(error?.message || "Error Occurred")
 
 
 
-         <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 md:rounded-full rounded-lg border border-black gap-4">
-          <div className="flex items-center justify-between w-full gap-3 sm:w-auto sm:justify-start">
+         <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 lg:rounded-full rounded-lg border border-black gap-4">
+          <div className="flex items-center justify-between w-full gap-3">
           <p className="w-full text-left sm:text-left sm:w-auto">
-            Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
             <input
               type="text"
-              className="border border-[2px] border-gray-500 w-[70px] md:w-full sm:max-w-[100px] m-auto rounded-lg p-1"
+              className="border border-[2px] border-gray-500 w-[130px] lg:w-[60%] sm:w-[100px] m-auto rounded-lg p-1"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
             />

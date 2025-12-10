@@ -5,8 +5,8 @@ import { act } from "react";
 export default function IncomeReport({ activeTab, setActiveTab }) {
   return (
     <div className="lg:px-15 px-0">
-    <div className="p-2 px-10 mt-8 bg-white border border-black rounded-lg lg:rounded-full font-extralight">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-center  ">
+    <div className="p-2 sm:px-10 mt-8 bg-white border border-black rounded-lg lg:rounded-full font-extralight">
+      <div className="grid grid-cols-2  md:grid-cols-3 gap-2 text-center  ">
         {["DAILY$", "DIRECT", "BOOSTX", "LEVEL", "RANK", "UNI-POOL"].map(
           (label) => (
             <button
