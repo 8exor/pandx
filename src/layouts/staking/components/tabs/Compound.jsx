@@ -28,17 +28,21 @@ export default function Compound() {
 
   return (
     <div className="px-4 mt-6 lg:px-15">
-      <div className="flex flex-col lg:flex-row items-center gap-3 p-3 bg-white border justify-between border-black rounded-lg lg:rounded-full">
-        <p className="w-fit text-left">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
+        <p className="text-center  w-[60px] sm:w-full  sm:text-left">
           Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
         </p>
+
+
         <input
           type="text"
-          className="border border-[2px] border-gray-500 rounded-lg"
+          className="border border-[2px] w-full rounded-lg p-1 border-gray-500 rounded-lg'"
           value={compoundAmount}
           onChange={(e) => setCompoundAmount(e.target.value)}
         />
-        <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+
+
+        <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full text-white font-extralight text-center">
           Max
         </button>
       </div>

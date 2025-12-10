@@ -71,15 +71,17 @@ const HomePopup = () => {
       onClick={closePopup} // click outside closes
     >
       <div
-        className="bg-[#000000a1] border border-white p-6 rounded-2xl shadow-xl w-fit text-center relative"
+        className="bg-[#000000a1] relative border border-white p-[50px] rounded-2xl shadow-xl w-fit text-center relative"
         onClick={(e) => e.stopPropagation()}
       >
-         <div className="mb-2 text-end">
+        <div className="absolute top-2 right-2">
+           <div className="mb-2 text-end bg-[#ff403a9e] rounded-full h-[30px] p-2 w-[30px] flex justify-center">
           <button
           onClick={closePopup}
           className="text-white rounded-full ">
           <img src="assets/images/close.png" alt="close icon"/>
         </button>
+        </div>
         </div>
         <h2 className="mb-3 text-2xl text-white">Please Connect Your Wallet</h2>
        <ul className="flex items-center justify-center gap-5 mt-5">
