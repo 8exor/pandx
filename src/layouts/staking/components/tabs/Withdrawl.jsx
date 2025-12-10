@@ -70,7 +70,7 @@ const withdrawalHash = useMutation({
 
 
           <p className=" text-center  w-[60px] sm:w-full  sm:text-left">
-            Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
           </p>
 
 

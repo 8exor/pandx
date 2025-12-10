@@ -214,6 +214,7 @@ export default function Staking() {
               </thead>
 
               <tbody className="w-full">
+
                 {data?.child_air_logs?.map((child, index) => (
                   <>
                     <tr

@@ -30,7 +30,7 @@ export default function Compound() {
     <div className="px-4 mt-6 lg:px-15">
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
         <p className="text-center  w-[60px] sm:w-full  sm:text-left">
-          Available ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+          Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
         </p>
 
 
