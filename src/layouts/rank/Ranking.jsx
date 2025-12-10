@@ -2,6 +2,10 @@ import Marquee from '@components/Marquee';
 import { taskNote } from '@constants/index';
 import { UserInfoContext } from '@contexts/UserInfoContext';
 import MaxCapProgress from '@layouts/staking/components/MaxCapProgress';
+import { REPORTS } from '@services/panda.api.services';
+import { useQuery } from '@tanstack/react-query';
+import axiosInstance from '@utils/axiosInstance';
+import { get } from 'animejs';
 import React, { useContext } from 'react';
 
 const Ranking = () => {
@@ -23,10 +27,10 @@ const Ranking = () => {
     const tableData = [
         {
             rank: 1,
-            vol: "$50",
+            vol: "$100",
             "daily %": "0.50%",
             directs: "-",
-            "  current level": "-",
+            "current level": "-",
             // boostx: "-",
             teamReq: "-",
             totalTeam: "-",
@@ -37,7 +41,7 @@ const Ranking = () => {
             vol: "$250",
             "daily %": "0.60%",
             directs: "3",
-            " current level": "3 Levels",
+            "current level": "3 Levels",
             // boostx: "right",
             teamReq: "7 ",
             totalTeam: 10,
@@ -60,7 +64,7 @@ const Ranking = () => {
             vol: "$1000",
             "daily %": "0.80%",
             directs: 8,
-            " current level": "8 Levels",
+            "current level": "8 Levels",
             // boostx: "cross",
             teamReq: "62",
             totalTeam: 70,
@@ -71,7 +75,7 @@ const Ranking = () => {
             vol: "$2500",
             "daily %": "0.90%",
             directs: 10,
-            " current level": "10 Levels",
+            "current level": "10 Levels",
             // boostx: "cross",
             teamReq: "115",
             totalTeam: 125,
@@ -89,6 +93,21 @@ const Ranking = () => {
             capping: "3X",
         }
     ];
+
+
+    const {data:rankData} = useQuery({
+        queryKey : ["rankData"],
+        queryFn : async()=>{
+            const {data} = await axiosInstance.get(REPORTS?.rankInfo);
+            return data;
+        }
+    })
+
+    // console.log("what is rank infor : ",rankData?.data?.user?.overall_team );
+  
+    const getNextRank = rankData?.data?.current_rank?.rank + 1;
+    console.log("what is current reankjign : ",getNextRank)
+
 
     return (
         <div className="bg-[#F7FFF2] min-h-screen  px-2">
@@ -123,23 +142,38 @@ const Ranking = () => {
                                     {Object.entries(row).map(([key, value], cellIndex) => (
                                         <td key={cellIndex} className="p-1 ">
                                             <div className="mx-2 my-2 p-2  border border-black shadow rounded-md 
-                                                text-center flex justify-center items-center gap-1 
+                                                text-center flex justify-center items-center gap-2 
                                                 hover:bg-green-200 font-[Lato] font-bold">
-                                                {key === "rank" ? (
+                                                 
+                                                {key !== "capping" ? (
                                                     <>
-                                                        <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4" />
-                                                        <span>{value}</span>
-                                                    </>
-                                                ) : key === "boostx" ? (
-                                                    <img
-                                                        src={value === "right"
-                                                            ? "/assets/images/check 1.svg"
-                                                            : "/assets/images/cancel 1.svg"}
-                                                        alt='boostx'
-                                                        className='w-8 h-8'
 
-                                                    />
-                                                ) : (
+                                                    {(rowIndex == rankData?.data?.current_rank?.rank  )&& console.log({ rowIndex , key , value  , ll: rankData?.data?.current_rank?.rank + 1})}
+                                                       { key === "rank" && <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4" />}
+                                                        <span>{value}</span>
+                                                    {((key === "rank" || key ==="daily %" || key === "current level" ) && row.rank ==rankData?.data?.current_rank?.rank)  && <img src="/assets/images/check 1.svg" className='w-6' alt="check" />  }
+                                                    
+                                                      {(key=="vol" && rankData?.data?.user?.total_invested >= value.slice(1) ) && <img className='w-6' src="/assets/images/check 1.svg" alt="check" /> }
+
+                                                       {(key=="directs" && rankData?.data?.user?.total_directs >= (parseInt(value)||0)) ? <img className='w-6 '  src="/assets/images/check 1.svg" alt="check" />
+                                                            :
+                                                            ( key=="directs" && rowIndex == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                        }
+
+                                                         {(key=="teamReq" && rankData?.data?.user?.total_team >= (parseInt(value)||0)) ? <img className='w-6'  src="/assets/images/check 1.svg" alt="check" /> 
+                                                         :
+                                                           ( key=="teamReq" && rowIndex == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                        }
+
+                                                          {(key=="totalTeam" && rankData?.data?.user?.overall_team >= (parseInt(value)||0)) ? <img className='w-6'  src="/assets/images/check 1.svg" alt="check" />
+                                                          :
+                                                          ( key=="totalTeam" && rowIndex == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                        }
+                                                    </>
+                                                ) :  (
 
                                                  <div className='flex items-center gap-2' >
                                                     {value}
@@ -171,14 +205,39 @@ const Ranking = () => {
                                     <span className="text-sm font-semibold capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
 
                                     <span className="flex items-center gap-1 text-sm">
-                                        {key === "rank" ? (
-                                            <>
-                                                <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4 " />
-                                                {value}
-                                            </>
-                                        ) : (
-                                            value
-                                        )}
+                                       {key !== "capping" ? (
+                                                    <>
+                                                       { key === "rank" && <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4" />}
+                                                        <span>{value}</span>
+                                                    {((key === "rank" || key ==="daily %" || key === "current level" ) && row.rank ==rankData?.data?.current_rank?.rank)  && <img src="/assets/images/check 1.svg" className='w-6' alt="check" />  }
+                                                    
+                                                      {(key=="vol" && rankData?.data?.user?.total_invested >= value.slice(1) ) && <img className='w-6' src="/assets/images/check 1.svg" alt="check" /> }
+
+                                                       {(key=="directs" && rankData?.data?.user?.total_directs >= (parseInt(value)||0)) ? <img className='w-6'  src="/assets/images/check 1.svg" alt="check" />
+                                                       :
+                                                            ( key=="directs" && index == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                    }
+
+                                                         {(key=="teamReq" && rankData?.data?.user?.total_team >= (parseInt(value)||0)) ? <img className='w-6'  src="/assets/images/check 1.svg" alt="check" />
+                                                         :
+                                                           ( key=="teamReq" && index == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                         }
+
+                                                          {(key=="totalTeam" && rankData?.data?.user?.overall_team >= (parseInt(value)||0)) ? <img className='w-6'  src="/assets/images/check 1.svg" alt="check" />
+                                                          :
+                                                             ( key=="totalTeam" && index == rankData?.data?.current_rank?.rank) &&
+                                                        <img className='w-6 '  src="/assets/images/cancel 1.svg" alt="" />
+                                                        }
+                                                    </>
+                                                ) :  (
+
+                                                 <div className='flex items-center gap-2' >
+                                                    {value}
+                                                    {key === "capping" && <MaxCapProgress maxCap={false} value={userData?.data?.used_capping}/>}
+                                                 </div>
+                                                )}
                                     </span>
                                 </div>
                             ))}
