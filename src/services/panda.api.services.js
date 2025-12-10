@@ -24,4 +24,5 @@ export const REPORTS = {
   incomeReports: "report/income-reports",
   profile: "report/profile",
   teamInfo : "report/team-info",
+  rankInfo      : "report/rank-info"
 };

@@ -800,3 +800,35 @@ background: linear-gradient(171deg,rgba(91, 91, 172, 1) 10%, rgba(255, 255, 255,
     transform: rotate(360deg);
   }
 }
+
+
+.real-confetti {
+  position: fixed;
+  opacity: 1;
+  border-radius: 2px;
+  transform-origin: center;
+  pointer-events: none;
+  animation: confettiScreen 2.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes confettiScreen {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+
+  30% {
+    /* big explosion outward and upward */
+    transform: translate(var(--xBurst), var(--yBurst)) rotate(var(--spin));
+    opacity: 1;
+  }
+
+  100% {
+    /* fall to the bottom of screen and fade */
+    transform: translate(
+      var(--xBurst),
+      var(--fall)
+    ) rotate(calc(var(--spin) * 3));
+    opacity: 0;
+  }
+}
