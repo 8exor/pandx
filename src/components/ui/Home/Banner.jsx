@@ -8,7 +8,7 @@ const Banner = ({ aboutRef, homeRef }) => {
   const copyText = () => {
     navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
     setCopied(true);
-    setTimeout(() => setCopied(false), 5000);
+    setTimeout(() => setCopied(false), 4000);
   };
   useEffect(() => {
     AOS.init({
