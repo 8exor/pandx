@@ -83,5 +83,7 @@ export default function StakingHead() {
 
       {/* </div> */}
     </>
+    
   );
+
 }

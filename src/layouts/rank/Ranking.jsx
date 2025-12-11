@@ -5,7 +5,7 @@ import MaxCapProgress from '@layouts/staking/components/MaxCapProgress';
 import { REPORTS } from '@services/panda.api.services';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@utils/axiosInstance';
-import { get } from 'animejs';
+// import { get } from 'animejs';
 import React, { useContext } from 'react';
 
 const Ranking = () => {

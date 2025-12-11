@@ -27,7 +27,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                             {taskNote?.des2}
                             </marquee>
                           </div>
-        <section className=" bg-[url('src/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
+        <section className=" bg-[url('/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
                   <li
