@@ -21,12 +21,12 @@ const Banner = ({ aboutRef, homeRef }) => {
   return (
     <>
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
-           <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3 text-xl'>
-                              {/* <span className='blink-text'>{taskNote?.title}</span> */}
-                             <marquee behavior=""  direction="">
-                            {taskNote?.des2}
-                            </marquee>
-                          </div>
+              <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
+                
+                   <marquee behavior="" scrollamount="10" direction="">
+                     {taskNote?.des2}
+                   </marquee>
+                 </div>
         <section className=" bg-[url('/assets/images/BG_mask.svg')]  bg-no-repeat bg-bottom bg-cover pt-20 relative">
          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]"  data-aos="slide-up">
                 {headerLogos.map((item, index) => (
@@ -36,7 +36,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                  hover:drop-shadow-[0_0_10px_#00d990] hover:scale-120 duration-300 ease-in-out"
                   >
                     <img
-                      className="md:h-5 md:w-5 h-2 w-2 cursor-pointer"
+                      className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
                       src={item.img}
                       alt="logo icon"
                     />
