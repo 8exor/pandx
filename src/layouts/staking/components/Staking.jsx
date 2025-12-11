@@ -17,7 +17,7 @@ export default function Staking() {
   const { address } = useAppKitAccount();
   const navigate = useNavigate();
 
-  const tableDataKeys = [" S No", "Username", "Status", "$QRA AirDrop"];
+  const tableDataKeys = [" S No", "Username", "Status", "$QRAsdfsfdsfsdfsdf AirDrop"];
   const [handleCopy] = CopyToClipBaord();
 
   const { userData } = useContext(UserInfoContext);
@@ -178,6 +178,7 @@ export default function Staking() {
           />
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
+        
 
         <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[720px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
@@ -194,6 +195,7 @@ export default function Staking() {
           <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-24 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
+          
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">
               <thead className="sticky top-0 text-black rounded-md shadow-xl">

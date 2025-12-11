@@ -96,16 +96,16 @@ export default function P2p() {
 
   return (
     <div className="w-full px-2 mt-5 lg:px-15">
-      <div className="grid grid-cols-1 sm:grid-cols-1  md:grid-cols-2 items-center justify-between gap-2 ">
+      <div className="grid grid-cols-1  lg:grid-cols-1 xl:grid-cols-2 items-center justify-between gap-2 ">
 
 
-        <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
-          <p className="w-full text-center sm:text-left  text-sm" >
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full ">
+          <p className="text-center  w-[60px] sm:w-full  sm:text-left" >
             Avl $60
           </p>
           <input
             type="text"
-            className="border border-[2px] p-1 border-gray-500 rounded-lg"
+            className="border border-[2px] p-1 w-full border-gray-500 rounded-lg"
             value={p2pAmount}
             onChange={(e) => setp2pAmount(e.target.value)}
           />
@@ -116,11 +116,11 @@ export default function P2p() {
 
 
 
-        <div className="flex flex-col xl:flex-row gap-2 md:gap-6 p-2 mb-4 bg-white border border-black rounded-lg p-[14px] xl:rounded-full ">
+        <div className="flex  xl:flex-row gap-2 md:gap-6 p-2 bg-white border border-black rounded-lg p-[12px] xl:rounded-full ">
           <input
             type="text"
             placeholder="Enter UserName"
-            className="border border-[2px] w-full xl:max-w-[118px] border-gray-500 rounded-lg text-sm p-1"
+            className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-1"
             onChange={(e) => setUserName(e.target.value)}
           />
 
@@ -132,12 +132,10 @@ export default function P2p() {
           </button>
         </div>
 
-
-
       </div>
 
 
-      <p className="mb-4 font-semibold text-center uppercase sm:text-left">
+      <p className="my-4 font-semibold text-center uppercase sm:text-left">
         P2P unlimited and free
       </p>
 
