@@ -12,6 +12,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import toast from "react-hot-toast";
 import { taskNote } from "@constants/index";
+import TableSkeleton from "./TableSkelton";
 
 export default function Staking() {
   const { address } = useAppKitAccount();
@@ -73,13 +74,19 @@ export default function Staking() {
     },
   };
 
-  const { data } = useQuery({
+
+  
+
+  const { data, isLoading } = useQuery({
     queryKey: ["airdropData"],
     queryFn: async () => {
       const { data } = await axiosInstance.get(REPORTS.airdropData);
       return data?.data;
     },
   });
+
+
+
 
   const upgrade =
     (userData?.data?.rank_id == 1 && "0.60%") ||
@@ -141,7 +148,6 @@ export default function Staking() {
               </div>
             </div>
 
-
             <button
               className="bg-[#BFFEB0] btn-primary hidden lg:block  w-[33%] rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
@@ -150,15 +156,16 @@ export default function Staking() {
             </button>
 
             {/* copy for marquee */}
-              <button
+            <button
               className="bg-[#BFFEB0] btn-primary flex items-center justify-center  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
-              <marquee behavior="scroll" direction="left"> Upgrade Rank & Get {upgrade} </marquee>
-             
+              <marquee behavior="scroll" direction="left">
+                {" "}
+                Upgrade Rank & Get {upgrade}{" "}
+              </marquee>
             </button>
             {/* copy marqee end */}
-
 
             <button
               className={`${
@@ -167,8 +174,6 @@ export default function Staking() {
             >
               {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
-
-
           </div>
 
           <img
@@ -198,51 +203,57 @@ export default function Staking() {
           
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">
-              <thead className="sticky top-0 text-black rounded-md shadow-xl">
+              <thead className="sticky top-0 z-10 text-black rounded-md shadow-xl">
                 <tr className="w-full flex gap-10 items-center justify-between p-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
-                  <th className="font-normal max-md:w-[150px] flex-[1_1_150]">
-                    Sr No
-                  </th>
-                  <th className="font-normal max-md:w-[150px] flex-[1_1_150] ">
+                  <th className="font-normal w-full md:max-w-[100px]">Sr No</th>
+                  <th className="font-normal w-full   md:max-w-[100px]">
                     Username
                   </th>
-                  <th className="font-normal max-md:w-[150px] flex-[1_1_150] ">
+                  <th className="font-normal w-full md:max-w-[150px]">
                     Status
                   </th>
-                  <th className="font-normal max-md:w-[150px] flex-[1_1_150]">
+                  <th className="font-normal w-full md:max-w-[100px]">
                     $QRA AirDrop
                   </th>
                 </tr>
               </thead>
-
-              <tbody className="w-full">
-
-                {data?.child_air_logs?.map((child, index) => (
-                  <>
-                    <tr
-                      key={index}
-                      className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
-                    >
-                      <td className="max-md:w  return (-[150px] flex-[1_1_150] text-base font-medium text-left text-black capitalize max-sm:w-30 ">
-                        {index + 1}
-                      </td>
-                      <td className=" max-md:w-[150px] flex-[1_1_150] font-medium text-left text-black capitalize max-sm:w-30 ">
-                        {child?.airdrop_child_user?.username}
-                      </td>
-                      <td className="max-md:w-[150px] flex-[1_1_150] text-base font-medium text-black capitalize max-sm:w-30 ">
-                        <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
-                          To be claimed
-                        </span>
-                      </td>
-                      <td className="max-md:w-[150px] flex-[1_1_150] text-base font-medium text-black capitalize max-sm:w-30 ">
-                        {Number(
-                          child?.airdrop_child_user?.qerra_airdrop
-                        ).toFixed(0)}
-                      </td>
+              {isLoading ? (
+                <TableSkeleton  />
+              ) : (
+                <tbody className="w-full">
+                  {data?.child_air_logs.length === 0 ? (
+                    <tr className="flex items-center justify-center w-full mt-10">
+                      <td>No Data Found</td>
                     </tr>
-                  </>
-                ))}
-              </tbody>
+                  ) : (
+                    data?.child_air_logs?.map((child, index) => (
+                      <>
+                        <tr
+                          key={index}
+                          className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                        >
+                          <td className="w-full  md:max-w-[100px] text-center font-medium  text-black capitalize  ">
+                            {index + 1}
+                          </td>
+                          <td className=" w-full  md:max-w-[100px]  font-medium text-center text-black capitalize">
+                            {child?.airdrop_child_user?.username}
+                          </td>
+                          <td className="w-full  md:max-w-[150px] text-center font-medium text-black capitalize  ">
+                            <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
+                              To be claimed
+                            </span>
+                          </td>
+                          <td className="w-full  md:max-w-[100px] text-center font-medium text-black capitalize  ">
+                            {Number(
+                              child?.airdrop_child_user?.qerra_airdrop
+                            ).toFixed(0)}
+                          </td>
+                        </tr>
+                      </>
+                    ))
+                  )}
+                </tbody>
+              )}
             </table>
           </div>
         </div>
