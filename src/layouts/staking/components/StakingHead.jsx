@@ -5,11 +5,12 @@ import { REPORTS } from '@services/panda.api.services';
 import MaxCapProgress from './MaxCapProgress';
 import toast from 'react-hot-toast';
 import { ProgressBar } from './ProgressBar';
+import { ValueSkelton } from '../ValueLoaders';
 
 
 export default function StakingHead() {
 
-  const {data} = useQuery({
+  const {data, isLoading} = useQuery({
     queryKey : ['userData'],
     queryFn : async()=>{
         const {data} = await axiosInstance.get(REPORTS.userInfo);
@@ -34,9 +35,11 @@ const maxCap = (data?.data?.used_capping/data?.data?.total_capping)*100;
           <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
         <p>Daily 0.5%</p>
         <p>Daily $0.5</p> */}
-       <div className="grid sm:grid-cols-3  lg:grid-cols-5 gap-4">
-  <p className='left-text-center'>Trial Bonus ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
-  <p className='left-text-center'>My Stake  ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
+       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+  <p className='left-text-center'>Trial Bonus ${!isLoading ? Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0 :
+    <ValueSkelton/>
+    }</p>
+  <p className='left-text-center'>My Stake  ${!isLoading ? Number(data?.data?.staking?.amt_usd).toFixed(0) || 0 : <ValueSkelton/>}</p>
   
   <p className='left-text-center'>Daily 0.5%</p>
   <p className='left-text-center'>Daily $0.5</p>

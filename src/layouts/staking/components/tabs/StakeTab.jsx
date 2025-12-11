@@ -85,7 +85,9 @@ export default function StakeTab() {
         console.log({ error });
       }
     },
-    onError: (error) => {toast.error(error?.message || "Error occurred")}
+    onError: (error) => {toast.error(error?.message || "Error occurred",{
+                    duration : 700
+                  })}
   });
 
    const submitHash = useMutation({
@@ -95,9 +97,12 @@ export default function StakeTab() {
     },
     onSuccess : async(data)=>{
       toast.success(data?.message);
+      stakeAmount("");
     },
     onError:(error)=>{
-toast.error(error?.message || "Error Occurred")
+toast.error(error?.message || "Error Occurred",{
+                    duration : 700
+                  })
     }
   })
 
@@ -170,19 +175,12 @@ toast.error(error?.message || "Error Occurred")
 
 
           <div className="flex items-center justify-between w-full gap-3 mt-2 sm:w-auto sm:mt-0">
-            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center" onClick={()=>setStakeAmount(Number(userData?.data?.wallet_balance).toFixed(2))} >
+            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center" onClick={()=>setStakeAmount(parseInt(userData?.data?.wallet_balance).toFixed(2))} >
               MAX
             </div>
-            <p className="font-bold">${userData?.data?.wallet_balance ? Number(userData?.data?.wallet_balance).toFixed(0) * Number(userData?.data?.token_price) : 0}</p>
+            <p className="font-bold">${Number(stakeAmount * (userData?.data?.token_price))  ? parseFloat(stakeAmount * (userData?.data?.token_price)).toFixed(2) : 0}</p>
           </div>
         </div>
-
-
-
-
-
-
-
          
         <div className="flex justify-center mt-2">
           <button
@@ -191,7 +189,7 @@ toast.error(error?.message || "Error Occurred")
           >
            {
             staking?.isPending ? 
-            "submitting...."
+            "loading...."
             :
             "submit"
            }

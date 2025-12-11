@@ -26,7 +26,9 @@ export default function P2p() {
       toast.success(data?.message);
     },
     onError: (error) => {
-      toast.error(error?.message || "Invalid username");
+      toast.error(error?.message || "Invalid username",{
+                    duration : 700
+                  });
     },
   });
 
@@ -67,7 +69,9 @@ export default function P2p() {
       }
     },
     onError: (error) => {
-      toast.error(error?.message || "Error Occurred");
+      toast.error(error?.message || "Error Occurred",{
+                    duration : 700
+                  });
     },
   });
 
@@ -81,9 +85,13 @@ export default function P2p() {
     },
     onSuccess: async (data) => {
       toast.success(data?.message);
+      setp2pAmount("");
+      setUserName("");
     },
     onError: (error) => {
-      toast.error(error?.message || "Error Occurred");
+      toast.error(error?.message || "Error Occurred",{
+                    duration : 700
+                  });
     },
   });
 
@@ -94,7 +102,7 @@ export default function P2p() {
 
         <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
           <p className="w-full text-sm text-center sm:text-left" >
-            Avl 
+            Avl ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
           </p>
           <input
             type="text"
@@ -102,7 +110,7 @@ export default function P2p() {
             value={p2pAmount}
             onChange={(e) => setp2pAmount(e.target.value)}
           />
-          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1 text-sm rounded-full  text-white font-extralight">
+          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1 text-sm rounded-full  text-white font-extralight" onClick={()=>setp2pAmount(parseInt(userData?.data?.withdrawable_balance))}>
             Max
           </button>
         </div>
@@ -121,7 +129,7 @@ export default function P2p() {
             className="bg-[#72A314] btn-primary text-sm w-full  py-2    rounded-full  text-white font-extralight"
             onClick={() => validateUserName.mutate({ username: userName })}
           >
-            Validate
+           {validateUserName?.isSuccess ? "Validated" : "Validate"}
           </button>
         </div>
 

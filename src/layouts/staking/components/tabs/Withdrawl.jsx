@@ -45,7 +45,9 @@ try {
 
   },
   onError : (error)=>{
-    toast.error(error?.message);
+    toast.error(error?.message,{
+                    duration : 700
+                  });
     console.log(error)
   }
 })
@@ -57,6 +59,7 @@ const withdrawalHash = useMutation({
   },
   onSuccess : async(data)=>{
     toast.success(data?.message);
+    setWithdrawalAmount("");
   },
   onError : (error)=>{
     toast.error(error?.message)
@@ -77,20 +80,20 @@ const withdrawalHash = useMutation({
           <input  type="text" className='border border-[2px] p-1 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
 
 
-          <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+          {/* <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             Max
-          </button>
+          </button> */}
         </div>
         <div className='flex items-center justify-between w-full mt-2 '>
-          <button className='p-2 px-5 btn-primary'>25%</button>
-          <button className='p-2 px-5 btn-primary'>50%</button>
-          <button className='p-2 px-5 btn-primary'>75%</button>
-          <button className='p-2 px-5 btn-primary'>100%</button>
+          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 25/100)}>25%</button>
+          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 50/100)}>50%</button>
+          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 70/100)}>75%</button>
+          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div>
 
         <p className="mt-3 text-center sm:text-left">5% Pool Free</p>
 
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center ">
           <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})} >
             Submit
           </button>
