@@ -131,9 +131,9 @@ export default function Staking() {
           /> */}
           <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black sm:mt-2">
             <div className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full   w-[33%]   py-2 md:px-1">
-              <div className="flex items-center justify-center gap-1">
+              <div className="flex py-[2px] items-center justify-center gap-1">
                 <img
-                  className="w-4"
+                  className="w-5"
                   src="/assets/images/star 1.svg"
                   alt="star"
                 />
