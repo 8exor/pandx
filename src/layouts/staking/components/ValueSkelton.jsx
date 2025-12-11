@@ -15,13 +15,10 @@ export const ValueSkelton = () => {
       
       <p className='left-text-center'>Daily 0.5%</p>
       <p className='left-text-center'>Daily $0.5</p>
-      <MaxCapProgress value={maxCap} maxCap={true}/>
     </div>
             <div/>
           </div>
-        
           </>
-   
   )
 }
 

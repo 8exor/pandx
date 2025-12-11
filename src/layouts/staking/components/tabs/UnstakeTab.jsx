@@ -43,13 +43,13 @@ const unstakeHash = useMutation({
 })
 
   return (
-   <div className="px-4 mt-6 lg:px-15">
+   <div className="mt-6 lg:px-15">
         <div className="flex items-center justify-between lg:px-[30px] gap-4 p-3 bg-white border border-black rounded-lg lg:rounded-full sm:flex-row sm:justify-between" >
-          <button className="bg-[#72A314] btn-primary   p-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+          <button className="bg-[#72A314] btn-primary sm:px-[16px] sm:py-[8px]  sm:text-[16px] text-[14px] sm:p-2  p-[7px]  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             MyStake $1000
           </button>
         
-          <button className="bg-[#72A314] btn-primary    p-2 rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+          <button className="bg-[#72A314] btn-primary sm:text-[16px] sm:px-[16px] sm:py-[8px] text-[14px]  sm:p-2 p-[7px] rounded-full shine hover:scale-110  text-white font-extralight text-center">
             Un-Stake 100%
           </button>
         </div>

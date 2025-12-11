@@ -64,7 +64,7 @@ const withdrawalHash = useMutation({
 })
 
   return (
-    <div className="px-4 mt-6 lg:px-15">
+    <div className=" mt-6 lg:px-15">
 
          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
 
@@ -81,12 +81,12 @@ const withdrawalHash = useMutation({
             Max
           </button>
         </div>
-        <div className='flex items-center justify-between w-full mt-2 '>
-          <button className='p-2 px-5 btn-primary'>25%</button>
-          <button className='p-2 px-5 btn-primary'>50%</button>
-          <button className='p-2 px-5 btn-primary'>75%</button>
-          <button className='p-2 px-5 btn-primary'>100%</button>
-        </div>
+        <div className="flex px-[15px] justify-between my-3  sm:my-1 gap-2">
+            <button className="font-extralight rounded-lg">25%</button>
+            <button className="font-extralight rounded-lg ">50%</button>
+            <button className=" font-extralight rounded-lg">75%</button>
+            <button className="font-extralight rounded-lg">100%</button>
+</div>
 
         <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>
 

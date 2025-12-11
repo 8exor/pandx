@@ -349,6 +349,12 @@ const Header = ({
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Connect
                   </button>
+                    <button 
+                  onClick={() => setOpenLoginModal(true)}
+                  className="flex gap-2 px-6 py-3 text-lg mt-6 mx-auto text-white btn-primary"
+                >
+                  Sign up
+                </button>
                 </div>
               )}
             </div>
