@@ -106,12 +106,12 @@ const Ranking = () => {
     // console.log("what is rank infor : ",rankData?.data?.user?.overall_team );
   
     const getNextRank = rankData?.data?.current_rank?.rank + 1;
-    console.log("what is current reankjign : ",getNextRank)
+ 
 
 
     return (
-        <div className="bg-[#F7FFF2] min-h-screen  px-2">
-            <div className='w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3 text-xl'>
+        <div className="bg-[#F7FFF2] min-h-screen  px-2 py-10">
+            <div className='w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3 mt-8 text-xl'>
                 <span className='blink-text'>{taskNote?.title}</span>
                <marquee behavior="alternate" scrollamount="10" direction="">
               {taskNote?.des}
@@ -148,7 +148,7 @@ const Ranking = () => {
                                                 {key !== "capping" ? (
                                                     <>
 
-                                                    {(rowIndex == rankData?.data?.current_rank?.rank  )&& console.log({ rowIndex , key , value  , ll: rankData?.data?.current_rank?.rank + 1})}
+                                              
                                                        { key === "rank" && <img src="./assets/images/star 1.svg" alt="star" className="w-4 h-4" />}
                                                         <span>{value}</span>
                                                     {((key === "rank" || key ==="daily %" || key === "current level" ) && row.rank ==rankData?.data?.current_rank?.rank)  && <img src="/assets/images/check 1.svg" className='w-6' alt="check" />  }

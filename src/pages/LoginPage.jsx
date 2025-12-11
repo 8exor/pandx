@@ -20,6 +20,7 @@ import { animate } from "animejs";
 export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
+  const [clickedOnRegister, setClickedOnRegister] = useState(false);
   const [clickedOnConnect, setClickedOnConnect] = useState(false);
   const { isConnected, address } = useAppKitAccount();
   const [userName, setUserName] = useState("");
@@ -42,7 +43,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       const text = await navigator.clipboard.readText();
       setReferralCode(text);
     } catch (error) {
-      toast.error("Permission to paste was denied or clipboard is empty.");
+      toast.error("Permission to paste was denied or clipboard is empty.",{
+                    duration : 700
+                  });
     }
   };
 
@@ -59,7 +62,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       console.log(error, "error");
 
       if (error?.status == 0) {
-        toast.error(error?.message);
+        toast.error(error?.message, {
+          duration : 1000,
+        });
       }
       allowScroll();
     },
@@ -67,9 +72,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
   const validateReferralCode = () => {
     if (!referralCode) {
-      console.log({ referralCode });
+   
       setShowError({ ...showError, referralCode: true });
-      return toast.error("Username is required.");
+      return toast.error("Username is required.",{
+                    duration : 700
+                  });
     }
     checkReferralCode.mutate({ username: referralCode });
   };
@@ -85,12 +92,15 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     onError: (error) => {
       console.log(error, "error");
       if (error?.status == 0) {
-        toast.error(error?.message);
+        toast.error(error?.message,{
+                    duration : 700
+                  });
       }
     },
   });
 
   const checkRegsiter = () => {
+    setClickedOnRegister(true);
     if (!address && !userName && !referralCode) {
       setShowError({
         ...showError,
@@ -98,19 +108,27 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
         userName: true,
         referralCode: true,
       });
-      return toast.error("All fields are required");
+      return toast.error("All fields are required",{
+                    duration : 700
+                  });
     }
     if (!address) {
       setShowError({ ...showError, walletAddress: true });
-      return toast.error("wallet connection is required");
+      return toast.error("wallet connection is required",{
+                    duration : 700
+                  });
     }
     if (!userName) {
       setShowError({ ...showError, userName: true });
-      return toast.error("Username is required");
+      return toast.error("Username is required",{
+                    duration : 700
+                  });
     }
     if (!referralCode) {
       setShowError({ ...showError, referralCode: true });
-      return toast.error("Referral code is required");
+      return toast.error("Referral code is required",{
+                    duration : 700
+                  });
     }
 
     registerUser.mutate({
@@ -140,11 +158,14 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       return data;
     },
     onSuccess: async (data) => {
+      if(!clickedOnRegister){
       toast.success(data?.message);
+      }
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
       navigate("/StakingPage", { state: userName });
       setOpenLoginModal(false);
+      setClickedOnRegister(false);
     },
     onError: (error) => {
       if (error?.status === 0 && clickedOnLogin) {
@@ -155,7 +176,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   });
 
   useEffect(() => {
-    if (isConnected && clickedOnLogin) {
+    if (clickedOnLogin) {
       LoginUser.mutate({ wallet_address: address });
     }
   }, [isConnected]);
@@ -169,10 +190,14 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   }, [userName]);
 
   useEffect(() => {
-    if (!clickedOnLogin && clickedOnConnect) {
+    if (clickedOnConnect) {
       open();
     }
   }, [clickedOnConnect]);
+
+  useEffect(()=>{
+    setClickedOnConnect(false);
+  },[!isConnected])
 
 function releaseConfettiInside() {
   const parent = document.querySelector(".animateDiv");
@@ -292,6 +317,7 @@ function releaseConfettiInside() {
               onClick={() => {
                 setClickedOnLogin(false);
                 setClickedOnConnect(true);
+                setShowError({...showError, walletAddress : false})
               }}
             >
               Connect wallet
@@ -310,7 +336,7 @@ function releaseConfettiInside() {
               maxLength={9}
               minLength={4}
               value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e) => {setUserName(e.target.value); setShowError({...showError, userName : false})}}
             />
             <button
               className={` text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${
@@ -321,7 +347,9 @@ function releaseConfettiInside() {
               onClick={() => {
                 if (userName.length == 0) {
                   setShowError({ ...showError, userName: true });
-                  return toast.error("Username is required");
+                  return toast.error("Username is required",{
+                    duration : 700
+                  });
                 }
                 checkUserName.mutate({ username: userName });
               }}
@@ -348,7 +376,7 @@ function releaseConfettiInside() {
               value={referralCode}
               minLength={4}
               maxLength={9}
-              onChange={(e) => setReferralCode(e.target.value)}
+              onChange={(e) => {setReferralCode(e.target.value); setShowError({...showError, referralCode : false})}}
             />
             <button
               className={`${

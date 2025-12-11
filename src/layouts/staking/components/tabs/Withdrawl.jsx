@@ -21,7 +21,7 @@ const withdrawaling = useMutation({
   onSuccess : async(data)=>{
 try {
   const provider = new ethers.providers.Web3Provider(walletProvider);
-  console.log({provider});
+
   const signer = await provider.getSigner();
   const txn = await signer.sendTransaction({
     from : data?.data?.from,
@@ -70,7 +70,7 @@ const withdrawalHash = useMutation({
 
 
           <p className=" text-center  w-[60px] sm:w-full  sm:text-left">
-            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
+            Avl ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
           </p>
 
 
@@ -80,6 +80,12 @@ const withdrawalHash = useMutation({
           <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
             Max
           </button>
+        </div>
+        <div className='flex items-center justify-between w-full mt-2 '>
+          <button className='p-2 px-5 btn-primary'>25%</button>
+          <button className='p-2 px-5 btn-primary'>50%</button>
+          <button className='p-2 px-5 btn-primary'>75%</button>
+          <button className='p-2 px-5 btn-primary'>100%</button>
         </div>
 
         <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>

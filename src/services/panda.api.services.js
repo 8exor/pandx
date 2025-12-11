@@ -23,6 +23,6 @@ export const REPORTS = {
   userInfo: "report/user-info",
   incomeReports: "report/income-reports",
   profile: "report/profile",
-  teamInfo : "report/team-info",
-  rankInfo      : "report/rank-info"
+  teamInfo: "report/team-info",
+  rankInfo: "report/rank-info",
 };

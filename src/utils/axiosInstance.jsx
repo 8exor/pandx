@@ -26,32 +26,32 @@ axiosInstance.interceptors.request.use(
       ...config.params,
     //   lang: await getLang(),
     };
-console.log({config})
+
     return config;
   },
   function (error) {
 
-    console.log({ee2:error})
+
     return Promise.reject(error);
   }
 );
 
 axiosInstance.interceptors.response.use(
   function (response) {
-    console.log("Response:", response);
+
     return response;
   },
   async function (error) {
-    console.log({ee1:error})
+ 
     const { disconnect } = useDisconnect();
     if (error.status === 401) {
       await deleteCookies();
       const getToken = await getAccessToken();
-      console.log("what is get token : ", getToken)
+
       if (!getToken) {
         disconnect();
       }
-      console.log("Unauthorized, logging out...");
+   
     }
     return Promise.reject(error?.response?.data);
   }

@@ -15,6 +15,7 @@ export default function P2p() {
   const { address, isConnected } = useAppKitAccount();
   const [p2pAmount, setp2pAmount] = useState("");
   const [userName, setUserName] = useState("");
+    const { userData } = useContext(UserInfoContext);
 
   const validateUserName = useMutation({
     mutationFn: async (formdata) => {
@@ -40,17 +41,10 @@ export default function P2p() {
     onSuccess: async (data) => {
       try {
         const provider = new ethers.providers.Web3Provider(walletProvider);
-        console.log({ provider });
+
 
         const signer = await provider.getSigner();
-        console.log({ signer });
-        console.log({
-          from: data?.data?.stakeInvest?.from,
-          to: data?.data?.stakeInvest?.to,
-          gasPrice: data?.data?.stakeInvest?.gasPrice,
-          gasLimit: data?.data?.stakeInvest?.data,
-          value: data?.data?.stakeInvest?.value,
-        });
+    
 
         const data3 = await signer.sendTransaction({
           from: data?.data?.stakeInvest?.from,
@@ -61,7 +55,6 @@ export default function P2p() {
           value: data?.data?.stakeInvest?.value,
         });
 
-        console.log(data3);
         await data3.wait();
 
         p2pHash.mutate({
