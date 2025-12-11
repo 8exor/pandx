@@ -18,11 +18,14 @@ export default function Compound() {
       return data;
     },
     onSuccess: async (data) => {
-      console.log("what you compounding...");
+    
       toast.success(data?.message);
+      setCompoundAmount("");
     },
     onError: (error) => {
-      toast.error(error?.message);
+      toast.error(error?.message ,{
+                    duration : 700
+                  });
     },
   });
 
@@ -42,7 +45,7 @@ export default function Compound() {
         />
 
 
-        <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full text-white font-extralight text-center">
+        <button className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full text-white font-extralight text-center" onClick={()=>setCompoundAmount(parseInt(userData?.data?.withdrawable_balance))}>
           Max
         </button>
       </div>

@@ -1,15 +1,17 @@
+import { UserInfoContext } from '@contexts/UserInfoContext';
 import { useAppKitProvider } from '@reown/appkit/react';
 import { TRANSACTIONS } from '@services/panda.api.services';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@utils/axiosInstance';
 import { ethers, providers } from 'ethers';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { data } from 'react-router-dom';
 
 export default function UnstakeTab() {
 const[isChecked, setIsChecked] = useState("");
     const { walletProvider } = useAppKitProvider("eip155");
+    const {userData} = useContext(UserInfoContext);
 const unstake = useMutation({
   mutationFn : async(Formdata)=>{
     const {data} = await axiosInstance.post(TRANSACTIONS?.createUnstakeTransaction, Formdata);
@@ -23,12 +25,15 @@ const unstake = useMutation({
       const unstaking = await signer.sendTransaction();
       await unstaking.wait();
       unstakeHash?.mutate({"txn_hash" : unstaking.hash()})
+      setIsChecked(false)
     } catch (error) {
       console.log({error})
     }
   },
   onError : (error)=>{
-    toast.error(error?.message);
+    toast.error(error?.message,{
+                    duration : 700
+                  });
   }
 })
 
@@ -38,15 +43,17 @@ const unstakeHash = useMutation({
    return data;
  },
  onSuccess : async(data)=>{
-  toast.success(data?.message);
+  toast.success(data?.message,{
+                    duration : 700
+                  });
  }
 })
 
   return (
    <div className="mt-6 lg:px-15">
         <div className="flex items-center justify-between lg:px-[30px] gap-4 p-3 bg-white border border-black rounded-lg lg:rounded-full sm:flex-row sm:justify-between" >
-          <button className="bg-[#72A314] btn-primary sm:px-[16px] sm:py-[8px]  sm:text-[16px] text-[14px] sm:p-2  p-[7px]  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
-            MyStake $1000
+          <button className="bg-[#72A314] btn-primary   p-2  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight text-center">
+            MyStake ${isNaN(Number(userData?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(userData?.data?.staking?.amt_usd).toFixed(0)}
           </button>
         
           <button className="bg-[#72A314] btn-primary sm:text-[16px] sm:px-[16px] sm:py-[8px] text-[14px]  sm:p-2 p-[7px] rounded-full shine hover:scale-110  text-white font-extralight text-center">

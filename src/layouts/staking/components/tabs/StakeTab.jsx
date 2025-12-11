@@ -82,9 +82,9 @@ export default function StakeTab() {
         console.log({ error });
       }
     },
-    onError: (error) => {
-      toast.error(error?.message || "Error occurred");
-    },
+    onError: (error) => {toast.error(error?.message || "Error occurred",{
+                    duration : 700
+                  })}
   });
 
   const submitHash = useMutation({
@@ -97,11 +97,14 @@ export default function StakeTab() {
     },
     onSuccess: async (data) => {
       toast.success(data?.message);
+      stakeAmount("");
     },
-    onError: (error) => {
-      toast.error(error?.message || "Error Occurred");
-    },
-  });
+    onError:(error)=>{
+toast.error(error?.message || "Error Occurred",{
+                    duration : 700
+                  })
+    }
+  })
 
   return (
     <div className=" mt-1 mb-1 lg:px-15 ">
@@ -169,22 +172,12 @@ export default function StakeTab() {
               onChange={(e) => setStakeAmount(e.target.value)}
             />
 
-            <button
-              className="
-              absolute right-2 top-1/2 -translate-y-1/2
-              bg-[#72A314] text-white text-xs
-              px-3 py-1 rounded-full cursor-pointer
-              hover:scale-110 duration-200
-              z-20                     
-            "
-              onClick={() =>
-                setStakeAmount(
-                  Number(userData?.data?.wallet_balance).toFixed(2)
-                )
-              }
-            >
+
+          <div className="flex items-center justify-between w-full gap-3 mt-2 sm:w-auto sm:mt-0">
+            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center" onClick={()=>setStakeAmount(parseInt(userData?.data?.wallet_balance).toFixed(2))} >
               MAX
-            </button>
+            </div>
+            <p className="font-bold">${Number(stakeAmount * (userData?.data?.token_price))  ? parseFloat(stakeAmount * (userData?.data?.token_price)).toFixed(2) : 0}</p>
           </div>
            <div className="">
           <p className="font-bold text-center">
@@ -195,17 +188,20 @@ export default function StakeTab() {
           </p>
         </div>
         </div>
-
-       
-
-
-      <div className="flex justify-center mt-2">
-        <button
-          className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
-          onClick={() => staking.mutate({ stake_amount: stakeAmount })}
-        >
-          {staking?.isPending ? "submitting...." : "submit"}
-        </button>
+         
+        <div className="flex justify-center mt-2">
+          <button
+            className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
+            onClick={() => staking.mutate({ stake_amount: stakeAmount })}
+          >
+           {
+            staking?.isPending ? 
+            "loading...."
+            :
+            "submit"
+           }
+          </button>
+        </div>
       </div>
     </div>
   );

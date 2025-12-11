@@ -1,17 +1,20 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "@utils/axiosInstance";
-import { REPORTS } from "@services/panda.api.services";
-import MaxCapProgress from "./MaxCapProgress";
-import toast from "react-hot-toast";
-import { ProgressBar } from "./ProgressBar";
+import React from 'react'
+import {useQuery} from "@tanstack/react-query"
+import axiosInstance from '@utils/axiosInstance';
+import { REPORTS } from '@services/panda.api.services';
+import MaxCapProgress from './MaxCapProgress';
+import toast from 'react-hot-toast';
+import { ProgressBar } from './ProgressBar';
+import { ValueSkelton } from '../ValueLoaders';
+
 
 export default function StakingHead() {
-  const { data } = useQuery({
-    queryKey: ["userData"],
-    queryFn: async () => {
-      const { data } = await axiosInstance.get(REPORTS.userInfo);
-      return data;
+
+  const {data, isLoading} = useQuery({
+    queryKey : ['userData'],
+    queryFn : async()=>{
+        const {data} = await axiosInstance.get(REPORTS.userInfo);
+        return data;     
     },
   });
 
@@ -22,28 +25,24 @@ export default function StakingHead() {
     <>
       <div
         className="relative mt-10 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
-            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-2 text-center md:text-left ">
-        <div className="ml-[10px] ml-50" />
-            <img
-              className="absolute lg:left-[15px] left-[0px] top-[-30px] lg:top-[-40px] sm:top-[-28px] md:w-[80px] lg:w-[80px]   w-[90px] left-0"
-              src="/assets/images/gift.svg"
-              alt="gift"
-            />
-            {/* <p >Trial Bonus ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
-              <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
-            <p>Daily 0.5%</p>
-            <p>Daily $0.5</p> */}
-        <div className="grid sm:grid-cols-3  lg:grid-cols-5 gap-4">
-          <p className="left-text-center">
-            Trial Bonus $
-            {Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}
-          </p>
-          <p className="left-text-center">
-            My Stake $
-            {isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0))
-              ? 0
-              : Number(data?.data?.staking?.amt_usd).toFixed(0)}
-          </p>
+            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-2 text-center md:text-left "
+      >
+      <div className='ml-[10px] ml-50'/>
+        <img className='absolute lg:left-[15px] left-[0px] top-[-30px] lg:top-[-40px] sm:top-[-28px] md:w-[80px] lg:w-[80px]   w-[90px] left-0' src="/assets/images/gift.svg" alt="gift" />
+          {/* <p >Trial Bonus ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
+          <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
+        <p>Daily 0.5%</p>
+        <p>Daily $0.5</p> */}
+       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+  <p className='left-text-center'>Trial Bonus ${!isLoading ? Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0 :
+    <ValueSkelton/>
+    }</p>
+  <p className='left-text-center'>My Stake  ${!isLoading ? Number(data?.data?.staking?.amt_usd).toFixed(0) || 0 : <ValueSkelton/>}</p>
+  
+  <p className='left-text-center'>Daily 0.5%</p>
+  <p className='left-text-center'>Daily $0.5</p>
+  <MaxCapProgress value={maxCap} maxCap={true}/>
+</div>
 
           <p className="left-text-center">Daily 0.5%</p>
           <p className="left-text-center">Daily $0.5</p>

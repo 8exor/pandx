@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
   import {useQuery} from "@tanstack/react-query"
   import axiosInstance from '@utils/axiosInstance'
   import { REPORTS } from '@services/panda.api.services'
 import { is } from '@amcharts/amcharts4/core'
-import TableSkeleton from '@hooks/TableSkelton'
+
 import toast from 'react-hot-toast'
+import TableSkeleton from './TableSkelton'
+import { UserInfoContext } from '@contexts/UserInfoContext'
 
 export default function StakingTable({activeTab, tableConfig}) {
-
+const {userData} = useContext(UserInfoContext);
 
 
      const {data, isLoading} = useQuery({
@@ -23,6 +25,7 @@ export default function StakingTable({activeTab, tableConfig}) {
   
 
 const incomeData =  data?.data?.rows ;
+const stakeData = userData?.data?.staking;
 
 
   return (
@@ -85,7 +88,7 @@ const incomeData =  data?.data?.rows ;
                     </tr>
                   </>
                   :
-                  <TableSkeleton rows={5} columns={5}/>
+                  <TableSkeleton/>
                 )}
          
               </tbody>
