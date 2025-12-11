@@ -59,7 +59,7 @@ const DashboardHeader = () => {
                       : ""
                   }
                   to={navlink?.link}
-                  onClick={() => setActiveNav(navlink?.title)}
+                  onClick={() =>  setActiveNav(navlink?.title) }
                 >
                   <span>{navlink?.title}</span>
                 </NavLink>
@@ -166,9 +166,9 @@ const DashboardHeader = () => {
             LOGOUT
           </button>
           {
-            <div className="xl:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
+            <div  onClick={() => setOpenMenu(!openMenu)} className="xl:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
               <button
-                onClick={() => setOpenMenu(!openMenu)}
+               
                 className="   relative w-8 h-6 flex flex-col justify-between items-center p-[2px] group"
               >
                 <span
@@ -196,7 +196,8 @@ const DashboardHeader = () => {
             <ul className="text-center">
               {dappNavLinks?.map((navlink, index) => (
                 <li className="mt-2" key={index}>
-                  <NavLink to={navlink?.link}>
+                  <NavLink to={navlink?.link}
+                   onClick={() => setOpenMenu(false)}>
                     <span>{navlink?.title}</span>
                   </NavLink>
                 </li>

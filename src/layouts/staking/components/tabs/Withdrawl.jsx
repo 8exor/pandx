@@ -67,7 +67,7 @@ const withdrawalHash = useMutation({
 })
 
   return (
-    <div className="px-4 mt-6 lg:px-15">
+    <div className=" mt-6 lg:px-15">
 
          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
 
@@ -91,7 +91,7 @@ const withdrawalHash = useMutation({
           <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div>
 
-        <p className="mt-3 text-center sm:text-left">5% Pool Free</p>
+        <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>
 
         <div className="flex justify-center ">
           <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})} >
