@@ -8,7 +8,7 @@ export const UserInfoContext = createContext(null);
 export const UserInfoProvider =({children})=>{
     const[isLogin, setLogin] = useState("");
 
-const {data:userData, isLoading:userLoading, error:userError} = useQuery({
+const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuery({
     queryKey : ["userData"],
     queryFn : async()=>{
         const {data} = await axiosInstance.get(REPORTS.userInfo);
@@ -39,7 +39,7 @@ const {data:userData, isLoading:userLoading, error:userError} = useQuery({
 
 
 return (
-    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin}}>
+    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin, refetch}}>
         {children}
     </UserInfoContext.Provider>
 )

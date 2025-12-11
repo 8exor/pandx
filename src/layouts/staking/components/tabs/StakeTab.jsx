@@ -14,7 +14,7 @@ export default function StakeTab() {
   const [stakeAmount, setStakeAmount] = useState("");
   const { address, isConnected } = useAppKitAccount();
   const { walletProvider } = useAppKitProvider("eip155");
-  const {userData} = useContext(UserInfoContext) 
+  const {userData, refetch} = useContext(UserInfoContext) 
 
  const staking = useMutation({
     mutationFn: async (formdata) => {
@@ -95,14 +95,18 @@ export default function StakeTab() {
         const {data} = await axiosInstance.post(TRANSACTIONS?.submitStakeHash, formdata);
         return data;
     },
-    onSuccess : async(data)=>{
+    onSuccess : async(data)=>{  
       toast.success(data?.message);
-      stakeAmount("");
+       setStakeAmount("");
+      refetch();
+      console.log("what s up bro are you hanging out here:::::::");
     },
     onError:(error)=>{
 toast.error(error?.message || "Error Occurred",{
                     duration : 700
                   })
+                      setStakeAmount("");
+      refetch();
     }
   })
 

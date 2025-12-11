@@ -15,7 +15,9 @@ export default function CopyToClipBaord(){
             },
             function(err){
                 setIsCopied(false)
-                toast.error("Could not copy");
+                toast.error("Could not copy", {
+                    duration : 700
+                });
             }
         )
     }
