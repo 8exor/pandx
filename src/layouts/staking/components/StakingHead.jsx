@@ -49,7 +49,7 @@ export default function StakingHead() {
           <MaxCapProgress value={maxCap} maxCap={true} />
         </div>
         <div />
-      </div>
+   
       <div className="flex justify-center w-full max-w-[1360px] mx-auto relative  z-30 ">
         {/* <div
           className="w-full bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] 
