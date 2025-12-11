@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
-import GiftFlapConfetti from "./GiftFlapConfetti";
-import { animate } from "animejs";
+// import GiftFlapConfetti from "./GiftFlapConfetti";
+// import { animate } from "animejs";
 
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
