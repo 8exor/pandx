@@ -15,6 +15,7 @@ export default function P2p() {
   const { address, isConnected } = useAppKitAccount();
   const [p2pAmount, setp2pAmount] = useState("");
   const [userName, setUserName] = useState("");
+    const { userData } = useContext(UserInfoContext);
 
   const validateUserName = useMutation({
     mutationFn: async (formdata) => {
@@ -40,17 +41,10 @@ export default function P2p() {
     onSuccess: async (data) => {
       try {
         const provider = new ethers.providers.Web3Provider(walletProvider);
-        console.log({ provider });
+
 
         const signer = await provider.getSigner();
-        console.log({ signer });
-        console.log({
-          from: data?.data?.stakeInvest?.from,
-          to: data?.data?.stakeInvest?.to,
-          gasPrice: data?.data?.stakeInvest?.gasPrice,
-          gasLimit: data?.data?.stakeInvest?.data,
-          value: data?.data?.stakeInvest?.value,
-        });
+    
 
         const data3 = await signer.sendTransaction({
           from: data?.data?.stakeInvest?.from,
@@ -61,7 +55,6 @@ export default function P2p() {
           value: data?.data?.stakeInvest?.value,
         });
 
-        console.log(data3);
         await data3.wait();
 
         p2pHash.mutate({
@@ -96,12 +89,12 @@ export default function P2p() {
 
   return (
     <div className="w-full px-2 mt-5 lg:px-15">
-      <div className="grid grid-cols-1 sm:grid-cols-1  md:grid-cols-2 items-center justify-between gap-2 ">
+      <div className="grid items-center justify-between grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-2 ">
 
 
         <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
-          <p className="w-full text-center sm:text-left  text-sm" >
-            Avl $60
+          <p className="w-full text-sm text-center sm:text-left" >
+            Avl 
           </p>
           <input
             type="text"

@@ -58,6 +58,7 @@ const Header = ({
 
   const { open, close } = useAppKit();
   const { isConnected, address } = useAppKitAccount();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { walletProvider } = useAppKitProvider("eip155");
   const { disconnect } = useDisconnect();
   const [openLoginModal, setOpenLoginModal] = useState(false);
@@ -125,6 +126,7 @@ const Header = ({
       toast.success(data?.message);
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
+      setIsLoggedIn(true);
       navigate("/StakingPage");
     },
     onError: (error) => {
@@ -190,7 +192,7 @@ const Header = ({
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  {isConnected ? "Disconnect" : " Connect"}
+                  {(isConnected) ? "Disconnect" : " Connect"}
                 </button>
                 {/* 
                 <NavLink to={"/StakingPage"}>
@@ -199,7 +201,7 @@ const Header = ({
                     Staking
                   </button>
                 </NavLink> */}
-                {isConnected && (
+                {(isConnected )&& (
                   <NavLink to={"/StakingPage"}>
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
@@ -324,7 +326,7 @@ const Header = ({
                       Buy $Pandx
                     </button>
                   </a>
-                  {isConnected && (
+                  {isLoggedIn && (
                     <NavLink
                       to={isConnected ? "/StakingPage" : "/"}
                       className={

@@ -23,7 +23,7 @@ const DashboardHeader = () => {
 
   const handleDisconnet = async () => {
     try {
-      console.log({ walletProvider });
+   
       const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
 
       const sign = await ethersProvider.getSigner();

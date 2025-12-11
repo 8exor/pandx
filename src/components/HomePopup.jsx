@@ -52,12 +52,11 @@ const HomePopup = () => {
     },
   });
   useEffect(() => {
-    if (isConnected && loginWithPopUp ) {
+    if (loginWithPopUp ) {
       LoginUser.mutate({ wallet_address: address });
     }
-  }, [isConnected && loginWithPopUp ]);
+  }, [loginWithPopUp ]);
 
-  console.log("why are you not connectinggggg > .",isConnected)
 
   if (!show) return null;
 

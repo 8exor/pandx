@@ -151,11 +151,17 @@ toast.error(error?.message || "Error Occurred")
 
          <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 lg:rounded-full rounded-lg border border-black gap-4">
           <div className="flex items-center justify-between w-full gap-3">
-          <p className="w-full text-left sm:text-left sm:w-auto">
-            Avl ${Number(userData?.data?.withdrawable_balance).toFixed(2)}
-          </p>
+          <div className="w-full sm:text-left sm:w-auto">
+            <p className='flex items-center gap-2'>
+            Available
+          
+            </p> 
+           <p className='flex items-center gap-2'>
+             <img src='assets/images/pandalogofinalcopy.svg' className='w-6 rounded-full'/>
+            {userData?.data?.wallet_balance ? Number(userData?.data?.wallet_balance).toFixed(2) : 0}</p> 
+          </div>
             <input
-              type="text"
+              type="number"
               className="border border-[2px] border-gray-500 w-[130px] lg:w-[60%] sm:w-[100px] m-auto rounded-lg p-1"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
@@ -164,10 +170,10 @@ toast.error(error?.message || "Error Occurred")
 
 
           <div className="flex items-center justify-between w-full gap-3 mt-2 sm:w-auto sm:mt-0">
-            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center">
+            <div className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center" onClick={()=>setStakeAmount(Number(userData?.data?.wallet_balance).toFixed(2))} >
               MAX
             </div>
-            <p className="font-bold">${Number(userData?.data?.wallet_balance).toFixed(0)}</p>
+            <p className="font-bold">${userData?.data?.wallet_balance ? Number(userData?.data?.wallet_balance).toFixed(0) * Number(userData?.data?.token_price) : 0}</p>
           </div>
         </div>
 
