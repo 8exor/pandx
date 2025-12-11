@@ -34,19 +34,18 @@ export default function StakingHead() {
         <p>Daily 0.5%</p>
         <p>Daily $0.5</p> */}
        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-  <p className='left-text-center'>Trial Bonus ${!isLoading ? Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0 :
-    <ValueSkelton/>
+  <p className='left-text-center'>Trial Bonus ${ Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0 
     }</p>
-  <p className='left-text-center'>My Stake  ${!isLoading ? Number(data?.data?.staking?.amt_usd).toFixed(0) || 0 : <ValueSkelton/>}</p>
+  <p className='left-text-center'>My Stake  ${Number(data?.data?.staking?.amt_usd).toFixed(0) || 0 }</p>
   
   <p className='left-text-center'>Daily 0.5%</p>
   <p className='left-text-center'>Daily $0.5</p>
   <MaxCapProgress value={maxCap} maxCap={true}/>
 </div>
 
-          <p className="left-text-center">Daily 0.5%</p>
+          {/* <p className="left-text-center">Daily 0.5%</p>
           <p className="left-text-center">Daily $0.5</p>
-          <MaxCapProgress value={maxCap} maxCap={true} />
+          <MaxCapProgress value={maxCap} maxCap={true} /> */}
         </div>
         <div />
    

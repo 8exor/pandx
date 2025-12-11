@@ -15,7 +15,7 @@ export default function P2p() {
   const { address, isConnected } = useAppKitAccount();
   const [p2pAmount, setp2pAmount] = useState("");
   const [userName, setUserName] = useState("");
-    const { userData } = useContext(UserInfoContext);
+    const { userData, refetch } = useContext(UserInfoContext);
 
   const validateUserName = useMutation({
     mutationFn: async (formdata) => {
@@ -87,33 +87,24 @@ export default function P2p() {
       toast.success(data?.message);
       setp2pAmount("");
       setUserName("");
+      refetch();
     },
     onError: (error) => {
       toast.error(error?.message || "Error Occurred",{
                     duration : 700
                   });
+                      setp2pAmount("");
+      setUserName("");
+      refetch();
     },
   });
 
   return (
     <div className="w-full px-2 mt-5 lg:px-15">
-      <div className="grid grid-cols-1  lg:grid-cols-1 xl:grid-cols-2 items-center justify-between gap-2 ">
+      <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
 
 
-        <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
-          <p className="w-full text-sm text-center sm:text-left" >
-            Avl ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
-          </p>
-          <input
-            type="text"
-            className="border border-[2px] p-1 w-full border-gray-500 rounded-lg"
-            value={p2pAmount}
-            onChange={(e) => setp2pAmount(e.target.value)}
-          />
-          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1 text-sm rounded-full  text-white font-extralight" onClick={()=>setp2pAmount(parseInt(userData?.data?.withdrawable_balance))}>
-            Max
-          </button>
-        </div>
+       
 
 
 
@@ -132,7 +123,20 @@ export default function P2p() {
            {validateUserName?.isSuccess ? "Validated" : "Validate"}
           </button>
         </div>
-
+ <div className="grid grid-cols-1  xl:grid-cols-3 w-full gap-2 p-[10px] mb-4 bg-white border border-black rounded-lg xl:rounded-full ">
+          <p className="w-full text-sm text-center sm:text-left" >
+            Avl ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
+          </p>
+          <input
+            type="text"
+            className="border border-[2px] p-1 w-full border-gray-500 rounded-lg"
+            value={p2pAmount}
+            onChange={(e) => setp2pAmount(e.target.value)}
+          />
+          <button className="bg-[#72A314] btn-primary  w-full sm:w-auto px-2 py-1 text-sm rounded-full  text-white font-extralight" onClick={()=>setp2pAmount(parseInt(userData?.data?.withdrawable_balance))}>
+            Max
+          </button>
+        </div>
       </div>
 
 
@@ -150,7 +154,7 @@ export default function P2p() {
             })
           }
         >
-          Submit
+         {p2pTransaction?.isPending ? "loading..." : " Submit"}
         </button>
       </div>
     </div>
