@@ -104,7 +104,7 @@ export default function StakeTab() {
   });
 
   return (
-    <div className="px-4 mt-1 mb-1 lg:px-15 ">
+    <div className=" mt-1 mb-1 lg:px-15 ">
       {/* <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
@@ -142,10 +142,10 @@ export default function StakeTab() {
 
  */}
 
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 lg:rounded-full rounded-lg border border-black gap-4">
-        <div className="flex items-center justify-between w-full gap-3">
-          <div className="w-full sm:text-left sm:w-auto">
-            <p className="flex items-center gap-2">Available</p>
+     
+          <div className="flex   items-center   justify-between  bg-white p-2 rounded-lg lg:rounded-full">
+          <div className="flex justify-center items-center gap-2">
+            <p>Avl</p>
             <p className="flex items-center gap-2">
               <img
                 src="assets/images/pandalogofinalcopy.svg"
@@ -156,36 +156,48 @@ export default function StakeTab() {
                 : 0}
             </p>
           </div>
-          <div className="flex gap-0">
+          {/* input field max inside */}
+          <div className="relative w-[130px] xl:w-[60%]  sm:w-[150px] m-auto">
             <input
-            type="number"
-            className="border border-[2px] border-gray-500 w-[130px] lg:w-[60%] sm:w-[100px] m-auto rounded-lg p-1"
-            value={stakeAmount}
-            onChange={(e) => setStakeAmount(e.target.value)}
-            
-          />
-            <div
-            className="bg-[#72A314] btn-primary  px-4 py-1  rounded-full shine hover:scale-110 duration-300 ease-in-out text-white font-extralight cursor-pointer text-center"
-            onClick={() =>
-              setStakeAmount(Number(userData?.data?.wallet_balance).toFixed(2))
-            }
-          >
-            MAX
-          </div>
-          </div>
-          
-        </div>
+              type="number"
+              className="
+              border border-[2px] border-gray-500 w-full rounded-lg 
+              p-2 pr-16            /* space for MAX button */
+              focus:outline-none
+            "
+              value={stakeAmount}
+              onChange={(e) => setStakeAmount(e.target.value)}
+            />
 
-        <div className="flex items-center justify-between w-full gap-3 mt-2 sm:w-auto sm:mt-0">
-          
-          <p className="font-bold">
+            <button
+              className="
+              absolute right-2 top-1/2 -translate-y-1/2
+              bg-[#72A314] text-white text-xs
+              px-3 py-1 rounded-full cursor-pointer
+              hover:scale-110 duration-200
+              z-20                     
+            "
+              onClick={() =>
+                setStakeAmount(
+                  Number(userData?.data?.wallet_balance).toFixed(2)
+                )
+              }
+            >
+              MAX
+            </button>
+          </div>
+           <div className="">
+          <p className="font-bold text-center">
             $
             {stakeAmount * Number(userData?.data?.token_price)
               ? stakeAmount * Number(userData?.data?.token_price)
               : 0}
           </p>
         </div>
-      </div>
+        </div>
+
+       
+
 
       <div className="flex justify-center mt-2">
         <button

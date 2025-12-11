@@ -70,7 +70,7 @@ const HomePopup = () => {
       onClick={closePopup} // click outside closes
     >
       <div
-        className="bg-[#000000a1] relative border border-white p-[50px] rounded-2xl shadow-xl w-fit text-center relative"
+        className="bg-[#000000a1] relative border border-white p-[15px] sm:p-[50px] rounded-2xl shadow-xl w-fit text-center relative"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="absolute top-2 right-2">
