@@ -81,7 +81,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                 </h1>
                 <p className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[620px] w-full m-auto">
              <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS</p>
-              Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together — 
+              Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together.
 
                 </p>
                <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
@@ -175,7 +175,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                   onClick={copyText}
                   className="btn-primary !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
-                  {copied ? "copied" : "copy"}
+                  {copied ? "Copied" : "Copy"}
                 </button>
               </div>
             </div>
