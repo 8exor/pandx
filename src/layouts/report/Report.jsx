@@ -250,7 +250,10 @@ const userInfoLoading = false;
                   )}
                 </tbody>
                 :
-                <TableSkeleton rows={4} cols={8}/>
+                <tbody>
+                
+                {/* <TableSkeleton rows={4} cols={8}/> */}
+                </tbody>
                 }
               </table>
             )}

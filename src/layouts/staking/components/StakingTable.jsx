@@ -58,9 +58,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
           </thead>
 
           <tbody className="w-full">
-
-
-            {activeTab?.mainTabs === "stake"  && (
+            {activeTab?.mainTabs === "stake" && (
               <>
 
              { !isLoading ?  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
@@ -84,7 +82,12 @@ export default function StakingTable({ activeTab, tableConfig }) {
                     {stakeData?.note}
                   </td>
                 </tr> :
-                <TableSkeleton rows={1} cols={5} />}
+               <></>
+                
+                
+                
+                
+                }
               </>
             ) }
 
@@ -106,104 +109,107 @@ export default function StakingTable({ activeTab, tableConfig }) {
                     {Number(stakeData?.amt_usd).toFixed(2)}
                   </td>
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "Unstaked" : "Staked"}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "Unstaked" : "Staked"}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.note}
-                  </td>
-                </tr> :
-                <TableSkeleton rows={1} cols={5} />}
+                      {stakeData?.status ? "Unstaked" : "Staked"}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.status ? "Unstaked" : "Staked"}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.note}
+                    </td>
+                  </tr>
+                : (
+                  <></>
+                )}
               </>
-            ) }
-         
-          
-              {activeTab?.mainTabs === "withdrawal"  && (
+            )}
+
+            {activeTab?.mainTabs === "withdrawal" && (
               <>
-
-             { !isLoading ?  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
-                    1
-                  </td>
-                  <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.created_at
-                      ? new Date(
-                          stakeData?.created_at
-                        ).toLocaleDateString()
-                      : "-"}
-                  </td>
-                  <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                    {Number(stakeData?.amt_usd).toFixed(2)}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "true" : "false"}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.note}
-                  </td>
-                </tr> :
-                <TableSkeleton rows={1} cols={5} />}
+                {!isLoading ? (
+                  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
+                      1
+                    </td>
+                    <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.created_at
+                        ? new Date(stakeData?.created_at).toLocaleDateString()
+                        : "-"}
+                    </td>
+                    <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
+                      {Number(stakeData?.amt_usd).toFixed(2)}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.status ? "true" : "false"}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.note}
+                    </td>
+                  </tr>
+                ) : (
+                  // <TableSkeleton rows={1} cols={5} />
+                  <></>
+                )}
               </>
-            ) }
+            )}
 
-               {activeTab?.mainTabs === "compound"  && (
+            {activeTab?.mainTabs === "compound" && (
               <>
-
-             { !isLoading ?  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
-                    1
-                  </td>
-                  <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.created_at
-                      ? new Date(
-                          stakeData?.created_at
-                        ).toLocaleDateString()
-                      : "-"}
-                  </td>
-                  <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                    {Number(stakeData?.amt_usd).toFixed(2)}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "true" : "false"}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.note}
-                  </td>
-                </tr> :
-                <TableSkeleton rows={1} cols={5} />}
+                {!isLoading ? (
+                  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
+                      1
+                    </td>
+                    <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.created_at
+                        ? new Date(stakeData?.created_at).toLocaleDateString()
+                        : "-"}
+                    </td>
+                    <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
+                      {Number(stakeData?.amt_usd).toFixed(2)}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.status ? "true" : "false"}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.note}
+                    </td>
+                  </tr>
+                ) : (
+                  // <TableSkeleton rows={1} cols={5} />
+                  <></>
+                )}
               </>
-            ) }
+            )}
 
-               {activeTab?.mainTabs === "p2p"  && (
+            {activeTab?.mainTabs === "p2p" && (
               <>
-
-             { !isLoading ?  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
-                    1
-                  </td>
-                  <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.created_at
-                      ? new Date(
-                          stakeData?.created_at
-                        ).toLocaleDateString()
-                      : "-"}
-                  </td>
-                  <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                    {Number(stakeData?.amt_usd).toFixed(2)}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "true" : "false"}
-                  </td>
-                  <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                    {stakeData?.note}
-                  </td>
-                </tr> :
-                <TableSkeleton rows={1} cols={5} />}
+                {!isLoading ? (
+                  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
+                      1
+                    </td>
+                    <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.created_at
+                        ? new Date(stakeData?.created_at).toLocaleDateString()
+                        : "-"}
+                    </td>
+                    <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
+                      {Number(stakeData?.amt_usd).toFixed(2)}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.status ? "true" : "false"}
+                    </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                      {stakeData?.note}
+                    </td>
+                  </tr>
+                ) : (
+                  // <TableSkeleton rows={1} cols={5} />
+                  <></>
+                )}
               </>
-            ) }
-
+            )}
 
             {activeTab?.mainTabs === "incomeReports" &&
               activeTab?.incomeTabs === "DAILY$" &&
@@ -218,13 +224,11 @@ export default function StakingTable({ activeTab, tableConfig }) {
                         {index + 1}
                       </td>
                       <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                           {incomeData?.date
-                      ? new Date(
-                          incomeData?.date
-                        ).toLocaleDateString()
-                      : "-"}
+                        {incomeData?.date
+                          ? new Date(incomeData?.date).toLocaleDateString()
+                          : "-"}
                       </td>
-                   
+
                       <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                         {incomeData?.staking?.amt_usd}
                       </td>
@@ -234,11 +238,10 @@ export default function StakingTable({ activeTab, tableConfig }) {
                     </tr>
                   </>
                 ) : (
-                  <TableSkeleton rows={1} cols={5}/>
+                  // <TableSkeleton rows={1} cols={5} />
+                  <></>
                 )
               )}
-
-
           </tbody>
         </table>
       </div>

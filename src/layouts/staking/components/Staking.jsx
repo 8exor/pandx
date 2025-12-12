@@ -156,7 +156,7 @@ export default function Staking() {
             </button>
 
             {/* copy for marquee */}
-            <div
+            <button
               className="bg-[#BFFEB0] btn-primary flex items-center justify-center  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
@@ -164,7 +164,7 @@ export default function Staking() {
                 {" "}
                 Upgrade Rank & Get {upgrade}{" "}
               </marquee>
-            </div>
+            </button>
             {/* copy marqee end */}
 
             <button
@@ -218,7 +218,9 @@ export default function Staking() {
                 </tr>
               </thead>
               {isLoading ? (
-                <TableSkeleton  />
+
+                <></>
+                // <TableSkeleton  />
               ) : (
                 
                 <tbody className="w-full">
