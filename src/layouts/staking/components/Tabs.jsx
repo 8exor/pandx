@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import axiosInstance from "@utils/axiosInstance";
@@ -13,19 +13,26 @@ import Withdrawl from "./tabs/Withdrawl";
 import P2p from "./tabs/P2p";
 import IncomeReport from "./tabs/IncomeReport";
 import Compound from "./tabs/Compound";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 
 // const [activeTab, setActiveTab] = useState("stake");
 const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
 
-  const tabs = [
-    { key: "stake", label: "Stake" },
-    { key: "unstake", label: "Un-Stake" },
-    { key: "withdrawal", label: "Withdrawal" },
-    { key: "compound", label: "Compound" },
+const [clickedOnTab, setClickedOnTab] = useState(false);
 
-    { key: "p2p", label: "P2P" },
-    { key: "incomeReports", label: "Income Report" },
+  const tabs = [
+    { key: "stake", label: "Stake", },
+    { key: "unstake", label: "Un-Stake",  },
+    { key: "withdrawal", label: "Withdrawal", },
+    { key: "compound", label: "Compound", },
+
+    { key: "p2p", label: "P2P" , },
+    { key: "incomeReports", label: "Income Report",  },
   ];
+
+
+
+
   
   const renderContent = {
     stake: (
@@ -56,8 +63,8 @@ const Tabs = ({activeTab, setActiveTab, setIncomeReports}) => {
           {tabs.map((tab, index) => (
             <button
               key={index}
-              onClick={() => setActiveTab({...activeTab, mainTabs : tab.key })}
-              className={`p-2 md:p-2 min-w-[130px] sm:min-w-[170px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
+              onClick={() => {setActiveTab({...activeTab, mainTabs : tab.key });}}
+              className={`p-2 md:p-2 min-w-[130px] [@media_(min-width:375px)_and_(max-width:425px)]:w-[160px] sm:min-w-[170px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
                 activeTab?.mainTabs === tab.key ? "bg-white" : "bg-[#BFFEB0] btn-primary "
               } hover:bg-white`}
             >
