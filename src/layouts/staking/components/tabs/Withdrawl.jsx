@@ -88,10 +88,10 @@ const withdrawalHash = useMutation({
           </button> */}
         </div>
         <div className='flex items-center justify-between w-full mt-2 '>
-          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 25/100)}>25%</button>
-          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 50/100)}>50%</button>
-          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 70/100)}>75%</button>
-          <button className='p-2 px-5 btn-primary' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
+          <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 25/100)}>25%</button>
+          <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 50/100)}>50%</button>
+          <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 70/100)}>75%</button>
+          <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div>
 
         <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>
