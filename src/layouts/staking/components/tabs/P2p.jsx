@@ -100,7 +100,7 @@ export default function P2p() {
   return (
     <div className="w-full px-2 mt-5 lg:px-15">
       <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
-        <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[12px] lg:rounded-full ">
+        <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[16px] lg:rounded-full ">
           <input
             type="text"
             placeholder="Enter UserName"
@@ -123,7 +123,7 @@ export default function P2p() {
         </div>
 
         <div className="flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full ">
-          <p className=" text-sm text-center  sm:text-left">
+          <p className="text-sm text-center sm:text-left">
             Avl $
             {userData?.data?.withdrawable_balance
               ? Number(userData?.data?.withdrawable_balance).toFixed(2)
