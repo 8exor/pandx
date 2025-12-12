@@ -31,32 +31,32 @@ export default function Staking() {
 
   const tableConfig = {
     stake: {
-      headers: ["SN", "Date", "Staked Amt$", "Status", "Total Withdrawal"],
+      headers: ["S N", "Date", "Staked Amt $", "Status", "Total Withdrawal"],
     },
     unstake: {
       headers: [
-        "SN",
+        "S N",
         "Date",
-        "Staked Amt$",
-        "Unstaked Amt$",
+        "Staked Amt $",
+        "Unstaked Amt $",
         "Status",
         "Total Withdrawal",
       ],
     },
     withdrawal: {
       headers: [
-        "SN",
+        "S N",
         "Date",
-        "Withdrawal Amt$",
+        "Withdrawal Amt $",
         "Status",
         "Total Withdrawal",
       ],
     },
     compound: {
       headers: [
-        "SN",
+        "S N",
         "Date",
-        "Stake Amt$",
+        "Stake Amt $",
         "Status",
         "Total Withdrawal",
       ],
@@ -65,12 +65,12 @@ export default function Staking() {
       headers: ["SN", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
     },
     incomeReports: {
-      DAILY$: ["SN", "Date",  "Amt $", "Note"],
-      DIRECT: ["SN", "Date", "Direct Referral", "Amt $", "Note"],
-      BOOSTX: ["SN", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
-      LEVEL: ["SN", "Date", "Username", "Level", "Amt$", "Note"],
-      RANK: ["SN", "Date", "Username", "Rank", "Amt$", "Note"],
-      "UNI-POOL": ["SN", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
+      DAILY$: ["S N", "Date",  "Amt $", "Note"],
+      DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
+      BOOSTX: ["S N", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
+      LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
+      RANK: ["S N", "Date", "Username", "Rank", "Amt $", "Note"],
+      "UNI-POOL": ["S N", "Date", "Username", "Uni-Pool", "Amt $", "Note"],
     },
   };
 
@@ -136,7 +136,7 @@ export default function Staking() {
             alt="panda"
             className="flex justify-center items-center w-[150px]  m-auto mt-8 sm:mt-8 "
           /> */}
-          <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black sm:mt-2">
+          <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black px-15 sm:mt-2">
             <div className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full   w-[33%]   py-2 md:px-1">
               <div className="flex py-[2px] items-center justify-center gap-1">
                 <img
@@ -149,7 +149,7 @@ export default function Staking() {
             </div>
 
             <button
-              className="bg-[#BFFEB0] btn-primary hidden lg:block  w-[33%] rounded-full   text-sm py-2"
+              className="bg-[#BFFEB0] btn-primary hidden lg:block  w-[33%] rounded-full   text-xs py-3"
               onClick={() => navigate("/Ranking")}
             >
               Upgrade Rank & Get {upgrade}
@@ -205,7 +205,7 @@ export default function Staking() {
             <table className="w-full ">
               <thead className="sticky top-0 z-10 text-black rounded-md shadow-xl">
                 <tr className="w-full flex  items-center justify-between px-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
-                  <th className="font-normal  w-[50px]">SN</th>
+                  <th className="font-normal  w-[50px]">S N</th>
                   <th className="font-normal   w-[100px] whitespace-nowrap">
                     Username
                   </th>
