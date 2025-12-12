@@ -247,7 +247,47 @@ const Ranking = () => {
                     {key.replace(/([A-Z])/g, " $1")}
                   </span>
 
-                  <span className="flex items-center gap-1 text-sm">
+                  <span className={`flex items-center gap-1 text-sm ${
+                                                  (key === "rank" ||
+                                                    key === "daily %" ||
+                                                    key === "current level") &&
+                                                  row.rank ==
+                                                    rankData?.data?.current_rank
+                                                      ?.rank &&
+                                                  "bg-green-600 "
+                                                } ${
+                          key == "vol" &&
+                          rankData?.data?.user?.total_invested >=
+                            parseInt(value.slice(1)) &&
+                          "bg-green-600 "
+                        } ${
+                          key == "directs" &&
+                          rankData?.data?.user?.total_directs >=
+                            (parseInt(value) || 0) &&
+                          "bg-green-600"
+                        } ${
+                          key == "directs" &&
+                          index == rankData?.data?.current_rank?.rank &&
+                          "bg-red-600 blink-text"
+                        } ${
+                          key == "teamReq" &&
+                          rankData?.data?.user?.total_team >=
+                            (parseInt(value) || 0) &&
+                          "bg-green-600"
+                        } ${
+                          key == "teamReq" &&
+                          index == rankData?.data?.current_rank?.rank &&
+                          "bg-red-600 blink-text"
+                        } ${
+                          key == "totalTeam" &&
+                          rankData?.data?.user?.overall_team >=
+                            (parseInt(value) || 0) &&
+                          "bg-green-600"
+                        } ${
+                          key == "totalTeam" &&
+                          index == rankData?.data?.current_rank?.rank &&
+                          "bg-red-600 blink-text"
+                        }`}>
                     {key !== "capping" ? (
                       <>
                         {key === "rank" && (
@@ -256,9 +296,9 @@ const Ranking = () => {
                             alt="star"
                             className="w-4 h-4"
                           />
-                        )}
-                        <span>{value}</span>
-                        {(key === "rank" ||
+                          )}
+                          <span>{value}</span>
+                        {/* {(key === "rank" ||
                           key === "daily %" ||
                           key === "current level") &&
                           row.rank == rankData?.data?.current_rank?.rank && (
@@ -334,7 +374,7 @@ const Ranking = () => {
                               alt=""
                             />
                           )
-                        )}
+                        )} */}
                       </>
                     ) : (
                       <div className="flex items-center gap-2">
