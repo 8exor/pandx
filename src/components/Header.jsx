@@ -14,6 +14,7 @@ import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "@services/panda.api.services";
 import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
+import FullPageLoader from "@hooks/FullPageLoader";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -145,6 +146,7 @@ const Header = ({
 
   return (
     <>
+    {LoginUser?.isPending && <FullPageLoader/>}
       <header
         className={`py-6 w-full z-30 transition-all duration-500 ${
           isSticky
@@ -351,7 +353,7 @@ const Header = ({
                   </button>
                     <button 
                   onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 text-lg mt-6 mx-auto text-white btn-primary"
+                  className="flex gap-2 px-6 py-3 mx-auto mt-6 text-lg text-white btn-primary"
                 >
                   Sign up
                 </button>
