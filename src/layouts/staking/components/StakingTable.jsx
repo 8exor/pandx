@@ -105,8 +105,11 @@ export default function StakingTable({ activeTab, tableConfig }) {
                   <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
                     {Number(stakeData?.amt_usd).toFixed(2)}
                   </td>
+                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                        {stakeData?.status ? "Unstaked" : "Staked"}
+                  </td>
                   <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                        {stakeData?.status ? "true" : "false"}
+                        {stakeData?.status ? "Unstaked" : "Staked"}
                   </td>
                   <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                     {stakeData?.note}
@@ -214,13 +217,14 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[150px] "></td>
-                      {/* <td className="text-base font-medium text-black capitalize max-sm:w-30 ">
-                       {incomeData?.username}
-                      </td> */}
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                        "1.5 "
+                      <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
+                           {incomeData?.date
+                      ? new Date(
+                          incomeData?.date
+                        ).toLocaleDateString()
+                      : "-"}
                       </td>
+                   
                       <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                         {incomeData?.staking?.amt_usd}
                       </td>

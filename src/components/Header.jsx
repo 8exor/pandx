@@ -341,19 +341,19 @@ const Header = ({
                       </button>
                     </NavLink>
                   )}
-                  <button
-                    className="lg:hidden mt-6  mx-auto btn-primary     hover:!bg-[#5b5ca9]   py-3 px-6 flex gap-2 text-white text-lg font-medium"
-                    onClick={() => {
-                      open();
-                      setClickedOnConnect(true);
-                    }}
-                  >
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                    Connect
-                  </button>
+                <button
+                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white btn-primary"
+                  onClick={() => {
+                    isConnected ? handleDisconnet() : open();
+                    setClickedOnConnect(true);
+                  }}
+                >
+                  <img src="/assets/images/panda.svg" alt="panda" />
+                  {(isConnected) ? "Disconnect" : " Connect"}
+                </button>
                     <button 
                   onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 mx-auto mt-6 text-lg text-white btn-primary"
+                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white btn-primary"
                 >
                   Sign up
                 </button>
