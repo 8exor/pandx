@@ -152,9 +152,9 @@ export default function StakeTab() {
  */}
 
       <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1">
-        <div className="flex items-center gap-2 justify-between w-full gap-1">
+        <div className="flex items-center gap-2 justify-between w-full sm:px-[10px] gap-1">
           <div className="flex gap-1 items-center">
-            <p>Avl</p>
+            <p>Avl $</p>
             <div className="flex items-center gap-1">
              
               {/* <img
@@ -169,7 +169,7 @@ export default function StakeTab() {
             </div>
            
           </div>
-          <div className="relative w-[170px] lg:w-[80%] sm:w-[200px] m-auto">
+          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
             <input
               type="number"
               className="border border-[2px] m-auto border-gray-500 w-full px-2 rounded-lg py-2"
@@ -178,7 +178,7 @@ export default function StakeTab() {
             />
             <div
               className="absolute top-1 right-1 py-2 px-4
-               bg-[#72A314] rounded-md flex items-center justify-center
+               bg-[#72A314] rounded-full flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
               onClick={() =>
                 setStakeAmount(parseInt(userData?.data?.wallet_balance).toFixed(2))
