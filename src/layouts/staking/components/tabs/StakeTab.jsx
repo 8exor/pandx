@@ -168,7 +168,7 @@ export default function StakeTab() {
           <div className="relative w-[170px] lg:w-[80%] sm:w-[200px] m-auto">
             <input
               type="number"
-              className="border border-[2px] m-auto border-gray-500 w-full  rounded-lg py-2"
+              className="border border-[2px] m-auto border-gray-500 w-full px-2 rounded-lg py-2"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
             />
