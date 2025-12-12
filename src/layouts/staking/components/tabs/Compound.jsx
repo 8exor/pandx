@@ -33,7 +33,7 @@ export default function Compound() {
 
   return (
     <div className="mt-6 lg:px-15">
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3  bg-white border border-black rounded-lg lg:rounded-full w-full">
         <p className="text-center  w-[60px] sm:w-full  sm:text-left">
           Avl $
           {userData?.data?.withdrawable_balance
@@ -41,21 +41,24 @@ export default function Compound() {
             : 0}
         </p>
 
-        <input
-          type="text"
-          className="border border-[2px] w-full rounded-lg p-1 border-gray-500 rounded-lg'"
-          value={compoundAmount}
-          onChange={(e) => setCompoundAmount(e.target.value)}
-        />
-
-        <button
-          className="bg-[#72A314] btn-primary   px-4 py-2  rounded-full text-white font-extralight text-center"
-          onClick={() =>
-            setCompoundAmount(parseInt(userData?.data?.withdrawable_balance))
-          }
-        >
-          Max
-        </button>
+        <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
+          <input
+            type="text"
+            className="border border-[2px] p-2 w-full border-gray-500 rounded-lg"
+            value={compoundAmount}
+            onChange={(e) => setCompoundAmount(e.target.value)}
+          />
+        <div className="absolute top-1 right-1 py-2 px-4
+               bg-[#72A314] rounded-full flex items-center justify-center
+               text-white  font-extralight text-sm cursor-pointer shadow-sm"
+               onClick={() =>
+              setCompoundAmount(parseInt(userData?.data?.withdrawable_balance))
+            }
+            > 
+            Max
+        </div>
+          
+        </div>
       </div>
 
       <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>

@@ -113,7 +113,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               onClick={copyText}
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
-              {copied ? "copied" : "copy"}
+              {copied ? "Copied" : "Copy"}
             </button>
           </div>
           <h2 
