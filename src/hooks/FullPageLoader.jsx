@@ -11,8 +11,8 @@ const FullPageLoader = ({ defaultLoader = true }) => {
     };
   }, []);
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-90 bg-[#000000f5] flex justify-center items-center">
-      <div className="flex items-center justify-center">
+    <div className="fixed top-0 left-0 w-full h-full z-90 bg-[#000000de] flex justify-center items-center">
+      <div className="flex items-center justify-center invert">
         {defaultLoader ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"

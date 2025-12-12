@@ -21,6 +21,38 @@ p , a, input {
     box-shadow: rgba(0, 0, 0, 0.30) 2.4px 2.4px 0.2px;
 }
 
+
+
+@media (min-width: 1380px) and (max-width: 1450px) {
+  .mac {
+   right:30%
+  }
+  .mac-right-3 {
+    right:3%
+  }
+  .mac-mr-10 {
+        margin-right: -10%;
+  }
+  .mac-l-19 {
+    left:19%
+  }
+  .mac-ml-80{
+    margin-right: -80px;
+  }
+  .mac-w-50{
+    width: 50%;
+  }
+  .mac-w-65 {
+    width: 65%;
+  }
+  .mac-w-85 {
+    width: 85%;
+  }
+  .mac-top-38 {
+    top: 38%;
+  }
+}
+
 /* .bg-graydient-box {
      background-color: var(--token-33c21092-8a05-4905-85e1-0e05518e6553, rgb(114, 163, 20));
     border-radius: 100px;
