@@ -6,26 +6,29 @@ const Gift = () => {
   useEffect(() => {
    
     // Lid animation
+
+
+    // anime({
+    //   targets: ".lid",
+    //   translateX: 10,
+    //   translateY: 25, 
+    //   rotate: "0.1turn",
+    //   duration: 1000,
+    //   easing: "easeOutQuad",
+    //   delay: 300,
+    //   complete: () => setTimeout(showCoin, 500)
+    // });
     anime({
-      targets: ".lid",
-      translateX: 10,
-      translateY: 25, 
-      rotate: "0.1turn",
-      duration: 1000,
-      easing: "easeOutQuad",
-      delay: 300,
-      complete: () => setTimeout(showCoin, 500)
-    });
-// anime({
-//   targets: ".lid",
-//   translateX: 10,     // right side move
-//   translateY: 25,     // niche move
-//   rotate: "0.1turn",
-//   duration: 1000,
-//   easing: "easeOutQuad",
-//   delay: 300,
-//   complete: () => setTimeout(showCoin, 500)
-// });
+  targets: ".lid",
+  translateX: [0, 10],
+  translateY: [38, 25], // start from 20px, end at 25px
+  rotate: ["0turn", "0.1turn"],
+  duration: 1000,
+  easing: "easeOutQuad",
+  delay: 300,
+  complete: () => setTimeout(showCoin, 500),
+});
+
 
 
 
@@ -39,7 +42,7 @@ const Gift = () => {
         height: "90px",
         left: "0%",
         top: "0%",
-        transform: "translate(-50%, -50%)",
+        transform: "translate(50%, 10%)",
         zIndex: -10,
       });
 
@@ -78,7 +81,7 @@ const Gift = () => {
       <div className="gift-container flex justify-center flex-col items-center"
         style={{ perspective: "900px" }}>
 
-        <div className="lid w-20 h-20  z-10">
+        <div  className="lid w-20 h-20  z-10">
           <img src="assets/images/Box-Top.png" alt="" />
         </div>
 
