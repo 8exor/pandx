@@ -151,19 +151,23 @@ export default function StakeTab() {
 
  */}
 
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-4 py-3 lg:rounded-full rounded-lg border border-black gap-4">
-        <div className="flex items-center gap-2 justify-between w-full gap-3">
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1">
+        <div className="flex items-center gap-2 justify-between w-full gap-1">
           <div className="flex gap-1 items-center">
             <p>Avl</p>
-            <p className="flex items-center gap-2">
-              <img
+            <div className="flex items-center gap-1">
+             
+              {/* <img
                 src="assets/images/pandalogofinalcopy.svg"
                 className="w-6 rounded-full"
-              />
+              /> */}
+                <p>
               {userData?.data?.wallet_balance
                 ? Number(userData?.data?.wallet_balance).toFixed(2)
                 : 0}
             </p>
+            </div>
+           
           </div>
           <div className="relative w-[170px] lg:w-[80%] sm:w-[200px] m-auto">
             <input
