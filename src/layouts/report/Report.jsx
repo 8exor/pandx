@@ -7,10 +7,13 @@ import { UserInfoContext } from '@contexts/UserInfoContext';
 import { REPORTS } from '@services/panda.api.services';
 import axiosInstance from '@utils/axiosInstance';
 import { useQuery } from '@tanstack/react-query';
+import TableSkeleton from '@layouts/staking/components/TableSkelton';
+import { LoaderIcon } from 'react-hot-toast';
+import Load from '@hooks/Load';
 
 const Report = () => {
   const {userData} = useContext(UserInfoContext);
-  console.log("wasss upp username are we using", userData?.data?.username)
+
   const [getUserName, setGetUserName] = useState("");
   const [date, setDate] = useState({
     from : null,
@@ -136,7 +139,7 @@ const userInfoLoading = false;
             reportPool?.map((pool, i)=>(
                 <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
                     <span>{pool?.title}</span>
-                    <span>{pool?.value}</span>
+               {pool?.value ?     <span>{pool?.value}</span> : <Load/>}
 
                 </div>
             ))
@@ -188,9 +191,9 @@ const userInfoLoading = false;
                     })}
                   </tr>
                 </thead>
-                <tbody  className="flex flex-col mt-5 space-y-4">
+              { !teamLoading ? <tbody  className="flex flex-col mt-5 space-y-4 flex-nowrap">
                   {teamData?.data?.child?.length == 0 ? (
-                    <tr className='mx-auto text-center'>
+                    <tr className='mx-auto text-center '>
                       <td colSpan={9} className="w-full p-10 rounded-lg bg-midgray hover:bg-border-color group/item">No Data Found</td>
                     </tr>
                   ) : (
@@ -246,6 +249,9 @@ const userInfoLoading = false;
                     )
                   )}
                 </tbody>
+                :
+                <TableSkeleton rows={4} cols={8}/>
+                }
               </table>
             )}
           </div>

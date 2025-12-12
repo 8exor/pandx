@@ -31,11 +31,11 @@ export default function Staking() {
 
   const tableConfig = {
     stake: {
-      headers: ["Sr No", "Date", "Staked Amt$", "Status", "Total Withdrawal"],
+      headers: ["SN", "Date", "Staked Amt$", "Status", "Total Withdrawal"],
     },
     unstake: {
       headers: [
-        "Sr No",
+        "SN",
         "Date",
         "Staked Amt$",
         "Unstaked Amt$",
@@ -45,7 +45,7 @@ export default function Staking() {
     },
     withdrawal: {
       headers: [
-        "Sr No",
+        "SN",
         "Date",
         "Withdrawal Amt$",
         "Status",
@@ -54,7 +54,7 @@ export default function Staking() {
     },
     compound: {
       headers: [
-        "Sr No",
+        "SN",
         "Date",
         "Withdrawal Amt$",
         "Status",
@@ -62,15 +62,15 @@ export default function Staking() {
       ],
     },
     p2p: {
-      headers: ["Sr No", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
+      headers: ["SN", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
     },
     incomeReports: {
-      DAILY$: ["Sr No", "Date", "Daily $", "Amt $", "Note"],
-      DIRECT: ["Sr No", "Date", "Direct Referral", "Amt $", "Note"],
-      BOOSTX: ["Sr No", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
-      LEVEL: ["Sr No", "Date", "Username", "Level", "Amt$", "Note"],
-      RANK: ["Sr No", "Date", "Username", "Rank", "Amt$", "Note"],
-      "UNI-POOL": ["Sr No", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
+      DAILY$: ["SN", "Date", "Daily $", "Amt $", "Note"],
+      DIRECT: ["SN", "Date", "Direct Referral", "Amt $", "Note"],
+      BOOSTX: ["SN", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
+      LEVEL: ["SN", "Date", "Username", "Level", "Amt$", "Note"],
+      RANK: ["SN", "Date", "Username", "Rank", "Amt$", "Note"],
+      "UNI-POOL": ["SN", "Date", "Username", "Uni-Pool", "Amt$", "Note"],
     },
   };
 
@@ -105,7 +105,7 @@ export default function Staking() {
       </div>
       <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
-        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px] lg:h-[720px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
+        <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px] lg:h-[790px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
           {/* <div className="relative flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
             <div
               className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px]  py-2 px-1"
@@ -185,7 +185,7 @@ export default function Staking() {
         </div>
         
 
-        <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[720px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
+        <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
           </h1>
@@ -204,25 +204,27 @@ export default function Staking() {
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">
               <thead className="sticky top-0 z-10 text-black rounded-md shadow-xl">
-                <tr className="w-full flex gap-10 items-center justify-between p-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
-                  <th className="font-normal w-full md:max-w-[100px]">Sr No</th>
-                  <th className="font-normal w-full   md:max-w-[100px]">
+                <tr className="w-full flex  items-center justify-between px-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
+                  <th className="font-normal  w-[50px]">SN</th>
+                  <th className="font-normal   w-[100px] whitespace-nowrap">
                     Username
                   </th>
-                  <th className="font-normal w-full md:max-w-[150px]">
+                  <th className="font-normal  w-[100px] whitespace-nowrap">
                     Status
                   </th>
-                  <th className="font-normal w-full md:max-w-[100px]">
-                    $QRA AirDrop
+                  <th className="font-normal  w-[120px] whitespace-nowrap">
+                 $QRA AirDrop
                   </th>
                 </tr>
               </thead>
               {isLoading ? (
                 <TableSkeleton  />
               ) : (
+                
                 <tbody className="w-full">
-                  {data?.child_air_logs.length === 0 ? (
-                    <tr className="flex items-center justify-center w-full mt-10">
+                  {console.log("is data founding !!!!! : ",data?.child_air_logs.length)}
+                  {!data?.child_air_logs.length ? (
+                    <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
                       <td>No Data Found</td>
                     </tr>
                   ) : (
@@ -230,20 +232,20 @@ export default function Staking() {
                       <>
                         <tr
                           key={index}
-                          className="w-full flex gap-10 items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                          className="w-full flex  items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
                         >
-                          <td className="w-full  md:max-w-[100px] text-center font-medium  text-black capitalize  ">
+                          <td className="  w-[50px] text-center font-medium  text-black capitalize whitespace-nowrap ">
                             {index + 1}
                           </td>
-                          <td className=" w-full  md:max-w-[100px]  font-medium text-center text-black capitalize">
+                          <td className="  w-[100px]  font-medium text-center text-black capitalize whitespace-nowrap">
                             {child?.airdrop_child_user?.username}
                           </td>
-                          <td className="w-full  md:max-w-[150px] text-center font-medium text-black capitalize  ">
+                          <td className=" w-[100px] text-center font-medium text-black capitalize whitespace-nowrap ">
                             <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
                               To be claimed
                             </span>
                           </td>
-                          <td className="w-full  md:max-w-[100px] text-center font-medium text-black capitalize  ">
+                          <td className="  w-[100px] text-center font-medium text-black capitalize  whitespace-nowrap">
                             {Number(
                               child?.airdrop_child_user?.qerra_airdrop
                             ).toFixed(0)}
