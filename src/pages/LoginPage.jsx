@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
-// import GiftFlapConfetti from "./GiftFlapConfetti";
-// import { animate } from "animejs";
+
+import Gift from "@layouts/staking/components/Gift";
 
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
@@ -285,11 +285,12 @@ function releaseConfettiInside() {
             
             {/* <div className="w-20 p-3 btn-primary animateDiv"></div>
             <div className="w-20 h-20 md:w-30 md:h-30  p-3 bg-[url('/assets/images/gift.svg')] bg-cover bg-center"></div> */}
-              <img
+              {/* <img
               className="w-20 md:w-35"
               src="/assets/images/gift.svg"
               alt=""
-            />
+            /> */}
+         <Gift/>
           {/* <GiftFlapConfetti/> */}
             </div>
 
@@ -349,7 +350,7 @@ function releaseConfettiInside() {
                   setShowError({ ...showError, userName: true });
                   return toast.error("Username is required",{
                     duration : 700
-                  });
+                  })
                 }
                 checkUserName.mutate({ username: userName });
               }}

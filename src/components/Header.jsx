@@ -266,7 +266,7 @@ const Header = ({
                     className="text-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <li className="text-3xl text-[#141414] leading-14">
+                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
                       <button
                         onClick={() => {
                           scrollTo("home");
@@ -277,7 +277,7 @@ const Header = ({
                         Home
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14">
+                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
                       <button
                         onClick={() => {
                           scrollTo("about");
@@ -287,7 +287,7 @@ const Header = ({
                         About
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14">
+                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
                       <button
                         onClick={() => {
                           scrollTo("tokenomics");
@@ -297,7 +297,7 @@ const Header = ({
                         Tokenomics
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14">
+                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
                       <button
                         onClick={() => {
                           scrollTo("getStarted");
@@ -307,7 +307,7 @@ const Header = ({
                         Get Started
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14">
+                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
                       <button
                         onClick={() => {
                           scrollTo("roadmap");
@@ -323,7 +323,7 @@ const Header = ({
                     href=" https://swap.qerra.network/"
                     target="blank"
                   >
-                    <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                    <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Buy $Pandx
                     </button>
@@ -335,14 +335,14 @@ const Header = ({
                         "flex justify-center items-center mt-6 lg:hidden"
                       }
                     >
-                      <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
+                      <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary lg:hidden">
                         <img src="/assets/images/panda.svg" alt="panda" />
                         Staking
                       </button>
                     </NavLink>
                   )}
                 <button
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white btn-primary"
+                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
                   onClick={() => {
                     isConnected ? handleDisconnet() : open();
                     setClickedOnConnect(true);
@@ -353,7 +353,7 @@ const Header = ({
                 </button>
                     <button 
                   onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white btn-primary"
+                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
                 >
                   Sign up
                 </button>
