@@ -20,31 +20,31 @@ const Banner = ({ aboutRef, homeRef }) => {
 
   return (
     <>
-  
+
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
-               <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
-                
-                   <marquee behavior="" scrollamount="10" direction="">
-                     {taskNote?.des2}
-                   </marquee>
-                 </div>
+        <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
+
+          <marquee behavior="" scrollamount="10" direction="">
+            {taskNote?.des2}
+          </marquee>
+        </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-         <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]"  data-aos="slide-up">
-         
-                {headerLogos.map((item, index) => (
-                  <li
-                    key={index}
-                    className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center justify-center border mt-2 rounded-full border-[#00d990] 
+          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]" data-aos="slide-up">
+
+            {headerLogos.map((item, index) => (
+              <li
+                key={index}
+                className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center justify-center border mt-2 rounded-full border-[#00d990] 
                  hover:drop-shadow-[0_0_10px_#00d990] hover:scale-120 duration-300 ease-in-out"
-                  >
-                    <img
-                      className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
-                      src={item.img}
-                      alt="logo icon"
-                    />
-                  </li>
-                ))}
-              </ul>
+              >
+                <img
+                  className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
+                  src={item.img}
+                  alt="logo icon"
+                />
+              </li>
+            ))}
+          </ul>
 
           <div className="mycontainer ">
             <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">
@@ -79,15 +79,18 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <h1 className="text-4xl  relative sm:text-[64px]  lg:text-6xl xl:text-9xl text-center leading-[1.1]">
                   The People’s Pandx Coin
                 </h1>
-                <p className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[620px] w-full m-auto">
-             <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS</p>
-              Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together.
+                <div className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[620px] w-full m-auto">
+                  <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS
 
-                </p>
-               <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a> 
+                  </p>
+                  <p className="font-bold">
+                    Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together.
+                  </p>
+                </div>
+                <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                  <img src="/assets/images/panda.svg" alt="panda" />
+                  Buy $PANDX <img className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda" />qerraSWAP
+                </button></a>
               </div>
               <div className="relative w-full max-w-[1200px] md:mt-[40px] mx-auto">
                 {/* Floor Image */}
