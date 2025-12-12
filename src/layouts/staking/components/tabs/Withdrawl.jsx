@@ -79,7 +79,7 @@ const withdrawalHash = useMutation({
          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
            <input  type="text" className='border border-[2px] p-2 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
          <div onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)} className="absolute  top-1 right-1 py-2 px-4
-               bg-[#72A314] rounded-full flex items-center justify-center
+               bg-[#72A314] rounded-lg flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm">
               
             Max
@@ -97,7 +97,7 @@ const withdrawalHash = useMutation({
           <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div> */}
 
-        <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>
+        <p className="mt-2 text-right sm:text-left">5% Pool Fee</p>
 
         <div className="flex justify-center ">
           <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})} >

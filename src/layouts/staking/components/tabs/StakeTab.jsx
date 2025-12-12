@@ -178,7 +178,7 @@ export default function StakeTab() {
             />
             <div
               className="absolute top-1 right-1 py-2 px-4
-               bg-[#72A314] rounded-full flex items-center justify-center
+               bg-[#72A314] rounded-lg flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
               onClick={() =>
                 setStakeAmount(parseInt(userData?.data?.wallet_balance).toFixed(2))

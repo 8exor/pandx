@@ -104,11 +104,11 @@ export default function P2p() {
           <input
             type="text"
             placeholder="Enter UserName"
-            className="border border-[2px] w-[500px]   xl:w-[125px] md:w-[155px] border-gray-500 rounded-lg text-sm p-1"
+            className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-2"
             onChange={(e) => setUserName(e.target.value)}
           />
           <button
-            className="bg-[#72A314] btn-primary text-sm w-full py-2  rounded-full text-white font-extralight"
+            className="bg-[#72A314] btn-primary text-sm w-full py-2 rounded-full text-white font-extralight"
             onClick={() => validateUserName.mutate({ username: userName })}
           >
             {validateUserName?.isSuccess ? (
@@ -129,24 +129,28 @@ export default function P2p() {
               ? Number(userData?.data?.withdrawable_balance).toFixed(2)
               : 0}
           </p>
-          <input
-            type="text"
-            className="border border-[2px] flex-1 p-1 w-full border-gray-500 rounded-lg"
-            value={p2pAmount}
-            onChange={(e) => setp2pAmount(e.target.value)}
-          />
-          <button
-            className="bg-[#72A314] flex-1 btn-primary text-sm   py-2    rounded-full  text-white font-extralight"
-            onClick={() =>
-              setp2pAmount(parseInt(userData?.data?.withdrawable_balance))
-            }
-          >
-            Max
-          </button>
+          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
+            <input
+              type="text"
+              className="border border-[2px] flex-1 p-2 w-full border-gray-500 rounded-lg"
+              value={p2pAmount}
+              onChange={(e) => setp2pAmount(e.target.value)}
+            />
+            <div className="absolute top-1 bottom-1 right-1 py-2 px-4
+               bg-[#72A314] rounded-lg flex items-center justify-center
+               text-white  font-extralight text-sm cursor-pointer shadow-sm" onClick={() =>
+                setp2pAmount(parseInt(userData?.data?.withdrawable_balance))
+              }> 
+        
+              Max
+         
+            </div>
+            
+          </div>
         </div>
       </div>
 
-      <p className="my-4 font-semibold text-center uppercase sm:text-left">
+      <p className="my-2 font-semibold text-center uppercase sm:text-left">
         P2P unlimited and free
       </p>
 

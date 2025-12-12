@@ -49,7 +49,7 @@ export default function Compound() {
             onChange={(e) => setCompoundAmount(e.target.value)}
           />
         <div className="absolute top-1 right-1 py-2 px-4
-               bg-[#72A314] rounded-full flex items-center justify-center
+               bg-[#72A314] rounded-lg flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
                onClick={() =>
               setCompoundAmount(parseInt(userData?.data?.withdrawable_balance))
@@ -61,7 +61,7 @@ export default function Compound() {
         </div>
       </div>
 
-      <p className="mt-3 text-right sm:text-left">5% Pool Fee</p>
+      {/* <p className="mt-3 text-right sm:text-left">5% Pool Fee</p> */}
 
       <div className="flex justify-center mt-3 ">
         <button
