@@ -1,23 +1,22 @@
 const TableSkeleton = ({ rows = 5, cols = 4 }) => {
   return (
-    <div className="mt-5 space-y-3">
+    <>
       {Array.from({ length: rows }).map((_, rowIndex) => (
-        <div
+        <tr
           key={rowIndex}
-          className="grid items-center p-4 bg-green-100 rounded-xl animate-pulse"
-          style={{
-            gridTemplateColumns: `repeat(${cols}, 1fr)`
-          }}
+          className="animate-pulse bg-green-100 rounded-lg flex justify-between w-full"
         >
           {Array.from({ length: cols }).map((_, colIndex) => (
-            <div
+            <td
               key={colIndex}
-              className="h-4 mx-2 bg-green-200 rounded"
-            ></div>
+              className="p-5 w-[160px]"
+            >
+              <div className="h-4 w-full bg-green-200 rounded"></div>
+            </td>
           ))}
-        </div>
+        </tr>
       ))}
-    </div>
+    </>
   );
 };
 
