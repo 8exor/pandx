@@ -1,20 +1,19 @@
-import React from 'react'
-import {useQuery} from "@tanstack/react-query"
-import axiosInstance from '@utils/axiosInstance';
-import { REPORTS } from '@services/panda.api.services';
-import MaxCapProgress from './MaxCapProgress';
-import toast from 'react-hot-toast';
-import { ProgressBar } from './ProgressBar';
-import { ValueSkelton } from '../ValueLoaders';
-
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "@utils/axiosInstance";
+import { REPORTS } from "@services/panda.api.services";
+import MaxCapProgress from "./MaxCapProgress";
+import toast from "react-hot-toast";
+import { ProgressBar } from "./ProgressBar";
+import { ValueSkelton } from "../ValueLoaders";
+import Gift from "./Gift";
 
 export default function StakingHead() {
-
-  const {data, isLoading} = useQuery({
-    queryKey : ['userData'],
-    queryFn : async()=>{
-        const {data} = await axiosInstance.get(REPORTS.userInfo);
-        return data;     
+  const { data, isLoading } = useQuery({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(REPORTS.userInfo);
+      return data;
     },
   });
 
@@ -23,65 +22,30 @@ export default function StakingHead() {
 
   return (
     <>
-      <div
-        className="relative mt-10 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
-            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-2 text-center md:text-left "
-      >
-      <div className='ml-[10px] ml-50'/>
-        <img className='absolute lg:left-[15px] left-[0px] top-[-30px] lg:top-[-40px] sm:top-[-28px] md:w-[80px] lg:w-[80px]   w-[90px] left-0' src="/assets/images/gift.svg" alt="gift" />
-          {/* <p >Trial Bonus ${Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0)}</p>
-          <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
-        <p>Daily 0.5%</p>
-        <p>Daily $0.5</p> */}
-       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-  <p className='left-text-center'>Trial Bonus ${ Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0 
-    }</p>
-  <p className='left-text-center'>My Stake  ${Number(data?.data?.staking?.amt_usd).toFixed(0) || 0 }</p>
-  
-  <p className='left-text-center'>Daily 0.5%</p>
-  <p className='left-text-center'>Daily $0.5</p>
-  <MaxCapProgress value={maxCap} maxCap={true}/>
-</div>
-
-          {/* <p className="left-text-center">Daily 0.5%</p>
-          <p className="left-text-center">Daily $0.5</p>
-          <MaxCapProgress value={maxCap} maxCap={true} /> */}
+      <div className="relative mt-10 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px] ">
+        <div className="absolute lg:left-[15px] left-[10px] left-0 top-[-40%] lg:top-[-100px] sm:top-[-80%]">
+          <Gift />
         </div>
-        <div />
-   
-      <div className="flex justify-center w-full max-w-[1360px] mx-auto relative  z-30 ">
-        {/* <div
-          className="w-full bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] 
-                   font-bold text-black py-1 px-2 
-                  relative overflow-visible"
-        >
-          {" "}
-          Total Burning 60% */}
-        {/* TOP BLEND */}
-        {/* <div className="absolute top-[-20px] left-0 right-0 h-[20px] opacity-80"></div> */}
-        {/* BOTTOM BLEND */}
-        {/* <div className="absolute bottom-[-20px] left-0 right-0 h-[20px] opacity-80"></div> */}
-        {/* </div> */}
-        <ProgressBar label="Total Burning" value={50} />
+        <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] mx-auto">
+          <p className="lg:text-right  text-center">
+            Trial Bonus $
+            {Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0}
+          </p>
+          <p className="lg:text-right  text-center">
+            My Stake ${Number(data?.data?.staking?.amt_usd).toFixed(0) || 0}
+          </p>
+          <p className="lg:text-right  text-center">Daily 0.5%</p>
+          <p className="lg:text-right  text-center">Daily $0.5</p>
+          <div className=" flex justify-end">
+
+          <MaxCapProgress  value={maxCap} maxCap={true} />
+          </div>
+        </div>
       </div>
 
-      {/* 
-       <div className={` w-full max-w-[1360px] bg-[#49498A] ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) || Number(data?.data?.staking?.amt_usd).toFixed(0) === 0 ? "bg-[#656599]" : "" } p-8 pt-4 border-t   text-white font-bold text-[16px] sm:text-[18px] md:text-[20px]
-            flex flex-wrap justify-center md:flex-nowrap md:justify-between gap-4 text-center md:text-left`}
-      >
-        <p >My Stake ${isNaN(Number(data?.data?.staking?.amt_usd).toFixed(0)) ? 0 : Number(data?.data?.staking?.amt_usd).toFixed(0)}</p>
-        <p>Daily ${Number(data?.data?.daily_reward_per).toFixed(1)}</p>
-        <p>Daily $10</p> */}
-
-      {/* <div className="flex flex-col items-center md:items-start"> */}
-      {/* Max Cap */}
-      {/* <p className="bg-gradient-to-r from-[#28DB8C] via-[#6AEA94] to-[#B8FC9D] w-20 h-3 rounded-2xl mt-1"></p> */}
-
-      {/* </div> */}
-
-      {/* </div> */}
+      <div className="flex justify-center w-full max-w-[1360px] mx-auto relative  z-30 ">
+        <ProgressBar label="Total Burning" value={50} />
+      </div>
     </>
-    
   );
-
 }
