@@ -62,15 +62,15 @@ export default function Staking() {
       ],
     },
     p2p: {
-      headers: ["SN", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
+      headers: ["S N", "Date", "P2P Amt $", "Status", "Total Withdrawal"],
     },
     incomeReports: {
       DAILY$: ["S N", "Date",  "Amt $", "Note"],
       DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
-      BOOSTX: ["S N", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
+      BOOSTX: ["S N", "Date",  "Amt $", "BOOSTX Status"],
       LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
-      RANK: ["S N", "Date", "Username", "Rank", "Amt $", "Note"],
-      "UNI-POOL": ["S N", "Date", "Username", "Uni-Pool", "Amt $", "Note"],
+      TRIAL: ["S N", "Date",  "Amt $", "Note"],
+      "UNI-POOL": ["S N", "Date", "Username",  "Amt $", "Note"],
     },
   };
 
@@ -224,7 +224,7 @@ export default function Staking() {
               ) : (
                 
                 <tbody className="w-full">
-                  {console.log("is data founding !!!!! : ",data?.child_air_logs.length)}
+               
                   {!data?.child_air_logs.length ? (
                     <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
                       <td>No Data Found</td>
