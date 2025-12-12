@@ -65,17 +65,17 @@ export default function Staking() {
       headers: ["S N", "Date", "P2P Amt $", "Status", "Total Withdrawal"],
     },
     incomeReports: {
-      DAILY$: ["S N", "Date",  "Amt $", "Note"],
+      DAILY$: ["S N", "Date", "Amt $", "Note"],
       DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
-      BOOSTX: ["S N", "Date",  "Amt $", "BOOSTX Status"],
+      BOOSTX: ["S N", "Date", "Amt $", "BOOSTX Status"],
       LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
-      TRIAL: ["S N", "Date",  "Amt $", "Note"],
-      "UNI-POOL": ["S N", "Date", "Username",  "Amt $", "Note"],
+      TRIAL: ["S N", "Date", "Amt $", "Note"],
+      "UNI-POOL": ["S N", "Date", "Username", "Amt $", "Note"],
     },
   };
 
 
-  
+
 
   const { data, isLoading } = useQuery({
     queryKey: ["airdropData"],
@@ -137,7 +137,7 @@ export default function Staking() {
             className="flex justify-center items-center w-[150px]  m-auto mt-8 sm:mt-8 "
           /> */}
           <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black px-15 sm:mt-2">
-            <div className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full   w-[33%]   py-2 md:px-1">
+            <div className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full   sm:w-[33%] w-[50%]   py-2 md:px-1">
               <div className="flex py-[2px] items-center justify-center gap-1">
                 <img
                   className="w-5"
@@ -155,26 +155,32 @@ export default function Staking() {
               Upgrade Rank & Get {upgrade}
             </button>
 
-            {/* copy for marquee */}
+
+
+
+
+
             <button
-              className="bg-[#BFFEB0] btn-primary flex items-center justify-center  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
+              className={`${userData?.data?.is_active ? "btn-primary " : "btn-red"
+                } sm:w-[33%] w-[50%] sm:w-[160px] max-w-[200px] rounded-full text-sm  py-2 px-1 blink-text`}
+            >
+              {userData?.data?.is_active ? "Active" : "Inactive"}
+            </button>
+
+
+          </div>
+
+           {/* copy for marquee */}
+            <div
+              className="bg-[#BFFEB0] btn-primary flex items-center justify-center mx-auto w-[70%]  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
               <marquee behavior="scroll" direction="left">
                 {" "}
                 Upgrade Rank & Get {upgrade}{" "}
               </marquee>
-            </button>
+            </div>
             {/* copy marqee end */}
-
-            <button
-              className={`${
-                userData?.data?.is_active ? "btn-primary " : "btn-red"
-              }  w-[33%] sm:w-[160px] max-w-[200px] rounded-full text-sm  py-2 px-1 blink-text`}
-            >
-              {userData?.data?.is_active ? "Active" : "Inactive"}
-            </button>
-          </div>
 
           <img
             src="/assets/images/pandaDash.svg"
@@ -183,7 +189,7 @@ export default function Staking() {
           />
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
-        
+
 
         <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
@@ -200,7 +206,7 @@ export default function Staking() {
           <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-24 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
-          
+
           <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">
               <thead className="sticky top-0 z-10 text-black rounded-md shadow-xl">
@@ -213,7 +219,7 @@ export default function Staking() {
                     Status
                   </th>
                   <th className="font-normal  w-[120px] whitespace-nowrap">
-                 $QRA AirDrop
+                    $QRA AirDrop
                   </th>
                 </tr>
               </thead>
@@ -222,9 +228,9 @@ export default function Staking() {
                 <></>
                 // <TableSkeleton  />
               ) : (
-                
+
                 <tbody className="w-full">
-               
+
                   {!data?.child_air_logs.length ? (
                     <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
                       <td>No Data Found</td>

@@ -126,7 +126,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
 
             {activeTab?.mainTabs === "withdrawal" && (
               <>
-                {!isLoading ? (
+                {!incomeLoading ? (
                   <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
                       1
@@ -155,7 +155,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
 
             {activeTab?.mainTabs === "compound" && (
               <>
-                {!isLoading ? (
+                {!incomeLoading ? (
                   <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
                       1
@@ -184,7 +184,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
 
             {activeTab?.mainTabs === "p2p" && (
               <>
-                {!isLoading ? (
+                {!incomeLoading ? (
                   <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px]">
                       1
