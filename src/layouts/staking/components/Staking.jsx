@@ -156,7 +156,7 @@ export default function Staking() {
             </button>
 
             {/* copy for marquee */}
-            <button
+            <div
               className="bg-[#BFFEB0] btn-primary flex items-center justify-center  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
@@ -164,7 +164,7 @@ export default function Staking() {
                 {" "}
                 Upgrade Rank & Get {upgrade}{" "}
               </marquee>
-            </button>
+            </div>
             {/* copy marqee end */}
 
             <button

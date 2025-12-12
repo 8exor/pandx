@@ -26,7 +26,7 @@ export default function StakingHead() {
         <div className="absolute lg:left-[15px] left-[10px] left-0 top-[-10px] lg:top-[-80px] sm:top-[-80%]">
           <Gift />
         </div>
-        <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] mx-auto">
+        <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] ml-auto">
           <p className="lg:text-right  text-center">
             Trial Bonus $
             {Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0}
