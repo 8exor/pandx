@@ -100,25 +100,30 @@ export default function P2p() {
   return (
     <div className="w-full px-2 mt-5 lg:px-15">
       <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
-        <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[12px] lg:rounded-full ">
+        <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[16px] lg:rounded-full ">
           <input
             type="text"
             placeholder="Enter UserName"
-            className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-1"
+            className="border border-[2px] w-[500px]   xl:w-[125px] md:w-[155px] border-gray-500 rounded-lg text-sm p-1"
             onChange={(e) => setUserName(e.target.value)}
           />
           <button
- className="bg-[#72A314] btn-primary text-sm w-full py-2 rounded-full text-white font-extralight"
-onClick={() => validateUserName.mutate({ username: userName })}
->
-{validateUserName?.isSuccess ?
-<img className="w-5 mx-auto rounded-full blink-text" src="/assets/images/check.png"/>
- : "Validate"}
-</button>
+            className="bg-[#72A314] btn-primary text-sm w-full py-2  rounded-full text-white font-extralight"
+            onClick={() => validateUserName.mutate({ username: userName })}
+          >
+            {validateUserName?.isSuccess ? (
+              <img
+                className="w-5 mx-auto rounded-full blink-text"
+                src="/assets/images/check.png"
+              />
+            ) : (
+              "Validate"
+            )}
+          </button>
         </div>
-        
+
         <div className="flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full ">
-          <p className=" text-sm text-center  sm:text-left">
+          <p className="text-sm text-center sm:text-left">
             Avl $
             {userData?.data?.withdrawable_balance
               ? Number(userData?.data?.withdrawable_balance).toFixed(2)

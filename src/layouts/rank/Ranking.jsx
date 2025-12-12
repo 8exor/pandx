@@ -144,39 +144,39 @@ const Ranking = () => {
                                                   row.rank ==
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
-                                                   "bg-[#b0aae8]"
+                                                 "bg-green-600 text-white"
                                                 } ${
                           key == "vol" &&
                           rankData?.data?.user?.total_invested >=
                             parseInt(value.slice(1)) &&
-                           "bg-[#b0aae8]"
+                           "bg-green-600 text-white"
                         } ${
                           key == "directs" &&
                           rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
-                           "bg-[#b0aae8]"
+                           "bg-green-600 text-white"
                         } ${
                           key == "directs" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         } ${
                           key == "teamReq" &&
                           rankData?.data?.user?.total_team >=
                             (parseInt(value) || 0) &&
-                           "bg-[#b0aae8]"
+                           "bg-green-600 text-white"
                         } ${
                           key == "teamReq" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         } ${
                           key == "totalTeam" &&
                           rankData?.data?.user?.overall_team >=
                             (parseInt(value) || 0) &&
-                            "bg-[#b0aae8]"
+                            "bg-green-600 text-white"
                         } ${
                           key == "totalTeam" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         }`}
                       >
                         {key !== "capping" ? (
@@ -255,39 +255,39 @@ const Ranking = () => {
                                                   row.rank ==
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
-                                                  "bg-[#5B5BAC]"
+                                                  "bg-green-600"
                                                 } ${
                           key == "vol" &&
                           rankData?.data?.user?.total_invested >=
                             parseInt(value.slice(1)) &&
-                          "bg-[#5B5BAC]"
+                           "bg-green-600 text-white"
                         } ${
                           key == "directs" &&
                           rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
-                            "bg-[#5B5BAC]"
+                            "bg-green-600 text-white"
                         } ${
                           key == "directs" &&
                           index == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         } ${
                           key == "teamReq" &&
                           rankData?.data?.user?.total_team >=
                             (parseInt(value) || 0) &&
-                           "bg-[#5B5BAC]"
+                          "bg-green-600 text-white"
                         } ${
                           key == "teamReq" &&
                           index == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         } ${
                           key == "totalTeam" &&
                           rankData?.data?.user?.overall_team >=
                             (parseInt(value) || 0) &&
-                           "bg-[#5B5BAC]"
+                           "bg-green-600 text-white"
                         } ${
                           key == "totalTeam" &&
                           index == rankData?.data?.current_rank?.rank &&
-                          "bg-red-600 blink-text"
+                          "bg-red-600 blink-text text-white"
                         }`}>
                     {key !== "capping" ? (
                       <>
