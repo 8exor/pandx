@@ -56,7 +56,7 @@ export default function Staking() {
       headers: [
         "SN",
         "Date",
-        "Withdrawal Amt$",
+        "Stake Amt$",
         "Status",
         "Total Withdrawal",
       ],
@@ -65,7 +65,7 @@ export default function Staking() {
       headers: ["SN", "Date", "P2P Amt$", "Status", "Total Withdrawal"],
     },
     incomeReports: {
-      DAILY$: ["SN", "Date", "Daily $", "Amt $", "Note"],
+      DAILY$: ["SN", "Date",  "Amt $", "Note"],
       DIRECT: ["SN", "Date", "Direct Referral", "Amt $", "Note"],
       BOOSTX: ["SN", "Date", "Direct Referral", "Amt $", "BOOSTX Status"],
       LEVEL: ["SN", "Date", "Username", "Level", "Amt$", "Note"],

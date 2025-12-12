@@ -144,17 +144,17 @@ const Ranking = () => {
                                                   row.rank ==
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
-                                                  "bg-green-600 "
+                                                   "bg-[#b0aae8]"
                                                 } ${
                           key == "vol" &&
                           rankData?.data?.user?.total_invested >=
                             parseInt(value.slice(1)) &&
-                          "bg-green-600 "
+                           "bg-[#b0aae8]"
                         } ${
                           key == "directs" &&
                           rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                           "bg-[#b0aae8]"
                         } ${
                           key == "directs" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
@@ -163,7 +163,7 @@ const Ranking = () => {
                           key == "teamReq" &&
                           rankData?.data?.user?.total_team >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                           "bg-[#b0aae8]"
                         } ${
                           key == "teamReq" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
@@ -172,7 +172,7 @@ const Ranking = () => {
                           key == "totalTeam" &&
                           rankData?.data?.user?.overall_team >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                            "bg-[#b0aae8]"
                         } ${
                           key == "totalTeam" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
@@ -236,35 +236,36 @@ const Ranking = () => {
           {tableData.map((row, index) => (
             <div
               key={index}
-              className="p-4 bg-white border border-black shadow rounded-xl"
+              className={`p-4 bg-white border border-black shadow rounded-xl btn-primary ${ row.rank ==
+                                                    rankData?.data?.current_rank ?.rank && "blink-text"}`}
             >
               {Object.entries(row).map(([key, value], i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between py-1 border-b last:border-none"
+                  className="flex items-center justify-between py-1 border-b last:border-none "
                 >
                   <span className="text-sm font-semibold capitalize">
                     {key.replace(/([A-Z])/g, " $1")}
                   </span>
 
-                  <span className={`flex items-center gap-1 text-sm ${
+                  <span className={`flex items-center gap-1 text-sm p-1 px-3 rounded-xl ${
                                                   (key === "rank" ||
                                                     key === "daily %" ||
                                                     key === "current level") &&
                                                   row.rank ==
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
-                                                  "bg-green-600 "
+                                                  "bg-[#5B5BAC]"
                                                 } ${
                           key == "vol" &&
                           rankData?.data?.user?.total_invested >=
                             parseInt(value.slice(1)) &&
-                          "bg-green-600 "
+                          "bg-[#5B5BAC]"
                         } ${
                           key == "directs" &&
                           rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                            "bg-[#5B5BAC]"
                         } ${
                           key == "directs" &&
                           index == rankData?.data?.current_rank?.rank &&
@@ -273,7 +274,7 @@ const Ranking = () => {
                           key == "teamReq" &&
                           rankData?.data?.user?.total_team >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                           "bg-[#5B5BAC]"
                         } ${
                           key == "teamReq" &&
                           index == rankData?.data?.current_rank?.rank &&
@@ -282,7 +283,7 @@ const Ranking = () => {
                           key == "totalTeam" &&
                           rankData?.data?.user?.overall_team >=
                             (parseInt(value) || 0) &&
-                          "bg-green-600"
+                           "bg-[#5B5BAC]"
                         } ${
                           key == "totalTeam" &&
                           index == rankData?.data?.current_rank?.rank &&

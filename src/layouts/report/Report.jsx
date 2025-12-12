@@ -134,7 +134,7 @@ const userInfoLoading = false;
                   </div>
       
  <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7 px-1 xl:px-11'>
-     <div className='grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2'>
+     <div className='grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl lg:text-sm md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2'>
         {
             reportPool?.map((pool, i)=>(
                 <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
@@ -182,7 +182,7 @@ const userInfoLoading = false;
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-center font-medium p-5 w-full md:max-w-[160px]"
+                          className="capitalize text-center font-medium p-5 w-[160px]"
                           key={index}
                         >
                           {data}

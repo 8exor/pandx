@@ -109,14 +109,19 @@ export default function P2p() {
           />
 
           <button
-            className="bg-[#72A314] btn-primary text-sm w-full  py-2    rounded-full  text-white font-extralight"
+            className="bg-[#72A314] btn-primary text-sm w-full  py-1    rounded-full  text-white font-extralight"
             onClick={() => validateUserName.mutate({ username: userName })}
           >
-            {validateUserName?.isSuccess ? "Validated" : "Validate"}
+            {validateUserName?.isSuccess ? 
+            <>
+   
+            <img className="w-5 mx-auto rounded-full blink-text" src="/assets/images/check.png"/> 
+            </>
+            : "Validate"}
           </button>
         </div>
         <div className="flex items-center justift-between w-full gap-3 p-[10px]  bg-white border border-black rounded-lg lg:rounded-full ">
-          <p className=" text-sm text-center  sm:text-left">
+          <p className="text-sm text-center sm:text-left">
             Avl $
             {userData?.data?.withdrawable_balance
               ? Number(userData?.data?.withdrawable_balance).toFixed(2)
