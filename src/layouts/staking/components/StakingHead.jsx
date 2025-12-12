@@ -23,7 +23,7 @@ export default function StakingHead() {
   return (
     <>
       <div className="relative mt-10 w-full max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px] ">
-        <div className="absolute lg:left-[15px] left-[10px] left-0 top-[-40%] lg:top-[-100px] sm:top-[-80%]">
+        <div className="absolute lg:left-[15px] left-[10px] left-0 top-[-10px] lg:top-[-80px] sm:top-[-80%]">
           <Gift />
         </div>
         <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] mx-auto">

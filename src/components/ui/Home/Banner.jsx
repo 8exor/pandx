@@ -79,10 +79,10 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <h1 className="text-4xl  relative sm:text-[64px]  lg:text-6xl xl:text-9xl text-center leading-[1.1]">
                   The People’s Pandx Coin
                 </h1>
-                <p className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[600px] w-full m-auto">
-                  Welcome to a movement where finance meets fun and community
-                  drives growth — where staking meets influence, earn more, grow
-                  faster, and win together
+                <p className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[620px] w-full m-auto">
+             <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS</p>
+              Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together — 
+
                 </p>
                <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
                     <img src="/assets/images/panda.svg" alt="panda" />
