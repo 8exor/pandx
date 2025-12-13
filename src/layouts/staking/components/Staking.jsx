@@ -172,7 +172,7 @@ export default function Staking() {
 
            {/* copy for marquee */}
             <div
-              className="bg-[#BFFEB0] btn-primary flex items-center justify-center mx-auto w-[70%]  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
+              className="bg-[#BFFEB0] btn-primary flex items-center justify-center mx-auto min-[320px]:w-[60%]  min-[375px]:w-[67%] min-[425px]:w-[71%]  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
               <marquee behavior="scroll" direction="left">
