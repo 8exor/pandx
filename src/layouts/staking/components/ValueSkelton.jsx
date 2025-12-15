@@ -14,7 +14,7 @@ export const ValueSkelton = () => {
       <p className='left-text-center'>My Stake <span className='h-[8px] w-[10px] bg-gray-500'></span></p>
       
       <p className='left-text-center'>Daily 0.5%</p>
-      <p className='left-text-center'>Dailyddf $0.5</p>
+      <p className='left-text-center'>Daily $0.5</p>
     </div>
             <div/>
           </div>

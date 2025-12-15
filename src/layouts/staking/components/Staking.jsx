@@ -18,7 +18,12 @@ export default function Staking() {
   const { address } = useAppKitAccount();
   const navigate = useNavigate();
 
-  const tableDataKeys = [" S No", "Username", "Status", "$QRAsdfsfdsfsdfsdf AirDrop"];
+  const tableDataKeys = [
+    " S No",
+    "Username",
+    "Status",
+    "$QRAsdfsfdsfsdfsdf AirDrop",
+  ];
   const [handleCopy] = CopyToClipBaord();
 
   const { userData } = useContext(UserInfoContext);
@@ -53,13 +58,7 @@ export default function Staking() {
       ],
     },
     compound: {
-      headers: [
-        "S N",
-        "Date",
-        "Stake Amt $",
-        "Status",
-        "Total Withdrawal",
-      ],
+      headers: ["S N", "Date", "Stake Amt $", "Status", "Total Withdrawal"],
     },
     p2p: {
       headers: ["S N", "Date", "P2P Amt $", "Status", "Total Withdrawal"],
@@ -74,9 +73,6 @@ export default function Staking() {
     },
   };
 
-
-
-
   const { data, isLoading } = useQuery({
     queryKey: ["airdropData"],
     queryFn: async () => {
@@ -84,9 +80,6 @@ export default function Staking() {
       return data?.data;
     },
   });
-
-
-
 
   const upgrade =
     (userData?.data?.rank_id == 1 && "0.60%") ||
@@ -98,46 +91,21 @@ export default function Staking() {
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2">
       <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
-        <span className="blink-text">{taskNote?.title}</span>
+        <span className="blink-text sm:ml-30">{taskNote?.title}</span>
         <marquee behavior="alternate" scrollamount="10" direction="">
           {taskNote?.des}
         </marquee>
       </div>
+      <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
+        <span className="blink-text text-center font-normal">
+          ACHIEVE BOOSTX IN 96:00:00
+        </span>
+      </div>
       <StakingHead />
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px] lg:h-[790px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
-          {/* <div className="relative flex flex-col items-center justify-center w-full gap-3 mt-4 text-black md:flex-row sm:mt-2">
-            <div
-              className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full shine hover:scale-105 duration-300 ease-in-out m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px]  py-2 px-1"
-            >
-          
-              <div className="flex items-center justify-center gap-1">
-            <img className="w-4" src="/assets/images/star 1.svg" alt="star" />
-            <span className="text-sm">{userData?.data?.rank_id}</span>
-            </div>
-            </div>
-         
-            <button
-              className={`${
-                userData?.data?.is_active ? "btn-primary " : "btn-red"
-              } m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full text-sm shine hover:scale-105 duration-300 ease-in-out  py-2 px-1 blink-text`}
-            >
-              {userData?.data?.is_active ? "Active" : "Inactive"}
-            </button>
-            <button className="bg-[#BFFEB0] btn-primary  m-2 sm:m-2 w-full sm:w-[170px] max-w-[200px] rounded-full shine hover:scale-105 duration-300 ease-in-out  text-xs py-3" onClick={()=>navigate("/Ranking")}>
-              
-            Upgrade Rank & Get {upgrade}
-
-            </button>
-          </div>
-
-          <img
-            src="/assets/images/pandaDash.svg"
-            alt="panda"
-            className="flex justify-center items-center w-[150px]  m-auto mt-8 sm:mt-8 "
-          /> */}
-          <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black px-15 sm:mt-2">
-            <div className=" bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full   sm:w-[33%] w-[50%]   py-2 md:px-1">
+          <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black lg:px-15 sm:mt-2">
+            <div className="flex-1 bg-[#BFFEB0] flex items-center justify-center gap-3 btn-primary  rounded-full    py-2 md:px-1">
               <div className="flex py-[2px] items-center justify-center gap-1">
                 <img
                   className="w-5"
@@ -148,39 +116,44 @@ export default function Staking() {
               </div>
             </div>
 
-            <button
-              className="bg-[#BFFEB0] btn-primary hidden lg:block  w-[33%] rounded-full   text-xs py-3"
+            {/* desktop marqee */}
+
+            <div
+              className="bg-[#BFFEB0] btn-primary overflow-hidden whitespace-nowrap lg:block hidden flex items-center justify-center mx-auto flex-1 px-2 rounded-full text-sm py-2"
               onClick={() => navigate("/Ranking")}
             >
-              Upgrade Rank & Get {upgrade}
-            </button>
+              <div className="marquee-track">
+                <span className="marquee-item">
+                  Upgrade Rank & Get {upgrade}
+                </span>
+                <span className="marquee-item">
+                  Upgrade Rank & Get {upgrade}
+                </span>
+              </div>
+            </div>
 
-
-
-
-
-
+            {/* desktop marqee */}
             <button
-              className={`${userData?.data?.is_active ? "btn-primary " : "btn-red"
-                } sm:w-[33%] w-[50%] sm:w-[160px] max-w-[200px] rounded-full text-sm  py-2 px-1 blink-text`}
+              className={`${
+                userData?.data?.is_active ? "btn-primary " : "btn-red"
+              } flex-1  rounded-full text-sm  py-2 px-1 blink-text`}
             >
               {userData?.data?.is_active ? "Active" : "Inactive"}
             </button>
-
-
           </div>
 
-           {/* copy for marquee */}
-            <div
-              className="bg-[#BFFEB0] btn-primary flex items-center justify-center mx-auto min-[320px]:w-[60%]  min-[375px]:w-[67%] min-[425px]:w-[71%]  lg:hidden block w-[33%]  px-2  rounded-full   text-sm py-2"
-              onClick={() => navigate("/Ranking")}
-            >
-              <marquee behavior="scroll" direction="left">
-                {" "}
-                Upgrade Rank & Get {upgrade}{" "}
-              </marquee>
+          {/* mobile marqee */}
+
+          <div
+            className="bg-[#BFFEB0] overflow-hidden whitespace-nowrap btn-primary mx-[15px]  lg:hidden block   px-2  rounded-full   text-sm py-2"
+            onClick={() => navigate("/Ranking")}
+          >
+            <div className="marquee-track">
+              <span className="marquee-item">Upgrade Rank & Get {upgrade}</span>
+              <span className="marquee-item">Upgrade Rank & Get {upgrade}</span>
             </div>
-            {/* copy marqee end */}
+          </div>
+          {/* mobile marqee */}
 
           <img
             src="/assets/images/pandaDash.svg"
@@ -189,7 +162,6 @@ export default function Staking() {
           />
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
-
 
         <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
@@ -224,13 +196,10 @@ export default function Staking() {
                 </tr>
               </thead>
               {isLoading ? (
-
                 <></>
-                // <TableSkeleton  />
               ) : (
-
+                // <TableSkeleton  />
                 <tbody className="w-full">
-
                   {!data?.child_air_logs.length ? (
                     <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
                       <td>No Data Found</td>

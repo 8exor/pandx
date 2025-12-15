@@ -49,6 +49,7 @@ const DashboardHeader = () => {
           />
         </div>
         <div className="relative">
+           
           <ul className="items-center justify-between hidden gap-5 xl:ml-10 xl:gap-10 xl:flex">
             {dappNavLinks?.map((navlink, index) => (
               <li key={index}>
@@ -165,6 +166,91 @@ const DashboardHeader = () => {
             <img src="/assets/images/panda.svg" alt="panda" />
             LOGOUT
           </button>
+
+          {/*  star logout  icons in responsive*/}
+          <div className="block xl:hidden relative flex gap-4 justify-end">
+             <button
+                className=" flex items-center justify-center p-3  text-lg btn-star animate-bounce "
+                onClick={() => setStakePopup(!stakePopup)}
+              >
+                <img className="h-[20px] w-[20px]" src="/assets/images/star 1.svg" alt="star" />
+              </button> {stakePopup && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40 flex items-center justify-center w-full h-full"
+                    onClick={() => setStakePopup(false)}
+                  />
+                  <div className=" absolute top-15  right-0 left-0 z-40   p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[160px] rounded-md text-black border border-black">
+                    <div className="flex items-center justify-between ">
+                      <div>
+                        <h3>Username</h3>
+                        <p className="text-sm font-medium">
+                          {userData?.data?.username}
+                        </p>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => handleCopy(userData?.data?.username)}
+                        >
+                          <img
+                            className="w-7"
+                            src="/assets/icons/copy.svg"
+                            alt="copy"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between ">
+                      <div>
+                        <h3>Wallet Address</h3>
+                        <p className="text-sm">
+                          {address
+                            ? `${address.substring(
+                                0,
+                                5
+                              )}....${address.substring(36, 42)}`
+                            : "No address found"}
+                        </p>
+                      </div>
+                      <div>
+                        <button onClick={() => handleCopy(address)}>
+                          <img
+                            className="w-7"
+                            src="/assets/icons/copy.svg"
+                            alt="copy"
+                          />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between ">
+                      <div>
+                        <h3>Referral Link</h3>
+                        <p className="text-sm">{userData?.data?.username}</p>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => handleCopy(userData?.data?.username)}
+                        >
+                          <img
+                            className="w-7"
+                            src="/assets/icons/copy.svg"
+                            alt="copy"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+                <button
+                className="flex items-center justify-center p-3  text-lg btn-star "
+                onClick={() => handleDisconnet()}
+              >
+                 <img className="h-[20px] w-[20px]" src="/assets/images/out.png" alt="log-out" />
+              </button>
+           </div>
+            {/*  star logout  icons in responsive end */}
           {
             <div  onClick={() => setOpenMenu(!openMenu)} className="xl:hidden btn-primary hover:!bg-[#5b5ca9]  duration-300 ease-in-out  h-13 w-13 flex items-center justify-center rounded-full">
               <button
@@ -190,7 +276,7 @@ const DashboardHeader = () => {
             </div>
           }
         </div>
-
+          
         {openMenu && (
           <div className="xl:hidden gap-[10px] absolute top-18 left-0 w-full right-0  p-10  bg-[#C5FF9E] rounded shadow-lg z-50 rounded-b-xl">
             <ul className="text-center">
@@ -214,6 +300,7 @@ const DashboardHeader = () => {
             </div>
           </div>
         )}
+        
       </main>
     </header>
   );
