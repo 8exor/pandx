@@ -13,6 +13,8 @@ import { UserInfoContext } from "@contexts/UserInfoContext";
 import toast from "react-hot-toast";
 import { taskNote } from "@constants/index";
 import TableSkeleton from "./TableSkelton";
+import { useTimerCounter } from "@hooks/useTimeCounter";
+
 
 export default function Staking() {
   const { address } = useAppKitAccount();
@@ -88,6 +90,9 @@ export default function Staking() {
     (userData?.data?.rank_id == 4 && "0.90%") ||
     (userData?.data?.rank_id == 5 && "1.00%");
 
+
+const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_date, 96)
+
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2">
       <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
@@ -97,8 +102,8 @@ export default function Staking() {
         </marquee>
       </div>
       <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
-        <span className="blink-text text-center font-normal">
-          ACHIEVE BOOSTX IN 96:00:00
+        <span className="font-normal text-center blink-text">
+       INVITE 3 – GET 3% BOOSTX IN {`${totalHours} : ${minutes} : ${seconds}`}
         </span>
       </div>
       <StakingHead />

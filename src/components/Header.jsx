@@ -223,7 +223,7 @@ const Header = ({
                     Staking
                   </button>
                 </NavLink> */}
-                {(isConnected )&& (
+                {(isConnected && token )&& (
                   <NavLink to={"/StakingPage"}>
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
