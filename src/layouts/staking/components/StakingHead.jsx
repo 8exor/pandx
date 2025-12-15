@@ -27,16 +27,16 @@ export default function StakingHead() {
           <Gift />
         </div>
         <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] ml-auto">
-          <p className="lg:text-right  text-center">
+          <p className="text-center lg:text-right">
             Trial Bonus $
-            {Number(data?.data?.trial_staking?.total_amt_usd).toFixed(0) || 0}
+            {Number(data?.data?.trial_staking?.total_amt_usd || 0).toFixed(0) }
           </p>
-          <p className="lg:text-right  text-center">
-            My Stake ${Number(data?.data?.staking?.amt_usd).toFixed(0) || 0}
+          <p className="text-center lg:text-right">
+            My Stake ${Number(data?.data?.staking?.amt_usd || 0).toFixed(0) }
           </p>
-          <p className="lg:text-right  text-center">Daily 0.5%</p>
-          <p className="lg:text-right  text-center">Daily $0.5</p>
-          <div className=" flex justify-end">
+          <p className="text-center lg:text-right">Daily 0.5%</p>
+          <p className="text-center lg:text-right">Daily $0.5</p>
+          <div className="flex justify-end ">
 
           <MaxCapProgress  value={maxCap} maxCap={true} />
           </div>

@@ -1,13 +1,16 @@
 import { createContext, useEffect, useState } from "react"
-import {useQuery} from '@tanstack/react-query'
+import {useMutation, useQuery} from '@tanstack/react-query'
 import axiosInstance from "@utils/axiosInstance";
-import { REPORTS } from "@services/panda.api.services";
+import { AUTH, REPORTS } from "@services/panda.api.services";
+import { getAccessToken, setAccessToken } from "@utils/Session";
+import { useDisconnect } from "@reown/appkit/react";
 
 export const UserInfoContext = createContext(null);
 
 export const UserInfoProvider =({children})=>{
     const[isLogin, setLogin] = useState("");
     const [incomeId, setIncomeId] = useState(1);
+     const { disconnect } = useDisconnect();
 
 const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuery({
     queryKey : ["userData"],
@@ -27,7 +30,31 @@ const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuer
     },
   });
 
-
+ let token;
+  const LoginUser = useMutation({
+    mutationFn: async (formData) => {
+      const { data } = await axiosInstance.post(AUTH?.login, formData);
+      return data;
+    },
+    onSuccess: async (data) => {
+      toast.success(data?.message);
+      // await new Promise((p) => setTimeout(p, 3000));
+      setAccessToken(data?.data?.token);
+     
+       token = await getAccessToken();
+      console.log("what token we accessing or getting tell meeeeee..",token);
+      if(token){
+         setIsLoggedIn(true);
+      navigate("/StakingPage");
+      }
+    },
+    onError: (error) => {
+      console.log("whats the erorororooring : ", error)
+        toast.error(error?.message);
+        disconnect();
+ 
+    },
+  });
 
 
 // const {data:profileData, isLoading:profileLoading, error:profileError} = useQuery({
@@ -53,7 +80,7 @@ const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuer
 
 
 return (
-    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin, refetch, incomeReporting, incomeLoading, incomeRefetch, incomeId,setIncomeId}}>
+    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin, refetch, incomeReporting, incomeLoading, incomeRefetch, incomeId,setIncomeId, LoginUser, token}}>
         {children}
     </UserInfoContext.Provider>
 )

@@ -52,10 +52,10 @@ const HomePopup = () => {
     },
   });
   useEffect(() => {
-    if (loginWithPopUp ) {
+    if (loginWithPopUp && isConnected ) {
       LoginUser.mutate({ wallet_address: address });
     }
-  }, [loginWithPopUp ]);
+  }, [loginWithPopUp, isConnected ]);
 
 
   if (!show) return null;

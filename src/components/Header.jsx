@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import {
   useAppKit,
   useAppKitAccount,
@@ -13,8 +13,9 @@ import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "@services/panda.api.services";
 import toast from "react-hot-toast";
-import { setAccessToken } from "@utils/Session";
+import { getAccessToken, setAccessToken } from "@utils/Session";
 import FullPageLoader from "@hooks/FullPageLoader";
+import { UserInfoContext } from "@contexts/UserInfoContext";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -69,6 +70,7 @@ const Header = ({
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  // const {LoginUser, token} = useContext(UserInfoContext);
 
   useEffect(() => {
     // Scroll listenerblock: "start"
@@ -111,6 +113,7 @@ const Header = ({
 
       const txn = await sign.signMessage("are you sure you want to disconnect");
       if (txn) {
+        setAccessToken("");
         disconnect();
       }
     } catch (error) {
@@ -118,6 +121,7 @@ const Header = ({
     }
   };
 
+  let token;
   const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
@@ -127,14 +131,19 @@ const Header = ({
       toast.success(data?.message);
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-      setIsLoggedIn(true);
+     
+       token = await getAccessToken();
+      console.log("what token we accessing or getting tell meeeeee..",token);
+      if(token){
+         setIsLoggedIn(true);
       navigate("/StakingPage");
+      }
     },
     onError: (error) => {
-      if (error?.status === 0 && clickedOnConnect) {
+      console.log("whats the erorororooring : ", error)
         toast.error(error?.message);
         disconnect();
-      }
+ 
     },
   });
 
@@ -143,6 +152,10 @@ const Header = ({
       LoginUser.mutate({ wallet_address: address });
     }
   }, [isConnected]);
+
+  useEffect(()=>{
+ setClickedOnConnect(false);
+  },[!isConnected])
 
   return (
     <>
@@ -189,8 +202,15 @@ const Header = ({
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
-                    isConnected ? handleDisconnet() : open();
-                    setClickedOnConnect(true);
+                    // isConnected ? handleDisconnet() : open();
+                    // setClickedOnConnect(true);
+                    if(isConnected){
+                      handleDisconnet();
+                    }
+                    else{
+                      open();
+                       setClickedOnConnect(true);
+                    }
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
@@ -328,7 +348,7 @@ const Header = ({
                       Buy $Pandx
                     </button>
                   </a>
-                  {isLoggedIn && (
+                  {(isLoggedIn && token) && (
                     <NavLink
                       to={isConnected ? "/StakingPage" : "/"}
                       className={
