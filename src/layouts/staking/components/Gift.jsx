@@ -98,12 +98,12 @@ const Gift = () => {
   }, []);
 
   return (
-    <div className="text-2xl text-center py-6">
+    <div className="py-6 text-2xl text-center">
       <div
-        className="gift-container flex justify-center flex-col items-center"
+        className="flex flex-col items-center justify-center gift-container"
         style={{ perspective: "900px", position: "relative" }}
       >
-        <div className="lid w-18 h-18 sm:w-20 sm:h-20 z-10">
+        <div className="z-10 lid w-18 h-18 sm:w-20 sm:h-20">
           <img src="assets/images/Box-Top.png" alt="" />
         </div>
 

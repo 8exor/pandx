@@ -229,26 +229,18 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               alt="clsoe"
             />
           </button>
-          <div className=" mt-5 relative flex items-center justify-between w-full p-3 h-full min-h-20 rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
+          <div className=" mt-5  flex items-center justify-between w-full p-3  rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
             <div />
-            <div className="absolute left-5 md:left-10 -top-17 md:-top-20 ">
-            
-            {/* <div className="w-20 p-3 btn-primary animateDiv"></div>
-            <div className="w-20 h-20 md:w-30 md:h-30  p-3 bg-[url('/assets/images/gift.svg')] bg-cover bg-center"></div> */}
-              {/* <img
-              className="w-20 md:w-35"
-              src="/assets/images/gift.svg"
-              alt=""
-            /> */}
-         <Gift/>
-          {/* <GiftFlapConfetti/> */}
-            </div>
+            {/* <div className="absolute left-5 md:left-10 -top-17 md:-top-20 "> */}
+            {/* </div> */}
+            <div className="text-[#ffffff] w-full max-h-[70px] font-semibold gap-10 flex justify-center items-center">
+         <Gift className="flex-1"/>
 
-            <div className="text-[#ffffff] w-full max-w-[200px] font-semibold flex justify-start">
-              <span className=" text-md sm:text-xl">
+              <span className="flex-1 text-md sm:text-xl">
                 <TypeWriterEffect
                   text={" Join Now & Get $100 TRIAL FUND"}
                   delay={150}
+                  infinite={true}
                 />
               </span>
             </div>
