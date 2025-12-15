@@ -236,6 +236,8 @@ const Header = ({
                   onClick={() => setOpenLoginModal(true)}
                   className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
                 >
+                  <img src="/assets/images/panda.svg" alt="panda" />
+
                   Sign up
                 </button>
 
@@ -375,7 +377,7 @@ const Header = ({
                   <img src="/assets/images/panda.svg" alt="panda" />
                   {(isConnected) ? "Disconnect" : " Connect"}
                 </button>
-                  <button className="flex mx-auto mt-3 gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary">
+                  <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Buy $Pandx
                     </button>

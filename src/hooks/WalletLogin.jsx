@@ -1,3 +1,4 @@
+import { add } from '@amcharts/amcharts4/.internal/core/utils/Array';
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import React, { useEffect, useState } from 'react'
 
@@ -12,6 +13,12 @@ export const WalletLogin = () => {
         }
 
         useEffect(()=>{
+            if(loginRequest && isConnected){
+                if(address){
+                    LoginUser.mutate({wallet_address : address})
+                }
+                setLoginRequest(false)
+            }
 
         },[loginRequest, isConnected, address, LoginUser])
     

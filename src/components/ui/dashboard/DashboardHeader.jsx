@@ -168,9 +168,9 @@ const DashboardHeader = () => {
           </button>
 
           {/*  star logout  icons in responsive*/}
-          <div className="block xl:hidden relative flex gap-4 justify-end">
+          <div className="relative flex justify-end block gap-4 xl:hidden">
              <button
-                className=" flex items-center justify-center p-3  text-lg btn-star animate-bounce "
+                className="flex items-center justify-center p-3 text-lg btn-star animate-bounce"
                 onClick={() => setStakePopup(!stakePopup)}
               >
                 <img className="h-[20px] w-[20px]" src="/assets/images/star 1.svg" alt="star" />
@@ -244,10 +244,10 @@ const DashboardHeader = () => {
                 </>
               )}
                 <button
-                className="flex items-center justify-center p-3  text-lg btn-star "
+                className="flex items-center justify-center p-3 text-lg btn-star "
                 onClick={() => handleDisconnet()}
               >
-                 <img className="h-[20px] w-[20px]" src="/assets/images/out.png" alt="log-out" />
+                 <img className="h-[20px] w-[20px]" src="/assets/images/log-out 4.png" alt="log-out" />
               </button>
            </div>
             {/*  star logout  icons in responsive end */}

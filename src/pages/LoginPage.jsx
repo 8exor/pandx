@@ -165,7 +165,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       setAccessToken(data?.data?.token);
       navigate("/StakingPage", { state: userName });
       setOpenLoginModal(false);
-      setClickedOnRegister(false);
+      // setClickedOnRegister(false);
       console.log("why are you disconnecting:::::::",isConnected)
     },
     onError: (error) => {
@@ -180,11 +180,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   });
   // console.log("why are you getting false :::: ", isConnected)
 
-  useEffect(() => {
-    if (clickedOnLogin && address) {
-      LoginUser.mutate({ wallet_address: address });
-    }
-  }, [isConnected]);
+  // useEffect(() => {
+  //   if (clickedOnLogin && address) {
+  //     LoginUser.mutate({ wallet_address: address });
+  //   }
+  // }, [isConnected]);
 
   useEffect(() => {
     setIsReferralCodeChecked(false);
