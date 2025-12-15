@@ -86,6 +86,8 @@ const HomePopup = () => {
        <ul className="flex items-center justify-center gap-5 mt-5">
         <li> <button  onClick={()=>{open();  
       setLoginWithPopUp(true);}} className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
+                            <img src="/assets/images/panda.svg" alt="panda" />
+
                     Login
                   </button></li>
        <li>
@@ -97,6 +99,7 @@ const HomePopup = () => {
           //  setShow(false);
           }}>
                     
+                    <img src="/assets/images/panda.svg" alt="panda" />
 
                     Sign up
                   </button>
