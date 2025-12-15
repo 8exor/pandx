@@ -29,7 +29,7 @@ const Banner = ({ aboutRef, homeRef }) => {
           </marquee>
         </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-30 left-[1.5%]" data-aos="slide-up">
+          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-20 left-[1.5%]" data-aos="slide-up">
 
             {headerLogos.map((item, index) => (
               <li
