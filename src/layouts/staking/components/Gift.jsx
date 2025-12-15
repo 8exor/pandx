@@ -3,78 +3,107 @@ import anime from "https://esm.sh/animejs@3.2.1/lib/anime.es.js";
 
 const Gift = () => {
   useEffect(() => {
-    // Lid animation
+    let coin;
+    let coinRotation;
 
-    // anime({
-    //   targets: ".lid",
-    //   translateX: 10,
-    //   translateY: 25,
-    //   rotate: "0.1turn",
-    //   duration: 1000,
-    //   easing: "easeOutQuad",
-    //   delay: 300,
-    //   complete: () => setTimeout(showCoin, 500)
-    // });
-    anime({
-      targets: ".lid",
-      translateX: [0, 20],
-      translateY: [38, -5], // start from 20px, end at 25px
-      rotate: ["0turn", "0.1turn"],
-      duration: 1000,
-      easing: "easeOutQuad",
-      delay: 300,
-      complete: () => setTimeout(showCoin, 500),
-    });
-    
-function showCoin() {
-  const coin = document.createElement("img");
-  coin.src = "assets/images/Panda-logo-Final.png";
-  coin.className = "coin";
+    const createCoin = () => {
+      coin = document.createElement("img");
+      coin.src = "assets/images/Panda-logo-Final.png";
+      coin.className = "coin";
 
-  Object.assign(coin.style, {
-    position: "absolute",
-    width: "35px",
-    height: "35px",
-    top: "30%",   // bottom box ke niche se start
-    left: "50%",
-    transform: "translate(-50%, 0)",
-    zIndex: -10,
-  });
+      Object.assign(coin.style, {
+        position: "absolute",
+        width: "35px",
+        height: "35px",
+        top: "30%",
+        left: "50%",
+        transform: "translate(-50%, 0)",
+        zIndex: -10,
+      });
 
-  document.querySelector(".gift-container").appendChild(coin);
+      document.querySelector(".gift-container").appendChild(coin);
+    };
 
-  anime({
-    targets: coin,
-    translateY: [60, -10],  // niche se upar
-    duration: 800,
-    easing: "easeOutQuad",
-    complete: () => {
-      coin.style.zIndex = 10;
-      rotateCoin(coin);
-    },
-  });
-}
+    const startCycle = () => {
+      // 1️⃣ Open Lid
+      anime({
+        targets: ".lid",
+        translateX: [0, 20],
+        translateY: [38, -5],
+        rotate: ["0turn", "0.1turn"],
+        duration: 1000,
+        easing: "easeOutQuad",
+        complete: showCoin,
+      });
+    };
 
+    const showCoin = () => {
+      createCoin();
 
-    const rotateCoin = (coin) =>
       anime({
         targets: coin,
-        rotateX: 0,
-        // rotateY: 180,
-        rotateY: "+=360",
-        loop: true,
-        duration: 2000,
-        easing: "linear",
+        translateY: [50, -10],
+        duration: 800,
+        easing: "easeOutQuad",
+        begin: () => {
+          coin.style.zIndex = -10;
+        },
+        complete: () => {
+          coinRotation = anime({
+            targets: coin,
+            rotateY: "+=360",
+            loop: true,
+            duration: 2000,
+            easing: "linear",
+          });
+
+          // Wait 2 seconds then hide coin
+          setTimeout(hideCoin, 3000);
+        },
       });
+    };
+
+    const hideCoin = () => {
+      coinRotation.pause();
+
+      anime({
+        targets: coin,
+        translateY: [-10, 60],
+        duration: 800,
+        easing: "easeInQuad",
+        complete: () => {
+          coin.remove();
+          closeLid();
+        },
+      });
+    };
+
+    const closeLid = () => {
+      anime({
+        targets: ".lid",
+        translateX: [20, 0],
+        translateY: [-5, 38],
+        rotate: ["0.1turn", "0turn"],
+        duration: 1000,
+        easing: "easeInQuad",
+        complete: () => {
+          // 🔁 Restart cycle after 2s
+          setTimeout(startCycle, 2000);
+        },
+      });
+    };
+
+    // 🚀 Start animation
+    startCycle();
   }, []);
 
   return (
     <div className="text-2xl text-center py-6">
       <div
         className="gift-container flex justify-center flex-col items-center"
-        style={{ perspective: "900px" }}
+        style={{ perspective: "900px", position: "relative" }}
       >
-        <div className="lid w-18 h-18 sm:w-20 sm:h-20  z-10">
+        <div className="lid w-18 h-18 sm:w-20 sm:h-20 z-10">
           <img src="assets/images/Box-Top.png" alt="" />
         </div>
 

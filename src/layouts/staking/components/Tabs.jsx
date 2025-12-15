@@ -64,7 +64,7 @@ const [clickedOnTab, setClickedOnTab] = useState(false);
             <button
               key={index}
               onClick={() => {setActiveTab({...activeTab, mainTabs : tab.key });}}
-              className={`p-2 md:p-2 min-w-[130px] [@media_(min-width:375px)_and_(max-width:425px)]:w-[160px] sm:min-w-[170px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
+              className={`p-2 md:p-2 min-w-[130px]  min-[375px]:w-[45%] min-[425px]:w-[45%] sm:w-[170px] rounded-full shine hover:scale-110 duration-300 ease-in-out ${
                 activeTab?.mainTabs === tab.key ? "bg-white" : "bg-[#BFFEB0] btn-primary "
               } hover:bg-white`}
             >
