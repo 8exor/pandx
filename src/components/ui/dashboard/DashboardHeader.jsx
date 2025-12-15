@@ -180,7 +180,7 @@ const DashboardHeader = () => {
                     className="fixed inset-0 z-40 flex items-center justify-center w-full h-full"
                     onClick={() => setStakePopup(false)}
                   />
-                  <div className=" absolute top-15  right-0 left-0 z-40   p-3 bg-[#C5FF9E] w-full max-w-[230px]  h-[160px] rounded-md text-black border border-black">
+                  <div className=" absolute top-15  right-0  z-40   p-3 bg-[#C5FF9E] w-full min-w-[200px]  rounded-md text-black border border-black">
                     <div className="flex items-center justify-between ">
                       <div>
                         <h3>Username</h3>

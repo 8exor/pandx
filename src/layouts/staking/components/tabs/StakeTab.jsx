@@ -154,7 +154,7 @@ export default function StakeTab() {
       <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1">
         <div className="flex items-center gap-2 justify-between w-full sm:px-[10px] gap-1">
           <div className="flex gap-1 items-center">
-            <p>Avl $</p>
+            <p>Avl</p>
             <div className="flex items-center gap-1">
              
               {/* <img
@@ -162,7 +162,7 @@ export default function StakeTab() {
                 className="w-6 rounded-full"
               /> */}
                 <p>
-              {userData?.data?.wallet_balance
+               ${userData?.data?.wallet_balance
                 ? Number(userData?.data?.wallet_balance).toFixed(2)
                 : 0}
             </p>

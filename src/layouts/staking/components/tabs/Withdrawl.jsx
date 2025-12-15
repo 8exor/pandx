@@ -73,9 +73,15 @@ const withdrawalHash = useMutation({
     <div className="mt-6 lg:px-15">
 
          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
-          <p className=" text-center  w-[60px] sm:w-full  sm:text-left">
-            Avl ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
-          </p>
+          <div className="flex gap-1 items-center">
+            <p>Avl</p>
+            <div className="flex items-center gap-1">
+                <p>
+              ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
+            </p>
+            </div>
+           
+          </div>
          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
            <input  type="text" className='border border-[2px] p-2 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
          <div onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)} className="absolute  top-1 right-1 py-2 px-4
