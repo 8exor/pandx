@@ -21,7 +21,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
   const [clickedOnRegister, setClickedOnRegister] = useState(false);
-  const [clickedOnConnect, setClickedOnConnect] = useState(false);
+  const [clickedOnSignUpConnect, setClickedOnSignUpConnect] = useState(false);
   const { isConnected, address } = useAppKitAccount();
   const [userName, setUserName] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -166,17 +166,22 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       navigate("/StakingPage", { state: userName });
       setOpenLoginModal(false);
       setClickedOnRegister(false);
+      console.log("why are you disconnecting:::::::",isConnected)
     },
     onError: (error) => {
       if (error?.status === 0 && clickedOnLogin) {
         toast.error(error?.message);
         // disconnect();
       }
+      console.log("why are you disconnecting in eroroor:::::::",isConnected)
+
     },
+    
   });
+  // console.log("why are you getting false :::: ", isConnected)
 
   useEffect(() => {
-    if (clickedOnLogin) {
+    if (clickedOnLogin && address) {
       LoginUser.mutate({ wallet_address: address });
     }
   }, [isConnected]);
@@ -189,77 +194,22 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     setIsUserNameChecked(false);
   }, [userName]);
 
-  useEffect(() => {
-    if (clickedOnConnect) {
-      open();
-    }
-  }, [clickedOnConnect]);
+  // useEffect(() => {
+  //   console.log("user has clikced on the sign up connect!!!");
+  //   if (clickedOnSignUpConnect && isConnected) {
+  //   console.log("user has clikced on the sign up connect!!! it also wokring herer");
+
+  //       LoginUser.mutate({ wallet_address: address });
+  //   }
+  // }, [clickedOnSignUpConnect, isConnected, address]);
 
   useEffect(()=>{
-    setClickedOnConnect(false);
+    if(!isConnected){
+    setClickedOnSignUpConnect(false);
+    }
   },[!isConnected])
 
-function releaseConfettiInside() {
-  const parent = document.querySelector(".animateDiv");
-  const parentRect = parent.getBoundingClientRect();
 
-  for (let i = 0; i < 120; i++) {   // ⬅️ doubled confetti amount
-    const c = document.createElement("div");
-    c.className = "real-confetti";
-
-    // random sizes for realism
-    const w = Math.random() * 6 + 4;   // 4–10px
-    const h = Math.random() * 18 + 8;  // 8–26px
-    c.style.width = `${w}px`;
-    c.style.height = `${h}px`;
-
-    // starting at the top opening of the box
-    c.style.left = parentRect.width / 2 + "px";
-    c.style.top = "0px";
-
-    // colorful confetti
-    c.style.backgroundColor =
-      ["#ff3b3b", "#ffb300", "#3ecfff", "#8bff7b", "#ff7bf3"][
-        Math.floor(Math.random() * 5)
-      ];
-
-    // 🌟 STRONGER & WIDER BURST
-    const angle = Math.random() * 2 * Math.PI;
-    const burstPower = 150 + Math.random() * 150; // much stronger blast
-
-    const xForce = Math.cos(angle) * burstPower;
-    const yForce = -Math.abs(Math.sin(angle)) * (burstPower * 0.9);
-
-    // 🍃 Gravity fall
-    const fallDistance = 140 + Math.random() * 180;
-
-    // assign CSS variables
-    c.style.setProperty("--xBurst", `${xForce}px`);
-    c.style.setProperty("--yBurst", `${yForce}px`);
-    c.style.setProperty("--fall", `${fallDistance}px`);
-    c.style.setProperty("--spin", `${Math.random() * 700}deg`);
-
-    parent.appendChild(c);
-
-    // remove after animation (falls down + fades)
-    setTimeout(() => c.remove(), 2200);
-  }
-}
-// useEffect(()=>{
-//   animate('.animateDiv', {
-//   width: '100%', // from '48px' to '25%',
-//   y: '-2rem', // from '0px' to '15rem',
-//   x:"0rem",
-//   rotate: '.01turn', // from `0deg` to '.75turn',
-// //  loop: true,
-//   duration: 1000,
-//   easing: 'easeInOutQuad',
-//   onBegin : ()=>{
-//     releaseConfettiInside();
-//   }
-// });
-
-// },[])
 
   return (
     <>
@@ -281,7 +231,7 @@ function releaseConfettiInside() {
           </button>
           <div className=" mt-5 relative flex items-center justify-between w-full p-3 h-full min-h-20 rounded-md bg-[linear-gradient(90deg,rgba(0,112,194,1)_0%,rgba(78,94,175,1)_50%,rgba(91,91,172,1)_100%)]">
             <div />
-            <div className="absolute left-0 -top-5 md:-top-17 ">
+            <div className="absolute left-5 md:left-10 -top-17 md:-top-20 ">
             
             {/* <div className="w-20 p-3 btn-primary animateDiv"></div>
             <div className="w-20 h-20 md:w-30 md:h-30  p-3 bg-[url('/assets/images/gift.svg')] bg-cover bg-center"></div> */}
@@ -317,7 +267,8 @@ function releaseConfettiInside() {
               className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
               onClick={() => {
                 setClickedOnLogin(false);
-                setClickedOnConnect(true);
+                setClickedOnSignUpConnect(true);
+                  open();
                 setShowError({...showError, walletAddress : false})
               }}
             >

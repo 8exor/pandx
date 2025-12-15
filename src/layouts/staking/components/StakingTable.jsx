@@ -28,7 +28,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
   const stakeData = userData?.data?.staking;
 
   return (
-    <div className="w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5 mb-5 border border-[#6f6fb5] rounded-md">
+    <div className="w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5  border border-[#6f6fb5] rounded-md">
       <div className="overflow-auto rounded-md scrollbar-custom">
         <table className="w-full ">
           <thead className="sticky top-0 text-black rounded-md ">
@@ -73,7 +73,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       : "-"}
                   </td>
                   <td className="text-base text-center font-medium text-black capitalize w-[150px] ">
-                    {Number(stakeData?.amt_usd).toFixed(2)}
+                    {Number(stakeData?.amt_usd || 0).toFixed(2)}
                   </td>
                   <td className="text-base font-medium text-center text-black capitalize w-[150px] ">
                         {stakeData?.status ? "true" : "false"}
@@ -106,7 +106,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       : "-"}
                   </td>
                   <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                    {Number(stakeData?.amt_usd).toFixed(2)}
+                    {Number(stakeData?.amt_usd || 0).toFixed(2)}
                   </td>
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                       {stakeData?.status ? "Unstaked" : "Staked"}
@@ -137,7 +137,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                         : "-"}
                     </td>
                     <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                      {Number(stakeData?.amt_usd).toFixed(2)}
+                      {Number(stakeData?.amt_usd || 0).toFixed(2)}
                     </td>
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                       {stakeData?.status ? "true" : "false"}
@@ -166,7 +166,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                         : "-"}
                     </td>
                     <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                      {Number(stakeData?.amt_usd).toFixed(2)}
+                      {Number(stakeData?.amt_usd || 0).toFixed(2)}
                     </td>
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                       {stakeData?.status ? "true" : "false"}
@@ -195,7 +195,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                         : "-"}
                     </td>
                     <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                      {Number(stakeData?.amt_usd).toFixed(2)}
+                      {Number(stakeData?.amt_usd || 0).toFixed(2)}
                     </td>
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                       {stakeData?.status ? "true" : "false"}
