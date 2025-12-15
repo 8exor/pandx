@@ -113,7 +113,7 @@ section.color-shadow:before {
 }
 
 .marquee-item {
-  padding-right: 80px;
+  padding-right: 125px;
   white-space: nowrap;
 }
 @keyframes slide_track {
