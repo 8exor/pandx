@@ -338,15 +338,19 @@ const Header = ({
                       </button>
                     </li>
                   </ul>
+                  <button 
+                  onClick={() => setOpenLoginModal(true)}
+                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
+                >
+                  <img src="/assets/images/panda.svg" alt="panda" />
+                  Sign up
+                </button>
                   <a
                     className="flex items-center justify-center lg:hidden"
                     href=" https://swap.qerra.network/"
                     target="blank"
                   >
-                    <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary">
-                      <img src="/assets/images/panda.svg" alt="panda" />
-                      Buy $Pandx
-                    </button>
+                  
                   </a>
                   {(isLoggedIn && token) && (
                     <NavLink
@@ -371,12 +375,11 @@ const Header = ({
                   <img src="/assets/images/panda.svg" alt="panda" />
                   {(isConnected) ? "Disconnect" : " Connect"}
                 </button>
-                    <button 
-                  onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
-                >
-                  Sign up
-                </button>
+                  <button className="flex mx-auto mt-3 gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary">
+                      <img src="/assets/images/panda.svg" alt="panda" />
+                      Buy $Pandx
+                    </button>
+                    
                 </div>
               )}
             </div>
