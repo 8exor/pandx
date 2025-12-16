@@ -79,7 +79,7 @@ const HomePopup = () => {
               </button>
             </div>
           </div>
-          <h2 className="mb-3 text-2xl text-white">
+          <h2 className="mb-3 text-2xl px-6 sm:px-0 text-white">
             Please Connect Your Wallet
           </h2>
           <ul className="flex items-center justify-center gap-5 mt-5">
@@ -98,7 +98,7 @@ const HomePopup = () => {
             </li>
             <li>
               <button
-                className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
+                className="flex gap-2 [@media(max-width:320px)]:text-sm px-6 py-3 text-lg text-white btn-primary"
                 onClick={() => {
                   setOpenLoginModal(true);
                   //  setShow(false);
