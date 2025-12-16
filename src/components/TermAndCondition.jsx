@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import ScrollToTop from "./ui/Home/ScrollToTop";
 
 const TermAndCondition = () => {
   return (
@@ -318,6 +319,7 @@ const TermAndCondition = () => {
               THE ABOVE TERMS AND CONDITIONS.
             </li>
           </ol>
+          <ScrollToTop/>
         </div>
       </div>
     </>

@@ -122,7 +122,7 @@ export default function P2p() {
       <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
         <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[16px] lg:rounded-full ">
           <input
-            type="text"
+            type="number"
             placeholder="Enter UserName"
             className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-2"
             onChange={(e) => setUserName(e.target.value)}
@@ -151,7 +151,7 @@ export default function P2p() {
           </p>
           <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
             <input
-              type="text"
+              type="number"
               className="border border-[2px] flex-1 p-2 w-full border-gray-500 rounded-lg"
               value={p2pAmount}
               onChange={(e) => setp2pAmount(e.target.value)}
