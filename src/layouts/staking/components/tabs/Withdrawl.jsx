@@ -102,7 +102,7 @@ const withdrawalHash = useMutation({
            
           </div>
          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
-           <input  type="text" className='border border-[2px] p-2 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
+           <input  type="number" className='border border-[2px] p-2 w-full border-gray-500 rounded-lg' value={withdrawalAmount} onChange={(e)=>setWithdrawalAmount(e.target.value)} />
          <div onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)} className="absolute  top-1 right-1 py-2 px-4
                bg-[#72A314] rounded-lg flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm">

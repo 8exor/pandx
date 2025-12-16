@@ -52,7 +52,7 @@ export default function Compound() {
     <>
     {compounding?.isPending && <FullPageLoader/>}
     <div className="mt-6 lg:px-15">
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3  bg-white border border-black rounded-lg lg:rounded-full w-full">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 px-[20px]  bg-white border border-black rounded-lg lg:rounded-full w-full">
         <p className="text-center  w-[60px] sm:w-full  sm:text-left">
           Avl $
           {userData?.data?.withdrawable_balance
@@ -62,8 +62,8 @@ export default function Compound() {
 
         <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
           <input
-            type="text"
-            className="border border-[2px] p-2 w-full border-gray-500 rounded-lg"
+            type="number"
+            className="border  border-[2px] p-2 w-full border-gray-500 rounded-lg"
             value={compoundAmount}
             onChange={(e) => setCompoundAmount(e.target.value)}
           />
