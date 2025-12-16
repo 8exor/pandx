@@ -176,14 +176,14 @@ export default function P2p() {
 
       <div className="flex justify-center mb-4">
         <button
-          className="bg-[#72A314] btn-primary  text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight"
+          className={`bg-[#72A314] btn-primary  text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight ${userData?.data?.is_deactivated && "grayscale"}`}
           onClick={() =>
             p2pTransaction.mutate({
               username: userName,
               token_amount: p2pAmount,
             })
           }
-          disabled={p2pTransaction?.isPending && true}
+          disabled={p2pTransaction?.isPending && true || (userData?.data?.is_deactivated)&&true}
         >
           {p2pTransaction?.isPending ? <Load/> : " Submit"}
         </button>

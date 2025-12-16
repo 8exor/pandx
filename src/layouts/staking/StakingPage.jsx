@@ -12,6 +12,7 @@ import {
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import BuyPandaPopUp from "./BuyPandaPopUp";
 import { getAccessToken } from "@utils/Session";
+import { useNavigate } from "react-router-dom";
 
 const StakingPage = () => {
   const { open } = useAppKit();
@@ -19,6 +20,7 @@ const StakingPage = () => {
   const { isConnected, address } = useAppKitAccount();
   const {isLogin} =useContext(UserInfoContext)
   const [buyPandx, setBuyPandx] = useState(true);
+  const navigate = useNavigate();
   // const [token, setToken] = useState("");
 
   // const getTheToken =async()=>{
@@ -45,30 +47,10 @@ const StakingPage = () => {
   return (
     <>
 
-     
+ 
   
       <div className="sm:w-full h-full min-h-screen bg-[#eaffdd] ">
-        {/* Stakers section */}
-        {/* <div className='sm:w-full flex flex-wrap gap-4 justify-between max-w-[1360px] sm:mx-auto mx-2  
-                      bg-[linear-gradient(90deg,rgba(165,159,238,1)_0%,rgba(153,145,235,1)_50%,rgba(150,150,224,1)_100%)] 
-                      p-3 rounded-xl'>
-        {stakers.map((user, index) => (
-          <div 
-            key={user.id + user.title} 
-            className='flex flex-col items-center w-full gap-2 px-3 py-2 rounded-lg sm:flex-row sm:items-center sm:w-auto'
-          >
-            <img 
-              src={user.img} 
-              alt={user.title} 
-              className='object-cover w-12 h-12 sm:w-8 sm:h-8'
-            />
-         
-           <span className='text-center text-black sm:text-left'>{`${user.title} ${Object.values(data ||{})[index]}`}</span>
-         
-            
-          </div>
-        ))}
-      </div> */}
+       
 {
     buyPandx &&
       <BuyPandaPopUp setBuyPandx={setBuyPandx}/>}

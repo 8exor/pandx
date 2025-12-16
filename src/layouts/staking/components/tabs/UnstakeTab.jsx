@@ -25,7 +25,7 @@ export default function UnstakeTab() {
     onSuccess: async (data) => {
       toast.success(data?.message);
       try {
-        debugger;
+        // debugger;
         console.log({ data });
         const provider = new ethers.providers.Web3Provider(walletProvider);
         const signer = await provider.getSigner();
@@ -46,7 +46,7 @@ export default function UnstakeTab() {
           value: data?.data?.unStake?.value,
         });
         await unstaking.wait();
-        unstakeHash?.mutate({ txn_hash: unstaking.hash() });
+        unstakeHash?.mutate({ txn_hash: unstaking.hash });
         setIsChecked(false);
       } catch (error) {
         console.log({ error });
@@ -94,7 +94,7 @@ export default function UnstakeTab() {
     {unstake?.isPending && <FullPageLoader/>}
     <div className="mt-6 lg:px-15">
       <div className="flex items-center justify-between lg:px-[30px] gap-4 p-3 bg-white border border-black rounded-lg lg:rounded-full sm:flex-row sm:justify-between">
-        <button className="bg-[#72A314] btn-primary sm:text-[16px] sm:px-[16px] sm:py-[8px] text-[14px]  sm:p-2 p-[7px]   text-white font-extralight text-center">
+        <button className={`bg-[#72A314] btn-primary sm:text-[16px] sm:px-[16px] sm:py-[8px] text-[14px]  sm:p-2 p-[7px]   text-white font-extralight text-center ${userData?.data?.is_deactivated && "grayscale"}`}>
           MyStake $
           {isNaN(Number(userData?.data?.staking?.amt_usd).toFixed(0))
             ? 0
@@ -123,9 +123,9 @@ export default function UnstakeTab() {
 
       <div className="flex justify-center mt-6">
         <button
-          className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 border border-[#181724] font-extralight text-center  rounded-full shine hover:scale-110 duration-300 ease-in-out"
+          className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 border border-[#181724] font-extralight text-center  rounded-full shine hover:scale-110 duration-300 ease-in-out ${userData?.data?.is_deactivated && "grayscale"}`}
           onClick={() => unstake.mutate({ confirmation: isChecked && "1" })}
-          disabled = {unstake?.isPending && true}
+          disabled = {unstake?.isPending && true (userData?.data?.is_deactivated)&&true} 
         >
           {unstake?.isPending ?  <Load/> : " Submit"}
         </button>
