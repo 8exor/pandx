@@ -15,6 +15,7 @@ import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
 
 import Gift from "@layouts/staking/components/Gift";
+import { useWalletLogin } from "@hooks/useWalletLogin";
 
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
@@ -165,11 +166,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       setAccessToken(data?.data?.token);
       navigate("/StakingPage", { state: userName });
       setOpenLoginModal(false);
-      setClickedOnRegister(false);
+      // setClickedOnRegister(false);
       console.log("why are you disconnecting:::::::",isConnected)
     },
     onError: (error) => {
-      if (error?.status === 0 && clickedOnLogin) {
+      if (error?.status === 0) {
         toast.error(error?.message);
         // disconnect();
       }
@@ -178,13 +179,6 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     },
     
   });
-  // console.log("why are you getting false :::: ", isConnected)
-
-  useEffect(() => {
-    if (clickedOnLogin && address) {
-      LoginUser.mutate({ wallet_address: address });
-    }
-  }, [isConnected]);
 
   useEffect(() => {
     setIsReferralCodeChecked(false);
@@ -194,26 +188,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     setIsUserNameChecked(false);
   }, [userName]);
 
-  // useEffect(() => {
-  //   console.log("user has clikced on the sign up connect!!!");
-  //   if (clickedOnSignUpConnect && isConnected) {
-  //   console.log("user has clikced on the sign up connect!!! it also wokring herer");
-
-  //       LoginUser.mutate({ wallet_address: address });
-  //   }
-  // }, [clickedOnSignUpConnect, isConnected, address]);
-
-  useEffect(()=>{
-    if(!isConnected){
-    setClickedOnSignUpConnect(false);
-    }
-  },[!isConnected])
-
-
+   const {login} = useWalletLogin(LoginUser)
 
   return (
     <>
-      {LoginUser?.isPending && <FullPageLoader />}
+      {LoginUser?.isPending || registerUser?.isPending && <FullPageLoader />}
       <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
         <div className="z-50 w-full max-w-md p-4 py-4  bg-[#C5FF9E] border border-black rounded-md">
           <button
@@ -258,7 +237,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             <button
               className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
               onClick={() => {
-                setClickedOnLogin(false);
+                // setClickedOnLogin(false);
                 setClickedOnSignUpConnect(true);
                   open();
                 setShowError({...showError, walletAddress : false})
@@ -353,8 +332,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             <button
               className="  bg-[#ccf1b3] text-[#5b5bac] p-2 w-full  border border-black  rounded-md cursor-pointer"
               onClick={async () => {
-                open();
-                setClickedOnLogin(true);
+                // open();
+                // setClickedOnLogin(true);
+                login()
               }}
             >
               Login

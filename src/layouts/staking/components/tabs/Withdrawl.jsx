@@ -1,10 +1,12 @@
 import { UserInfoContext } from '@contexts/UserInfoContext'
+import FullPageLoader from '@hooks/FullPageLoader';
+import Load from '@hooks/Load';
 import { useAppKitProvider } from '@reown/appkit/react';
 import { TRANSACTIONS } from '@services/panda.api.services';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@utils/axiosInstance';
 import { ethers } from 'ethers';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { data } from 'react-router-dom';
 
@@ -69,11 +71,28 @@ const withdrawalHash = useMutation({
   }
 })
 
+ useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (!staking?.isPending) return;
+  
+      e.preventDefault();
+      e.returnValue = ""; 
+    };
+  
+    window.addEventListener("beforeunload", handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [withdrawaling?.isPending]);
+
   return (
+    <>
+    {withdrawaling?.isPending && <FullPageLoader/>}
     <div className="mt-6 lg:px-15">
 
          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
-          <div className="flex gap-1 items-center">
+          <div className="flex items-center gap-1">
             <p>Avl</p>
             <div className="flex items-center gap-1">
                 <p>
@@ -106,10 +125,11 @@ const withdrawalHash = useMutation({
         <p className="mt-2 text-right sm:text-left">5% Pool Fee</p>
 
         <div className="flex justify-center ">
-          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})} >
-         {withdrawaling?.isPending ? "loading..."  : "Submit"}
+          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>
+         {withdrawaling?.isPending ? <Load/>  : "Submit"}
           </button>
         </div>
       </div>
+      </>
   )
 }

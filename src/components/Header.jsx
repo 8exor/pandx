@@ -4,6 +4,7 @@ import {
   useAppKitAccount,
   useAppKitProvider,
   useDisconnect,
+  useWalletInfo,
 } from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -16,6 +17,7 @@ import toast from "react-hot-toast";
 import { getAccessToken, setAccessToken } from "@utils/Session";
 import FullPageLoader from "@hooks/FullPageLoader";
 import { UserInfoContext } from "@contexts/UserInfoContext";
+import { useWalletLogin} from "@hooks/useWalletLogin";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -71,6 +73,7 @@ const Header = ({
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   // const {LoginUser, token} = useContext(UserInfoContext);
+const [token, setToken] = useState("")
 
   useEffect(() => {
     // Scroll listenerblock: "start"
@@ -121,7 +124,7 @@ const Header = ({
     }
   };
 
-  let token;
+
   const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
@@ -132,7 +135,8 @@ const Header = ({
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
      
-       token = await getAccessToken();
+      const token = await getAccessToken();
+      setToken(token);
       console.log("what token we accessing or getting tell meeeeee..",token);
       if(token){
          setIsLoggedIn(true);
@@ -147,15 +151,9 @@ const Header = ({
     },
   });
 
-  useEffect(() => {
-    if (isConnected && clickedOnConnect) {
-      LoginUser.mutate({ wallet_address: address });
-    }
-  }, [isConnected]);
+const {login} = useWalletLogin(LoginUser)
 
-  useEffect(()=>{
- setClickedOnConnect(false);
-  },[!isConnected])
+console.log("what is token and why are not we getting it color:yellow",token);
 
   return (
     <>
@@ -208,8 +206,9 @@ const Header = ({
                       handleDisconnet();
                     }
                     else{
-                      open();
-                       setClickedOnConnect(true);
+                      // open();
+                      //  setClickedOnConnect(true);
+                      login()
                     }
                   }}
                 >
@@ -236,6 +235,8 @@ const Header = ({
                   onClick={() => setOpenLoginModal(true)}
                   className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
                 >
+                  <img src="/assets/images/panda.svg" alt="panda" />
+
                   Sign up
                 </button>
 
@@ -375,7 +376,7 @@ const Header = ({
                   <img src="/assets/images/panda.svg" alt="panda" />
                   {(isConnected) ? "Disconnect" : " Connect"}
                 </button>
-                  <button className="flex mx-auto mt-3 gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary">
+                  <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
                       Buy $Pandx
                     </button>

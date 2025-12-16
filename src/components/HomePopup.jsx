@@ -1,3 +1,5 @@
+import FullPageLoader from "@hooks/FullPageLoader";
+import { useWalletLogin } from "@hooks/useWalletLogin";
 import LoginPage from "@pages/LoginPage";
 import {
   useAppKit,
@@ -51,16 +53,17 @@ const HomePopup = () => {
       }
     },
   });
-  useEffect(() => {
-    if (loginWithPopUp && isConnected) {
-      LoginUser.mutate({ wallet_address: address });
-    }
-  }, [loginWithPopUp, isConnected]);
-
+  // useEffect(() => {
+  //   if (loginWithPopUp && isConnected) {
+  //     LoginUser.mutate({ wallet_address: address });
+  //   }
+  // }, [loginWithPopUp, isConnected]);
+   const {login} = useWalletLogin(LoginUser)
   if (!show) return null;
 
   return (
     <>
+      {LoginUser?.isPending && <FullPageLoader />}
       <div
         className="fixed z-40 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000ed] flex justify-center items-center"
         onClick={closePopup} // click outside closes
@@ -81,15 +84,15 @@ const HomePopup = () => {
           </h2>
           <ul className="flex items-center justify-center gap-5 mt-5">
             <li>
-              {" "}
+        
               <button
                 onClick={() => {
-                  open();
-                  setLoginWithPopUp(true);
+                  // open();
+                  // setLoginWithPopUp(true);
+                login()
                 }}
-                className="flex gap-2 [@media(max-width:320px)]:text-sm px-6 py-3 text-lg text-white btn-primary"
+                className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
               >
-                <img src="/assets/images/panda.svg" alt="panda" />
                 Login
               </button>
             </li>
@@ -101,7 +104,6 @@ const HomePopup = () => {
                   //  setShow(false);
                 }}
               >
-                <img src="/assets/images/panda.svg" alt="panda" />
                 Sign up
               </button>
             </li>
