@@ -84,9 +84,9 @@ export default function Compound() {
 
       <div className="flex justify-center mt-3 ">
         <button
-          className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center"
+          className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center ${userData?.data?.is_deactivated && "grayscale"}`}
           onClick={() => compounding.mutate({ amount: compoundAmount })}
-          disabled={compounding?.isPending && true}
+          disabled={compounding?.isPending && true || (userData?.data?.is_deactivated)&&true}
         >
           {compounding?.isPending ? <Load/> : "Submit"}
         </button>

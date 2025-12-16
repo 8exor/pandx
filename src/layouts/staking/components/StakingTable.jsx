@@ -12,18 +12,19 @@ export default function StakingTable({ activeTab, tableConfig }) {
   const { userData, incomeReporting, incomeLoading, incomeRefetch } =
     useContext(UserInfoContext);
 
-  // const { data, incomeLoading } = useQuery({
-  //   queryKey: ["incomeReports"],
-  //   queryFn: async () => {
-  //     const { data } = await axiosInstance.get(
-  //       `${REPORTS?.incomeReports}?incomeId=${incomeId}`
-  //     );
-  //     return data;
-  //   },
-  // });
+  const { data : p2pReport, isLoading : p2pLoading } = useQuery({
+    queryKey: ["p2pReport"],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(REPORTS?.p2pReport);
+      return data;
+    },
+  });
+
+  console.log({p2pReport})
 
   const incomeData = incomeReporting?.data?.rows;
   const stakeData = userData?.data?.staking;
+  const p2pData = p2pReport?.data?.rows;
 
   return (
     <div className="w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5  border border-[#6f6fb5] rounded-md">
@@ -165,7 +166,9 @@ export default function StakingTable({ activeTab, tableConfig }) {
               </>
             )}
 
-            {activeTab?.mainTabs === "p2p" && (
+            {activeTab?.mainTabs === "p2p" &&
+            p2pData?.map((p2p, index)=>
+            (
               <>
                 {incomeLoading ? (
                   <TableSkeleton rows={1} cols={5} />
@@ -175,13 +178,17 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       1
                     </td>
                     <td className="font-medium text-center text-black capitalize w-full max-w-[150px] ">
-                      {stakeData?.created_at
-                        ? new Date(stakeData?.created_at).toLocaleDateString()
+                      {p2p?.created_at
+                        ? new Date(p2p?.created_at).toLocaleDateString()
                         : "-"}
                     </td>
-                    <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
-                      {parseFloat(stakeData?.amt_usd || 0)}
+                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
+                      {p2p?.username}
                     </td>
+                    <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
+                      {parseFloat(p2p?.amount_in_usd || 0)}
+                    </td>
+                    
                     <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                       {stakeData?.status ? "true" : "false"}
                     </td>
@@ -191,7 +198,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
                   </tr>
                 )}
               </>
-            )}
+            ))}
 
             {activeTab?.mainTabs === "incomeReports" &&
               activeTab?.incomeTabs === "DAILY$" &&

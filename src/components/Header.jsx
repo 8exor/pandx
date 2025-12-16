@@ -73,7 +73,7 @@ const Header = ({
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   // const {LoginUser, token} = useContext(UserInfoContext);
-const [token, setToken] = useState("")
+
 
   useEffect(() => {
     // Scroll listenerblock: "start"
@@ -135,9 +135,8 @@ const [token, setToken] = useState("")
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
      
-      const token = await getAccessToken();
-      setToken(token);
-      console.log("what token we accessing or getting tell meeeeee..",token);
+     const token = getAccessToken()
+    
       if(token){
          setIsLoggedIn(true);
       navigate("/StakingPage");
@@ -153,8 +152,9 @@ const [token, setToken] = useState("")
 
 const {login} = useWalletLogin(LoginUser)
 
-console.log("what is token and why are not we getting it color:yellow",token);
+const token = getAccessToken();
 
+console.log("what is tokenggggggggggggggggggggggggggggggggggggggggggggggggggggg", token)
   return (
     <>
     {LoginUser?.isPending && <FullPageLoader/>}

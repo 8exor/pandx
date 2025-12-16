@@ -18,7 +18,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   async function (config) {
-    const token = await getAccessToken();
+    const token =  getAccessToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -38,21 +38,23 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   function (response) {
-
+    // console.log("Response:", response);
     return response;
   },
   async function (error) {
- 
-    const { disconnect } = useDisconnect();
-    if (error.status === 401) {
-      await deleteCookies();
-      const getToken = await getAccessToken();
-
-      if (!getToken) {
-        disconnect();
-      }
-   
+    // const { disconnect } = useDisconnect();
+    if (error.response && error.response.status === 401) {
+      // await deleteCookies();
+      // const getToken = await getAccessToken();
+      // if (!getToken) {
+      //   disconnect();
+      // }
+      console.error("Unauthorized, logging out...");
     }
+    // const token = getAccessToken();
+    // if(!token){
+    //   window.location.reload("/")
+    // }
     return Promise.reject(error?.response?.data);
   }
 );
