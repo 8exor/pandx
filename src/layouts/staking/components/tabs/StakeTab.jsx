@@ -1,16 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import axiosInstance from "@utils/axiosInstance";
 import { TRANSACTIONS } from "@services/panda.api.services";
-import toast, { LoaderIcon } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Contract, ethers } from "ethers";
 import Abi from "@utils/abi/tokenAllowance.abi.json";
 import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
 import { UserInfoContext } from "@contexts/UserInfoContext";
-import Load from "@hooks/Load";
-import FullPageLoader from "@hooks/FullPageLoader";
 
 export default function StakeTab() {
   const [stakeAmount, setStakeAmount] = useState("");
@@ -114,26 +112,8 @@ export default function StakeTab() {
     },
   });
 
-
-useEffect(() => {
-  const handleBeforeUnload = (e) => {
-    if (!staking?.isPending) return;
-
-    e.preventDefault();
-    e.returnValue = ""; // REQUIRED
-  };
-
-  window.addEventListener("beforeunload", handleBeforeUnload);
-
-  return () => {
-    window.removeEventListener("beforeunload", handleBeforeUnload);
-  };
-}, [staking?.isPending]);
-
   return (
-    <>
-    {staking?.isPending && <FullPageLoader/>}
-    <div className="mt-1 mb-1 lg:px-15">
+    <div className=" mt-1 mb-1 lg:px-15 ">
       {/* <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
@@ -171,28 +151,24 @@ useEffect(() => {
 
  */}
 
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1">
-        <div className="flex items-center gap-2 justify-between w-full sm:px-[10px] gap-1">
-          <div className="flex items-center gap-1">
+      {/* <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1"> */}
+        <div className="flex items-center gap-2 bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black justify-between w-full sm:px-[20px] gap-1">
+         <div className="flex-1">
+           <div className="flex gap-1 items-center">
             <p>Avl</p>
             <div className="flex items-center gap-1">
-             
-              {/* <img
-                src="assets/images/pandalogofinalcopy.svg"
-                className="w-6 rounded-full"
-              /> */}
-                <p>
-               ${userData?.data?.wallet_balance
-                ? Number(userData?.data?.wallet_balance).toFixed(2)
-                : 0}
-            </p>
+              <p className="text-end "> 
+                ${userData?.data?.wallet_balance
+                  ? Number(userData?.data?.wallet_balance).toFixed(2)
+                  : 0}
+              </p>
             </div>
-           
           </div>
-          <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
+         </div>
+          <div className="relative  w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
             <input
               type="number"
-              className="border border-[2px] m-auto border-gray-500 w-full px-2 rounded-lg py-2"
+              className="border overflow-x-auto whitespace-nowrap  border-[2px] m-auto border-gray-500 w-full px-2 rounded-lg py-2"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
             />
@@ -201,20 +177,26 @@ useEffect(() => {
                bg-[#72A314] rounded-lg flex items-center justify-center
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
               onClick={() =>
-                setStakeAmount(parseInt(userData?.data?.wallet_balance).toFixed(2))
+                setStakeAmount(
+                  parseInt(userData?.data?.wallet_balance).toFixed(2)
+                )
               }
             >
               MAX
             </div>
           </div>
 
-          <p className="font-bold">
-            $
-            {Number(stakeAmount * userData?.data?.token_price)
-              ? parseFloat(stakeAmount * userData?.data?.token_price).toFixed(2)
-              : 0}
-          </p>
-        </div>
+          <div className="flex-1">
+            <p className="font-bold text-end "  >
+              $
+              {Number(stakeAmount * userData?.data?.token_price)
+                ? parseFloat(stakeAmount * userData?.data?.token_price).toFixed(
+                    2
+                  )
+                : 0}
+            </p>
+          </div>
+        {/* </div> */}
       </div>
 
       <div className="flex justify-center mt-2">
@@ -223,10 +205,9 @@ useEffect(() => {
           onClick={() => staking.mutate({ stake_amount: stakeAmount })}
           disabled={staking?.isPending && true || (userData?.data?.is_deactivated)&&true}
         >
-          {staking?.isPending ? <Load/> : "submit"}
+          {staking?.isPending ? "loading...." : "submit"}
         </button>
       </div>
     </div>
-    </>
   );
 }

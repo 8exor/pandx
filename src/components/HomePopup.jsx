@@ -21,10 +21,29 @@ const HomePopup = () => {
   const { disconnect } = useDisconnect();
   const { open } = useAppKit();
   const [loginWithPopUp, setLoginWithPopUp] = useState(false);
-
+  const [showSecondPopup, setShowSecondPopup] = useState(false);
+  const [timeLeft, setTimeLeft] = useState("");
   const { isConnected, address } = useAppKitAccount();
 
   useEffect(() => {
+    // timer 
+    const targetDate = new Date(2025, 11, 21, 13, 0, 0); // 1 PM, 21st Dec 2025
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      
+      if (difference <= 0) {
+        clearInterval(intervalId);
+        setTimeLeft("Time's up!");
+      } else {
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
+        setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+      }
+    }, 1000);
+
     // Show popup when user enters website
     if (!isConnected) {
       setShow(true);
@@ -32,7 +51,12 @@ const HomePopup = () => {
   }, []);
 
   // Close popup
-  const closePopup = () => setShow(false);
+  const closePopup = () => {
+    setShow(false);
+    setTimeout(() => {
+      setShowSecondPopup(true);
+    }, 200); // small delay for smoother UX
+  };
 
   const LoginUser = useMutation({
     mutationFn: async (formData) => {
@@ -58,8 +82,8 @@ const HomePopup = () => {
   //     LoginUser.mutate({ wallet_address: address });
   //   }
   // }, [loginWithPopUp, isConnected]);
-   const {login} = useWalletLogin(LoginUser)
-  if (!show) return null;
+  const { login } = useWalletLogin(LoginUser);
+  if (!show && !showSecondPopup) return null;
 
   return (
     <>
@@ -84,15 +108,15 @@ const HomePopup = () => {
           </h2>
           <ul className="flex items-center justify-center gap-5 mt-5">
             <li>
-        
               <button
                 onClick={() => {
                   // open();
                   // setLoginWithPopUp(true);
-                login()
+                  login();
                 }}
-                className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
+                className="flex gap-2 px-6 [@media(max-width:320px)]:text-sm py-3 text-lg text-white btn-primary"
               >
+                <img src="/assets/images/panda.svg" alt="panda" />
                 Login
               </button>
             </li>
@@ -104,6 +128,7 @@ const HomePopup = () => {
                   //  setShow(false);
                 }}
               >
+                <img src="/assets/images/panda.svg" alt="panda" />
                 Sign up
               </button>
             </li>
@@ -121,17 +146,42 @@ const HomePopup = () => {
               qerraSWAP
             </button>
           </a>
-          {/* <button
-          onClick={closePopup}
-          className="px-5 py-2 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700"
-        >
-          Continue
-        </button> */}
         </div>
       </div>
       {loginModal && (
         <LoginPage setShow={setShow} setOpenLoginModal={setOpenLoginModal} />
       )}
+      {/* offer popup */}
+
+      <div></div>
+
+      {showSecondPopup && (
+        <div
+          className="fixed z-50 w-full h-full left-0 top-0 bg-[#00000029] flex justify-center items-center"
+          onClick={() => setShowSecondPopup(false)}
+        >
+          <div
+            className="bg-[#000000] max-w-[450px]  border border-white p-[40px] rounded-2xl text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-2xl leading-8 text-white mb-3">
+              FREE REGISTRATIONS WILL BE START FROM SUNDAY 21 DEC 2025. BE
+              READY!
+            </h2>
+            <div>
+              <h2 className="text-2xl text-white mb-3">{timeLeft}</h2>
+            </div>
+            <button
+              onClick={() => setShowSecondPopup(false)}
+              className="px-6  py-3 text-white btn-primary"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* offer popup end */}
     </>
   );
 };
