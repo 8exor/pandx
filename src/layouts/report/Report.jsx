@@ -191,8 +191,13 @@ const userInfoLoading = false;
                     })}
                   </tr>
                 </thead>
-              { !teamLoading ? <tbody  className="flex flex-col mt-5 space-y-4 flex-nowrap">
-                  {teamData?.data?.child?.length == 0 ? (
+              <tbody  className="flex flex-col mt-5 space-y-4 flex-nowrap">
+
+                  {
+                  teamLoading ? 
+               (   <TableSkeleton rows={3} cols={8}/>)
+                   :
+                 ( teamData?.data?.child?.length == 0) ? (
                     <tr className='mx-auto text-center '>
                       <td colSpan={9} className="w-full p-10 rounded-lg bg-midgray hover:bg-border-color group/item">No Data Found</td>
                     </tr>
@@ -249,12 +254,6 @@ const userInfoLoading = false;
                     )
                   )}
                 </tbody>
-                :
-                <tbody>
-                
-                {/* <TableSkeleton rows={4} cols={8}/> */}
-                </tbody>
-                }
               </table>
             )}
           </div>

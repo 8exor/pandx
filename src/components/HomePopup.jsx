@@ -1,5 +1,11 @@
+import FullPageLoader from "@hooks/FullPageLoader";
+import { useWalletLogin } from "@hooks/useWalletLogin";
 import LoginPage from "@pages/LoginPage";
-import { useAppKit, useAppKitAccount, useDisconnect } from "@reown/appkit/react";
+import {
+  useAppKit,
+  useAppKitAccount,
+  useDisconnect,
+} from "@reown/appkit/react";
 import { AUTH } from "@services/panda.api.services";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
@@ -12,27 +18,23 @@ const HomePopup = () => {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const [loginModal, setOpenLoginModal] = useState(false);
-    const { disconnect } = useDisconnect();
-      const { open } = useAppKit();
-      const [loginWithPopUp, setLoginWithPopUp] = useState(false);
+  const { disconnect } = useDisconnect();
+  const { open } = useAppKit();
+  const [loginWithPopUp, setLoginWithPopUp] = useState(false);
 
-        const { isConnected, address } = useAppKitAccount();
+  const { isConnected, address } = useAppKitAccount();
 
   useEffect(() => {
     // Show popup when user enters website
-    if(!isConnected){
-    setShow(true);
+    if (!isConnected) {
+      setShow(true);
     }
   }, []);
 
   // Close popup
   const closePopup = () => setShow(false);
 
-
-
-
-
- const LoginUser = useMutation({
+  const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
       return data;
@@ -51,73 +53,85 @@ const HomePopup = () => {
       }
     },
   });
-  useEffect(() => {
-    if (loginWithPopUp && isConnected ) {
-      LoginUser.mutate({ wallet_address: address });
-    }
-  }, [loginWithPopUp, isConnected ]);
-
-
+  // useEffect(() => {
+  //   if (loginWithPopUp && isConnected) {
+  //     LoginUser.mutate({ wallet_address: address });
+  //   }
+  // }, [loginWithPopUp, isConnected]);
+   const {login} = useWalletLogin(LoginUser)
   if (!show) return null;
-
-
-  
 
   return (
     <>
-    <div
-      className="fixed z-40 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000ed] flex justify-center items-center"
-      onClick={closePopup} // click outside closes
-    >
+      {LoginUser?.isPending && <FullPageLoader />}
       <div
-        className="bg-[#000000a1] relative border border-white p-[15px] sm:p-[50px] rounded-2xl shadow-xl w-fit text-center relative"
-        onClick={(e) => e.stopPropagation()}
+        className="fixed z-40 w-full h-full max-md:p-2 left-0 top-0 bg-[#000000ed] flex justify-center items-center"
+        onClick={closePopup} // click outside closes
       >
-        <div className="absolute top-2 right-2">
-           <div className="mb-2 text-end bg-[#ff403a9e] rounded-full h-[30px] p-2 w-[30px] flex justify-center">
-          <button
-          onClick={closePopup}
-          className="text-white rounded-full ">
-          <img src="assets/images/close.png" alt="close icon"/>
-        </button>
-        </div>
-        </div>
-        <h2 className="mb-3 text-2xl text-white">Please Connect Your Wallet</h2>
-       <ul className="flex items-center justify-center gap-5 mt-5">
-        <li> <button  onClick={()=>{open();  
-      setLoginWithPopUp(true);}} className="flex gap-2 px-6 py-3 text-lg text-white btn-primary">
-                    Login
-                  </button></li>
-       <li>
-
-         
-
-         <button className="flex gap-2 px-6 py-3 text-lg text-white btn-primary" onClick={()=>{
-           setOpenLoginModal(true)
-          //  setShow(false);
-          }}>
-                    
-
-                    Sign up
-                  </button>
-       </li>
-         </ul>
-        <a href="https://swap.qerra.network/" target="blank"> <button className="flex items-center justify-center w-full gap-2 px-2 py-3 mt-5 text-sm text-white sm:px-6 sm:text-lg btn-primary">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a>
-        {/* <button
+        <div
+          className="bg-[#000000a1] relative border border-white p-[15px] sm:p-[50px] rounded-2xl shadow-xl w-fit text-center relative"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="absolute top-2 right-2">
+            <div className="mb-2 text-end bg-[#ff403a9e] rounded-full h-[30px] p-2 w-[30px] flex justify-center">
+              <button onClick={closePopup} className="text-white rounded-full ">
+                <img src="assets/images/close.png" alt="close icon" />
+              </button>
+            </div>
+          </div>
+          <h2 className="mb-3 text-2xl text-white">
+            Please Connect Your Wallet
+          </h2>
+          <ul className="flex items-center justify-center gap-5 mt-5">
+            <li>
+        
+              <button
+                onClick={() => {
+                  // open();
+                  // setLoginWithPopUp(true);
+                login()
+                }}
+                className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
+              >
+                Login
+              </button>
+            </li>
+            <li>
+              <button
+                className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
+                onClick={() => {
+                  setOpenLoginModal(true);
+                  //  setShow(false);
+                }}
+              >
+                Sign up
+              </button>
+            </li>
+          </ul>
+          <a href="https://swap.qerra.network/" target="blank">
+            {" "}
+            <button className="flex items-center justify-center w-full gap-2 px-2 py-3 mt-5 text-sm text-white sm:px-6 sm:text-lg btn-primary">
+              <img src="/assets/images/panda.svg" alt="panda" />
+              Buy $PANDX{" "}
+              <img
+                className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
+                src="/assets/images/qerra.png"
+                alt="panda"
+              />
+              qerraSWAP
+            </button>
+          </a>
+          {/* <button
           onClick={closePopup}
           className="px-5 py-2 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700"
         >
           Continue
         </button> */}
+        </div>
       </div>
-    </div>
-    {
-      loginModal &&
-      <LoginPage setShow={setShow} setOpenLoginModal={setOpenLoginModal}/>
-    }
+      {loginModal && (
+        <LoginPage setShow={setShow} setOpenLoginModal={setOpenLoginModal} />
+      )}
     </>
   );
 };

@@ -9,6 +9,7 @@ import {
 import { ethers } from "ethers";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import CopyToClipBaord from "@hooks/CopyToClipBoard";
+import { setAccessToken } from "@utils/Session";
 
 const DashboardHeader = () => {
   const { address } = useAppKitAccount();
@@ -32,6 +33,7 @@ const DashboardHeader = () => {
       if (txn) {
         disconnect();
         navigate("/");
+        setAccessToken("");
       }
     } catch (error) {
       console.log(error);

@@ -19,8 +19,13 @@ const StakingPage = () => {
   const { isConnected, address } = useAppKitAccount();
   const {isLogin} =useContext(UserInfoContext)
   const [buyPandx, setBuyPandx] = useState(true);
+  // const [token, setToken] = useState("");
 
-  
+  // const getTheToken =async()=>{
+  //   const token = await getAccessToken();
+  //   console.log("what is deepak tokeninggg color:red ",token);
+  //   setToken(token);
+  // }
 
 
   const { data } = useQuery({
@@ -31,6 +36,9 @@ const StakingPage = () => {
     },
   });
 
+  // useEffect(()=>{
+  //   getTheToken();
+  // },[])
 
 
 

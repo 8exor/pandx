@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@utils/axiosInstance";
 import { AUTH, TRANSACTIONS } from "@services/panda.api.services";
@@ -9,6 +9,8 @@ import p2pAllowance from "@utils/abi/p2pAllowance.abi.json";
 import toast from "react-hot-toast";
 import { data, useLocation } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
+import Load from "@hooks/Load";
+import FullPageLoader from "@hooks/FullPageLoader";
 
 export default function P2p() {
   const { walletProvider } = useAppKitProvider("eip155");
@@ -97,7 +99,25 @@ export default function P2p() {
     },
   });
 
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (!staking?.isPending) return;
+  
+      e.preventDefault();
+      e.returnValue = ""; // REQUIRED
+    };
+  
+    window.addEventListener("beforeunload", handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [p2pTransaction?.isPending]);
+
   return (
+    <>
+    {p2pTransaction?.isPending && <FullPageLoader/>}
     <div className="w-full px-2 mt-5 lg:px-15">
       <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
         <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[16px] lg:rounded-full ">
@@ -163,10 +183,12 @@ export default function P2p() {
               token_amount: p2pAmount,
             })
           }
+          disabled={p2pTransaction?.isPending && true}
         >
-          {p2pTransaction?.isPending ? "loading..." : " Submit"}
+          {p2pTransaction?.isPending ? <Load/> : " Submit"}
         </button>
       </div>
     </div>
+    </>
   );
 }

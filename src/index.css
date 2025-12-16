@@ -109,28 +109,24 @@ section.color-shadow:before {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: slide_track 6.5s linear infinite;
+  animation: slide_track 5s linear infinite;
 }
 
 .marquee-item {
-  padding-right: 125px;
+  padding-right: 15px; /* gap between repeats */
   white-space: nowrap;
+}
+.shadow-marquee {
+  box-shadow: 0 16px 15px -5px #000000;
 }
 @keyframes slide_track {
   0% {
     transform: translateX(0);
   }
-
-  23% {
-    transform: translateX(0);
-  }
-
   100% {
     transform: translateX(-50%);
   }
 }
-
-
 
 .marquee {
   animation: slide 10s linear infinite;
@@ -142,9 +138,6 @@ section.color-shadow:before {
   100% {
     transform: translateX(-50%);
   }
-}
-.shadow-marquee {
-  box-shadow: 0 16px 15px -5px #000000;
 }
 .bg-graydient {
   background: linear-gradient(180deg, #befeb2 0%, #f5ffee 31%, #74e926 100%);

@@ -91,10 +91,13 @@ export default function Staking() {
     (userData?.data?.rank_id == 5 && "1.00%");
 
 
-const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_date, 96)
+const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_date, 96);
+
+
+
 
   return (
-    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2">
+    <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2 pb-10">
       <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
         <span className="blink-text sm:ml-30">{taskNote?.title}</span>
         <marquee behavior="alternate" scrollamount="10" direction="">
@@ -204,12 +207,12 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
                   </th>
                 </tr>
               </thead>
-              {isLoading ? (
-                <></>
-              ) : (
-                // <TableSkeleton  />
+              
                 <tbody className="w-full">
-                  {!data?.child_air_logs.length ? (
+                  { isLoading ?
+                  <TableSkeleton rows={3} cols={4} />
+                  :
+                  !data?.child_air_logs.length ? (
                     <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
                       <td>No Data Found</td>
                     </tr>
@@ -239,9 +242,10 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
                         </tr>
                       </>
                     ))
-                  )}
+                  )
+                }
                 </tbody>
-              )}
+            
             </table>
           </div>
         </div>
