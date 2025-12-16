@@ -83,7 +83,7 @@ const Banner = ({ aboutRef, homeRef }) => {
                   <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS
 
                   </p>
-                  <p className="font-bold">
+                  <p className="">
                     Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together.
                   </p>
                 </div>

@@ -101,9 +101,13 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
           {taskNote?.des}
         </marquee>
       </div>
-      <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
-        <span className="font-normal text-center blink-text">
-       INVITE 3 – GET 3% BOOSTX IN {`${totalHours} : ${minutes} : ${seconds}`}
+     <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
+        <span className="block text-sm font-normal text-center sm:hidden blink-text">
+        INVITE 3 – GET 3% BOOSTX IN
+        <span className="block">{`${totalHours} : ${minutes} : ${seconds}`}</span>
+        </span>
+        <span className="hidden font-normal text-center sm:block blink-text">
+        INVITE 3 – GET 3% BOOSTX IN {`${totalHours} : ${minutes} : ${seconds}`}
         </span>
       </div>
       <StakingHead />
@@ -246,3 +250,4 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
     </div>
   );
 }
+

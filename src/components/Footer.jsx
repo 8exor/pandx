@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
@@ -9,96 +10,144 @@ const Footer = () => {
                 Join the Movement
               </h2>
               <p className="lg:text-2xl text-xl text-[#4a4a4a] w-full lg:max-w-[700px] max-w-[500px] m-auto pt-2">
-              PANDX is more than a token — it’s a community-powered platform delivering accessible, fun, and fair finance, backed by true DeFi power and IPFS technology
+                PANDX is more than a token — it’s a community-powered platform
+                delivering accessible, fun, and fair finance, backed by true
+                DeFi power and IPFS technology
               </p>
 
               {/* mobile view */}
               <div className="md:hidden block">
-               <div className="mt-5">
-                   <a href="https://swap.qerra.network/" target="blank" className="flex justify-center "> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a>
+                <div className="mt-5">
+                  <a
+                    href="https://swap.qerra.network/"
+                    target="blank"
+                    className="flex justify-center "
+                  >
+                    {" "}
+                    <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                      <img src="/assets/images/panda.svg" alt="panda" />
+                      Buy $PANDX{" "}
+                      <img
+                        className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
+                        src="/assets/images/qerra.png"
+                        alt="panda"
+                      />
+                      qerraSWAP
+                    </button>
+                  </a>
                 </div>
-                
-                    <img className="mx-auto mt-4" src="assets/images/panda_face.svg" alt="Pandx" />
-                     <div className="flex justify-center gap-4 mt-4">
-                   <div className=" bg-white w-fit hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
-                  <a href="https://t.me/pandxdao" target="blank">
-                  <img
-                    className="w-[20px] h-[20]"
-                    src="/assets/images/Icon.svg"
-                    alt="telegram"
-                  />
+
+                <img
+                  className="mx-auto mt-4"
+                  src="assets/images/panda_face.svg"
+                  alt="Pandx"
+                />
+                <div className="flex justify-center gap-4 mt-4">
+                  <div className=" bg-white w-fit hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
+                    <a href="https://t.me/pandxdao" target="blank">
+                      <img
+                        className="w-[20px] h-[20]"
+                        src="/assets/images/Icon.svg"
+                        alt="telegram"
+                      />
                     </a>
+                  </div>
+                  <div className="bg-white w-fit  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
+                    <a href="https://t.me/pandxdao" target="blank">
+                      <img src="/assets/images/telegram.svg" alt="telegram" />
+                    </a>
+                  </div>
                 </div>
-                <div className="bg-white w-fit  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
-                  <a href="https://t.me/pandxdao" target="blank"><img src="/assets/images/telegram.svg" alt="telegram" /></a>
+                <div className="logo mt-5">
+                  <a href=" https://swap.qerra.network/" target="blank">
+                    <img
+                      className="md:w-[180px] mx-auto  w-[120px]"
+                      src="/assets/images/Logo.png"
+                      alt="logo"
+                    />
+                  </a>
                 </div>
-                 </div>
-                     <div className="logo mt-5">
-                <a href=" https://swap.qerra.network/" target="blank"><img  className="md:w-[180px] mx-auto  w-[120px]" src="/assets/images/Logo.png" alt="logo" />
-                </a>
-              </div>
               </div>
               {/* mobile view end  */}
               <div className="flex items-center justify-center gap-2 mt-5  md:gap-8">
                 <div className="hidden md:block">
-                   <a href="https://swap.qerra.network/" target="blank" className="flex justify-center "> <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
-                    <img src="/assets/images/panda.svg" alt="panda" />
-                   Buy $PANDX <img  className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda"/>qerraSWAP
-                  </button></a>
+                  <a
+                    href="https://swap.qerra.network/"
+                    target="blank"
+                    className="flex justify-center "
+                  >
+                    {" "}
+                    <button className="flex gap-2 sm:px-6 px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                      <img src="/assets/images/panda.svg" alt="panda" />
+                      Buy $PANDX{" "}
+                      <img
+                        className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
+                        src="/assets/images/qerra.png"
+                        alt="panda"
+                      />
+                      qerraSWAP
+                    </button>
+                  </a>
                 </div>
                 <div className="md:block hidden">
                   <img src="assets/images/panda_face.svg" alt="Pandx" />
                 </div>
                 <div className="md:block hidden bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
                   <a href="https://t.me/pandxdao" target="blank">
-                  <img
-                    className="w-[20px] h-[20]"
-                    src="/assets/images/Icon.svg"
-                    alt="telegram"
-                  />
-                    </a>
+                    <img
+                      className="w-[20px] h-[20]"
+                      src="/assets/images/Icon.svg"
+                      alt="telegram"
+                    />
+                  </a>
                 </div>
                 <div className="bg-white md:block hidden  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black transform-gpu shadow rotate-6">
-                  <a href="https://t.me/pandxdao" target="blank"><img src="/assets/images/telegram.svg" alt="telegram" /></a>
+                  <a href="https://t.me/pandxdao" target="blank">
+                    <img src="/assets/images/telegram.svg" alt="telegram" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
           {/* copyright   terms & Conditions  */}
           <div className="mycontainer">
-            <div className="flex flex-wrap justify-between items-center gap-5 pt-8  border-graydient" >
-              
+            <div className="flex flex-wrap justify-between items-center gap-5 pt-8  border-graydient">
               <div className="logo md:block hidden">
-                <a href=" https://swap.qerra.network/" target="blank"><img className="md:w-[180px] w-[120px]" src="/assets/images/Logo.png" alt="logo" />
+                <a href=" https://swap.qerra.network/" target="blank">
+                  <img
+                    className="md:w-[180px] w-[120px]"
+                    src="/assets/images/Logo.png"
+                    alt="logo"
+                  />
                 </a>
               </div>
               <div className="w-full sm:w-auto">
-                <ul className="flex items-center gap-4 justify-between">
-                  <li>
+                <ul className="flex items-center gap-4 justify-center">
+                  {/* <li>
                     <a
                       className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out  text-[16px]  md:text-[20px] font-bold"
                       href="#"
                     >
                       Privacy Policy
                     </a>
-                  </li>
+                  </li> */}
                   <li>
-                    <a
-                      className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out  text-[16px]  md:text-[20px] font-bold"
-                      href="#"
+                    <Link
+                      to="/terms-and-conditions"
+                      className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out text-[16px] md:text-[20px] font-bold"
                     >
                       Terms And Conditions
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           {/* images panda  */}
-          <div className="absolute  top-[10%] lg:top-[32%] lg:right-[0%] xl:right-[12%] xl:top-[20%] mac-mr-10 right-[5%]" data-aos="zoom-in">
+          <div
+            className="absolute  top-[10%] lg:top-[32%] lg:right-[0%] xl:right-[12%] xl:top-[20%] mac-mr-10 right-[5%]"
+            data-aos="zoom-in"
+          >
             <img
               className="hidden lg:block mac-right-3 lg:w-[50%] xl:w-[80%] md:ml-auto xl:ml-[10%]"
               src="assets/images/Character_builder.svg"

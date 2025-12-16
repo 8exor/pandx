@@ -24,6 +24,20 @@ input {
   font-family: "Lato", sans-serif;
 }
 
+.verdanaWrapper p,
+.verdanaWrapper h1,
+.verdanaWrapper h2,
+.verdanaWrapper h3,
+.verdanaWrapper h4,
+.verdanaWrapper h5,
+.verdanaWrapper h6,
+.verdanaWrapper span,
+.verdanaWrapper li,
+.verdanaWrapper ul  {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.3) 2.4px 2.4px 0.2px;
 }
@@ -129,8 +143,6 @@ section.color-shadow:before {
     transform: translateX(-50%);
   }
 }
-
-
 
 .marquee {
   animation: slide 10s linear infinite;

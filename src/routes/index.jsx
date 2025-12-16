@@ -6,6 +6,7 @@ import Report from "../layouts/report/Report";
 import StakingHeader from "./StakingHeader";
 import Ranking from "../layouts/rank/Ranking";
 import LoginPage from "@pages/LoginPage";
+import TermAndCondition from "@components/TermAndCondition";
 import { Component } from "@amcharts/amcharts4/core";
 import HomePopup from "@components/HomePopup";
 
@@ -63,6 +64,7 @@ export default function AppRoutes (){
                 <Route element={<StakingHeader/>}>
                 {stakeRouter}
                 </Route>
+                <Route path="/terms-and-conditions" element={<TermAndCondition />} />
                 </Routes>
 
         </div>
