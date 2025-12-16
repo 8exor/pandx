@@ -6,7 +6,7 @@ const TermAndCondition = () => {
     <>
       <Header />
 
-      <div className="mycontainer ">
+      <div className="max-w-[900px] mx-auto text-justify  px-5">
         <div className="pt-30 verdanaWrapper">
           <h2 className="font-bold text-lg underline mb-3">MINIMUM STAKING</h2>
           <ol className="list-decimal list-outside pl-6 mb-6 space-y-3">
