@@ -8,7 +8,8 @@ import Roadmap from "@components/ui/Home/Roadmap"
 import Footer from "@components/Footer"
 import Chart from "@components/ui/Home/Chart"
 import ScrollToTop from "@components/ui/Home/ScrollToTop"
-import { useEffect, useRef } from "react";
+import { useRef ,useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HomePopup from "@components/HomePopup"
 import { useLocation } from "react-router-dom"
 const Home = () => {

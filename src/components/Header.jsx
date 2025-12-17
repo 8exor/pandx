@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 import { getAccessToken, setAccessToken } from "@utils/Session";
 import FullPageLoader from "@hooks/FullPageLoader";
 import { UserInfoContext } from "@contexts/UserInfoContext";
-import { useWalletLogin} from "@hooks/useWalletLogin";
+import { useWalletLogin } from "@hooks/useWalletLogin";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -56,7 +56,6 @@ const token = getAccessToken();
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   // const {LoginUser, token} = useContext(UserInfoContext);
-
 
   useEffect(() => {
     // Scroll listenerblock: "start"
@@ -107,7 +106,6 @@ const token = getAccessToken();
     }
   };
 
-
   const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
@@ -145,7 +143,7 @@ const {login} = useWalletLogin(LoginUser)
 
   return (
     <>
-    {LoginUser?.isPending && <FullPageLoader/>}
+      {LoginUser?.isPending && <FullPageLoader />}
       <header
         className={`py-6 w-full z-30 transition-all duration-500 ${
           isSticky
@@ -156,17 +154,16 @@ const {login} = useWalletLogin(LoginUser)
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div className="logo">
-             <NavLink to={"/"}>
+              <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
                   src="/assets/images/Logo.png"
                   alt="logo"
                 />
-               </NavLink>
+              </NavLink>
             </div>
 
             <div className="flex items-center justify-between gap-7">
-             
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
                 <a href="https://t.me/pandxdao" target="blank">
                   <img
@@ -176,7 +173,7 @@ const {login} = useWalletLogin(LoginUser)
                   />
                 </a>
               </div>
-              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
+              <div className="hidden  cursor-pointer hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
                 <img
                   className="w-[25px] h-[25px]"
                   src="/assets/images/telegram.svg"
@@ -190,18 +187,17 @@ const {login} = useWalletLogin(LoginUser)
                   onClick={() => {
                     // isConnected ? handleDisconnet() : open();
                     // setClickedOnConnect(true);
-                    if(isConnected){
+                    if (isConnected) {
                       handleDisconnet();
-                    }
-                    else{
+                    } else {
                       // open();
                       //  setClickedOnConnect(true);
-                      login()
+                      login();
                     }
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  {(isConnected) ? "Disconnect" : " Connect"}
+                  {isConnected ? "Disconnect" : " Connect"}
                 </button>
                 {/* 
                 <NavLink to={"/StakingPage"}>
@@ -210,7 +206,7 @@ const {login} = useWalletLogin(LoginUser)
                     Staking
                   </button>
                 </NavLink> */}
-                {(isConnected && token )&& (
+                {isConnected && token && (
                   <NavLink to={"/StakingPage"}>
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
@@ -224,7 +220,6 @@ const {login} = useWalletLogin(LoginUser)
                   className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-
                   Sign up
                 </button>
 
@@ -275,8 +270,9 @@ const {login} = useWalletLogin(LoginUser)
                     className="text-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("home");
                           setOpenMenu(false);
@@ -286,8 +282,9 @@ const {login} = useWalletLogin(LoginUser)
                         Home
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14">
                       <button
+                        className=" cursor-pointer"
                         onClick={() => {
                           scrollTo("about");
                           setOpenMenu(false);
@@ -296,8 +293,9 @@ const {login} = useWalletLogin(LoginUser)
                         About
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("tokenomics");
                           setOpenMenu(false);
@@ -306,8 +304,9 @@ const {login} = useWalletLogin(LoginUser)
                         Tokenomics
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("getStarted");
                           setOpenMenu(false);
@@ -316,8 +315,9 @@ const {login} = useWalletLogin(LoginUser)
                         Get Started
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14">
                       <button
+                        className=" cursor-pointer"
                         onClick={() => {
                           scrollTo("roadmap");
                           setOpenMenu(false);
@@ -327,21 +327,19 @@ const {login} = useWalletLogin(LoginUser)
                       </button>
                     </li>
                   </ul>
-                  <button 
-                  onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
-                >
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  Sign up
-                </button>
+                  <button
+                    onClick={() => setOpenLoginModal(true)}
+                    className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
+                  >
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Sign up
+                  </button>
                   <a
                     className="flex items-center justify-center lg:hidden"
                     href=" https://swap.qerra.network/"
                     target="blank"
-                  >
-                  
-                  </a>
-                  {(isLoggedIn && token) && (
+                  ></a>
+                  {isLoggedIn && token && (
                     <NavLink
                       to={isConnected ? "/StakingPage" : "/"}
                       className={
@@ -354,21 +352,20 @@ const {login} = useWalletLogin(LoginUser)
                       </button>
                     </NavLink>
                   )}
-                <button
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
-                  onClick={() => {
-                    isConnected ? handleDisconnet() : open();
-                    setClickedOnConnect(true);
-                  }}
-                >
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  {(isConnected) ? "Disconnect" : " Connect"}
-                </button>
+                  <button
+                    className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
+                    onClick={() => {
+                      isConnected ? handleDisconnet() : open();
+                      setClickedOnConnect(true);
+                    }}
+                  >
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    {isConnected ? "Disconnect" : " Connect"}
+                  </button>
                   <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
-                      <img src="/assets/images/panda.svg" alt="panda" />
-                      Buy $Pandx
-                    </button>
-                    
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Buy $Pandx
+                  </button>
                 </div>
               )}
             </div>
