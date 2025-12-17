@@ -11,7 +11,6 @@ import ScrollToTop from "@components/ui/Home/ScrollToTop"
 import { useRef ,useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import HomePopup from "@components/HomePopup"
-import { useLocation } from "react-router-dom"
 const Home = () => {
    const location = useLocation();
   const aboutRef = useRef(null);
