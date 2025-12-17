@@ -9,6 +9,7 @@ import LoginPage from "@pages/LoginPage";
 import TermAndCondition from "@components/TermAndCondition";
 import { Component } from "@amcharts/amcharts4/core";
 import HomePopup from "@components/HomePopup";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 
@@ -61,8 +62,10 @@ export default function AppRoutes (){
         <div>
             <Routes>
                 {Router}
+                <Route element={<ProtectedRoute/>}>
                 <Route element={<StakingHeader/>}>
                 {stakeRouter}
+                </Route>
                 </Route>
                 <Route path="/terms-and-conditions" element={<TermAndCondition />} />
                 </Routes>

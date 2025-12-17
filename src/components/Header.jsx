@@ -25,7 +25,7 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-  const scrollTo = (section) => {
+   const scrollTo = (section) => {
   const refs = { home: homeRef, about: aboutRef, tokenomics: tokenomicsRef, getStarted: getStartedRef, roadmap: roadmapRef };
   const element = refs[section]?.current;
 
@@ -42,8 +42,7 @@ const Header = ({
 };
 
 
-
-
+const token = getAccessToken();
   const { open, close } = useAppKit();
   const { isConnected, address } = useAppKitAccount();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -116,29 +115,32 @@ const Header = ({
       toast.success(data?.message);
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-
-      const token = getAccessToken();
-
-      if (token) {
-        setIsLoggedIn(true);
-        navigate("/StakingPage");
+     
+     const token = getAccessToken()
+    
+      if(token){
+         setIsLoggedIn(true);
+      navigate("/StakingPage", {replace : true});
       }
+       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
     },
     onError: (error) => {
-      console.log("whats the erorororooring : ", error);
-      toast.error(error?.message);
-      disconnect();
+      console.log("whats the erorororooring : ", error)
+        toast.error(error?.message || "Error Occurred");
+        disconnect();
+ 
     },
   });
 
-  const { login } = useWalletLogin(LoginUser);
+  const logoutSession = sessionStorage.getItem("LOGOUT_IN_PROGRESS");
+  console.log("what i slogout seesion : ", logoutSession, token);
 
-  const token = getAccessToken();
+  
 
-  console.log(
-    "what is tokenggggggggggggggggggggggggggggggggggggggggggggggggggggg",
-    token
-  );
+const {login} = useWalletLogin(LoginUser)
+
+
+
   return (
     <>
       {LoginUser?.isPending && <FullPageLoader />}

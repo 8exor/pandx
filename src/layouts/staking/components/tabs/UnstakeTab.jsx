@@ -54,7 +54,7 @@ export default function UnstakeTab() {
     },
     onError: (error) => {
       toast.error(error?.message, {
-        duration: 700,
+        duration: 1000,
       });
     },
   });

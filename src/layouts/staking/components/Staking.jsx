@@ -6,7 +6,7 @@ import axiosInstance from "@utils/axiosInstance";
 import StakingHead from "./StakingHead";
 import { useAppKitAccount } from "@reown/appkit/react";
 import Tabs from "./Tabs";
-import CopyToClipBaord from "@hooks/CopyToClipBoard";
+
 import StakingTable from "./StakingTable";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { taskNote } from "@constants/index";
 import TableSkeleton from "./TableSkelton";
 import { useTimerCounter } from "@hooks/useTimeCounter";
+import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 
 
 export default function Staking() {
@@ -26,7 +27,7 @@ export default function Staking() {
     "Status",
     "$QRAsdfsfdsfsdfsdf AirDrop",
   ];
-  const [handleCopy] = CopyToClipBaord();
+  const [handleCopy] = useCopyToClipBaord();
 
   const { userData } = useContext(UserInfoContext);
   const location = useLocation();
@@ -60,7 +61,7 @@ export default function Staking() {
       ],
     },
     compound: {
-      headers: ["S N", "Date", "Stake Amt $", "Status", "Total Withdrawal"],
+      headers: ["S N", "Date", "Compound Amt $", "Status", "Total Withdrawal"],
     },
     p2p: {
       headers: ["S N", "Date", "username", "P2P Amt $", "Type", "Txn_hash", "Status", "Total Withdrawal"],
@@ -107,10 +108,10 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
       <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
           <span className="block text-sm font-normal text-center sm:hidden blink-text">
        INVITE 3 – GET 3% BOOSTX IN 
-       <span className="block">{`${totalHours} : ${minutes} : ${seconds}`}</span>
+       <span className="block">{`${totalHours}h : ${minutes}s : ${seconds}m`}</span>
         </span>
         <span className="hidden font-normal text-center sm:block blink-text">
-       INVITE 3 – GET 3% BOOSTX IN {`${totalHours} : ${minutes} : ${seconds}`}
+       INVITE 3 – GET 3% BOOSTX IN {`${totalHours}h : ${minutes}s : ${seconds}m`}
         </span>
       </div>
       <StakingHead />

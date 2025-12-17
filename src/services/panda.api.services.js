@@ -27,4 +27,6 @@ export const REPORTS = {
   rankInfo: "report/rank-info",
   withdrawalReport: "report/withdrawal-report",
   p2pReport : "report/p2p-report",
+  compoundReport : "report/compound-report",
+  unstakeReport : "report/unstake-report"
 };

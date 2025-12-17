@@ -28,7 +28,6 @@ export default function Compound() {
       toast.error(error?.message, {
         duration: 700,
       });
-      setCompoundAmount("");
       refetch();
     },
   });
@@ -56,7 +55,7 @@ export default function Compound() {
         <p className="text-center  w-[60px] sm:w-full  sm:text-left">
           Avl $
           {userData?.data?.withdrawable_balance
-            ? Number(userData?.data?.withdrawable_balance).toFixed(2)
+            ? parseFloat(parseFloat(userData?.data?.withdrawable_balance).toFixed(2))
             : 0}
         </p>
 
