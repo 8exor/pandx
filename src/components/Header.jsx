@@ -17,7 +17,7 @@ import toast from "react-hot-toast";
 import { getAccessToken, setAccessToken } from "@utils/Session";
 import FullPageLoader from "@hooks/FullPageLoader";
 import { UserInfoContext } from "@contexts/UserInfoContext";
-import { useWalletLogin} from "@hooks/useWalletLogin";
+import { useWalletLogin } from "@hooks/useWalletLogin";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -25,40 +25,24 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-  const scrollTo = (section, offset = 0, isCenter = false) => {
-    const refs = {
-      home: homeRef,
-      about: aboutRef,
-      tokenomics: tokenomicsRef,
-      getStarted: getStartedRef,
-      roadmap: roadmapRef,
-    };
+  const scrollTo = (section) => {
+  const refs = { home: homeRef, about: aboutRef, tokenomics: tokenomicsRef, getStarted: getStartedRef, roadmap: roadmapRef };
+  const element = refs[section]?.current;
 
-    const element = refs[section].current;
+  if (element) {
+    // Section exists → scroll to it
+    window.scrollTo({
+      top: element.getBoundingClientRect().top + window.pageYOffset - 100,
+      behavior: "smooth",
+    });
+  } else {
+    // Section doesn’t exist → navigate to Home page and scroll later
+    navigate("/", { state: { scrollTo: section } });
+  }
+};
 
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset - 100; // Get position relative to the document
 
-      let offsetPosition;
 
-      if (isCenter) {
-        // Calculate center position of the section in the viewport
-        const centerOffset =
-          window.innerHeight / 0 - element.clientHeight / 200;
-        offsetPosition = elementPosition - centerOffset;
-      } else {
-        // Apply custom offset provided by the user
-        offsetPosition = elementPosition - offset;
-      }
-
-      // Scroll to the calculated position
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth", // Smooth scroll
-      });
-    }
-  };
 
   const { open, close } = useAppKit();
   const { isConnected, address } = useAppKitAccount();
@@ -73,7 +57,6 @@ const Header = ({
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   // const {LoginUser, token} = useContext(UserInfoContext);
-const [token, setToken] = useState("")
 
   useEffect(() => {
     // Scroll listenerblock: "start"
@@ -124,7 +107,6 @@ const [token, setToken] = useState("")
     }
   };
 
-
   const LoginUser = useMutation({
     mutationFn: async (formData) => {
       const { data } = await axiosInstance.post(AUTH?.login, formData);
@@ -134,30 +116,32 @@ const [token, setToken] = useState("")
       toast.success(data?.message);
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-     
-      const token = await getAccessToken();
-      setToken(token);
-      console.log("what token we accessing or getting tell meeeeee..",token);
-      if(token){
-         setIsLoggedIn(true);
-      navigate("/StakingPage");
+
+      const token = getAccessToken();
+
+      if (token) {
+        setIsLoggedIn(true);
+        navigate("/StakingPage");
       }
     },
     onError: (error) => {
-      console.log("whats the erorororooring : ", error)
-        toast.error(error?.message);
-        disconnect();
- 
+      console.log("whats the erorororooring : ", error);
+      toast.error(error?.message);
+      disconnect();
     },
   });
 
-const {login} = useWalletLogin(LoginUser)
+  const { login } = useWalletLogin(LoginUser);
 
-console.log("what is token and why are not we getting it color:yellow",token);
+  const token = getAccessToken();
 
+  console.log(
+    "what is tokenggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+    token
+  );
   return (
     <>
-    {LoginUser?.isPending && <FullPageLoader/>}
+      {LoginUser?.isPending && <FullPageLoader />}
       <header
         className={`py-6 w-full z-30 transition-all duration-500 ${
           isSticky
@@ -168,17 +152,16 @@ console.log("what is token and why are not we getting it color:yellow",token);
         <nav className="mycontainer ">
           <div className="flex items-center justify-between">
             <div className="logo">
-             <NavLink to={"/"}>
+              <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
                   src="/assets/images/Logo.png"
                   alt="logo"
                 />
-               </NavLink>
+              </NavLink>
             </div>
 
             <div className="flex items-center justify-between gap-7">
-             
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
                 <a href="https://t.me/pandxdao" target="blank">
                   <img
@@ -188,7 +171,7 @@ console.log("what is token and why are not we getting it color:yellow",token);
                   />
                 </a>
               </div>
-              <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
+              <div className="hidden  cursor-pointer hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
                 <img
                   className="w-[25px] h-[25px]"
                   src="/assets/images/telegram.svg"
@@ -202,18 +185,17 @@ console.log("what is token and why are not we getting it color:yellow",token);
                   onClick={() => {
                     // isConnected ? handleDisconnet() : open();
                     // setClickedOnConnect(true);
-                    if(isConnected){
+                    if (isConnected) {
                       handleDisconnet();
-                    }
-                    else{
+                    } else {
                       // open();
                       //  setClickedOnConnect(true);
-                      login()
+                      login();
                     }
                   }}
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-                  {(isConnected) ? "Disconnect" : " Connect"}
+                  {isConnected ? "Disconnect" : " Connect"}
                 </button>
                 {/* 
                 <NavLink to={"/StakingPage"}>
@@ -222,7 +204,7 @@ console.log("what is token and why are not we getting it color:yellow",token);
                     Staking
                   </button>
                 </NavLink> */}
-                {(isConnected && token )&& (
+                {isConnected && token && (
                   <NavLink to={"/StakingPage"}>
                     <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary">
                       <img src="/assets/images/panda.svg" alt="panda" />
@@ -236,7 +218,6 @@ console.log("what is token and why are not we getting it color:yellow",token);
                   className="flex gap-2 px-6 py-3 text-lg text-white btn-primary"
                 >
                   <img src="/assets/images/panda.svg" alt="panda" />
-
                   Sign up
                 </button>
 
@@ -287,8 +268,9 @@ console.log("what is token and why are not we getting it color:yellow",token);
                     className="text-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("home");
                           setOpenMenu(false);
@@ -298,8 +280,9 @@ console.log("what is token and why are not we getting it color:yellow",token);
                         Home
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14">
                       <button
+                        className=" cursor-pointer"
                         onClick={() => {
                           scrollTo("about");
                           setOpenMenu(false);
@@ -308,8 +291,9 @@ console.log("what is token and why are not we getting it color:yellow",token);
                         About
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("tokenomics");
                           setOpenMenu(false);
@@ -318,8 +302,9 @@ console.log("what is token and why are not we getting it color:yellow",token);
                         Tokenomics
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14 ">
                       <button
+                        className="cursor-pointer"
                         onClick={() => {
                           scrollTo("getStarted");
                           setOpenMenu(false);
@@ -328,8 +313,9 @@ console.log("what is token and why are not we getting it color:yellow",token);
                         Get Started
                       </button>
                     </li>
-                    <li className="text-3xl text-[#141414] leading-14 cursor-pointer">
+                    <li className="text-3xl text-[#141414] leading-14">
                       <button
+                        className=" cursor-pointer"
                         onClick={() => {
                           scrollTo("roadmap");
                           setOpenMenu(false);
@@ -339,21 +325,19 @@ console.log("what is token and why are not we getting it color:yellow",token);
                       </button>
                     </li>
                   </ul>
-                  <button 
-                  onClick={() => setOpenLoginModal(true)}
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
-                >
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  Sign up
-                </button>
+                  <button
+                    onClick={() => setOpenLoginModal(true)}
+                    className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg text-white cursor-pointer lg:hidden btn-primary"
+                  >
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Sign up
+                  </button>
                   <a
                     className="flex items-center justify-center lg:hidden"
                     href=" https://swap.qerra.network/"
                     target="blank"
-                  >
-                  
-                  </a>
-                  {(isLoggedIn && token) && (
+                  ></a>
+                  {isLoggedIn && token && (
                     <NavLink
                       to={isConnected ? "/StakingPage" : "/"}
                       className={
@@ -366,21 +350,20 @@ console.log("what is token and why are not we getting it color:yellow",token);
                       </button>
                     </NavLink>
                   )}
-                <button
-                  className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
-                  onClick={() => {
-                    isConnected ? handleDisconnet() : open();
-                    setClickedOnConnect(true);
-                  }}
-                >
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  {(isConnected) ? "Disconnect" : " Connect"}
-                </button>
+                  <button
+                    className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
+                    onClick={() => {
+                      isConnected ? handleDisconnet() : open();
+                      setClickedOnConnect(true);
+                    }}
+                  >
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    {isConnected ? "Disconnect" : " Connect"}
+                  </button>
                   <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
-                      <img src="/assets/images/panda.svg" alt="panda" />
-                      Buy $Pandx
-                    </button>
-                    
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Buy $Pandx
+                  </button>
                 </div>
               )}
             </div>

@@ -153,8 +153,6 @@ const HomePopup = () => {
       )}
       {/* offer popup */}
 
-      <div></div>
-
       {showSecondPopup && (
         <div
           className="fixed z-50 w-full h-full left-0 top-0 bg-[#00000029] flex justify-center items-center"
@@ -165,15 +163,16 @@ const HomePopup = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-2xl leading-8 text-white mb-3">
-              FREE REGISTRATIONS WILL BE START FROM SUNDAY 21 DEC 2025. BE
-              READY!
+              FREE REGISTRATIONS WILL BE START FROM SUNDAY <br/> 21 DEC 2025 at 01:00 pm
+             
             </h2>
-            <div>
-              <h2 className="text-2xl text-white mb-3">{timeLeft}</h2>
+            <div className="mt-3 w-fit mx-auto border-3 rounded-lg  p-3 border-[#6ca632]">
+              <span className="text-2xl
+              blink-text  text-white mb-3">{timeLeft} </span>
             </div>
             <button
               onClick={() => setShowSecondPopup(false)}
-              className="px-6  py-3 text-white btn-primary"
+              className="px-6 mt-5 py-3 text-white btn-primary"
             >
               Close
             </button>
