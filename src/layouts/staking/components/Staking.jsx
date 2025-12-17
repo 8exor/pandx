@@ -63,7 +63,7 @@ export default function Staking() {
       headers: ["S N", "Date", "Stake Amt $", "Status", "Total Withdrawal"],
     },
     p2p: {
-      headers: ["S N", "Date", "P2P Amt $", "Status", "Total Withdrawal"],
+      headers: ["S N", "Date", "username", "P2P Amt $", "Type", "Txn_hash", "Status", "Total Withdrawal"],
     },
     incomeReports: {
       DAILY$: ["S N", "Date", "Amt $", "Note"],
@@ -145,12 +145,13 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
             </div>
 
             {/* desktop marqee */}
+     
             <button
               className={`${
-                userData?.data?.is_active ? "btn-primary " : "btn-red"
+                (!userData?.data?.is_active || userData?.data?.is_deactivated) ? "btn-red" : "btn-primary"
               } flex-1  rounded-full text-sm  py-2 px-1 blink-text`}
             >
-              {userData?.data?.is_active ? "Active" : "Inactive"}
+              { (!userData?.data?.is_active || userData?.data?.is_deactivated) ? "Inactive" : "Active"}
             </button>
           </div>
 
@@ -254,4 +255,3 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
     </div>
   );
 }
-

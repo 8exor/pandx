@@ -25,4 +25,6 @@ export const REPORTS = {
   profile: "report/profile",
   teamInfo: "report/team-info",
   rankInfo: "report/rank-info",
+  withdrawalReport: "report/withdrawal-report",
+  p2pReport : "report/p2p-report",
 };
