@@ -48,7 +48,7 @@ try {
   },
   onError : (error)=>{
     toast.error(error?.message,{
-                    duration : 700
+                    duration : 1000
                   });
     console.log(error)
   }
@@ -60,7 +60,7 @@ const withdrawalHash = useMutation({
     return data;
   },
   onSuccess : async(data)=>{
-    toast.success(data?.message);
+    // toast.success(data?.message);
     setWithdrawalAmount("");
      refetch();
   },
@@ -96,7 +96,7 @@ const withdrawalHash = useMutation({
             <p>Avl</p>
             <div className="flex items-center gap-1">
                 <p>
-              ${userData?.data?.withdrawable_balance ? Number(userData?.data?.withdrawable_balance).toFixed(2) : 0}
+              ${userData?.data?.withdrawable_balance ? parseFloat(parseFloat(userData?.data?.withdrawable_balance).toFixed(2)) : 0}
             </p>
             </div>
            

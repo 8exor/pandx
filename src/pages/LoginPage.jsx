@@ -16,6 +16,7 @@ import TypeWriterEffect from "@hooks/TypeWriterEffect";
 
 import Gift from "@layouts/staking/components/Gift";
 import { useWalletLogin } from "@hooks/useWalletLogin";
+import { replace } from "@amcharts/amcharts4/.internal/core/utils/Array";
 
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
@@ -164,18 +165,15 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       }
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-      navigate("/StakingPage", { state: userName });
+       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
+      navigate("/StakingPage", {replace : true});
       setOpenLoginModal(false);
       // setClickedOnRegister(false);
       console.log("why are you disconnecting:::::::",isConnected)
     },
     onError: (error) => {
-      if (error?.status === 0) {
-        toast.error(error?.message);
-        // disconnect();
-      }
-      console.log("why are you disconnecting in eroroor:::::::",isConnected)
-
+        toast.error(error?.message || "Error Occurred");
+        disconnect();
     },
     
   });
@@ -256,8 +254,6 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               type="text"
               className="w-full text-black placeholder-black outline-none"
               placeholder="Choose Username"
-              maxLength={9}
-              minLength={4}
               value={userName}
               onChange={(e) => {setUserName(e.target.value); setShowError({...showError, userName : false})}}
             />
@@ -297,8 +293,6 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               className="w-full text-black placeholder-black outline-none"
               placeholder="*Enter Referral Code"
               value={referralCode}
-              minLength={4}
-              maxLength={9}
               onChange={(e) => {setReferralCode(e.target.value); setShowError({...showError, referralCode : false})}}
             />
             <button

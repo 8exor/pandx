@@ -25,41 +25,24 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-  const scrollTo = (section, offset = 0, isCenter = false) => {
-    const refs = {
-      home: homeRef,
-      about: aboutRef,
-      tokenomics: tokenomicsRef,
-      getStarted: getStartedRef,
-      roadmap: roadmapRef,
-    };
+   const scrollTo = (section) => {
+  const refs = { home: homeRef, about: aboutRef, tokenomics: tokenomicsRef, getStarted: getStartedRef, roadmap: roadmapRef };
+  const element = refs[section]?.current;
 
-    const element = refs[section].current;
+  if (element) {
+    // Section exists → scroll to it
+    window.scrollTo({
+      top: element.getBoundingClientRect().top + window.pageYOffset - 100,
+      behavior: "smooth",
+    });
+  } else {
+    // Section doesn’t exist → navigate to Home page and scroll later
+    navigate("/", { state: { scrollTo: section } });
+  }
+};
 
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset - 100; // Get position relative to the document
 
-      let offsetPosition;
-
-      if (isCenter) {
-        // Calculate center position of the section in the viewport
-        const centerOffset =
-          window.innerHeight / 0 - element.clientHeight / 200;
-        offsetPosition = elementPosition - centerOffset;
-      } else {
-        // Apply custom offset provided by the user
-        offsetPosition = elementPosition - offset;
-      }
-
-      // Scroll to the calculated position
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth", // Smooth scroll
-      });
-    }
-  };
-
+const token = getAccessToken();
   const { open, close } = useAppKit();
   const { isConnected, address } = useAppKitAccount();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -139,22 +122,27 @@ const Header = ({
     
       if(token){
          setIsLoggedIn(true);
-      navigate("/StakingPage");
+      navigate("/StakingPage", {replace : true});
       }
+       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
     },
     onError: (error) => {
       console.log("whats the erorororooring : ", error)
-        toast.error(error?.message);
+        toast.error(error?.message || "Error Occurred");
         disconnect();
  
     },
   });
 
+  const logoutSession = sessionStorage.getItem("LOGOUT_IN_PROGRESS");
+  console.log("what i slogout seesion : ", logoutSession, token);
+
+  
+
 const {login} = useWalletLogin(LoginUser)
 
-const token = getAccessToken();
 
-console.log("what is tokenggggggggggggggggggggggggggggggggggggggggggggggggggggg", token)
+
   return (
     <>
     {LoginUser?.isPending && <FullPageLoader/>}

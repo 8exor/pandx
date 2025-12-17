@@ -8,12 +8,12 @@ import {
 } from "@reown/appkit/react";
 import { ethers } from "ethers";
 import { UserInfoContext } from "@contexts/UserInfoContext";
-import CopyToClipBaord from "@hooks/CopyToClipBoard";
 import { setAccessToken } from "@utils/Session";
+import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 
 const DashboardHeader = () => {
   const { address } = useAppKitAccount();
-  const [isCopied, handleCopy] = CopyToClipBaord();
+  const [isCopied, handleCopy] = useCopyToClipBaord();
   const { userData } = useContext(UserInfoContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [stakePopup, setStakePopup] = useState(false);

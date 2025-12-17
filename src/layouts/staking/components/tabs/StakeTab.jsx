@@ -9,6 +9,7 @@ import { Contract, ethers } from "ethers";
 import Abi from "@utils/abi/tokenAllowance.abi.json";
 import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
 import { UserInfoContext } from "@contexts/UserInfoContext";
+import FullPageLoader from "@hooks/FullPageLoader";
 
 export default function StakeTab() {
   const [stakeAmount, setStakeAmount] = useState("");
@@ -84,7 +85,7 @@ export default function StakeTab() {
     },
     onError: (error) => {
       toast.error(error?.message || "Error occurred", {
-        duration: 700,
+        duration: 1000,
       });
     },
   });
@@ -98,14 +99,14 @@ export default function StakeTab() {
       return data;
     },
     onSuccess: async (data) => {
-      toast.success(data?.message);
+      // toast.success(data?.message);
       setStakeAmount("");
       refetch();
       console.log("what s up bro are you hanging out here:::::::");
     },
     onError: (error) => {
       toast.error(error?.message || "Error Occurred", {
-        duration: 700,
+        duration: 1000,
       });
       setStakeAmount("");
       refetch();
@@ -113,7 +114,9 @@ export default function StakeTab() {
   });
 
   return (
-    <div className=" mt-1 mb-1 lg:px-15 ">
+  <>
+  {staking?.isPending && <FullPageLoader/>}
+    <div className="mt-1 mb-1 lg:px-15">
       {/* <div className="flex flex-col justify-between gap-4 mb-3 sm:flex-row">
           <div className="w-full sm:max-w-[150px]">
             <p className="text-sm sm:text-base">$PANDX in wallet</p>
@@ -154,12 +157,12 @@ export default function StakeTab() {
       {/* <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-full sm:max-w-[620px] mx-auto bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black gap-1"> */}
         <div className="flex items-center gap-2 bg-white px-2 py-3 lg:rounded-full rounded-lg border border-black justify-between w-full sm:px-[20px] gap-1">
          <div className="flex-1">
-           <div className="flex gap-1 items-center">
+           <div className="flex items-center gap-1">
             <p>Avl</p>
             <div className="flex items-center gap-1">
               <p className="text-end "> 
                 ${userData?.data?.wallet_balance
-                  ? Number(userData?.data?.wallet_balance).toFixed(2)
+                  ? parseFloat(parseFloat(userData?.data?.wallet_balance).toFixed(2))
                   : 0}
               </p>
             </div>
@@ -178,7 +181,7 @@ export default function StakeTab() {
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
               onClick={() =>
                 setStakeAmount(
-                  parseInt(userData?.data?.wallet_balance).toFixed(2)
+                  parseFloat(parseFloat(userData?.data?.wallet_balance).toFixed(2))
                 )
               }
             >
@@ -209,5 +212,6 @@ export default function StakeTab() {
         </button>
       </div>
     </div>
+    </>
   );
 }

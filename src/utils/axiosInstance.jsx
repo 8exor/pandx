@@ -4,6 +4,7 @@ import { deleteCookies, getAccessToken } from "./Session";
 import { useDisconnect } from "@reown/appkit/react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { logoutOnce } from "./logoutOnce";
 
 // console.log({ fffff: ENV.apiBaseUrl });
 
@@ -36,25 +37,20 @@ axiosInstance.interceptors.request.use(
   }
 );
 
+
+
 axiosInstance.interceptors.response.use(
   function (response) {
-    // console.log("Response:", response);
+ 
     return response;
   },
   async function (error) {
-    // const { disconnect } = useDisconnect();
-    if (error.response && error.response.status === 401) {
-      // await deleteCookies();
-      // const getToken = await getAccessToken();
-      // if (!getToken) {
-      //   disconnect();
-      // }
+ console.log("wja res[p stiaut amd eprpr : ", error.response.status)
+    if ( error.response.status &&  error.response.status === 401) {
+    
       console.error("Unauthorized, logging out...");
+      logoutOnce();
     }
-    // const token = getAccessToken();
-    // if(!token){
-    //   window.location.reload("/")
-    // }
     return Promise.reject(error?.response?.data);
   }
 );

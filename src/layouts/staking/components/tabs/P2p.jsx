@@ -18,6 +18,11 @@ export default function P2p() {
   const [p2pAmount, setp2pAmount] = useState("");
   const [userName, setUserName] = useState("");
   const { userData, refetch } = useContext(UserInfoContext);
+  const [isUserValidated, setIsUserValidated] = useState(false);
+  const [error, setError] = useState({
+    userName : false,
+    p2pAmount : false,
+  })
 
   const validateUserName = useMutation({
     mutationFn: async (formdata) => {
@@ -26,10 +31,11 @@ export default function P2p() {
     },
     onSuccess: (data) => {
       toast.success(data?.message);
+      setIsUserValidated(true);
     },
     onError: (error) => {
       toast.error(error?.message || "Invalid username", {
-        duration: 700,
+        duration: 1000,
       });
     },
   });
@@ -84,17 +90,15 @@ export default function P2p() {
       return data;
     },
     onSuccess: async (data) => {
-      toast.success(data?.message);
-      setp2pAmount("");
+      // toast.success(data?.message);
       setUserName("");
+      setp2pAmount("");
       refetch();
     },
     onError: (error) => {
       toast.error(error?.message || "Error Occurred", {
         duration: 700,
       });
-      setp2pAmount("");
-      setUserName("");
       refetch();
     },
   });
@@ -115,14 +119,23 @@ export default function P2p() {
     };
   }, [p2pTransaction?.isPending]);
 
+  useEffect(()=>{
+    setIsUserValidated(false);
+    setError({...error, userName : false})
+  },[userName])
+
+  useEffect(()=>{
+    setError({...error, p2pAmount : false})
+  },[p2pAmount])
+
   return (
     <>
     {p2pTransaction?.isPending && <FullPageLoader/>}
     <div className="w-full px-2 mt-5 lg:px-15">
       <div className="grid items-center justify-between grid-cols-1 gap-2 lg:grid-cols-1 xl:grid-cols-2 ">
-        <div className="flex gap-2  p-2 bg-white border border-black rounded-lg p-[16px] lg:rounded-full ">
+        <div className={`flex gap-2   bg-white border border-black rounded-lg p-[12px] lg:rounded-full ${error?.userName && "border-red-600"} `}>
           <input
-            type="number"
+            type="text"
             placeholder="Enter UserName"
             className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-2"
             onChange={(e) => setUserName(e.target.value)}
@@ -131,7 +144,7 @@ export default function P2p() {
             className="bg-[#72A314] btn-primary text-sm w-full py-2 rounded-full text-white font-extralight"
             onClick={() => validateUserName.mutate({ username: userName })}
           >
-            {validateUserName?.isSuccess ? (
+            {isUserValidated ? (
               <img
                 className="w-5 mx-auto rounded-full blink-text"
                 src="/assets/images/check.png"
@@ -142,11 +155,11 @@ export default function P2p() {
           </button>
         </div>
 
-        <div className="flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full ">
+        <div className={`flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full ${error?.p2pAmount && "border-red-600"} `}>
           <p className="text-sm text-center sm:text-left">
             Avl $
             {userData?.data?.withdrawable_balance
-              ? Number(userData?.data?.withdrawable_balance).toFixed(2)
+              ?parseFloat(parseFloat(userData?.data?.withdrawable_balance).toFixed(2))
               : 0}
           </p>
           <div className="relative w-[170px] lg:w-[60%] sm:w-[200px] m-auto">
@@ -177,11 +190,23 @@ export default function P2p() {
       <div className="flex justify-center mb-4">
         <button
           className={`bg-[#72A314] btn-primary  text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight ${userData?.data?.is_deactivated && "grayscale"}`}
-          onClick={() =>
+          onClick={() => {
+            if(!userName && !p2pAmount){
+              setError({...error, userName : true, p2pAmount : true})
+            }
+            else if(!userName){
+              setError({...error, userName : true})
+            }
+            else if(!p2pAmount){
+              setError({...error, p2pAmount : true})
+            }
+            else{
             p2pTransaction.mutate({
               username: userName,
               token_amount: p2pAmount,
             })
+          }
+          }
           }
           disabled={p2pTransaction?.isPending && true || (userData?.data?.is_deactivated)&&true}
         >
