@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import ScrollToTop from "./ui/Home/ScrollToTop";
+import { Link } from "react-router-dom";
 
 const TermAndCondition = () => {
   return (
@@ -319,6 +320,9 @@ const TermAndCondition = () => {
               THE ABOVE TERMS AND CONDITIONS.
             </li>
           </ol>
+           <Link className="justify-center flex" to={"/"}>
+               <button className="btn-primary px-4 py-2 mb-7">I Understand Back to Home</button>
+               </Link>
           <ScrollToTop/>
         </div>
       </div>
