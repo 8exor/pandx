@@ -4,6 +4,12 @@ import "aos/dist/aos.css";
 import { headerLogos, taskNote } from "@constants/index";
 
 const Banner = ({ aboutRef, homeRef }) => {
+  const truncateMiddle = (str, max) => {
+    if (str.length <= max) return str;
+    const keep = Math.floor(max / 2);
+    return `${str.slice(0, keep)} … ${str.slice(str.length - keep)}`;
+  };
+
   const [copied, setCopied] = useState(false);
   const copyText = () => {
     navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
@@ -17,20 +23,21 @@ const Banner = ({ aboutRef, homeRef }) => {
       easing: "ease-in-out",
     });
   }, []);
+  const address = "0x2170Ed0880ac9A755fd29B2688956BD959F933F8";
 
   return (
     <>
-
       <div ref={homeRef} className="pt-[96px] bg-[#edffe1]">
         <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
-
           <marquee behavior="" scrollamount="10" direction="">
             {taskNote?.des2}
           </marquee>
         </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-          <ul className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-20 left-[1.5%]" data-aos="slide-up">
-
+          <ul
+            className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-20 left-[1.5%]"
+            data-aos="slide-up"
+          >
             {headerLogos.map((item, index) => (
               <li
                 key={index}
@@ -80,17 +87,34 @@ const Banner = ({ aboutRef, homeRef }) => {
                   The People’s Pandx Coin
                 </h1>
                 <div className="text-[#4c4c4c] text-center text-xl sm:pt-6 pt-4 max-w-[620px] w-full m-auto">
-                  <p className="font-bold">  Experience Redefined Real DeFi Staking Protocol — Powered by IPFS
-
+                  <p className="font-bold">
+                    {" "}
+                    Experience Redefined Real DeFi Staking Protocol — Powered by
+                    IPFS
                   </p>
                   <p className="">
-                    Welcome to a movement where finance meets fun and community drives growth — where staking meets influence, earn more, grow faster, and win together.
+                    Welcome to a movement where finance meets fun and community
+                    drives growth — where staking meets influence, earn more,
+                    grow faster, and win together.
                   </p>
                 </div>
-                <a href="https://swap.qerra.network/" target="blank" className="flex justify-center pt-8"> <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
-                  <img src="/assets/images/panda.svg" alt="panda" />
-                  Buy $PANDX <img className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]" src="/assets/images/qerra.png" alt="panda" />qerraSWAP
-                </button></a>
+                <a
+                  href="https://swap.qerra.network/"
+                  target="blank"
+                  className="flex justify-center pt-8"
+                >
+                  {" "}
+                  <button className="flex gap-2 sm:px-6 [@media_(max-width:330px)]:text-[13px] px-2 py-3 text-sm sm:text-lg items-center  text-white btn-primary justify-center">
+                    <img src="/assets/images/panda.svg" alt="panda" />
+                    Buy $PANDX{" "}
+                    <img
+                      className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
+                      src="/assets/images/qerra.png"
+                      alt="panda"
+                    />
+                    qerraSWAP
+                  </button>
+                </a>
               </div>
               <div className="relative w-full max-w-[1200px] md:mt-[40px] mx-auto">
                 {/* Floor Image */}
@@ -157,10 +181,7 @@ const Banner = ({ aboutRef, homeRef }) => {
             />
           </div>
           <div className="grid items-center justify-between grid-cols-1 gap-8 py-6 lg:grid-cols-1 xl:grid-cols-2 sm:py-20">
-            <div
-              className="animate"
-              data-aos="slide-up"
-            >
+            <div className="animate" data-aos="slide-up">
               <h2 className="lg:text-[82px] xl:text-left  text-[30px] text-center lg:text-center sm:text-[40px]   sm:leading-10 leading-20">
                 About Us
               </h2>
@@ -169,14 +190,16 @@ const Banner = ({ aboutRef, homeRef }) => {
                 and real-world muscle — fun, functional, and powered by a real
                 community
               </p>
-              <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-2xl flex-wrap lg:flex-nowrap">
-                <p className="text-center break-all">
-                  0x2170Ed0880ac9A755fd29B2688956BD959F933F8
+              <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap sm:flex-nowrap">
+                <p className=" border-2 font-bold text-sm !text-[#000000] border-[#78ad42] p-2 rounded-lg">
+                  $PANDX Contract{" "}
                 </p>
-
+                <p className="text-center">
+                  {`${address.substring(0, 10)}.......${address.substring(30, 48)}`}
+                </p>
                 <button
                   onClick={copyText}
-                  className="btn-primary !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
+                  className="btn-primary  !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   {copied ? "Copied" : "Copy"}
                 </button>

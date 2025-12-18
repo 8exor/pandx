@@ -35,7 +35,7 @@ const Trust = () => {
         alt="rectangle" 
       />
       <div className="absolute top-[44px] Sm:top-[30px] md:top-[80px] lg:top-[30%] z-2 inset-0 flex flex-col items-center justify-center px-[36px] lg:px-[52px]">
-        <h3 className="text-[18px] md:text-[24px] lg:text-[38px] text-center">Power by IPFS </h3>
+        <h3 className="text-[18px] md:text-[24px] lg:text-[38px] text-center">Powered by IPFS </h3>
         <p className="text-[14px] lg:text-[24px] md:text-[22px] text-center text-[#4c4c4c]">
         IPFS is a 100% Decentralized peer-to-peer system for storing and sharing files across the web – UNSTOPPABLE
         </p>
