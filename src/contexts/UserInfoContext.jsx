@@ -9,7 +9,7 @@ export const UserInfoContext = createContext(null);
 
 export const UserInfoProvider =({children})=>{
     const[isLogin, setLogin] = useState("");
-    const [incomeId, setIncomeId] = useState(1);
+    const [incomeId, setIncomeId] = useState(4);
      const { disconnect } = useDisconnect();
 
 const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuery({

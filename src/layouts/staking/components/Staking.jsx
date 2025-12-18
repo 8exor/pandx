@@ -34,7 +34,7 @@ export default function Staking() {
   // const [clikcedTab, setClickedTab] = useState("stake")
   const [activeTab, setActiveTab] = useState({
     mainTabs: "stake",
-    incomeTabs: "DAILY$",
+    incomeTabs: "TRIAL",
   });
 
   const tableConfig = {
@@ -67,11 +67,11 @@ export default function Staking() {
       headers: ["S N", "Date", "username", "P2P Amt $", "Type", "Txn_hash", "Status", "Total Withdrawal"],
     },
     incomeReports: {
-      DAILY$: ["S N", "Date", "Amt $", "Note"],
-      DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
-      BOOSTX: ["S N", "Date", "Amt $", "BOOSTX Status"],
-      LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
       TRIAL: ["S N", "Date", "Amt $", "Note"],
+      DAILY: ["S N", "Date", "Amt $", "Note"],
+      DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
+      LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
+      BOOSTX: ["S N", "Date", "Amt $", "BOOSTX Status"],
       "UNI-POOL": ["S N", "Date", "Username", "Amt $", "Note"],
     },
   };

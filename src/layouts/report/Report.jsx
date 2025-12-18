@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import TableSkeleton from '@layouts/staking/components/TableSkelton';
 import { LoaderIcon } from 'react-hot-toast';
 import Load from '@hooks/Load';
+import MaxCapProgress from '@layouts/staking/components/MaxCapProgress';
 
 const Report = () => {
   const {userData} = useContext(UserInfoContext);
@@ -43,23 +44,23 @@ const {data:teamData, isLoading:teamLoading, error:teamError} = useQuery({
     const reportPool = [
   {
     title: "Self Vol",
-    value: `${profileData && Number(profileData?.data?.total_invested).toFixed(2) || 0}`,
+    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.total_invested).toFixed(2)) || 0}`,
   },
   {
     title: "Rank",
     value:  ` ⭐${profileData && Number(profileData?.data?.rank_id).toFixed(0) || 0}`,
   },
   {
-    title: "Direct",
+    title: "Directs",
     value: `${profileData && Number(profileData?.data?.total_directs).toFixed(0) || 0}`,
   },
   {
     title: "Direct Vol",
-    value: `${teamData && Number(teamData?.data?.direct_business).toFixed(0) || 0}`
+    value: `$${teamData && Number(teamData?.data?.direct_business).toFixed(0) || 0}`
   },
   {
     title: "Direct Reward",
-    value: `${profileData && Number(profileData?.data?.direct_income)?.toFixed(2) || 0}`,
+    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.direct_income)?.toFixed(2) )|| 0}`,
   },
   {
     title: "Total Team",
@@ -67,43 +68,102 @@ const {data:teamData, isLoading:teamLoading, error:teamError} = useQuery({
   },
   {
     title: "Total Vol",
-    value: `${teamData && Number(teamData?.data?.total_business).toFixed(0) || 0}`,
+    value: `$${teamData && Number(teamData?.data?.total_business).toFixed(0) || 0}`,
   },
   {
-    title: "Level",
-    value: `${profileData && Number(profileData?.data?.eligible_level).toFixed(2) || 0}`,
+    title: "Level Open",
+    value: `${profileData && parseFloat(parseFloat(profileData?.data?.eligible_level).toFixed(2)) || 0}`,
   },
   {
     title: "Level Reward",
-    value: `${profileData && Number(profileData?.data?.level_income).toFixed(2) || 0}`,
+    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.level_income).toFixed(2)) || 0}`,
   },
   {
     title: "UNI-Pool Reward",
-    value: `${profileData && Number(profileData?.data?.uni_income).toFixed(2) || 0}`,
+    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.uni_income).toFixed(2)) || 0}`,
   },
   {
     title: "Capping",
-    value: `${profileData && Number((profileData?.data?.used_capping/profileData?.data?.total_capping)*100).toFixed(2) || 0}%`,
+    value: `${profileData && parseFloat(parseFloat((profileData?.data?.used_capping/profileData?.data?.total_capping)*100).toFixed(2)) || 0}%`,
   },
   {
     title: "Total Gain",
-    value: `${profileData && Number(profileData?.data?.total_income) || 0}`,
+    value: `$${profileData && Number(profileData?.data?.total_income) || 0}`,
   },
 ];
 
 const userInfoLoading = false;
   const tableDataKeys = [
-    "username",
-    "Self $",
-    "Directs",
-    "BoostX",
-    "Rank",
-    // "team vol",
     "Level",
-    "Total Team	",
-    "Team Vol",
-    // "Withdrawals"
+    "Active",
+    "In-Active",
+    "Stake Vol",
+    "Level Reward",
+    "Total Level Reward"
   ];
+
+  const levels = [
+    {
+      level : "1",
+      levelReward : "20%",
+    },
+     {
+      level : "2",
+      levelReward : "10%",
+    },
+     {
+      level : "3",
+      levelReward : "10%",
+    },
+     {
+      level : "4",
+      levelReward : "10%",
+    },
+     {
+      level : "5",
+      levelReward : "10%",
+    },
+     {
+      level : "6",
+      levelReward : "5%",
+    },
+      {
+      level : "7",
+      levelReward : "5%",
+    },
+      {
+      level : "8",
+      levelReward : "5%",
+    },
+      {
+      level : "9",
+      levelReward : "5%",
+    },
+      {
+      level : "10",
+      levelReward : "5%",
+    },
+      {
+      level : "11",
+      levelReward : "2%",
+    },
+       {
+      level : "12",
+      levelReward : "2%",
+    },
+       {
+      level : "13",
+      levelReward : "2%",
+    },
+       {
+      level : "14",
+      levelReward : "2%",
+    },
+       {
+      level : "15",
+      levelReward : "2%",
+    },
+  ]
 
   const updateState = (newState) => {
     setHistory((prev) => [...prev, getUserName]);
@@ -139,21 +199,28 @@ const userInfoLoading = false;
             reportPool?.map((pool, i)=>(
                 <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
                     <span>{pool?.title}</span>
-               {pool?.value ?     <span>{pool?.value}</span> : <Load/>}
-
+               {pool?.value ? <span>{pool?.title !="Capping" && pool?.value}</span> : <Load/>}
+                {pool?.title == "Capping" && <div className='mt-2'><MaxCapProgress maxCap={false} value={pool?.title == "Capping" && pool?.value} /></div>}
                 </div>
             ))
         }
       
-        <button className='p-4 px-5 rounded-md border border-black bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-2 md:col-span-1' onClick={()=>goBack()}>
+      <div className='p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center'>
+        Primary Team Volume 40%
+      </div>
+       <div className='p-4 md:p-2 px-5 lg:p-4 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center'>
+      Combined Team Volume 60%
+      </div>
+
+        <button className='p-4 px-5 rounded-md border border-black bg-[#c4ffa1] lg:col-start-2 lg:row-start-4 col-span-2 md:col-span-1' onClick={()=>goBack()}>
             Back
         </button>
    
-          <DatePicker value={date?.from} onChange={(newValue)=>setDate({...date, from : newValue})} label = "From Date" className='lg:col-start-3 lg:row-start-3 '   format="DD/MM/YYYY"/>
-          <DatePicker value={date?.to} onChange={(newValue)=>setDate({...date, to :newValue})} label = "To Date" className='lg:col-start-4 lg:row-start-3'  format="DD/MM/YYYY"/>
+          <DatePicker value={date?.from} onChange={(newValue)=>setDate({...date, from : newValue})} label = "From Date" className='lg:col-start-3 lg:row-start-4 '   format="DD/MM/YYYY"/>
+          <DatePicker value={date?.to} onChange={(newValue)=>setDate({...date, to :newValue})} label = "To Date" className='lg:col-start-4 lg:row-start-4'  format="DD/MM/YYYY"/>
        
        
-        <button className='p-4 px-2 rounded-md border border-black bg-[#c4ffa1] lg:col-start-5 rlg:ow-start-3 col-span-2 md:col-span-1'onClick={() => {
+        <button className='p-4 px-2 rounded-md border border-black bg-[#c4ffa1] lg:col-start-5 lg:row-start-4 col-span-2 md:col-span-1'onClick={() => {
               setGetUserName("");
               setDate({
                 from: null,
@@ -161,6 +228,13 @@ const userInfoLoading = false;
               });
               setRank("");
             }}>Reset</button>
+
+      <div className='col-span-2 mx-auto md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2'>
+        <button className='p-4 px-20 rounded-md border border-black bg-[#c4ffa1]'>
+          submit
+        </button>
+      </div>
+
      </div>
 
  
@@ -168,7 +242,7 @@ const userInfoLoading = false;
 
    <div
           id="scroll-bar"
-          className="w-full  py-10 overflow-x-auto overflow-y-auto max-h-[700px] cursor-pointer "
+          className="w-full   overflow-auto  max-h-[700px] cursor-pointer mt-10  "
         >
           <div className="w-full max-w-[100px] min-w-full ">
             {userInfoLoading ? (
@@ -176,13 +250,13 @@ const userInfoLoading = false;
                loading....
               </div>
             ) : (
-              <table className="w-full rounded-lg divide-background">
+              <table className="w-full border-collapse rounded-lg">
                 <thead className="sticky top-0 text-black ">
                   <tr className="flex justify-between w-full text-left text-black rounded-lg btn-primary">
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-center font-medium p-5 w-[160px]"
+                          className="capitalize text-center font-medium p-5 w-[260px]"
                           key={index}
                         >
                           {data}
@@ -191,18 +265,18 @@ const userInfoLoading = false;
                     })}
                   </tr>
                 </thead>
-              <tbody  className="flex flex-col mt-5 space-y-4 flex-nowrap">
+              <tbody  className="flex flex-col mt-5 space-y-4 overflow-y-auto flex-nowrap">
 
                   {
                   teamLoading ? 
                (   <TableSkeleton rows={3} cols={8}/>)
                    :
-                 ( teamData?.data?.child?.length == 0) ? (
+                 ( levels?.length == 0) ? (
                     <tr className='mx-auto text-center '>
                       <td colSpan={9} className="w-full p-10 rounded-lg bg-midgray hover:bg-border-color group/item">No Data Found</td>
                     </tr>
                   ) : (
-                    teamData?.data?.child?.map(
+                   levels?.map(
                       (
                         data,
                         index
@@ -214,40 +288,41 @@ const userInfoLoading = false;
                           >
                             <td
                               onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[150px] text-sm font-normal p-5 py-2   text-black text-center"
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
                             >
-                              {data?.child}
+                              {data?.level}
                             </td>
-                            <td className="capitalize w-full md:max-w-[150px] text-sm font-normal p-5 py-2 text-black text-center">
-                              $
-                              {Number(
-                                data?.child_user?.total_invested
-                              )?.toFixed(2)}
+                             <td
+                              onClick={() => updateState(data?.child)}
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                            >
+                              1
                             </td>
-                            <td className="capitalize w-full max-w-[150px] text-sm font-normal p-5 py-2 text-black text-center">
-                              {data?.child_user?.total_directs}
+                              <td
+                              onClick={() => updateState(data?.child)}
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                            >
+                              1
                             </td>
-                               <td className="capitalize w-full md:max-w-[150px]  text-sm font-normal p-5 py-0  text-black text-center">
-                              {data?.child_user?.booster_income}
+                              <td
+                              onClick={() => updateState(data?.child)}
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                            >
+                              1
                             </td>
-                             <td className="capitalize w-full md:max-w-[150px] text-sm font-normal p-5 py-0  text-black text-center">
-                              {data?.child_user?.rank_id}
+                              <td
+                              onClick={() => updateState(data?.child)}
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                            >
+                            {data?.levelReward}
                             </td>
-                            <td className="capitalize w-full md:max-w-[150px]  text-sm font-normal p-5 py-0  text-black text-center">
-                              {data?.child_user?.eligible_level}
+                              <td
+                              onClick={() => updateState(data?.child)}
+                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                            >
+                            1
                             </td>
-                              <td className="capitalize w-full md:max-w-[150px]  text-sm font-normal p-5 py-0  text-black text-center">
-                              {data?.child_user?.total_team}
-                            </td>
-                            <td className="capitalize w-full md:max-w-[150px] text-sm font-normal p-5 py-3  text-black text-center">
-                              <p className="w-full px-3 py-1 text-center rounded-md cursor-pointer bg-secondary text-background">
-                                {data?.child_user?.total_team_business
-                                  ? Number(
-                                      data?.child_user?.total_team_business
-                                    )?.toFixed(2)
-                                  : 0}
-                              </p>
-                            </td>
+                         
                           </tr>
                         );
                       }
