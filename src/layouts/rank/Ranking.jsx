@@ -188,7 +188,29 @@ const Ranking = () => {
                                 className="w-4 h-4"
                               />
                             )}
-                            <span>{value}</span>
+                         {( key != "directs" && key != "teamReq" && key != "totalTeam" ) &&  <span>{value}</span>}
+                         {key == "directs" && 
+                          <>
+                         <span>{`${value}${ rowIndex >= 1 ?`/${rankData?.data?.user?.total_directs }` : ""}`}</span>
+                        {rowIndex >=1 && <img className="w-5" src="/assets/images/checkmark.png" alt="checkmark" />}
+                         </>
+                         }
+
+                         {key == "teamReq" && 
+                         <>
+                         <span>{`${value}${ rowIndex >= 1 ?`/${rankData?.data?.user?.total_team }` : ""}`}</span>
+                        {rowIndex >=1 && <img className="w-5" src="/assets/images/checkmark.png" alt="checkmark" />}
+                         </>
+                         }
+                         {key == "totalTeam" &&
+                         <>
+                          <span>{`${value}${ rowIndex >= 1 ?`/${rankData?.data?.user?.overall_team }` : ""}`}</span>
+                        {rowIndex >=1 && <img className="w-5" src="/assets/images/checkmark.png" alt="checkmark" />}
+
+                          </>
+                          }
+
+
                             {/* {((key === "rank" || key ==="daily %" || key === "current level" ) && row.rank ==rankData?.data?.current_rank?.rank)  && <img src="/assets/images/check 1.svg" className='w-6' alt="check" />  } */}
 
                             {/* {(key=="vol" && rankData?.data?.user?.total_invested >= value.slice(1) ) && <img className='w-6' src="/assets/images/check 1.svg" alt="check" /> } */}

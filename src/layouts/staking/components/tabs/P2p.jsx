@@ -90,7 +90,6 @@ export default function P2p() {
       return data;
     },
     onSuccess: async (data) => {
-      // toast.success(data?.message);
       setUserName("");
       setp2pAmount("");
       refetch();
@@ -102,7 +101,7 @@ export default function P2p() {
       refetch();
     },
   });
-
+// console.log("what is username : ",userName)
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -137,6 +136,7 @@ export default function P2p() {
           <input
             type="text"
             placeholder="Enter UserName"
+            value={userName}
             className="border border-[2px] w-[160px]   xl:w-[125px] border-gray-500 rounded-lg text-sm p-2"
             onChange={(e) => setUserName(e.target.value)}
           />

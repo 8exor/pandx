@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 
-export default function CopyToClipBaord(){
+export default function useCopyToClipBaord(){
     const [isCopied, setIsCopied] = useState(false);
     function handleCopy(text){
         if(!navigator.clipboard){
