@@ -29,25 +29,20 @@ const TermAndCondition = () => {
           >
             <li className="leading-7">USER CAN STAKE/UN-STAKE ANYTIME</li>
             <li className="leading-7">
-              <strong>ANYTIME PRINCIPAL UNSTAKE:</strong> USERS MAY WITHDRAW
-              THEIR PRINCIPAL AMOUNT AT ANY TIME AT THE LIVE TOKEN PRICE.
-              HOWEVER, A FLAT 25% DEDUCTION WILL BE APPLIED ON THE PRINCIPAL,
-              ALONG WITH DEDUCTION OF ALL INCOMES/PROFITS EARNED ON THAT STAKE.
+              ANYTIME PRINCIPAL UNSTAKE:USERS MAY WITHDRAW THEIR PRINCIPAL AMOUNT AT ANY TIME AT THE LIVE TOKEN PRICE. HOWEVER, A FLAT 15% DEDUCTION WILL BE APPLIED ON THE PRINCIPAL, ALONG WITH DEDUCTION OF ALL INCOMES/PROFITS EARNED ON THAT STAKE.
+
             </li>
             <li className="leading-7">
-              UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE
-              FORMULA FOR NEW TOP-UP ELIGIBILITY: PRINCIPAL – INCOME/ROI – 25%
-              DEDUCTION
+             UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE FORMULA FOR NEW TOP-UP ELIGIBILITY: PRINCIPAL – INCOME/ROI – 15% DEDUCTION
             </li>
             <li className="leading-7">
-              IF A USER PERFORMS A FULL UN-STAKE, THE ACCOUNT WILL BECOME
-              PERMANENTLY INACTIVE AND CANNOT BE REACTIVATED AGAIN.
+              NOW, AFTER UN-STAKE, USER CAN DO RE-STAKE BUT WITH A FEE OF 10% & IT’LL GOES TO REWARD POOL OR BURN POOL
             </li>
-            <li className="leading-7">
+            {/* <li className="leading-7">
               IF YOU UN-STAKE, THE RELEASED FUNDS WILL FIRST BE TRANSFERRED TO
               YOUR WITHDRAWAL WALLET, FROM WHERE YOU MUST INITIATE THE FINAL
               WITHDRAWAL.
-            </li>
+            </li> */}
             <li className="leading-7">
               IF YOU UN-STAKE, YOUR ACCOUNT WILL BE PERMANENTLY DEACTIVATED AND
               CANNOT BE REACTIVATED.
@@ -58,7 +53,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={8}
+            start={7}
           >
             <li className="leading-7">
               $100 TRIAL BONUS  VALID FOR 5 DAYS ONLY  NOT WITHDRAWABLE  BUT
@@ -72,7 +67,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={9}
+            start={8}
           >
             <li className="leading-7">
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
@@ -87,7 +82,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={10}
+            start={9}
           >
             <li className="leading-7">
               WHENEVER A USER PERFORMS A TOP-UP, THE SPONSOR WILL RECEIVE A 5%
@@ -103,7 +98,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={11}
+            start={10}
           >
             <li className="leading-7">
               REFER 3 USERS WITHIN 96 HOURS, EACH WITH A MINIMUM STAKE OF $100,
@@ -118,7 +113,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={12}
+            start={11}
           >
             <li className="leading-7">
               A 5% WITHDRAWAL FEE WILL BE APPLIED AND ALLOCATED TO THE REWARD
@@ -132,7 +127,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={13}
+            start={12}
           >
             <li className="leading-7">
               P2P TRANSFERS ARE FREE AND UNLIMITED. USER CAN DO P2P FOR MIN $10
@@ -144,7 +139,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={14}
+            start={13}
           >
             <li className="leading-7">
               USERS CAN COMPOUND USING THEIR WITHDRAWAL BALANCE, WITH A MINIMUM
@@ -158,7 +153,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={15}
+            start={14}
           >
             <li className="leading-7">
               1% OF EVERY TRANSACTION WILL BE ALLOCATED TO THE AUTO BURN
@@ -172,7 +167,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={16}
+            start={15}
           >
             <li className="leading-7">
               DAILY ONE-TIME SETTLEMENT IN USD AT THE LIVE MARKET PRICE WILL BE
@@ -188,7 +183,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={18}
+            start={17}
           >
             <li className="leading-7">CAPPING RANGES FROM 2X TO 3X</li>
             <li className="leading-7">
@@ -208,7 +203,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={22}
+            start={21}
           >
             <li className="leading-7">
               <strong>
@@ -221,9 +216,10 @@ const TermAndCondition = () => {
                 ON EVERY SELLS, ADDITIONAL TAX & 100% ALLOCATE TO BURN IF THE
                 PRICE GOES DOWN BY MORE THAN A CERTAIN % IN A DAY
               </li>
-              <li className="leading-7">2% TO 2.99% – 15% TAX</li>
-              <li className="leading-7">3% TO 6.99% – 25% TAX</li>
-              <li className="leading-7">7% TO 10% OR ABOVE – 50% TAX</li>
+              <li className="leading-7">4% TO 6.99% – 15% BURN TAX</li>
+              <li className="leading-7">7% TO 9.99% – 25% BURN TAX</li>
+              <li className="leading-7">10% OR ABOVE – 50% BURN TAX
+</li>
             </ul>
           </ol>
 
@@ -233,7 +229,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={23}
+            start={22}
           >
             <li className="leading-7">
               IF YOU ACHIEVE A RANK BASED ON YOUR TEAM SIZE AND YOUR USERS LATER
@@ -248,7 +244,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={24}
+            start={23}
           >
             <li className="leading-7">
               IN ALL BONANZAS, YOUR VOLUME WILL BE CALCULATED USING A 40:60
@@ -268,7 +264,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={26}
+            start={25}
           >
             <li className="leading-7">
               <strong>WALLET UPDATE CONTRACT:</strong>

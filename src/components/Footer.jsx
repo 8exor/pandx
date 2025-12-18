@@ -121,6 +121,16 @@ const Footer = () => {
                   />
                 </a>
               </div>
+              <div className="hidden xl:block">
+                  <li className="list-none">
+                    <Link
+                      to="/terms-and-conditions"
+                      className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out text-[16px] md:text-[20px] font-bold"
+                    >
+                      Terms And Conditions
+                    </Link>
+                  </li>
+              </div>
               <div className="w-full sm:w-auto">
                 <ul className="flex items-center gap-4 justify-center">
                   {/* <li>
@@ -131,7 +141,7 @@ const Footer = () => {
                       Privacy Policy
                     </a>
                   </li> */}
-                  <li>
+                  <li className="xl:hidden block">
                     <Link
                       to="/terms-and-conditions"
                       className="text-[#4c4c4c] hover:text-[#72a314] transition duration-300 ease-in-out text-[16px] md:text-[20px] font-bold"

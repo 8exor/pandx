@@ -104,7 +104,9 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               </h3>
             </div> */}
           </div>
-          <div  className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-2xl flex-wrap md:flex-nowrap">
+          <div  className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
+               <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">Staking Contract </p>
+           
             <p className="break-all text-center">
               0x2170Ed0880ac9A755fd29B2688956BD959F933F8
             </p>
@@ -116,6 +118,22 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               {copied ? "Copied" : "Copy"}
             </button>
           </div>
+
+           <div  className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
+               <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">USDT BEP20 Contract </p>
+           
+            <p className="break-all text-center">
+              0x55d398326f99059ff775485246999027b3197955
+            </p>
+
+            <button
+              onClick={copyText}
+              className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
+            >
+              {copied ? "Copied" : "Copy"}
+            </button>
+          </div>
+
           <h2 
             className="text-[30px] hidden xl:block   md:text-[40px] lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]"
             data-aos="slide-up"
@@ -240,7 +258,7 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
                   alt="rectangle"
                 />
                 <div className="absolute top-[15%] px-[40px]">
-                  <h3 className="text-[26px]">Q1 – 2026 – Growth</h3>
+                  <h3 className="text-[26px]">Q2 – 2026 – Growth</h3>
                   <div className="flex items-center gap-2 px-2 mt-2">
                     <img src="assets/images/white_star.svg" alt="" />
                     <p className="text-[22px] text-[#4c4c4c]">
