@@ -27,7 +27,7 @@ const HomePopup = () => {
 
   useEffect(() => {
     // timer 
-    const targetDate = new Date(2025, 11, 21, 13, 0, 0); // 1 PM, 21st Dec 2025
+  const targetDate = new Date(Date.UTC(2025, 11, 20, 5, 0, 0)); // KL 1 PM
     const intervalId = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
@@ -163,7 +163,7 @@ const HomePopup = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-2xl leading-8 text-white mb-3">
-              FREE REGISTRATIONS WILL BE START FROM SUNDAY <br/> 21 DEC 2025 at 01:00 pm
+              FREE REGISTRATIONS WILL BE START FROM SATURDAY <br/> 20 DEC 2025 at 01:00 PM
              
             </h2>
             <div className="mt-3 w-fit mx-auto border-3 rounded-lg  p-3 border-[#6ca632]">
