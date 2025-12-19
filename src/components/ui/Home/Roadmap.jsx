@@ -1,11 +1,8 @@
+import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 import { useState } from "react";
 const Roadmap = ({getStartedRef ,  roadmapRef}) => {
-  const [copied, setCopied] = useState(false);
-  const copyText = () => {
-    navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 5000);
-  };
+
+   const [isCopied, handleCopy] = useCopyToClipBaord();
 
   const roadmapArray = [
     {
@@ -112,10 +109,10 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
             </p>
 
             <button  ref={roadmapRef}
-              onClick={copyText}
+              onClick={()=>handleCopy("0x2170Ed0880ac9A755fd29B2688956BD959F933F8")}
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
-              {copied ? "Copied" : "Copy"}
+              Copy
             </button>
           </div>
 
@@ -125,12 +122,11 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
             <p className="break-all text-center">
               0x55d398326f99059ff775485246999027b3197955
             </p>
-
             <button
-              onClick={copyText}
+              onClick={()=>handleCopy("0x55d398326f99059ff775485246999027b3197955")}
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
-              {copied ? "Copied" : "Copy"}
+             Copy
             </button>
           </div>
 

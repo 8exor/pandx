@@ -2,6 +2,7 @@ import { useState, useEffect, useref } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { headerLogos, taskNote } from "@constants/index";
+import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 
 const Banner = ({ aboutRef, homeRef }) => {
   const truncateMiddle = (str, max) => {
@@ -10,12 +11,14 @@ const Banner = ({ aboutRef, homeRef }) => {
     return `${str.slice(0, keep)} … ${str.slice(str.length - keep)}`;
   };
 
-  const [copied, setCopied] = useState(false);
-  const copyText = () => {
-    navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 4000);
-  };
+const [isCopied, handleCopy] = useCopyToClipBaord();
+
+
+  // const copyText = () => {
+  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 4000);
+  // };
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -198,10 +201,10 @@ const Banner = ({ aboutRef, homeRef }) => {
                   {`${address.substring(0, 10)}.......${address.substring(30, 48)}`}
                 </p>
                 <button
-                  onClick={copyText}
+                  onClick={()=>handleCopy(address)}
                   className="btn-primary  !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
-                  {copied ? "Copied" : "Copy"}
+                  Copy
                 </button>
               </div>
             </div>
