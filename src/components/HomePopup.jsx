@@ -27,14 +27,14 @@ const HomePopup = () => {
 
   useEffect(() => {
     // timer 
-  const targetDate = new Date(Date.UTC(2025, 11, 20, 5, 0, 0)); // KL 1 PM
+  const targetDate = new Date(Date.UTC(2025, 11, 20, 7, 30, 0)); // KL 1 PM
     const intervalId = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
       
       if (difference <= 0) {
         clearInterval(intervalId);
-        setTimeLeft("Time's up!");
+        setTimeLeft("We Are Live!");
       } else {
         const hours = Math.floor(difference / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
