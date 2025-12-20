@@ -165,7 +165,7 @@ const {login} = useWalletLogin(LoginUser)
 
             <div className="flex items-center justify-between gap-7">
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
-                <a href="https://t.me/pandxdao" target="blank">
+                <a href="https://t.me/pandxxyz" target="blank">
                   <img
                     className="w-[25px] h-[25px]"
                     src="/assets/images/Icon.svg"
