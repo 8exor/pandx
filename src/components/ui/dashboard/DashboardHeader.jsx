@@ -131,7 +131,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(userData?.data?.username)}
+                          onClick={() => handleCopy(`${window?.location.origin}/#/?referral=${userData?.data?.username}`)}
                         >
                           <img
                             className="w-7"
@@ -232,7 +232,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(userData?.data?.username)}
+                          onClick={() => handleCopy(`${window?.location.origin}/#/?referral=${userData?.data?.username}`)}
                         >
                           <img
                             className="w-7"

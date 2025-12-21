@@ -26,17 +26,17 @@ export default function UnstakeTab() {
       toast.success(data?.message);
       try {
         // debugger;
-        console.log({ data });
+        // console.log({ data });
         const provider = new ethers.providers.Web3Provider(walletProvider);
         const signer = await provider.getSigner();
-        console.log({
-          from: data?.data?.unStake?.from,
-          to: data?.data?.unStake?.to,
-          gasPrice: data?.data?.unStake?.gasPrice,
-          gasLimit: data?.data?.unStake?.gasLimit,
-          data: data?.data?.unStake?.data,
-          value: data?.data?.unStake?.value,
-        });
+        // console.log({
+        //   from: data?.data?.unStake?.from,
+        //   to: data?.data?.unStake?.to,
+        //   gasPrice: data?.data?.unStake?.gasPrice,
+        //   gasLimit: data?.data?.unStake?.gasLimit,
+        //   data: data?.data?.unStake?.data,
+        //   value: data?.data?.unStake?.value,
+        // });
         const unstaking = await signer.sendTransaction({
           from: data?.data?.unStake?.from,
           to: data?.data?.unStake?.to,

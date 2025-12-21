@@ -9,7 +9,7 @@ import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "../services/panda.api.services";
 import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
@@ -19,7 +19,12 @@ import { useWalletLogin } from "@hooks/useWalletLogin";
 import { replace } from "@amcharts/amcharts4/.internal/core/utils/Array";
 
 
+
+
 export default function LoginPage({ setOpenLoginModal, setShow }) {
+
+
+
   const { open } = useAppKit();
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
   const [clickedOnRegister, setClickedOnRegister] = useState(false);
@@ -37,6 +42,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
   const { disconnect } = useDisconnect();
   const { isLogin, setIsLogin } = useContext(UserInfoContext);
+  const [URLSearchParams, setSearchParams] = useSearchParams();
+
 
   const navigate = useNavigate();
 
@@ -45,9 +52,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       const text = await navigator.clipboard.readText();
       setReferralCode(text);
     } catch (error) {
-      toast.error("Permission to paste was denied or clipboard is empty.",{
-                    duration : 700
-                  });
+      toast.error("Permission to paste was denied or clipboard is empty.", {
+        duration: 700
+      });
     }
   };
 
@@ -65,7 +72,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
       if (error?.status == 0) {
         toast.error(error?.message, {
-          duration : 1000,
+          duration: 1000,
         });
       }
       allowScroll();
@@ -74,11 +81,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
   const validateReferralCode = () => {
     if (!referralCode) {
-   
+
       setShowError({ ...showError, referralCode: true });
-      return toast.error("Username is required.",{
-                    duration : 700
-                  });
+      return toast.error("Username is required.", {
+        duration: 700
+      });
     }
     checkReferralCode.mutate({ username: referralCode });
   };
@@ -94,9 +101,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     onError: (error) => {
       console.log(error, "error");
       if (error?.status == 0) {
-        toast.error(error?.message,{
-                    duration : 700
-                  });
+        toast.error(error?.message, {
+          duration: 700
+        });
       }
     },
   });
@@ -110,27 +117,27 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
         userName: true,
         referralCode: true,
       });
-      return toast.error("All fields are required",{
-                    duration : 700
-                  });
+      return toast.error("All fields are required", {
+        duration: 700
+      });
     }
     if (!address) {
       setShowError({ ...showError, walletAddress: true });
-      return toast.error("wallet connection is required",{
-                    duration : 700
-                  });
+      return toast.error("wallet connection is required", {
+        duration: 700
+      });
     }
     if (!userName) {
       setShowError({ ...showError, userName: true });
-      return toast.error("Username is required",{
-                    duration : 700
-                  });
+      return toast.error("Username is required", {
+        duration: 700
+      });
     }
     if (!referralCode) {
       setShowError({ ...showError, referralCode: true });
-      return toast.error("Referral code is required",{
-                    duration : 700
-                  });
+      return toast.error("Referral code is required", {
+        duration: 700
+      });
     }
 
     registerUser.mutate({
@@ -160,22 +167,22 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       return data;
     },
     onSuccess: async (data) => {
-      if(!clickedOnRegister){
-      toast.success(data?.message);
+      if (!clickedOnRegister) {
+        toast.success(data?.message);
       }
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
-      navigate("/StakingPage", {replace : true});
+      sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
+      navigate("/StakingPage", { replace: true });
       setOpenLoginModal(false);
       // setClickedOnRegister(false);
-      console.log("why are you disconnecting:::::::",isConnected)
+      // console.log("why are you disconnecting:::::::", isConnected)
     },
     onError: (error) => {
-        toast.error(error?.message || "Error Occurred");
-        disconnect();
+      toast.error(error?.message || "Error Occurred");
+      disconnect();
     },
-    
+
   });
 
   useEffect(() => {
@@ -186,7 +193,12 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     setIsUserNameChecked(false);
   }, [userName]);
 
-   const {login} = useWalletLogin(LoginUser)
+  useEffect(() => {
+    setReferralCode(URLSearchParams.get("referral"));
+    // setOpenLoginModal(true)
+  }, []);
+
+  const { login } = useWalletLogin(LoginUser)
 
   return (
     <>
@@ -211,7 +223,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             {/* <div className="absolute left-5 md:left-10 -top-17 md:-top-20 "> */}
             {/* </div> */}
             <div className="text-[#ffffff] w-full max-h-[70px] font-semibold gap-10 flex justify-center items-center">
-         <Gift className="flex-1"/>
+              <Gift className="flex-1" />
 
               <span className="flex-1 text-md sm:text-xl">
                 <TypeWriterEffect
@@ -223,9 +235,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             </div>
           </div>
           <div
-            className={`bg-[#ccf1b3] w-full mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${
-              showError?.walletAddress && "border-red-600"
-            } `}
+            className={`bg-[#ccf1b3] w-full mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${showError?.walletAddress && "border-red-600"
+              } `}
           >
             <p>
               {isConnected
@@ -237,8 +248,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               onClick={() => {
                 // setClickedOnLogin(false);
                 setClickedOnSignUpConnect(true);
-                  open();
-                setShowError({...showError, walletAddress : false})
+                open();
+                setShowError({ ...showError, walletAddress: false })
               }}
             >
               Connect wallet
@@ -246,28 +257,26 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
           </div>
 
           <div
-            className={`bg-[#ccf1b3] mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${
-              showError?.userName && "border-red-600"
-            } `}
+            className={`bg-[#ccf1b3] mt-5 p-3 border border-black rounded-md flex items-center flex-wrap md:flex-nowrap gap-2 justify-between ${showError?.userName && "border-red-600"
+              } `}
           >
             <input
               type="text"
               className="w-full text-black placeholder-black outline-none"
               placeholder="Choose Username"
               value={userName}
-              onChange={(e) => {setUserName(e.target.value); setShowError({...showError, userName : false})}}
+              onChange={(e) => { setUserName(e.target.value); setShowError({ ...showError, userName: false }) }}
             />
             <button
-              className={` text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${
-                isUserNameChecked
-                  ? "border-green-900 bg-green-600"
-                  : "bg-[#5b5bac]"
-              }`}
+              className={` text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${isUserNameChecked
+                ? "border-green-900 bg-green-600"
+                : "bg-[#5b5bac]"
+                }`}
               onClick={() => {
                 if (userName.length == 0) {
                   setShowError({ ...showError, userName: true });
-                  return toast.error("Username is required",{
-                    duration : 700
+                  return toast.error("Username is required", {
+                    duration: 700
                   })
                 }
                 checkUserName.mutate({ username: userName });
@@ -277,30 +286,28 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 ? isUserNameChecked
                   ? "Validated"
                   : checkUserName?.isPending
-                  ? "Validating..."
-                  : "Validate"
+                    ? "Validating..."
+                    : "Validate"
                 : "Validate"}
             </button>
           </div>
 
           <div
-            className={`bg-[#ccf1b3] mt-5 p-3 border border-black rounded-md flex items-center gap-2 justify-between flex-wrap md:flex-nowrap ${
-              showError?.referralCode && "border-red-600"
-            }`}
+            className={`bg-[#ccf1b3] mt-5 p-3 border border-black rounded-md flex items-center gap-2 justify-between flex-wrap md:flex-nowrap ${showError?.referralCode && "border-red-600"
+              }`}
           >
             <input
               type="text"
               className="w-full text-black placeholder-black outline-none"
               placeholder="*Enter Referral Code"
               value={referralCode}
-              onChange={(e) => {setReferralCode(e.target.value); setShowError({...showError, referralCode : false})}}
+              onChange={(e) => { setReferralCode(e.target.value); setShowError({ ...showError, referralCode: false }) }}
             />
             <button
-              className={`${
-                referralCode && isReferralCodeChecked
-                  ? "border-green-900 bg-green-600"
-                  : "bg-[#5b5bac]"
-              } text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer`}
+              className={`${referralCode && isReferralCodeChecked
+                ? "border-green-900 bg-green-600"
+                : "bg-[#5b5bac]"
+                } text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer`}
               onClick={() => {
                 referralCode ? validateReferralCode() : pasteButton();
               }}
@@ -309,8 +316,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 ? isReferralCodeChecked
                   ? "Validated"
                   : checkReferralCode?.isPending
-                  ? "Validating"
-                  : "Validate"
+                    ? "Validating"
+                    : "Validate"
                 : "Paste"}
             </button>
           </div>

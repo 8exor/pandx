@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 export default function useCopyToClipBaord(){
     const [isCopied, setIsCopied] = useState(false);
     function handleCopy(text){
+
+        // console.log({text});
         if(!navigator.clipboard){
             return toast.error("unable to copy");
         }

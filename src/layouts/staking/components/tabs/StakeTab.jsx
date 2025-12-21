@@ -102,7 +102,7 @@ export default function StakeTab() {
       // toast.success(data?.message);
       setStakeAmount("");
       refetch();
-      console.log("what s up bro are you hanging out here:::::::");
+      // console.log("what s up bro are you hanging out here:::::::");
     },
     onError: (error) => {
       toast.error(error?.message || "Error Occurred", {

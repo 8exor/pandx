@@ -45,7 +45,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async function (error) {
- console.log("wja res[p stiaut amd eprpr : ", error.response.status)
+//  console.log("wja res[p stiaut amd eprpr : ", error.response.status)
     if ( error.response.status &&  error.response.status === 401) {
     
       console.error("Unauthorized, logging out...");

@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { createAppKit } from "@reown/appkit/react";
 import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
-import { mainnet, arbitrum, bscTestnet, sepolia } from "@reown/appkit/networks";
+import { mainnet, arbitrum, bscTestnet, sepolia, bsc } from "@reown/appkit/networks";
 
 // 1. Get projectId
 const projectId = "49546acedc91dd32f884746f88babb8a";
@@ -21,10 +21,10 @@ const metadata = {
 createAppKit({
   adapters: [new Ethers5Adapter()],
   metadata,
-  networks : [sepolia],
+  networks: [bsc, sepolia],
   projectId,
   features: {
-     analytics: true,
+    analytics: true,
     socials: false,
     email: false, // Optional - defaults to your Cloud configuration
     allWallets: "SHOW",
