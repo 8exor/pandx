@@ -49,7 +49,7 @@ const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuer
       }
     },
     onError: (error) => {
-      console.log("whats the erorororooring : ", error)
+     
         toast.error(error?.message);
         disconnect();
  
@@ -73,9 +73,7 @@ const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuer
 // ;    }
 // })
 
-// console.log("is the user using data : ", userData)
-// console.log("wass up ", profileData)
-// console.log("let make a team ", teamData)
+
 
 
 

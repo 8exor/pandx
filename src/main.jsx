@@ -17,6 +17,8 @@ const metadata = {
   icons: ["https://avatars.mywebsite.com/"],
 };
 
+const token = getAccessToken();
+
 // 3. Create the AppKit instance
 createAppKit({
   adapters: [new Ethers5Adapter()],
@@ -30,6 +32,7 @@ createAppKit({
     allWallets: "SHOW",
     emailShowWallets: false,
   },
+  enableReconnect : token ? true : false
 });
 
 

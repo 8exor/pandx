@@ -10,6 +10,7 @@ import TermAndCondition from "@components/TermAndCondition";
 import { Component } from "@amcharts/amcharts4/core";
 import HomePopup from "@components/HomePopup";
 import ProtectedRoute from "./ProtectedRoute";
+import PageNotFound from "./PageNotFound";
 
 
 
@@ -68,6 +69,7 @@ export default function AppRoutes (){
                 </Route>
                 </Route>
                 <Route path="/terms-and-conditions" element={<TermAndCondition />} />
+                <Route path="*" element={<PageNotFound/>} />
                 </Routes>
 
         </div>

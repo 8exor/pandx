@@ -1,176 +1,266 @@
-
-
-import { myLevel, myRank, taskNote } from '../../constants'
-import React, { useContext, useState } from 'react'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { UserInfoContext } from '@contexts/UserInfoContext';
-import { REPORTS } from '@services/panda.api.services';
-import axiosInstance from '@utils/axiosInstance';
-import { useQuery } from '@tanstack/react-query';
-import TableSkeleton from '@layouts/staking/components/TableSkelton';
-import { LoaderIcon } from 'react-hot-toast';
-import Load from '@hooks/Load';
-import MaxCapProgress from '@layouts/staking/components/MaxCapProgress';
+import { myLevel, myRank, taskNote } from "../../constants";
+import React, { useContext, useState } from "react";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { UserInfoContext } from "@contexts/UserInfoContext";
+import { REPORTS } from "@services/panda.api.services";
+import axiosInstance from "@utils/axiosInstance";
+import { useQuery } from "@tanstack/react-query";
+import TableSkeleton from "@layouts/staking/components/TableSkelton";
+import { LoaderIcon } from "react-hot-toast";
+import Load from "@hooks/Load";
+import MaxCapProgress from "@layouts/staking/components/MaxCapProgress";
+import LevelWiseReport from "./LevelWiseReport";
 
 const Report = () => {
-  const {userData} = useContext(UserInfoContext);
+  const { userData } = useContext(UserInfoContext);
+
 
   const [getUserName, setGetUserName] = useState("");
+  const [levelUsersData, setLevelUsersData] = useState([]);
+
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [dataType, setDataType] = useState(false);
   const [date, setDate] = useState({
-    from : null,
-    to : null
-  })
+    from: null,
+    to: null,
+  });
   const [rank, setRank] = useState("");
   const [history, setHistory] = useState([]);
 
-  const {data:profileData, isLoading:profileLoading, error:profileError} = useQuery({
-    queryKey : ["profileData"],
-    queryFn : async()=>{
-        const {data} = await axiosInstance.get(REPORTS?.profile);
-        return data;
-    }
-})
+  const {
+    data: profileData,
+    isLoading: profileLoading,
+    error: profileError,
+  } = useQuery({
+    queryKey: ["profileData"],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(REPORTS?.profile);
+      return data;
+    },
+  });
 
-const {data:teamData, isLoading:teamLoading, error:teamError} = useQuery({
-    queryKey: ["teamData",getUserName,rank,date],
-    queryFn : async ()=>{
+  const {
+    data: teamData,
+    isLoading: teamLoading,
+    error: teamError,
+  } = useQuery({
+    queryKey: ["teamData", getUserName, rank, date],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(
+        `${REPORTS?.teamInfo}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`
+      );
+      return data;
+    },
+  });
 
-        const {data} = await axiosInstance.get(`${REPORTS?.teamInfo}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`);
-        return data
-;    }
-})
+  const { data: levelData, isLoading: levelLoading } = useQuery({
+    queryKey: ["levelData"],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(REPORTS?.LevelReport);
+      return data;
+    },
+  });
 
+  const { data: levelWiseData, isLoading: levelWiseLoading } = useQuery({
+    queryKey: ["levelWiseData"],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(REPORTS?.levelWiseReport);
+      return data.data;
+    },
+  });
 
-    const reportPool = [
-  {
-    title: "Self Vol",
-    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.total_invested).toFixed(2)) || 0}`,
-  },
-  {
-    title: "Rank",
-    value:  ` ⭐${profileData && Number(profileData?.data?.rank_id).toFixed(0) || 0}`,
-  },
-  {
-    title: "Directs",
-    value: `${profileData && Number(profileData?.data?.total_directs).toFixed(0) || 0}`,
-  },
-  {
-    title: "Direct Vol",
-    value: `$${teamData && Number(teamData?.data?.direct_business).toFixed(0) || 0}`
-  },
-  {
-    title: "Direct Reward",
-    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.direct_income)?.toFixed(2) )|| 0}`,
-  },
-  {
-    title: "Total Team",
-    value: `${teamData && Number(teamData?.data?.total_child).toFixed(0) || 0}`,
-  },
-  {
-    title: "Total Vol",
-    value: `$${teamData && Number(teamData?.data?.total_business).toFixed(0) || 0}`,
-  },
-  {
-    title: "Level Open",
-    value: `${profileData && parseFloat(parseFloat(profileData?.data?.eligible_level).toFixed(2)) || 0}`,
-  },
-  {
-    title: "Level Reward",
-    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.level_income).toFixed(2)) || 0}`,
-  },
-  {
-    title: "UNI-Pool Reward",
-    value: `$${profileData && parseFloat(parseFloat(profileData?.data?.uni_income).toFixed(2)) || 0}`,
-  },
-  {
-    title: "Capping",
-    value: `${profileData && parseFloat(parseFloat((profileData?.data?.used_capping/profileData?.data?.total_capping)*100).toFixed(2)) || 0}%`,
-  },
-  {
-    title: "Total Gain",
-    value: `$${profileData && Number(profileData?.data?.total_income) || 0}`,
-  },
-];
+  const reportPool = [
+    {
+      title: "Self Vol",
+      value: `$${
+        (profileData &&
+          parseFloat(
+            parseFloat(profileData?.data?.total_invested).toFixed(2)
+          )) ||
+        0
+      }`,
+    },
+    {
+      title: "Rank",
+      value: ` ⭐${
+        (profileData && Number(profileData?.data?.rank_id).toFixed(0)) || 0
+      }`,
+    },
+    {
+      title: "Directs",
+      value: `${
+        (profileData && Number(profileData?.data?.total_directs).toFixed(0)) ||
+        0
+      }`,
+    },
+    {
+      title: "Direct Vol",
+      value: `$${
+        (teamData && Number(teamData?.data?.direct_business).toFixed(0)) || 0
+      }`,
+    },
+    {
+      title: "Direct Reward",
+      value: `$${
+        (profileData &&
+          parseFloat(
+            parseFloat(profileData?.data?.direct_income)?.toFixed(2)
+          )) ||
+        0
+      }`,
+    },
+    {
+      title: "Total Team",
+      value: `${
+        (teamData && Number(teamData?.data?.total_child).toFixed(0)) || 0
+      }`,
+    },
+    {
+      title: "Total Team Vol",
+      value: `$${
+        (teamData && Number(teamData?.data?.total_business).toFixed(0)) || 0
+      }`,
+    },
+    {
+      title: "Level Open",
+      value: `${
+        (profileData &&
+          parseFloat(
+            parseFloat(profileData?.data?.eligible_level).toFixed(2)
+          )) ||
+        0
+      }`,
+    },
+    {
+      title: "Level Reward",
+      value: `$${
+        (profileData &&
+          parseFloat(parseFloat(profileData?.data?.level_income).toFixed(2))) ||
+        0
+      }`,
+    },
+    {
+      title: "UNI-Pool Reward",
+      value: `$${
+        (profileData &&
+          parseFloat(parseFloat(profileData?.data?.uni_income).toFixed(2))) ||
+        0
+      }`,
+    },
+    {
+      title: "Capping",
+      value: `${
+        (profileData &&
+          parseFloat(
+            parseFloat(
+              (profileData?.data?.used_capping /
+                profileData?.data?.total_capping) *
+                100
+            ).toFixed(2)
+          )) ||
+        0
+      }%`,
+    },
+    {
+      title: "Total Gain",
+      value: `$${
+        (profileData && Number(profileData?.data?.total_income)) || 0
+      }`,
+    },
+  ];
 
-const userInfoLoading = false;
+  const userInfoLoading = false;
   const tableDataKeys = [
     "Level",
     "Active",
     "In-Active",
     "Stake Vol",
     "Level Reward",
-    "Total Level Reward"
+    "Total Level Reward",
   ];
 
   const levels = [
     {
-      level : "1",
-      levelReward : "20%",
+      level: 1,
+      levelReward: "20%",
     },
-     {
-      level : "2",
-      levelReward : "10%",
+    {
+      level: 2,
+      levelReward: "10%",
     },
-     {
-      level : "3",
-      levelReward : "10%",
+    {
+      level: 3,
+      levelReward: "10%",
     },
-     {
-      level : "4",
-      levelReward : "10%",
+    {
+      level: 4,
+      levelReward: "10%",
     },
-     {
-      level : "5",
-      levelReward : "10%",
+    {
+      level: 5,
+      levelReward: "10%",
     },
-     {
-      level : "6",
-      levelReward : "5%",
+    {
+      level: 6,
+      levelReward: "5%",
     },
-      {
-      level : "7",
-      levelReward : "5%",
+    {
+      level: 7,
+      levelReward: "5%",
     },
-      {
-      level : "8",
-      levelReward : "5%",
+    {
+      level: 8,
+      levelReward: "5%",
     },
-      {
-      level : "9",
-      levelReward : "5%",
+    {
+      level: 9,
+      levelReward: "5%",
     },
-      {
-      level : "10",
-      levelReward : "5%",
+    {
+      level: 10,
+      levelReward: "5%",
     },
-      {
-      level : "11",
-      levelReward : "2%",
+    {
+      level: 11,
+      levelReward: "2%",
     },
-       {
-      level : "12",
-      levelReward : "2%",
+    {
+      level: 12,
+      levelReward: "2%",
     },
-       {
-      level : "13",
-      levelReward : "2%",
+    {
+      level: 13,
+      levelReward: "2%",
     },
-       {
-      level : "14",
-      levelReward : "2%",
+    {
+      level: 14,
+      levelReward: "2%",
     },
-       {
-      level : "15",
-      levelReward : "2%",
+    {
+      level: 15,
+      levelReward: "2%",
     },
-  ]
+  ];
+
+  let apiLevel = levelData?.data ? levelData?.data : [];
+
+  const tableLevel = apiLevel.map((el) => {
+  
+
+    el.level_reward = levels[el.level - 1].levelReward;
+    return el;
+  });
+
+
+
+  // const tableLevel = [...levels, ...apiLevel];
 
   const updateState = (newState) => {
     setHistory((prev) => [...prev, getUserName]);
     setGetUserName(newState);
   };
 
-    const goBack = () => {
+  const goBack = () => {
     setHistory((prev) => {
       const newHistory = [...prev];
       const lastState = newHistory.pop();
@@ -181,74 +271,98 @@ const userInfoLoading = false;
     });
   };
 
-
-
   return (
-    <div className='w-full h-full min-h-screen bg-[#e5ffd5] p-2'>
-    <div className='w-full max-w-[1360px] mx-auto text-xl'>
-        <div className='w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3'>
-                      <span className='blink-text'>{taskNote?.title}</span>
-                     <marquee behavior="alternate" scrollamount="10"  direction="">
-                    {taskNote?.des}
-                    </marquee>
+    <div className="w-full h-full min-h-screen bg-[#e5ffd5] p-2">
+      <div className="w-full max-w-[1360px] mx-auto text-xl">
+        <div className="w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3">
+          <span className="blink-text">{taskNote?.title}</span>
+          <marquee behavior="alternate" scrollamount="10" direction="">
+            {taskNote?.des}
+          </marquee>
+        </div>
+
+        <div className="bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7 px-1 xl:px-11">
+          <div className="grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl lg:text-sm md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2">
+            {reportPool?.map((pool, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow"
+              >
+                <span>{pool?.title}</span>
+                {pool?.value ? (
+                  <span>{pool?.title != "Capping" && pool?.value}</span>
+                ) : (
+                  <Load />
+                )}
+                {pool?.title == "Capping" && (
+                  <div className="mt-2">
+                    <MaxCapProgress
+                      maxCap={false}
+                      value={pool?.title == "Capping" && pool?.value}
+                    />
                   </div>
-      
- <div className='bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7 px-1 xl:px-11'>
-     <div className='grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl lg:text-sm md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2'>
-        {
-            reportPool?.map((pool, i)=>(
-                <div key={i} className='flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow'>
-                    <span>{pool?.title}</span>
-               {pool?.value ? <span>{pool?.title !="Capping" && pool?.value}</span> : <Load/>}
-                {pool?.title == "Capping" && <div className='mt-2'><MaxCapProgress maxCap={false} value={pool?.title == "Capping" && pool?.value} /></div>}
-                </div>
-            ))
-        }
-      
-      <div className='p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center'>
-        Primary Team Volume 40%
-      </div>
-       <div className='p-4 md:p-2 px-5 lg:p-4 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center'>
-      Combined Team Volume 60%
-      </div>
-
-        <button className='p-4 px-5 rounded-md border border-black bg-[#c4ffa1] lg:col-start-2 lg:row-start-4 col-span-2 md:col-span-1' onClick={()=>goBack()}>
-            Back
-        </button>
-   
-          <DatePicker value={date?.from} onChange={(newValue)=>setDate({...date, from : newValue})} label = "From Date" className='lg:col-start-3 lg:row-start-4 '   format="DD/MM/YYYY"/>
-          <DatePicker value={date?.to} onChange={(newValue)=>setDate({...date, to :newValue})} label = "To Date" className='lg:col-start-4 lg:row-start-4'  format="DD/MM/YYYY"/>
-       
-       
-        <button className='p-4 px-2 rounded-md border border-black bg-[#c4ffa1] lg:col-start-5 lg:row-start-4 col-span-2 md:col-span-1'onClick={() => {
-              setGetUserName("");
-              setDate({
-                from: null,
-                to: null,
-              });
-              setRank("");
-            }}>Reset</button>
-
-      <div className='col-span-2 mx-auto md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2'>
-        <button className='p-4 px-20 rounded-md border border-black bg-[#c4ffa1]'>
-          submit
-        </button>
-      </div>
-
-     </div>
-
- 
-    </div>
-
-   <div
-          id="scroll-bar"
-          className="w-full   overflow-auto  max-h-[700px] cursor-pointer mt-10  "
-        >
-          <div className="w-full max-w-[100px] min-w-full ">
-            {userInfoLoading ? (
-              <div className="flex justify-center">
-               loading....
+                )}
               </div>
+            ))}
+
+            <div className="p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+              Primary Team Volume 40%
+            </div>
+            <div className="p-4 md:p-2 px-5 lg:p-4 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+              Combined Team Volume 60%
+            </div>
+
+            {/* <button
+              className="p-4 px-5 rounded-md border border-black bg-[#c4ffa1] lg:col-start-2 lg:row-start-4 col-span-2 md:col-span-1"
+              onClick={() => goBack()}
+            >
+              Back
+            </button> */}
+
+            <DatePicker
+              value={date?.from}
+              onChange={(newValue) => setDate({ ...date, from: newValue })}
+              label="From Date"
+              className="lg:col-start-3 lg:row-start-4 "
+              format="DD/MM/YYYY"
+            />
+            <DatePicker
+              value={date?.to}
+              onChange={(newValue) => setDate({ ...date, to: newValue })}
+              label="To Date"
+              className="lg:col-start-4 lg:row-start-4"
+              format="DD/MM/YYYY"
+            />
+
+            {/* <button
+              className="p-4 px-2 rounded-md border border-black bg-[#c4ffa1] lg:col-start-5 lg:row-start-4 col-span-2 md:col-span-1"
+              onClick={() => {
+                setGetUserName("");
+                setDate({
+                  from: null,
+                  to: null,
+                });
+                setRank("");
+              }}
+            >
+              Reset
+            </button> */}
+
+            <div className="col-span-2 mx-auto md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2">
+              <button className="p-4 px-20 rounded-md border border-black bg-[#c4ffa1]">
+                submit
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="scroll-bar"
+          className="w-full   overflow-auto custom-scrollbar scroll-smooth  max-h-[700px] cursor-pointer mt-10  "
+        >
+          <div className="  w-full max-w-[100px] min-w-full ">
+            {userInfoLoading ? (
+              <div className="flex justify-center">loading....</div>
             ) : (
               <table className="w-full border-collapse rounded-lg">
                 <thead className="sticky top-0 text-black ">
@@ -265,79 +379,67 @@ const userInfoLoading = false;
                     })}
                   </tr>
                 </thead>
-              <tbody  className="flex flex-col mt-5 space-y-4 overflow-y-auto flex-nowrap">
-
-                  {
-                  teamLoading ? 
-               (   <TableSkeleton rows={3} cols={8}/>)
-                   :
-                 ( levels?.length == 0) ? (
-                    <tr className='mx-auto text-center '>
-                      <td colSpan={9} className="w-full p-10 rounded-lg bg-midgray hover:bg-border-color group/item">No Data Found</td>
+                <tbody className="flex flex-col mt-5 space-y-4 overflow-y-auto flex-nowrap">
+                  {levelLoading ? (
+                    <TableSkeleton rows={3} cols={8} />
+                  ) : levels?.length == 0 ? (
+                    <tr className="mx-auto text-center ">
+                      <td
+                        colSpan={9}
+                        className="w-full p-10 rounded-lg bg-midgray hover:bg-border-color group/item"
+                      >
+                        No Data Found
+                      </td>
                     </tr>
                   ) : (
-                   levels?.map(
-                      (
-                        data,
-                        index
-                      ) => {
-                        return (
-                          <tr
-                            key={index}
-                            className="rounded-lg  hover:bg-border-color bg-[#c4ffa1]  group/item flex justify-between items-center shadow"
-                          >
-                            <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
+                    tableLevel?.map((data, index) => {
+                      return (
+                        <tr
+                          key={data?.level}
+                          className="rounded-lg  hover:bg-border-color bg-[#c4ffa1]  group/item flex justify-between items-center shadow"
+                        >
+                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                            {data?.level}
+                          </td>
+                          <td className=" w-full md:max-w-[250px] text-center">
+                            <span
+                              onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.active_users[data?.level]) , setDataType("Active") }}
+                              className="p-5 py-2 text-sm font-normal text-black capitalize"
                             >
-                              {data?.level}
-                            </td>
-                             <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
-                            >
-                              1
-                            </td>
-                              <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
-                            >
-                              1
-                            </td>
-                              <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
-                            >
-                              1
-                            </td>
-                              <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
-                            >
-                            {data?.levelReward}
-                            </td>
-                              <td
-                              onClick={() => updateState(data?.child)}
-                              className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center"
-                            >
-                            1
-                            </td>
-                         
-                          </tr>
-                        );
-                      }
-                    )
+                              {data?.active_users}
+
+                              {/* {showPopUp && (
+                                <div className="absolute z-50 px-3 py-2 mt-2 text-xs text-white -translate-x-1/2 bg-black rounded shadow-lg top-full left-1/2">
+                                  Popup content
+                                </div>
+                              )} */}
+                            </span>
+                          </td>
+                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center" onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.inactive_users[data?.level]) , setDataType("Inactive") }}>
+                            {data?.inactive_users}
+                          </td>
+                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                            $ {data?.stake_amount}
+                          </td>
+                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                            {data?.level_reward}
+                          </td>
+                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                            $ {data?.income}
+                          </td>
+                        </tr>
+                      );
+                    })
                   )}
                 </tbody>
               </table>
             )}
           </div>
         </div>
-
-
+            {showPopUp && <LevelWiseReport data={levelUsersData} type={dataType} setShowPopUp={setShowPopUp} />}
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Report
+export default Report;
