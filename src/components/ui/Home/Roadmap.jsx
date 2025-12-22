@@ -105,7 +105,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
           </div>
           <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
             <a
-              href="https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
+              href="https://bscscan.com"
               target="blank"
             >
               {" "}
@@ -115,7 +115,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
             </a>
             <p className="break-all text-center">
               <a
-                href="https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
+                href="https://bscscan.com"
                 target="blank"
               >
                 0x2170Ed0880ac9A755fd29B2688956BD959F933F8
@@ -136,7 +136,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
           <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
             <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">
               <a
-                href="https://bscscan.com/address/0x55d398326f99059ff775485246999027b3197955"
+                href="https://bscscan.com"
                 target="blank"
               > USDT BEP20 Contract{" "}
               </a>
@@ -144,7 +144,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
 
             <p className="break-all text-center">
                <a
-                href="https://bscscan.com/address/0x55d398326f99059ff775485246999027b3197955"
+                href="https://bscscan.com"
                 target="blank"
               >
               0x55d398326f99059ff775485246999027b3197955
