@@ -380,7 +380,7 @@ const Ranking = () => {
                       "bg-green-600 text-white"
                     } ${
                       key == "directs" &&
-                        rowIndex == rankData?.data?.current_rank?.rank &&
+                        index == rankData?.data?.current_rank?.rank &&
                           !(
                             rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0)) &&
@@ -392,7 +392,7 @@ const Ranking = () => {
                       "bg-green-600 text-white"
                     } ${
                       key == "teamReq" &&
-                      rowIndex == rankData?.data?.current_rank?.rank && !( d[row.rank-1] >=(parseInt(value) || 0))  &&
+                      index == rankData?.data?.current_rank?.rank && !( d[row.rank-1] >=(parseInt(value) || 0))  &&
                       "bg-red-600 blink-text text-white"
                     } ${
                       key == "totalTeam" &&
@@ -401,7 +401,7 @@ const Ranking = () => {
                       "bg-green-600 text-white"
                     } ${
                       key == "totalTeam" &&
-                       rowIndex == rankData?.data?.current_rank?.rank && !(rankData?.data?.user?.total_directs + d[row.rank-1] >= (parseInt(value) || 0))  &&
+                       index == rankData?.data?.current_rank?.rank && !(rankData?.data?.user?.total_directs + d[row.rank-1] >= (parseInt(value) || 0))  &&
                       "bg-red-600 blink-text text-white"
                     }
                     
