@@ -26,7 +26,9 @@ export const REPORTS = {
   teamInfo: "report/team-info",
   rankInfo: "report/rank-info",
   withdrawalReport: "report/withdrawal-report",
-  p2pReport : "report/p2p-report",
-  compoundReport : "report/compound-report",
-  unstakeReport : "report/unstake-report"
+  p2pReport: "report/p2p-report",
+  compoundReport: "report/compound-report",
+  unstakeReport: "report/unstake-report",
+  LevelReport: "report/level-report",
+  levelWiseReport: "report/level-wise-report",
 };

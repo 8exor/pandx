@@ -91,10 +91,10 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(userData?.data?.username)}
+                          onClick={() => {handleCopy(userData?.data?.username), setStakePopup(false)}}
                         >
                           <img
-                            className="w-7"
+                            className="w-7 "
                             src="/assets/icons/copy.svg"
                             alt="copy"
                           />
@@ -114,7 +114,7 @@ const DashboardHeader = () => {
                         </p>
                       </div>
                       <div>
-                        <button onClick={() => handleCopy(address)}>
+                        <button onClick={() => {handleCopy(address), setStakePopup(false)}}>
                           <img
                             className="w-7"
                             src="/assets/icons/copy.svg"
@@ -131,7 +131,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(userData?.data?.username)}
+                          onClick={() => {handleCopy(userData?.data?.username), setStakePopup(false)}}
                         >
                           <img
                             className="w-7"

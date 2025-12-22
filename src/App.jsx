@@ -26,12 +26,7 @@ function App() {
   const { walletProvider } = useAppKitProvider("eip155");
   const { address, isConnected } = useAppKitAccount();
 
-  // useEffect(() => {
-  //   const token = getAccessToken();
-  //   if (!token) {
-  //     disconnect();
-  //   }
-  // }, []);
+
 
 
 

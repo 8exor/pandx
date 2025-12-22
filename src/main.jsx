@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { createAppKit } from "@reown/appkit/react";
 import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
 import { mainnet, arbitrum, bscTestnet, sepolia } from "@reown/appkit/networks";
+import { getAccessToken } from '@utils/Session';
 
 // 1. Get projectId
 const projectId = "49546acedc91dd32f884746f88babb8a";
@@ -16,6 +17,8 @@ const metadata = {
   url: "https://mywebsite.com", // origin must match your domain & subdomain
   icons: ["https://avatars.mywebsite.com/"],
 };
+
+const token = getAccessToken();
 
 // 3. Create the AppKit instance
 createAppKit({
@@ -30,6 +33,7 @@ createAppKit({
     allWallets: "SHOW",
     emailShowWallets: false,
   },
+  enableReconnect : token ? true : false
 });
 
 

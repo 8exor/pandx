@@ -169,7 +169,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       navigate("/StakingPage", {replace : true});
       setOpenLoginModal(false);
       // setClickedOnRegister(false);
-      console.log("why are you disconnecting:::::::",isConnected)
+    
     },
     onError: (error) => {
         toast.error(error?.message || "Error Occurred");

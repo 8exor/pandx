@@ -193,10 +193,10 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
 
-          <div className=" mt-6 rounded-md overflow-auto scrollbar-custom max-h-[240px]  ">
+          <div className=" mt-6  overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">
-              <thead className="sticky top-0 z-10 text-black rounded-md shadow-xl">
-                <tr className="w-full flex  items-center justify-between px-4 py-2  rounded-md  bg-[#BFFEB0] btn-primary   ">
+              <thead className="sticky top-0 z-10 text-black ">
+                <tr className="flex items-center justify-between w-full p-4 py-2 btn-primary">
                   <th className="font-normal  w-[50px]">S N</th>
                   <th className="font-normal   w-[100px] whitespace-nowrap">
                     Username

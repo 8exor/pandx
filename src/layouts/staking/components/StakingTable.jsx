@@ -82,7 +82,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               <>
                 {incomeLoading ? (
                   <TableSkeleton rows={1} cols={5} />
-                ) : !stakeData ? (
+                ) :( stakeData && stakeData?.length === 0 )? (
                   <tr className="flex items-center justify-center w-full mt-5">
                     <td className="w-full text-center">No Data Found</td>
                   </tr>
@@ -113,7 +113,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "unstake" &&
               (unstakeLoading ? (
                 <TableSkeleton rows={1} cols={6} />
-              ) : !unstakeData ? (
+              ) : (unstakeData && unstakeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -150,7 +150,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "withdrawal" &&
               (withdrawalLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : !stakeData ? (
+              ) : (withdrawalData && withdrawalData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -191,7 +191,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "compound" &&
               (compoundLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : !compoundData ? (
+              ) : (compoundData && compoundData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -226,7 +226,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "p2p" &&
               (p2pLoading ? (
                 <TableSkeleton rows={3} cols={7} />
-              ) : !p2pData ? (
+              ) : (p2pData && p2pData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -283,7 +283,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "DAILY" &&
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={4} />
-              ) : !incomeData ? (
+              ) : (incomeData && incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -318,7 +318,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "DIRECT" &&
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) :!incomeData ? (
+              ) :(incomeData && incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -355,7 +355,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "LEVEL" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={6} />
-              ) : !incomeData? (
+              ) : (incomeData && incomeData.length === 0)? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -395,7 +395,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "TRIAL" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={4} />
-              ) : !incomeData ? (
+              ) : (incomeData && incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -430,7 +430,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "BOOSTX" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={4} />
-              ) : !incomeData ? (
+              ) : (incomeData && incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -465,7 +465,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "UNI-POOL" && 
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : !incomeData? (
+              ) : (incomeData && incomeData.length === 0)? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>

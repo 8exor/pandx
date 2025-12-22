@@ -125,7 +125,7 @@ const token = getAccessToken();
        sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
     },
     onError: (error) => {
-      console.log("whats the erorororooring : ", error)
+    
         toast.error(error?.message || "Error Occurred");
         disconnect();
  
@@ -133,8 +133,14 @@ const token = getAccessToken();
   });
 
   const logoutSession = sessionStorage.getItem("LOGOUT_IN_PROGRESS");
-  console.log("what i slogout seesion : ", logoutSession, token);
 
+
+  useEffect(()=>{
+    const token = getAccessToken();
+    if(!token){
+      disconnect();
+    }
+  },[])
   
 
 const {login} = useWalletLogin(LoginUser)
@@ -157,7 +163,7 @@ const {login} = useWalletLogin(LoginUser)
               <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
-                  src="/assets/images/Logo.png"
+                  src="./assets/images/Logo.png"
                   alt="logo"
                 />
               </NavLink>
@@ -284,7 +290,7 @@ const {login} = useWalletLogin(LoginUser)
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
                       <button
-                        className=" cursor-pointer"
+                        className="cursor-pointer "
                         onClick={() => {
                           scrollTo("about");
                           setOpenMenu(false);
@@ -317,7 +323,7 @@ const {login} = useWalletLogin(LoginUser)
                     </li>
                     <li className="text-3xl text-[#141414] leading-14">
                       <button
-                        className=" cursor-pointer"
+                        className="cursor-pointer "
                         onClick={() => {
                           scrollTo("roadmap");
                           setOpenMenu(false);
