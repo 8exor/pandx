@@ -7,7 +7,7 @@ import {
   useWalletInfo,
 } from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
 import { useMutation } from "@tanstack/react-query";
@@ -61,7 +61,11 @@ const Header = ({
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
-   const {referral_code} = useParams()
+  //  const {referral_code} = useParams()
+
+   const [searchParams] = useSearchParams()
+
+  //  console.log({referral_code});
   // const {LoginUser, token} = useContext(UserInfoContext);
 
   useEffect(() => {
@@ -132,6 +136,8 @@ const Header = ({
   // console.log("what i slogout seesion : ", logoutSession, token);
 
   useEffect(() => {
+
+   const  referral_code =   searchParams.get("referral")
    
     if (referral_code) {
       setOpenLoginModal(true);

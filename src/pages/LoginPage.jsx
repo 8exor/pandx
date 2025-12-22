@@ -43,8 +43,13 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { disconnect } = useDisconnect();
   const { isLogin, setIsLogin } = useContext(UserInfoContext);
   const [URLSearchParams, setSearchParams] = useSearchParams();
-  const {referral_code} = useParams();
-  console.log({referral_code})
+  // const {referral_code} = useParams();
+   const [searchParams] = useSearchParams()
+
+
+
+
+  // console.log({referral_code})
 
 
   const navigate = useNavigate();
@@ -196,6 +201,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   }, [userName]);
 
   useEffect(() => {
+
+   const  referral_code =   searchParams.get("referral")
+    
     setReferralCode(referral_code);
     
   }, []);

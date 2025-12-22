@@ -20,8 +20,14 @@ const Home = () => {
   const homeRef = useRef(null);
 
   const [searchParams] = useSearchParams();
-  const {referral_code} =   useParams();
   
+
+
+  // const {referral_code} =   useParams();
+  
+   const  referral_code =   searchParams.get("referral")
+
+   console.log({referral_code});
 
 
 
