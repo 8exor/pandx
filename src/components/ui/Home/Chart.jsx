@@ -3,10 +3,9 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-const PieChart = ({tokenomicsRef}) => {
-
+const PieChart = ({ tokenomicsRef }) => {
   const [isMobile, setIsMobile] = useState(false);
-  const [istab , setIsTab] = useState (false);
+  const [istab, setIsTab] = useState(false);
   // Detect screen size
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 1025);
@@ -16,7 +15,6 @@ const PieChart = ({tokenomicsRef}) => {
 
     // const checkTab = () => setIsTab(window.innerWidth <= 1025);
     // checkTab()
-
   }, []);
 
   useLayoutEffect(() => {
@@ -24,8 +22,9 @@ const PieChart = ({tokenomicsRef}) => {
 
     const chart = am4core.create("pieDiv", am4charts.PieChart3D);
     chart.data = [
-      { category: "Presale on Launchpad", value:1},
-      { category: "Staking Rewards", value:  99},
+      { category: "Presale on Launchpad", value: 1 },
+      { category: "Staking Rewards", value: 24 },
+       { category: "Burning Upto", value: 75 },
       // { category: "Liquidity Locked\n[gray]100% for 1 year[/]", value: 25 },
       // { category: "Symbol\n[gray]$Panda[/]", value: 30 }
     ];
@@ -33,20 +32,19 @@ const PieChart = ({tokenomicsRef}) => {
     const pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = "value";
     pieSeries.dataFields.category = "category";
-    
+
     chart.depth = 15;
     chart.angle = 10;
 
- pieSeries.labels.template.adapter.add("textOutput", function (_, target) {
-  let percent = Math.round(target.dataItem.values.value.percent);
-  let category = target.dataItem.category;
-  return `${category}: ${percent}%`;
-});
+    pieSeries.labels.template.adapter.add("textOutput", function (_, target) {
+      let percent = Math.round(target.dataItem.values.value.percent);
+      let category = target.dataItem.category;
+      return `${category}: ${percent}%`;
+    });
 
     // =============================================
     pieSeries.events.on("validated", () => {
       if (isMobile) {
-
         // Ticks hide
         pieSeries.ticks.template.disabled = true;
 
@@ -54,10 +52,9 @@ const PieChart = ({tokenomicsRef}) => {
         pieSeries.labels.each((label, i) => {
           if (i === 0) label.dy = -70; // up
           if (i === 1) label.dy = -70; // up
-          if (i === 2) label.dy = 70;  // down
-          if (i === 3) label.dy = 70;  // down
+          if (i === 2) label.dy = 70; // down
+          if (i === 3) label.dy = 70; // down
         });
-
       }
     });
 
@@ -66,7 +63,7 @@ const PieChart = ({tokenomicsRef}) => {
     pieSeries.colors.list = [
       am4core.color("#72A314"),
       am4core.color("#6F5F93"),
-      // am4core.color("#72A314"),
+      am4core.color("#a43736"),
       // am4core.color("#6F5F93")
     ];
 
@@ -75,12 +72,10 @@ const PieChart = ({tokenomicsRef}) => {
     pieSeries.slices.template.strokeWidth = 1;
     pieSeries.slices.template.tooltipText = "";
 
-
     // ticks = line
     pieSeries.ticks.template.strokeWidth = 2;
     pieSeries.ticks.template.length = 0;
     pieSeries.ticks.template.disabled = false;
-
 
     // labels
     pieSeries.labels.template.fill = am4core.color("#000");
@@ -121,35 +116,52 @@ const PieChart = ({tokenomicsRef}) => {
     // });
 
     // Mobile: position 2 labels up, 2 labels down
-   if (isMobile) {
-  // Labels hide
-  pieSeries.labels.template.disabled = true;
+    if (isMobile) {
+      // Labels hide
+      pieSeries.labels.template.disabled = true;
 
-  // Ticks hide
-  pieSeries.ticks.template.disabled = true;
+      // Ticks hide
+      pieSeries.ticks.template.disabled = true;
 
-  // Enable legend
-  chart.legend = new am4charts.Legend();
+      // Enable legend
+      chart.legend = new am4charts.Legend();
 
-  // Legend me percentage WITHOUT decimal
-  chart.legend.valueLabels.template.text = "{value.percent.formatNumber('#')}%";
-}
-
-
+      // Legend me percentage WITHOUT decimal
+      chart.legend.valueLabels.template.text =
+        "{value.percent.formatNumber('#')}%";
+    }
 
     return () => chart.dispose();
   }, [isMobile]);
 
   return (
-    <div ref={tokenomicsRef} className="relative w-full bg-[#e5ffd4]">
-      <h1 className="w-full text-center text-[30px] md:text-[40px] lg:text-[82px]">Tokenomics</h1>
-      <p className="w-full text-center text-[14px] sm:text-xl pt-5">100,000,000 $PANDX</p>
-      <img
-        src="assets/images/PandaTokenGroup.svg"
-        alt="logo"
-        className="absolute sm:top-[35%] md:top-[35%] lg:top-[37%] sm:left-[50%] top-[26%] mac-top-38 left-[50%] translate-x-[-50%] sm:w-[180px] w-[100px] z-10 pointer-none"
-      />
-      <div id="pieDiv" className="w-full h-[400px] sm:h-[600px] pb-10 "></div>
+    // <div ref={tokenomicsRef} className="relative w-full bg-[#e5ffd4]">
+    //   <h1 className="w-full text-center text-[30px] md:text-[40px] lg:text-[82px]">Tokenomics</h1>
+    //   <p className="w-full text-center text-[14px] sm:text-xl pt-5">100,000,000 $PANDX</p>
+    //   <img
+    //     src="assets/images/PandaTokenGroup.svg"
+    //     alt="logo"
+    //     className="absolute sm:top-[35%] md:top-[35%] lg:top-[37%] sm:left-[50%] top-[26%] mac-top-38 left-[50%] translate-x-[-50%] sm:w-[180px] w-[100px] z-10 pointer-none"
+    //   />
+    //   <div id="pieDiv" className="w-full h-[400px] sm:h-[600px] pb-10 "></div>
+    // </div> 
+
+    <div ref={tokenomicsRef} className="w-full bg-[#e5ffd4]">
+      <h1 className="w-full text-center text-[30px] md:text-[40px] lg:text-[82px]">
+        Tokenomics
+      </h1>
+       <p className="w-full text-center text-[14px] sm:text-xl">
+       1% AUTO-BURN MECHANISM — UP TO 75% TOTAL SUPPLY REDUCTION
+      </p>
+      <p className="w-full text-center text-[14px] sm:text-xl py-5">
+        100,000,000 $PANDX
+      </p>
+      <div className="relative">
+        <div id="pieDiv" className="w-full h-[400px] sm:h-[600px] pb-10 "></div>
+        <div className="absolute sm:top-[30%] md:top-[20%] lg:top-[25%] sm:left-[50%] top-[12%] left-[50%] translate-x-[-50%] sm:w-[180px] w-[100px] z-10 pointer-none">
+          <img src="assets/images/PandaTokenGroup.svg" alt="logo" />
+        </div>
+      </div>
     </div>
   );
 };
