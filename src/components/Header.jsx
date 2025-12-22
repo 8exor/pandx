@@ -7,7 +7,7 @@ import {
   useWalletInfo,
 } from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
-import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
 import { useMutation } from "@tanstack/react-query";
@@ -25,24 +25,29 @@ const Header = ({
   roadmapRef,
   homeRef,
 }) => {
-   const scrollTo = (section) => {
-  const refs = { home: homeRef, about: aboutRef, tokenomics: tokenomicsRef, getStarted: getStartedRef, roadmap: roadmapRef };
-  const element = refs[section]?.current;
+  const scrollTo = (section) => {
+    const refs = {
+      home: homeRef,
+      about: aboutRef,
+      tokenomics: tokenomicsRef,
+      getStarted: getStartedRef,
+      roadmap: roadmapRef,
+    };
+    const element = refs[section]?.current;
 
-  if (element) {
-    // Section exists → scroll to it
-    window.scrollTo({
-      top: element.getBoundingClientRect().top + window.pageYOffset - 100,
-      behavior: "smooth",
-    });
-  } else {
-    // Section doesn’t exist → navigate to Home page and scroll later
-    navigate("/", { state: { scrollTo: section } });
-  }
-};
+    if (element) {
+      // Section exists → scroll to it
+      window.scrollTo({
+        top: element.getBoundingClientRect().top + window.pageYOffset - 100,
+        behavior: "smooth",
+      });
+    } else {
+      // Section doesn’t exist → navigate to Home page and scroll later
+      navigate("/", { state: { scrollTo: section } });
+    }
+  };
 
-
-const token = getAccessToken();
+  const token = getAccessToken();
   const { open, close } = useAppKit();
   const { isConnected, address } = useAppKitAccount();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,8 +60,8 @@ const token = getAccessToken();
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
-    const [URLSearchParams, setSearchParams] = useSearchParams();
 
+   const {referral_code} = useParams()
   // const {LoginUser, token} = useContext(UserInfoContext);
 
   useEffect(() => {
@@ -117,47 +122,39 @@ const token = getAccessToken();
       toast.success(data?.message);
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
-     
-     const token = getAccessToken()
-    
-      if(token){
-         setIsLoggedIn(true);
-      navigate("/StakingPage", {replace : true});
+
+      const token = getAccessToken();
+
+      if (token) {
+        setIsLoggedIn(true);
+        navigate("/StakingPage", { replace: true });
       }
-       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
+      sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
     },
     onError: (error) => {
-    
-        toast.error(error?.message || "Error Occurred");
-        disconnect();
- 
+      toast.error(error?.message || "Error Occurred");
+      disconnect();
     },
   });
 
   const logoutSession = sessionStorage.getItem("LOGOUT_IN_PROGRESS");
   // console.log("what i slogout seesion : ", logoutSession, token);
 
-
-  useEffect(()=>{
-    const referral = URLSearchParams.get("referral");
-    if(referral){
-      setOpenLoginModal(true)
+  useEffect(() => {
+   
+    if (referral_code) {
+      setOpenLoginModal(true);
     }
-    
-  },[])
+  }, []);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const token = getAccessToken();
-    if(!token){
+    if (!token) {
       disconnect();
     }
-  },[])
-  
+  }, []);
 
-const {login} = useWalletLogin(LoginUser)
-
-
+  const { login } = useWalletLogin(LoginUser);
 
   return (
     <>
@@ -175,7 +172,7 @@ const {login} = useWalletLogin(LoginUser)
               <NavLink to={"/"}>
                 <img
                   className="md:w-[180px] w-[120px]"
-                  src="./assets/images/Logo.png"
+                  src="/assets/images/Logo.png"
                   alt="logo"
                 />
               </NavLink>
@@ -203,13 +200,9 @@ const {login} = useWalletLogin(LoginUser)
                 <button
                   className="flex gap-2 px-6 py-3 text-lg font-medium text-white btn-primary"
                   onClick={() => {
-                    // isConnected ? handleDisconnet() : open();
-                    // setClickedOnConnect(true);
                     if (isConnected) {
                       handleDisconnet();
                     } else {
-                      // open();
-                      //  setClickedOnConnect(true);
                       login();
                     }
                   }}
@@ -373,9 +366,12 @@ const {login} = useWalletLogin(LoginUser)
                   <button
                     className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer lg:hidden btn-primary"
                     onClick={() => {
-                      isConnected ? handleDisconnet() : open();
-                      setClickedOnConnect(true);
-                    }}
+                    if (isConnected) {
+                      handleDisconnet();
+                    } else {
+                      login();
+                    }
+                  }}
                   >
                     <img src="/assets/images/panda.svg" alt="panda" />
                     {isConnected ? "Disconnect" : " Connect"}

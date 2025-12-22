@@ -12,66 +12,62 @@ import HomePopup from "@components/HomePopup";
 import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "./PageNotFound";
 
+export default function AppRoutes() {
+  const routes = [
+    {
+      name: "Home",
+      path: "/",
+      Component: Home,
+    },
+    {
+      name: "HomeReferral",
+      path: "/referral/:referral_code?",
+      Component: Home,
+    },
 
+    {
+      name: "login",
+      path: "/login",
+      Component: LoginPage,
+    },
+  ];
 
+  const stakingRoutes = [
+    {
+      name: "StakingPage",
+      path: "/StakingPage",
+      Component: StakingPage,
+    },
+    {
+      name: "Rank",
+      path: "/Ranking",
+      Component: Ranking,
+    },
+    {
+      name: "Report",
+      path: "/Report",
+      Component: Report,
+    },
+  ];
 
+  const Router = routes.map(({ name, path, Component }, i) => (
+    <Route key={i} path={path} element={<Component />} />
+  ));
 
-export default function AppRoutes (){
-    const routes =[
-        {
-            name : "Home",
-            path : "/",
-            Component : Home
-        },
-     
-         {
-            name : "login",
-            path : "/login",
-            Component : LoginPage
-        },
-    ]
+  const stakeRouter = stakingRoutes.map(({ name, path, Component }, i) => (
+    <Route key={i} path={path} element={<Component />} />
+  ));
 
-    const stakingRoutes =[
-          {
-            name : "StakingPage",
-            path : "/StakingPage",
-            Component : StakingPage
-        },
-        {
-            name : "Rank",
-            path : "/Ranking",
-            Component : Ranking,
-        },
-          {
-            name : "Report",
-            path : "/Report",
-            Component : Report
-        },
-        
- 
-    ]
-
-    const Router = routes.map(({name, path, Component},i)=>(
-        <Route key={i} path={path} element ={<Component/>} />
-    ))
-
-    const stakeRouter = stakingRoutes.map(({name, path, Component},i)=>(
-        <Route key={i} path={path} element ={<Component/>}/>
-    ))
-
-    return(
-        <div>
-            <Routes>
-                {Router}
-                <Route element={<ProtectedRoute/>}>
-                <Route element={<StakingHeader/>}>
-                {stakeRouter}
-                </Route>
-                </Route>
-                <Route path="/terms-and-conditions" element={<TermAndCondition />} />
-                <Route path="*" element={<PageNotFound/>} />
-                </Routes>
-
-        </div>
-    )
+  return (
+    <div>
+      <Routes>
+        {Router}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<StakingHeader />}>{stakeRouter}</Route>
+        </Route>
+        <Route path="/terms-and-conditions" element={<TermAndCondition />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </div>
+  );
 }

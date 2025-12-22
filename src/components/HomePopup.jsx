@@ -103,7 +103,7 @@ const HomePopup = () => {
               </button>
             </div>
           </div>
-          <h2 className="mb-3 text-2xl px-6 sm:px-0 text-white">
+          <h2 className="px-6 mb-3 text-2xl text-white sm:px-0">
             Please Connect Your Wallet
           </h2>
           <ul className="flex items-center justify-center gap-5 mt-5">
@@ -162,17 +162,16 @@ const HomePopup = () => {
             className="bg-[#000000] max-w-[450px]  border border-white p-[40px] rounded-2xl text-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-2xl leading-8 text-white mb-3">
+            <h2 className="mb-3 text-2xl leading-8 text-white">
               FREE REGISTRATIONS WILL BE START FROM SATURDAY <br/> 20 DEC 2025 at 01:00 PM
              
             </h2>
             <div className="mt-3 w-fit mx-auto border-3 rounded-lg  p-3 border-[#6ca632]">
-              <span className="text-2xl
-              blink-text  text-white mb-3">{timeLeft} </span>
+              <span className="mb-3 text-2xl text-white blink-text">{timeLeft} </span>
             </div>
             <button
               onClick={() => setShowSecondPopup(false)}
-              className="px-6 mt-5 py-3 text-white btn-primary"
+              className="px-6 py-3 mt-5 text-white btn-primary"
             >
               Close
             </button>

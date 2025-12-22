@@ -9,7 +9,7 @@ import Footer from "@components/Footer"
 import Chart from "@components/ui/Home/Chart"
 import ScrollToTop from "@components/ui/Home/ScrollToTop"
 import { useRef ,useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import HomePopup from "@components/HomePopup"
 const Home = () => {
    const location = useLocation();
@@ -18,6 +18,14 @@ const Home = () => {
   const getStartedRef = useRef(null);
   const roadmapRef = useRef(null);
   const homeRef = useRef(null);
+
+  const [searchParams] = useSearchParams();
+  const {referral_code} =   useParams();
+  
+
+
+
+ 
 
   useEffect(() => {
     const section = location.state?.scrollTo;
@@ -34,7 +42,7 @@ const Home = () => {
   }, [location]);
     return (
         <>
-        <HomePopup/>
+       { !referral_code && <HomePopup/>}
         <Header  getStartedRef={getStartedRef} roadmapRef={roadmapRef} tokenomicsRef={tokenomicsRef} aboutRef={aboutRef} homeRef={homeRef} currentPage="home"/>   
         <Banner homeRef={homeRef} aboutRef={aboutRef} />
         <Features/>

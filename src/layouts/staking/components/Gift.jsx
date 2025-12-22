@@ -104,11 +104,11 @@ const Gift = () => {
         style={{ perspective: "900px", position: "relative" }}
       >
         <div className="z-10 lid w-18 h-18 sm:w-20 sm:h-20">
-          <img src="assets/images/Box-Top.png" alt="" />
+          <img src="/assets/images/box-top.png" alt="" />
         </div>
 
         <div className="w-18 h-18 sm:w-20 sm:h-20">
-          <img src="assets/images/Box-Bottom.png" alt="" />
+          <img src="/assets/images/box-bottom.png" alt="" />
         </div>
       </div>
     </div>

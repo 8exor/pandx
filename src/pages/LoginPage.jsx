@@ -9,7 +9,7 @@ import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "../services/panda.api.services";
 import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
@@ -43,6 +43,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { disconnect } = useDisconnect();
   const { isLogin, setIsLogin } = useContext(UserInfoContext);
   const [URLSearchParams, setSearchParams] = useSearchParams();
+  const {referral_code} = useParams();
+  console.log({referral_code})
 
 
   const navigate = useNavigate();
@@ -194,8 +196,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   }, [userName]);
 
   useEffect(() => {
-    setReferralCode(URLSearchParams.get("referral"));
-    // setOpenLoginModal(true)
+    setReferralCode(referral_code);
+    
   }, []);
 
   const { login } = useWalletLogin(LoginUser)
