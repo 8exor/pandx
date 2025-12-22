@@ -366,11 +366,11 @@ const Report = () => {
             ) : (
               <table className="w-full border-collapse rounded-lg">
                 <thead className="sticky top-0 text-black ">
-                  <tr className="flex justify-between w-full text-left text-black rounded-lg btn-primary">
+                  <tr className="flex items-center justify-between w-full text-left text-black rounded-lg btn-primary">
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-center font-medium p-5 w-[260px]"
+                          className="capitalize text-center font-medium p-5 w-[200px]"
                           key={index}
                         >
                           {data}
@@ -419,13 +419,13 @@ const Report = () => {
                             {data?.inactive_users}
                           </td>
                           <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
-                            $ {data?.stake_amount}
+                            $ {parseFloat(parseFloat(data?.stake_amount).toFixed(2))}
                           </td>
                           <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
                             {data?.level_reward}
                           </td>
                           <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
-                            $ {data?.income}
+                            $ {parseFloat(parseFloat(data?.income).toFixed(2))}
                           </td>
                         </tr>
                       );

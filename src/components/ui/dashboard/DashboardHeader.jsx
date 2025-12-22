@@ -131,7 +131,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(`${window?.location.origin}/#/?referral=${userData?.data?.username}`)}
+                          onClick={() => handleCopy(`${window?.location.origin}/?referral=${userData?.data?.username}`)}
                         >
                           <img
                             className="w-7"
@@ -192,7 +192,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(userData?.data?.username)}
+                          onClick={() => {handleCopy(userData?.data?.username), setStakePopup(false)}}
                         >
                           <img
                             className="w-7"
@@ -215,7 +215,7 @@ const DashboardHeader = () => {
                         </p>
                       </div>
                       <div>
-                        <button onClick={() => handleCopy(address)}>
+                        <button onClick={() =>{ handleCopy(address), setStakePopup(false)}}>
                           <img
                             className="w-7"
                             src="/assets/icons/copy.svg"
@@ -232,7 +232,7 @@ const DashboardHeader = () => {
                       </div>
                       <div>
                         <button
-                          onClick={() => handleCopy(`${window?.location.origin}/#/?referral=${userData?.data?.username}`)}
+                          onClick={() => {handleCopy(`${window?.location.origin}/?referral=${userData?.data?.username}`), setStakePopup(false)}}
                         >
                           <img
                             className="w-7"
