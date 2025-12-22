@@ -160,5 +160,6 @@ export const headerLogos = [
 export const taskNote = {
   title : "NOTE:",
   des : " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
-  des2 : "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs"
+  des2 : "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
+  des3 : "Earn Staking Rewards upto 1% Daily — powered by IPFS"
 }

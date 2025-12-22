@@ -36,6 +36,13 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
             {taskNote?.des2}
           </marquee>
         </div>
+       <div className="mx-2">
+         <div className="w-full max-w-[800px] mt-5  border-2 rounded-lg border-[#5eb10d]  sm:mx-auto flex items-center justify-center gap-2 p-3 text-xl">
+          <marquee behavior="alternate" scrollamount="8" direction="">
+            {taskNote?.des3}
+          </marquee>
+        </div>
+       </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
           <ul
             className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-20 left-[1.5%]"
@@ -195,10 +202,12 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
               </p>
               <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap sm:flex-nowrap">
                 <p className=" border-2 font-bold text-sm !text-[#000000] border-[#78ad42] p-2 rounded-lg">
-                  $PANDX Contract{" "}
+                  <a href="https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8" target="blank">$PANDX Contract</a>
                 </p>
                 <p className="text-center">
+                   <a href="https://bscscan.com/address/0x2170Ed0880ac9A755fd29B2688956BD959F933F8" target="blank">
                   {`${address.substring(0, 10)}.......${address.substring(30, 48)}`}
+                  </a>
                 </p>
                 <button
                   onClick={()=>handleCopy(address)}

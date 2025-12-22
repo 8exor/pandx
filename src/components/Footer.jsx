@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <section className="bg-graydient relative pb-8 pt-20">
+        <section className="bg-graydient relative pb-4 pt-20">
           <div className="mycontainer text-center">
             <div className="md:py-15 pt-15" data-aos="slide-up">
               <h2 className="text-[30px] sm:text-5xl md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center">

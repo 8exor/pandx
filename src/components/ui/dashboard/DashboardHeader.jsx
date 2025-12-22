@@ -291,7 +291,7 @@ const DashboardHeader = () => {
                 </li>
               ))}
             </ul>
-            {/* <div className="flex items-center justify-center w-full mt-5">
+            <div className="flex items-center justify-center w-full mt-5">
               <button
                 className="flex gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 md:flex btn-primary"
                 onClick={() => handleDisconnet()}
@@ -299,7 +299,7 @@ const DashboardHeader = () => {
                 <img src="/assets/images/panda.svg" alt="panda" />
                 LOGOUT
               </button>
-            </div> */}
+            </div>
           </div>
         )}
       </main>
