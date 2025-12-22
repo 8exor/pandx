@@ -7,7 +7,7 @@ import {
   useWalletInfo,
 } from "@reown/appkit/react";
 // import { useState , useEffect} from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import { ethers } from "ethers";
 import { useMutation } from "@tanstack/react-query";
@@ -55,6 +55,8 @@ const token = getAccessToken();
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+    const [URLSearchParams, setSearchParams] = useSearchParams();
+
   // const {LoginUser, token} = useContext(UserInfoContext);
 
   useEffect(() => {
@@ -133,6 +135,16 @@ const token = getAccessToken();
   });
 
   const logoutSession = sessionStorage.getItem("LOGOUT_IN_PROGRESS");
+  // console.log("what i slogout seesion : ", logoutSession, token);
+
+
+  useEffect(()=>{
+    const referral = URLSearchParams.get("referral");
+    if(referral){
+      setOpenLoginModal(true)
+    }
+    
+  },[])
 
 
   useEffect(()=>{
@@ -171,7 +183,7 @@ const {login} = useWalletLogin(LoginUser)
 
             <div className="flex items-center justify-between gap-7">
               <div className="hidden hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow">
-                <a href="https://t.me/pandxdao" target="blank">
+                <a href="https://t.me/pandxxyz" target="blank">
                   <img
                     className="w-[25px] h-[25px]"
                     src="/assets/images/Icon.svg"

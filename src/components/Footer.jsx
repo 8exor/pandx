@@ -44,7 +44,7 @@ const Footer = () => {
                 />
                 <div className="flex justify-center gap-4 mt-4">
                   <div className=" bg-white w-fit hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
-                    <a href="https://t.me/pandxdao" target="blank">
+                    <a href="https://t.me/pandxxyz" target="blank">
                       <img
                         className="w-[20px] h-[20]"
                         src="/assets/images/Icon.svg"
@@ -53,7 +53,7 @@ const Footer = () => {
                     </a>
                   </div>
                   <div className="bg-white w-fit  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
-                    <a href="https://t.me/pandxdao" target="blank">
+                    <a href="https://t.me/pandxxyz" target="blank">
                       <img src="/assets/images/telegram.svg" alt="telegram" />
                     </a>
                   </div>
@@ -93,7 +93,7 @@ const Footer = () => {
                   <img src="assets/images/panda_face.svg" alt="Pandx" />
                 </div>
                 <div className="md:block hidden bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow">
-                  <a href="https://t.me/pandxdao" target="blank">
+                  <a href="https://t.me/pandxxyz" target="blank">
                     <img
                       className="w-[20px] h-[20]"
                       src="/assets/images/Icon.svg"
@@ -102,7 +102,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <div className="bg-white md:block hidden  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black transform-gpu shadow rotate-6">
-                  <a href="https://t.me/pandxdao" target="blank">
+                  <a href="https://t.me/pandxxyz" target="blank">
                     <img src="/assets/images/telegram.svg" alt="telegram" />
                   </a>
                 </div>

@@ -43,17 +43,17 @@ const TermAndCondition = () => {
               YOUR WITHDRAWAL WALLET, FROM WHERE YOU MUST INITIATE THE FINAL
               WITHDRAWAL.
             </li> */}
-            <li className="leading-7">
+            {/* <li className="leading-7">
               IF YOU UN-STAKE, YOUR ACCOUNT WILL BE PERMANENTLY DEACTIVATED AND
               CANNOT BE REACTIVATED.
-            </li>
+            </li> */}
           </ol>
 
           <h2 className="font-bold underline text-lg mb-3">TRIAL BONUS</h2>
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={7}
+            start={6}
           >
             <li className="leading-7">
               $100 TRIAL BONUS  VALID FOR 5 DAYS ONLY  NOT WITHDRAWABLE  BUT
@@ -67,7 +67,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={8}
+            start={7}
           >
             <li className="leading-7">
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
@@ -82,7 +82,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={9}
+            start={8}
           >
             <li className="leading-7">
               WHENEVER A USER PERFORMS A TOP-UP, THE SPONSOR WILL RECEIVE A 5%
@@ -98,7 +98,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={10}
+            start={9}
           >
             <li className="leading-7">
               REFER 3 USERS WITHIN 96 HOURS, EACH WITH A MINIMUM STAKE OF $100,
@@ -113,7 +113,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={11}
+            start={10}
           >
             <li className="leading-7">
               A 5% WITHDRAWAL FEE WILL BE APPLIED AND ALLOCATED TO THE REWARD
@@ -127,7 +127,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={12}
+            start={11}
           >
             <li className="leading-7">
               P2P TRANSFERS ARE FREE AND UNLIMITED. USER CAN DO P2P FOR MIN $10
@@ -139,7 +139,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={13}
+            start={12}
           >
             <li className="leading-7">
               USERS CAN COMPOUND USING THEIR WITHDRAWAL BALANCE, WITH A MINIMUM
@@ -153,7 +153,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={14}
+            start={13}
           >
             <li className="leading-7">
               1% OF EVERY TRANSACTION WILL BE ALLOCATED TO THE AUTO BURN
@@ -167,7 +167,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={15}
+            start={14}
           >
             <li className="leading-7">
               DAILY ONE-TIME SETTLEMENT IN USD AT THE LIVE MARKET PRICE WILL BE
@@ -183,7 +183,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={17}
+            start={16}
           >
             <li className="leading-7">CAPPING RANGES FROM 2X TO 3X</li>
             <li className="leading-7">
@@ -203,7 +203,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={21}
+            start={20}
           >
             <li className="leading-7">
               <strong>
@@ -229,7 +229,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={22}
+            start={21}
           >
             <li className="leading-7">
               IF YOU ACHIEVE A RANK BASED ON YOUR TEAM SIZE AND YOUR USERS LATER
@@ -244,7 +244,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={23}
+            start={22}
           >
             <li className="leading-7">
               IN ALL BONANZAS, YOUR VOLUME WILL BE CALCULATED USING A 40:60
@@ -264,7 +264,7 @@ const TermAndCondition = () => {
 
           <ol
             className="list-decimal list-outside pl-6 mb-6 space-y-3"
-            start={25}
+            start={24}
           >
             <li className="leading-7">
               <strong>WALLET UPDATE CONTRACT:</strong>
