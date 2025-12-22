@@ -366,11 +366,11 @@ const Report = () => {
             ) : (
               <table className="w-full border-collapse rounded-lg">
                 <thead className="sticky top-0 text-black ">
-                  <tr className="flex items-center justify-between w-full text-left text-black rounded-lg btn-primary">
+                  <tr className="flex justify-between w-full text-left text-black rounded-lg btn-primary">
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className="capitalize text-center font-medium p-5 w-[200px]"
+                          className={`capitalize text-center font-medium p-5  ${data === "Total Level Reward" ? "w-[250px]" : " w-[180px]"}`}
                           key={index}
                         >
                           {data}
@@ -398,10 +398,10 @@ const Report = () => {
                           key={data?.level}
                           className="rounded-lg  hover:bg-border-color bg-[#c4ffa1]  group/item flex justify-between items-center shadow"
                         >
-                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             {data?.level}
                           </td>
-                          <td className=" w-full md:max-w-[250px] text-center">
+                          <td className=" w-full md:max-w-[180px] text-center">
                             <span
                               onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.active_users[data?.level]) , setDataType("Active") }}
                               className="p-5 py-2 text-sm font-normal text-black capitalize"
@@ -415,13 +415,13 @@ const Report = () => {
                               )} */}
                             </span>
                           </td>
-                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center" onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.inactive_users[data?.level]) , setDataType("Inactive") }}>
+                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center" onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.inactive_users[data?.level]) , setDataType("Inactive") }}>
                             {data?.inactive_users}
                           </td>
-                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             $ {parseFloat(parseFloat(data?.stake_amount).toFixed(2))}
                           </td>
-                          <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
+                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             {data?.level_reward}
                           </td>
                           <td className="capitalize w-full md:max-w-[250px] text-sm font-normal p-5 py-2   text-black text-center">
