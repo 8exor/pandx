@@ -1,8 +1,7 @@
 import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 import { useState } from "react";
-const Roadmap = ({getStartedRef ,  roadmapRef}) => {
-
-   const [isCopied, handleCopy] = useCopyToClipBaord();
+const Roadmap = ({ getStartedRef, roadmapRef }) => {
+  const [isCopied, handleCopy] = useCopyToClipBaord();
 
   const roadmapArray = [
     {
@@ -33,15 +32,18 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
 
   return (
     <>
-      <section ref={getStartedRef}  className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section">
+      <section
+        ref={getStartedRef}
+        className="md:py-10 py-10 max-lg:bg-[#edffe1] get-started-section"
+      >
         <div className="mycontainer">
-          <h2 
+          <h2
             className="text-[30px]  md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center pt-10"
             data-aos="slide-up"
           >
             Getting Started <br /> is Simple
           </h2>
-          <div   className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10 pt-10 pb-8">
+          <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10 pt-10 pb-8">
             {/* box 1 */}
             <div
               className="w-full md:flex-1 rotate-0 lg:rotate-[-3.3deg] border-[#66a22a] bg-white border-[5px] px-4 py-6 rounded-xl"
@@ -101,36 +103,64 @@ const Roadmap = ({getStartedRef ,  roadmapRef}) => {
               </h3>
             </div> */}
           </div>
-          <div  className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
-               <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">Staking Contract </p>
-           
+          <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
+            <a
+              href="https://bscscan.com"
+              target="blank"
+            >
+              {" "}
+              <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">
+                Staking Contract{" "}
+              </p>
+            </a>
             <p className="break-all text-center">
-              0x2170Ed0880ac9A755fd29B2688956BD959F933F8
+              <a
+                href="https://bscscan.com"
+                target="blank"
+              >
+                0x2170Ed0880ac9A755fd29B2688956BD959F933F8
+              </a>
             </p>
 
-            <button  ref={roadmapRef}
-              onClick={()=>handleCopy("0x2170Ed0880ac9A755fd29B2688956BD959F933F8")}
+            <button
+              ref={roadmapRef}
+              onClick={() =>
+                handleCopy("0x2170Ed0880ac9A755fd29B2688956BD959F933F8")
+              }
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
               Copy
             </button>
           </div>
 
-           <div  className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
-               <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">USDT BEP20 Contract </p>
-           
+          <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  md:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap md:flex-nowrap">
+            <p className=" border-2 font-bold text-md !text-[#000000] border-[#78ad42] p-2 rounded-lg">
+              <a
+                href="https://bscscan.com"
+                target="blank"
+              > USDT BEP20 Contract{" "}
+              </a>
+            </p>
+
             <p className="break-all text-center">
+               <a
+                href="https://bscscan.com"
+                target="blank"
+              >
               0x55d398326f99059ff775485246999027b3197955
+              </a>
             </p>
             <button
-              onClick={()=>handleCopy("0x55d398326f99059ff775485246999027b3197955")}
+              onClick={() =>
+                handleCopy("0x55d398326f99059ff775485246999027b3197955")
+              }
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
-             Copy
+              Copy
             </button>
           </div>
 
-          <h2 
+          <h2
             className="text-[30px] hidden xl:block   md:text-[40px] lg:text-[82px] leading-tight md:leading-[90px] text-center pb-[20px] pt-[90px]"
             data-aos="slide-up"
           >

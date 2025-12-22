@@ -54,8 +54,8 @@ const HomePopup = () => {
   const closePopup = () => {
     setShow(false);
     setTimeout(() => {
-      setShowSecondPopup(true);
-    }, 200); // small delay for smoother UX
+     setShowSecondPopup(false); // temprory  hide offer popoup
+    }, 200); 
   };
 
   const LoginUser = useMutation({
