@@ -23,21 +23,9 @@ const DashboardHeader = () => {
   const [activeNav, setActiveNav] = useState(false);
 
   const handleDisconnet = async () => {
-    try {
-   
-      const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
-
-      const sign = await ethersProvider.getSigner();
-
-      const txn = await sign.signMessage("are you sure you want to disconnect");
-      if (txn) {
-        disconnect();
+    disconnect();
+    setAccessToken("");
         navigate("/");
-        setAccessToken("");
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

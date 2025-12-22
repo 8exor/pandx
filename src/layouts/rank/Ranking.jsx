@@ -164,7 +164,14 @@ const Ranking = () => {
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
                                                   "bg-green-600 text-white"
-                                                } ${
+                                                }
+                         
+                            ${
+                            key === "vol" && rowIndex == rankData?.data?.current_rank?.rank && rankData?.data?.user?.total_invested <=
+                            parseInt(value.slice(1))  &&   "bg-red-600 blink-text text-white"
+                          }                 
+                                                
+                                                ${
                           key == "vol" &&
                           rankData?.data?.user?.total_invested >=
                             parseInt(value.slice(1)) &&

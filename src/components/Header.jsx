@@ -98,19 +98,10 @@ const Header = ({
   }, [openMenu]);
 
   const handleDisconnet = async () => {
-    try {
-      const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
-
-      const sign = await ethersProvider.getSigner();
-
-      const txn = await sign.signMessage("are you sure you want to disconnect");
-      if (txn) {
+  
         setAccessToken("");
         disconnect();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+ 
   };
 
   const LoginUser = useMutation({
