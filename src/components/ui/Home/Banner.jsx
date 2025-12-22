@@ -15,7 +15,7 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
 
 
   // const copyText = () => {
-  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
+  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8"); 
   //   setCopied(true);
   //   setTimeout(() => setCopied(false), 4000);
   // };
@@ -26,7 +26,7 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
       easing: "ease-in-out",
     });
   }, []);
-  const address = "0x2170Ed0880ac9A755fd29B2688956BD959F933F8";
+  const address = "Coming Soon";
 
   return (
     <>
@@ -206,7 +206,8 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
                 </p>
                 <p className="text-center">
                    <a href="https://bscscan.com" target="blank">
-                  {`${address.substring(0, 10)}.......${address.substring(30, 48)}`}
+                  {/* {`${address.substring(0, 10)}.......${address.substring(30, 48)}`} */}
+                   {address}
                   </a>
                 </p>
                 <button
