@@ -1,13 +1,14 @@
 import React from "react";
 
-const LevelWiseReport = ({ data, type, setShowPopUp }) => {
+const LevelWiseReport = ({ data, type, setShowPopUp, setActiveIndex, setInactiveIndex }) => {
  
   return (
     <div className="fixed top-0 left-0 z-10 flex items-center justify-center w-full h-full max-">
+
     <div className="w-full max-w-[250px]  bg-[#efffe3] text-center  space-y-2 rounded-md border  border-black py-2  ">
         <div className="sticky top-0 w-full bg-[#efffe3]">
             <div className="flex items-center justify-end ">
-        <button className="p-2 rounded-full cursor-pointer " onClick={()=>setShowPopUp(false)}>
+        <button className="p-2 rounded-full cursor-pointer " onClick={()=>{setShowPopUp(false),  setActiveIndex(""), setInactiveIndex(false)}}>
             <img src="/assets/images/close.png" className="invert" alt="close" />
         </button>
         </div>

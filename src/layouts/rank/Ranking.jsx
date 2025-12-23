@@ -28,11 +28,11 @@ const Ranking = () => {
       rank: 1,
       vol: "$100",
       "daily %": "0.50%",
-      directs: "-",
+      directs: "",
       "current level": "-",
       // boostx: "-",
-      teamReq: "-",
-      totalTeam: "-",
+      teamReq: "",
+      totalTeam: "",
       capping: "2X",
     },
     {
@@ -124,7 +124,7 @@ const Ranking = () => {
   // console.log({ rankData, levelWiseTeam , d});
 
   return (
-    <div className="bg-[#F7FFF2] min-h-screen  px-2 py-10">
+    <div className="bg-[#e5ffd5] min-h-screen  px-2 py-10">
       <div className="w-full max-w-[1340px] mx-auto  flex items-center justify-center gap-2 p-3 mt-8 text-xl">
         <span className="blink-text">{taskNote?.title}</span>
         <marquee behavior="alternate" scrollamount="10" direction="">
