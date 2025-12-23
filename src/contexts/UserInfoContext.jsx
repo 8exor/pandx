@@ -12,6 +12,8 @@ export const UserInfoProvider =({children})=>{
     const [incomeId, setIncomeId] = useState(4);
      const { disconnect } = useDisconnect();
 
+     const [referral, setReferral] = useState('');
+
 const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuery({
     queryKey : ["userData"],
     queryFn : async()=>{
@@ -78,7 +80,7 @@ const {data:userData, isLoading:userLoading, error:userError, refetch} = useQuer
 
 
 return (
-    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin, refetch, incomeReporting, incomeLoading, incomeRefetch, incomeId,setIncomeId, LoginUser, token}}>
+    <UserInfoContext.Provider value={{userData, userLoading, userError, setLogin, isLogin, refetch, incomeReporting, incomeLoading, incomeRefetch, incomeId,setIncomeId, LoginUser, token, referral, setReferral}}>
         {children}
     </UserInfoContext.Provider>
 )

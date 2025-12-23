@@ -14,7 +14,7 @@ import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 const DashboardHeader = () => {
   const { address } = useAppKitAccount();
   const [isCopied, handleCopy] = useCopyToClipBaord();
-  const { userData } = useContext(UserInfoContext);
+  const { userData  } = useContext(UserInfoContext);
   const [openMenu, setOpenMenu] = useState(false);
   const [stakePopup, setStakePopup] = useState(false);
   const { walletProvider } = useAppKitProvider("eip155");
