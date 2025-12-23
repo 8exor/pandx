@@ -137,7 +137,8 @@ const Header = ({
 
   useEffect(() => {
 
-   const  referral_code =   searchParams.get("referral_code")
+   const  referral_code =   searchParams.get("referral");
+  //  console.log({referral_code})
    
     if (referral_code) {
       setOpenLoginModal(true);

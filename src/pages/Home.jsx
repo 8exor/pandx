@@ -25,7 +25,7 @@ const Home = () => {
 
   // const {referral_code} =   useParams();
   
-   const  referral_code =   searchParams.get("referral_code")
+   const  referral_code =   searchParams.get("referral")
 
   //  console.log({referral_code});
 

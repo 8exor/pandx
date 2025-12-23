@@ -155,7 +155,7 @@ export default function P2p() {
           </button>
         </div>
 
-        <div className={`flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full ${error?.p2pAmount && "border-red-600"} `}>
+        <div className={`flex items-center justift-between w-full gap-3 p-[12px]  bg-white border border-black rounded-lg lg:rounded-full  `}>
           <p className="text-sm text-center sm:text-left">
             Avl $
             {userData?.data?.withdrawable_balance
@@ -191,21 +191,12 @@ export default function P2p() {
         <button
           className={`bg-[#72A314] btn-primary  text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight ${userData?.data?.is_deactivated && "grayscale"}`}
           onClick={() => {
-            if(!userName && !p2pAmount){
-              setError({...error, userName : true, p2pAmount : true})
-            }
-            else if(!userName){
-              setError({...error, userName : true})
-            }
-            else if(!p2pAmount){
-              setError({...error, p2pAmount : true})
-            }
-            else{
+           
             p2pTransaction.mutate({
               username: userName,
               token_amount: p2pAmount,
             })
-          }
+       
           }
           }
           disabled={p2pTransaction?.isPending && true || (userData?.data?.is_deactivated)&&true}

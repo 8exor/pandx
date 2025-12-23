@@ -125,7 +125,7 @@ export default function UnstakeTab() {
         <button
           className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 border border-[#181724] font-extralight text-center  rounded-full shine hover:scale-110 duration-300 ease-in-out ${userData?.data?.is_deactivated && "grayscale"}`}
           onClick={() => unstake.mutate({ confirmation: isChecked && "1" })}
-          disabled = {unstake?.isPending && true (userData?.data?.is_deactivated)&&true} 
+          disabled = {unstake?.isPending && true || (userData?.data?.is_deactivated)&&true} 
         >
           {unstake?.isPending ?  <Load/> : " Submit"}
         </button>

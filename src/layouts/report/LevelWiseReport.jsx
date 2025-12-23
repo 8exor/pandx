@@ -7,12 +7,14 @@ const LevelWiseReport = ({ data, type, setShowPopUp, setActiveIndex, setInactive
 
     <div className="w-full max-w-[250px]  bg-[#efffe3] text-center  space-y-2 rounded-md border  border-black py-2  ">
         <div className="sticky top-0 w-full bg-[#efffe3]">
-            <div className="flex items-center justify-end ">
+            <div className="flex items-center justify-between border-b-2  border-[#68a12b]">
+              <div/>
+       <h3 className=""> {type}</h3>
+       
         <button className="p-2 rounded-full cursor-pointer " onClick={()=>{setShowPopUp(false),  setActiveIndex(""), setInactiveIndex(false)}}>
             <img src="/assets/images/close.png" className="invert" alt="close" />
         </button>
         </div>
-       <h3 className="border-b-2 border-[#68a12b]"> {type}</h3>
        </div>
        <div className="overflow-auto custom-scrollbar scroll-smooth max-h-[300px] ">
       <ul className="px-2 ">
@@ -23,7 +25,7 @@ const LevelWiseReport = ({ data, type, setShowPopUp, setActiveIndex, setInactive
         </li>
         :
         data?.map((d, i) => (
-          <li key={i} className="p-1 mb-2 border border-green-900 bg-[#68a12b] rounded-md ">
+          <li key={i} className="p-1 mb-2 border border-green-900 rounded-md btn-primary ">
             <p>{d.username}</p>
           </li>
         ))}
