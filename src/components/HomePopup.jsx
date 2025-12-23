@@ -117,7 +117,7 @@ const HomePopup = () => {
                 className="flex gap-2 px-6 [@media(max-width:320px)]:text-sm py-3 text-lg text-white btn-primary"
               >
                 <img src="/assets/images/panda.svg" alt="panda" />
-                Login
+                Connect
               </button>
             </li>
             <li>

@@ -16,7 +16,6 @@ import TableSkeleton from "./TableSkelton";
 import { useTimerCounter } from "@hooks/useTimeCounter";
 import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 
-
 export default function Staking() {
   const { address } = useAppKitAccount();
   const navigate = useNavigate();
@@ -64,7 +63,16 @@ export default function Staking() {
       headers: ["S N", "Date", "Compound Amt $", "Status", "Total Withdrawal"],
     },
     p2p: {
-      headers: ["S N", "Date", "username", "P2P Amt $", "Type", "Txn_hash", "Status", "Total Withdrawal"],
+      headers: [
+        "S N",
+        "Date",
+        "username",
+        "P2P Amt $",
+        "Type",
+        "Txn_hash",
+        "Status",
+        "Total Withdrawal",
+      ],
     },
     incomeReports: {
       TRIAL: ["S N", "Date", "Amt $", "Note"],
@@ -91,11 +99,10 @@ export default function Staking() {
     (userData?.data?.rank_id == 4 && "0.90%") ||
     (userData?.data?.rank_id == 5 && "1.00%");
 
-
-const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_date, 96);
-
-
-
+  const [totalHours, minutes, seconds] = useTimerCounter(
+    userData?.data?.active_date,
+    96
+  );
 
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2 pb-10">
@@ -106,12 +113,13 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
         </marquee>
       </div>
       <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">
-          <span className="block text-sm font-normal text-center sm:hidden blink-text">
-       INVITE 3 – GET 3% BOOSTX IN 
-       <span className="block">{`${totalHours}h : ${minutes}s : ${seconds}m`}</span>
+        <span className="block text-sm font-normal text-center sm:hidden blink-text">
+          INVITE 3 – GET 3% BOOSTX IN
+          <span className="block">{`${totalHours}h : ${minutes}s : ${seconds}m`}</span>
         </span>
         <span className="hidden font-normal text-center sm:block blink-text">
-       INVITE 3 – GET 3% BOOSTX IN {`${totalHours}h : ${minutes}s : ${seconds}m`}
+          INVITE 3 – GET 3% BOOSTX IN{" "}
+          {`${totalHours}h : ${minutes}s : ${seconds}m`}
         </span>
       </div>
       <StakingHead />
@@ -146,13 +154,17 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
             </div>
 
             {/* desktop marqee */}
-     
+
             <button
               className={`${
-                (!userData?.data?.is_active || userData?.data?.is_deactivated) ? "btn-red" : "btn-primary"
+                !userData?.data?.is_active || userData?.data?.is_deactivated
+                  ? "btn-red"
+                  : "btn-primary"
               } flex-1  rounded-full text-sm  py-2 px-1 blink-text`}
             >
-              { (!userData?.data?.is_active || userData?.data?.is_deactivated) ? "Inactive" : "Active"}
+              {!userData?.data?.is_active || userData?.data?.is_deactivated
+                ? "Inactive"
+                : "Active"}
             </button>
           </div>
 
@@ -189,7 +201,11 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
             />
           </div>
 
-          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto mt-24 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
+          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center rounded-sm">
+            Telegram Join Is Required to Claim the Airdrop
+          </div>
+
+          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto  mt-5 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
 
@@ -209,45 +225,42 @@ const [totalHours, minutes, seconds ] = useTimerCounter(userData?.data?.active_d
                   </th>
                 </tr>
               </thead>
-              
-                <tbody className="w-full">
-                  { isLoading ?
+
+              <tbody className="w-full">
+                {isLoading ? (
                   <TableSkeleton rows={3} cols={4} />
-                  :
-                  !data?.child_air_logs.length ? (
-                    <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
-                      <td>No Data Found</td>
-                    </tr>
-                  ) : (
-                    data?.child_air_logs?.map((child, index) => (
-                      <>
-                        <tr
-                          key={index}
-                          className="w-full flex  items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
-                        >
-                          <td className="  w-[50px] text-center font-medium  text-black capitalize whitespace-nowrap ">
-                            {index + 1}
-                          </td>
-                          <td className="  w-[100px]  font-medium text-center text-black capitalize whitespace-nowrap">
-                            {child?.airdrop_child_user?.username}
-                          </td>
-                          <td className=" w-[100px] text-center font-medium text-black capitalize whitespace-nowrap ">
-                            <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
-                              To be claimed
-                            </span>
-                          </td>
-                          <td className="  w-[100px] text-center font-medium text-black capitalize  whitespace-nowrap">
-                            {Number(
-                              child?.airdrop_child_user?.qerra_airdrop
-                            ).toFixed(0)}
-                          </td>
-                        </tr>
-                      </>
-                    ))
-                  )
-                }
-                </tbody>
-            
+                ) : !data?.child_air_logs.length ? (
+                  <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
+                    <td>No Data Found</td>
+                  </tr>
+                ) : (
+                  data?.child_air_logs?.map((child, index) => (
+                    <>
+                      <tr
+                        key={index}
+                        className="w-full flex  items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      >
+                        <td className="  w-[50px] text-center font-medium  text-black capitalize whitespace-nowrap ">
+                          {index + 1}
+                        </td>
+                        <td className="  w-[100px]  font-medium text-center text-black capitalize whitespace-nowrap">
+                          {child?.airdrop_child_user?.username}
+                        </td>
+                        <td className=" w-[100px] text-center font-medium text-black capitalize whitespace-nowrap ">
+                          <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
+                            To be claimed
+                          </span>
+                        </td>
+                        <td className="  w-[100px] text-center font-medium text-black capitalize  whitespace-nowrap">
+                          {Number(
+                            child?.airdrop_child_user?.qerra_airdrop
+                          ).toFixed(0)}
+                        </td>
+                      </tr>
+                    </>
+                  ))
+                )}
+              </tbody>
             </table>
           </div>
         </div>

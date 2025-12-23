@@ -13,6 +13,8 @@ import LevelWiseReport from "./LevelWiseReport";
 
 const Report = () => {
   const { userData } = useContext(UserInfoContext);
+  const [activeIndex, setActiveIndex] = useState(false)
+  const [inactiveIndex, setInactiveIndex] = useState(false)
 
 
   const [getUserName, setGetUserName] = useState("");
@@ -245,13 +247,9 @@ const Report = () => {
   let apiLevel = levelData?.data ? levelData?.data : [];
 
   const tableLevel = apiLevel.map((el) => {
-  
-
     el.level_reward = levels[el.level - 1].levelReward;
     return el;
   });
-
-
 
   // const tableLevel = [...levels, ...apiLevel];
 
@@ -370,7 +368,11 @@ const Report = () => {
                     {tableDataKeys?.map((data, index) => {
                       return (
                         <th
-                          className={`capitalize text-center font-medium p-5  ${data === "Total Level Reward" ? "w-[250px]" : " w-[180px]"}`}
+                          className={`capitalize text-center font-medium p-5  ${
+                            data === "Total Level Reward"
+                              ? "w-[250px]"
+                              : " w-[180px]"
+                          }`}
                           key={index}
                         >
                           {data}
@@ -396,30 +398,43 @@ const Report = () => {
                       return (
                         <tr
                           key={data?.level}
-                          className="rounded-lg  hover:bg-border-color bg-[#c4ffa1]  group/item flex justify-between items-center shadow"
+                          className="rounded-lg  hover:bg-border-color bg-[#c4ffa1] py-2 group/item flex justify-between items-center shadow"
                         >
                           <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             {data?.level}
                           </td>
-                          <td className=" w-full md:max-w-[180px] text-center">
-                            <span
-                              onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.active_users[data?.level]) , setDataType("Active") }}
-                              className="p-5 py-2 text-sm font-normal text-black capitalize"
-                            >
-                              {data?.active_users}
-
-                              {/* {showPopUp && (
-                                <div className="absolute z-50 px-3 py-2 mt-2 text-xs text-white -translate-x-1/2 bg-black rounded shadow-lg top-full left-1/2">
-                                  Popup content
-                                </div>
-                              )} */}
-                            </span>
+                          <td
+                            className={` w-full md:max-w-[180px] text-center p-5 py-2 text-sm font-normal border-2 border-black rounded-md text-black capitalize ${activeIndex === index && "bg-[#6ba632] text-white"}`}
+                            onClick={() => {
+                              setShowPopUp(true),
+                              
+                                setLevelUsersData(
+                                  levelWiseData.active_users[data?.level]
+                                ),
+                                setDataType("Active");
+                                setActiveIndex(index)
+                            }}
+                          >
+                            {data?.active_users} VIEW
                           </td>
-                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center" onClick={() => {setShowPopUp(true) , setLevelUsersData(levelWiseData.inactive_users[data?.level]) , setDataType("Inactive") }}>
-                            {data?.inactive_users}
+                          <td
+                            className={`capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2 border-2 border-black rounded-md  text-black text-center ${inactiveIndex === index && "bg-[#6ba632] text-white"}`}
+                            onClick={() => {
+                              setShowPopUp(true),
+                                setLevelUsersData(
+                                  levelWiseData.inactive_users[data?.level]
+                                ),
+                                setInactiveIndex(index)
+                                setDataType("Inactive");
+                            }}
+                          >
+                            {data?.inactive_users} VIEW
                           </td>
                           <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
-                            $ {parseFloat(parseFloat(data?.stake_amount).toFixed(2))}
+                            ${" "}
+                            {parseFloat(
+                              parseFloat(data?.stake_amount).toFixed(2)
+                            )}
                           </td>
                           <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             {data?.level_reward}
@@ -436,7 +451,16 @@ const Report = () => {
             )}
           </div>
         </div>
-            {showPopUp && <LevelWiseReport data={levelUsersData} type={dataType} setShowPopUp={setShowPopUp} />}
+        {showPopUp && (
+          <LevelWiseReport
+            data={levelUsersData}
+            type={dataType}
+            setShowPopUp={setShowPopUp}
+            setActiveIndex = {setActiveIndex}
+            setInactiveIndex = {setInactiveIndex}
+            
+          />
+        )}
       </div>
     </div>
   );

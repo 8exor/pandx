@@ -1,10 +1,6 @@
 import Cookies from "js-cookie";
 
 
-Cookies.set('name', 'value', {expires : 7})
-Cookies.set('username', 'john cena')
-
-const username = Cookies.get('username');
 
 
 export  function setAccessToken(token){
