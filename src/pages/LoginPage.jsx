@@ -49,7 +49,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
 
 
-  // console.log({referral_code})
+  // console.log({searchParams , kk : searchParams.get("referral_code")})
 
 
   const navigate = useNavigate();
@@ -193,6 +193,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   });
 
   useEffect(() => {
+
+    console.log({object: "useEffect called" , referralCode})
     setIsReferralCodeChecked(false);
   }, [referralCode]);
 
@@ -202,7 +204,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
   useEffect(() => {
 
-   const  referral_code =   searchParams.get("referral_code")
+   const  referral_code =   searchParams.get("referral");
+  //  console.log({referral_code})
     
     setReferralCode(referral_code);
     
@@ -257,7 +260,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
               onClick={() => {
                 // setClickedOnLogin(false);
-                setClickedOnSignUpConnect(true);
+                // setClickedOnSignUpConnect(true);
                 open();
                 setShowError({ ...showError, walletAddress: false })
               }}
