@@ -39,10 +39,10 @@ function App() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <UserInfoProvider>
             <Toaster />
-            <BrowserRouter>
+            <HashRouter>
               <WalletAccountListener/>
               <AppRoutes />
-            </BrowserRouter>
+            </HashRouter>
             <ReactQueryDevtools initialIsOpen={false} />
           </UserInfoProvider>
         </LocalizationProvider>

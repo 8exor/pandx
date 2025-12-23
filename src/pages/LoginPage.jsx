@@ -202,7 +202,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
 
   useEffect(() => {
 
-   const  referral_code =   searchParams.get("referral")
+   const  referral_code =   searchParams.get("referral_code")
     
     setReferralCode(referral_code);
     
