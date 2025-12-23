@@ -60,6 +60,7 @@ const Header = ({
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  const {referral, setReferral} = useContext(UserInfoContext);
 
   //  const {referral_code} = useParams()
 
@@ -139,7 +140,7 @@ const Header = ({
 
    const  referral_code =   searchParams.get("referral");
   //  console.log({referral_code})
-   
+   setReferral(referral_code)
     if (referral_code) {
       setOpenLoginModal(true);
     }

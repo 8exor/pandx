@@ -8,9 +8,10 @@ import Roadmap from "@components/ui/Home/Roadmap"
 import Footer from "@components/Footer"
 import Chart from "@components/ui/Home/Chart"
 import ScrollToTop from "@components/ui/Home/ScrollToTop"
-import { useRef ,useEffect } from "react";
+import { useRef ,useEffect, useContext } from "react";
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import HomePopup from "@components/HomePopup"
+import { UserInfoContext } from "@contexts/UserInfoContext"
 const Home = () => {
    const location = useLocation();
   const aboutRef = useRef(null);
@@ -21,11 +22,11 @@ const Home = () => {
 
   const [searchParams] = useSearchParams();
   
-
+const {referral} = useContext(UserInfoContext);
 
   // const {referral_code} =   useParams();
   
-   const  referral_code =   searchParams.get("referral")
+  //  const  referral_code =   searchParams.get("referral")
 
   //  console.log({referral_code});
 
@@ -48,7 +49,7 @@ const Home = () => {
   }, [location]);
     return (
         <>
-       { !referral_code && <HomePopup/>}
+       { !referral && <HomePopup/>}
         <Header  getStartedRef={getStartedRef} roadmapRef={roadmapRef} tokenomicsRef={tokenomicsRef} aboutRef={aboutRef} homeRef={homeRef} currentPage="home"/>   
         <Banner homeRef={homeRef} aboutRef={aboutRef} />
         <Features/>
