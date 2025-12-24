@@ -11,11 +11,10 @@ const Banner = ({ aboutRef, homeRef }) => {
     return `${str.slice(0, keep)} … ${str.slice(str.length - keep)}`;
   };
 
-const [isCopied, handleCopy] = useCopyToClipBaord();
-
+  const [isCopied, handleCopy] = useCopyToClipBaord();
 
   // const copyText = () => {
-  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8"); 
+  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
   //   setCopied(true);
   //   setTimeout(() => setCopied(false), 4000);
   // };
@@ -36,32 +35,51 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
             {taskNote?.des2}
           </marquee>
         </div>
-       <div className="mx-2 mb-[-60px]" >
-         <div className="w-full max-w-[800px] mt-5  border-2 rounded-lg border-[#5eb10d]  sm:mx-auto flex items-center justify-center gap-2 p-3 text-xl">
-          <marquee behavior="alternate" scrollamount="8" direction="">
-            {taskNote?.des3}
-          </marquee>
+        <div className="mx-2 mb-[-60px]">
+          <div className="w-full max-w-[800px] mt-5  border-2 rounded-lg border-[#5eb10d]  sm:mx-auto flex items-center justify-center gap-2 p-3 text-xl">
+            <marquee behavior="alternate" scrollamount="8" direction="">
+              {taskNote?.des3}
+            </marquee>
+          </div>
         </div>
-       </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-          <ul
-            className=" fixed   bg-[#eaffe2] border-[2px]  border-[#75ac3f]  flex-col gap-4 rounded-lg px-[5px] md:px-[10px] py-[20px] md:py-[25px] z-20 left-[1.5%]"
-            data-aos="slide-up"
-          >
-            {headerLogos.map((item, index) => (
-              <li
-                key={index}
-                className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center justify-center border mt-2 rounded-full border-[#00d990] 
-                 hover:drop-shadow-[0_0_10px_#00d990] hover:scale-120 duration-300 ease-in-out"
-              >
-                <img
-                  className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
-                  src={item.img}
-                  alt="logo icon"
-                />
-              </li>
-            ))}
-          </ul>
+         <ul
+  className="fixed bg-[#eaffe2] border-[2px] border-[#75ac3f]
+  flex-col gap-4 rounded-lg px-[5px] md:px-[10px]
+  py-[20px] md:py-[25px] z-20 left-[1.5%]"
+  data-aos="slide-up"
+>
+  {headerLogos.map((item, index) => {
+    const Content = (
+      <li
+        className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center
+        justify-center border mt-2 rounded-full border-[#00d990]
+        hover:drop-shadow-[0_0_10px_#00d990]
+        hover:scale-120 duration-300 ease-in-out"
+      >
+        <img
+          className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
+          src={item.img}
+          alt="logo icon"
+        />
+      </li>
+    )
+
+    return item.link ? (
+      <a
+        key={index}
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {Content}
+      </a>
+    ) : (
+      <div key={index}>{Content}</div>
+    )
+  })}
+</ul>
+
 
           <div className="mycontainer ">
             <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">
@@ -172,16 +190,115 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
             </div>
           </div>
         </section>
+
+        {/* <section className="mycontainer !mt-20 bg-[#edffe1]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="py-3 px-6 bg-[#72A314] rounded-lg flex flex-col items-center justify-center">
+              <h2 className="text-2xl   text-white      ">HOLDERS</h2>
+              <h2 className="text-xl   text-white      ">500</h2>
+            </div>
+
+            <div className="py-3 px-6 bg-[#72A314] rounded-lg flex flex-col items-center justify-center">
+              <h2 className="text-2xl   text-white      ">STAKERS</h2>
+              <h2 className="text-xl   text-white      ">700</h2>
+            </div>
+
+            <div className="py-3 px-6 bg-[#72A314] rounded-lg flex flex-col items-center justify-center">
+              <h2 className="text-2xl   text-white      ">TRANSACTIONS</h2>
+              <h2 className="text-xl   text-white      ">1000</h2>
+            </div>
+
+            <div className="py-3 px-6 bg-[#72A314] rounded-lg flex flex-col items-center justify-center">
+              <h2 className="text-2xl   text-white      ">TVL</h2>
+              <h2 className="text-xl   text-white      ">$100,100</h2>
+            </div>
+          </div>
+        </section> */}
+
+        <section className="mycontainer !mt-20 bg-[#edffe1]">
+          <div className="bg-[#f7fff1] border border-[#cfe6b8] rounded-2xl px-6 py-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 text-center divide-x divide-[#cfe6b8]">
+              <div className="px-4">
+                <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
+                  Holders
+                </p>
+                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                  500
+                </h3>
+              </div>
+
+              <div className="px-4">
+                <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
+                  Stakers
+                </p>
+                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                  700
+                </h3>
+              </div>
+
+              <div className="px-4">
+                <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
+                  Transactions
+                </p>
+                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                  1,000
+                </h3>
+              </div>
+
+              <div className="px-4">
+                <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
+                  TVL
+                </p>
+                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                  $10,000,000
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* <section className="mycontainer !mt-20 bg-[#edffe1]">
+          <div className="bg-[#6ba632] rounded-2xl px-6 py-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 text-center divide-x divide-[#EAEAEA]">
+              <div className="px-4">
+                <h3 className="text-4xl font-bold text-[#ffffff]">1000</h3>
+                <p className="text-md uppercase tracking-[2px] text-[#EAEAEA] font-bold mt-2">
+                  Holders
+                </p>
+              </div>
+
+              <div className="px-4">
+                <h3 className="text-4xl font-bold text-[#ffffff]">700</h3>
+                <p className="text-md uppercase tracking-[2px] text-[#EAEAEA] font-bold mt-2">
+                  Stakers
+                </p>
+              </div>
+
+              <div className="px-4">
+                <h3 className="text-4xl font-bold text-[#ffffff]">10000</h3>
+                <p className="text-md uppercase tracking-[3px] text-[#EAEAEA] font-bold mt-2">
+                  Transactions
+                </p>
+              </div>
+
+              <div className="px-4">
+                <h3 className="text-4xl font-bold text-[#ffffff]"> $10,000,000</h3>
+                <p className="text-md uppercase tracking-[2px] text-[#EAEAEA] font-bold mt-2">
+                  TVL
+                </p>
+              </div>
+            </div>
+          </div>
+        </section> */}
       </div>
+      {/* banner end  */}
+
+      {/*   About  us section start here */}
       <section
         ref={aboutRef}
         className="bg-[url('/assets/images/about_bg.svg')]  bg-bottom pb-[170px] sm:pb-40 lg:pb-30 xl:pb-10 bg-no-repeat bg-cover "
       >
-        <div className="relative mycontainer">
-          {/* <div className="absolute   bottom-[18%] sm:bottom-[14%] md:bottom-[11%] lg:bottom-[5%] xl:bottom-[6%]">
-          <img className="w-[60px] sm:w-[150px] lg:w-[200px]" src="/assets/images/Tree-about.png" alt="tree-side" />
-        </div> */}
-        </div>
+        <div className="relative mycontainer"></div>
         <div className="relative mycontainer">
           <div className="absolute hidden sm:block  bottom-[-4%] xl:left-[-11%]  left-0">
             <img
@@ -202,16 +319,18 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
               </p>
               <div className="bg-white shadow-sm border border-[#dbdbdb] py-2 mt-6 px-6  rounded-2xl  lg:rounded-full flex items-center justify-center sm:justify-between m-auto gap-3 w-full max-w-3xl flex-wrap sm:flex-nowrap">
                 <p className=" border-2 font-bold text-sm !text-[#000000] border-[#78ad42] p-2 rounded-lg">
-                  <a href="https://bscscan.com" target="blank">$PANDX Contract</a>
+                  <a href="https://bscscan.com" target="blank">
+                    $PANDX Contract
+                  </a>
                 </p>
                 <p className="text-center">
-                   <a href="https://bscscan.com" target="blank">
-                  {/* {`${address.substring(0, 10)}.......${address.substring(30, 48)}`} */}
-                   {address}
+                  <a href="https://bscscan.com" target="blank">
+                    {/* {`${address.substring(0, 10)}.......${address.substring(30, 48)}`} */}
+                    {address}
                   </a>
                 </p>
                 <button
-                  onClick={()=>handleCopy(address)}
+                  onClick={() => handleCopy(address)}
                   className="btn-primary  !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   Copy
@@ -234,6 +353,8 @@ const [isCopied, handleCopy] = useCopyToClipBaord();
           </div>
         </div>
       </section>
+
+      {/*   About  us section end here */}
     </>
   );
 };

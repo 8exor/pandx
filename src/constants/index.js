@@ -146,16 +146,23 @@ export const myLevel = [
 //   },
 // ];
 export const headerLogos = [
-  {img: "assets/images/BSCSCAN.svg"},
-  {img:"assets/images/start-up.svg"},
-  {img:"assets/images/qerra-logo.png"},
-  {img:"assets/images/Dextool.svg"},
-  {img:"assets/images/dex-screener.svg"},
-  {img:"assets/images/fire.svg"},
-  {img:"assets/images/ppt.svg"},
-  {img:"assets/images/meet.png"}
-  
+  { img: "assets/images/BSCSCAN.svg" },
+  { img: "assets/images/start-up.svg" },
+  { img: "assets/images/qerra-logo.png" },
+  { img: "assets/images/Dextool.svg" },
+  { img: "assets/images/dex-screener.svg" },
+  { img: "assets/images/fire.svg" },
+
+  {
+    img: "assets/images/ppt.svg",
+    link: "https://drive.google.com/file/d/107TUnAn-cleeeixGp5qaZP64d0BgIEvI/view?usp=sharing"
+  },
+  {
+    img: "assets/images/meet.png",
+    link: "https://meet.google.com/bco-rfba-iyh"
+  }
 ]
+
 
 export const taskNote = {
   title : "NOTE:",
