@@ -58,23 +58,35 @@ export default function StakingTable({ activeTab, tableConfig }) {
       <div className="overflow-auto rounded-md scrollbar-custom">
         <table className="w-full ">
           <thead className="sticky top-0 text-black rounded-md ">
-            <tr className="w-full flex gap-10 items-center justify-between p-4 px-2  rounded-md  bg-[#ffffff] border-b-5 border-[#befeb2]  ">
-              {activeTab?.mainTabs === "incomeReports"
-                ? tableConfig[activeTab?.mainTabs][activeTab?.incomeTabs]?.map(
+           
+              {activeTab?.mainTabs === "incomeReports"   ?
+               <tr className="w-full flex gap-10 items-center justify-between p-4 px-10  rounded-md  bg-[#ffffff] border-b-5 border-[#befeb2]  ">
+              <th className="font-normal text-left w-[30px]">S N</th>
+            {  tableConfig[activeTab?.mainTabs][activeTab?.incomeTabs]?.map(
                     (head, index) => (
-                      <th className="font-normal w-[250px]" key={index}>
-                        {head}
-                      </th>
-                    )
-                  )
-                : tableConfig[activeTab?.mainTabs].headers?.map(
-                    (head, index) => (
-                      <th className="font-normal w-[250px]" key={index}>
+                      <th className="font-normal text-left w-[130px]" key={index}>
                         {head}
                       </th>
                     )
                   )}
-            </tr>
+                   <th className="font-normal text-center w-[350px]">Note</th>
+                  </tr>
+
+                  :
+                  <tr className="w-full flex gap-10 items-center justify-between p-4 px-10  rounded-md  bg-[#ffffff] border-b-5 border-[#befeb2]  ">
+              <th className="font-normal text-left w-[50px]">S N</th>
+
+                  {
+                 tableConfig[activeTab?.mainTabs].headers?.map(
+                    (head, index) => (
+                      <th className="font-normal text-left w-[150px]" key={index}>
+                        {head}
+                      </th>
+                    )
+                  )}
+                  </tr>
+}
+                
           </thead>
 
           <tbody className="w-full">
@@ -87,23 +99,23 @@ export default function StakingTable({ activeTab, tableConfig }) {
                     <td className="w-full text-center">No Data Found</td>
                   </tr>
                 ) : (
-                  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl">
-                    <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                  <tr className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-2  px-10 py-1 rounded-md shadow-xl">
+                    <td className="text-base font-medium text-left text-black capitalize w-full max-w-[50px]">
                       1
                     </td>
-                    <td className="font-medium text-center text-black capitalize w-[250px] ">
+                    <td className="font-medium text-left text-black capitalize w-[150px] ">
                       {stakeData?.created_at
                         ? new Date(stakeData?.created_at).toLocaleDateString()
                         : "-"}
                     </td>
-                    <td className="text-base text-center font-medium text-black capitalize w-[250px] ">
+                    <td className="text-base text-center font-medium text-black capitalize w-[150px] ">
                       {parseFloat(stakeData?.amt_usd || 0)}
                     </td>
-                    <td className="text-base font-medium text-center text-black capitalize w-[250px] ">
+                    <td className="text-base font-medium text-left text-black capitalize w-[150px] ">
                       {stakeData?.status ? "true" : "false"}
                     </td>
-                    <td className="text-base font-medium text-center text-black capitalize w-[250px] ">
-                      {stakeData?.note}
+                    <td className="text-base font-medium text-left text-black capitalize w-[150px] ">
+                     
                     </td>
                   </tr>
                 )}
@@ -121,27 +133,27 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 <>
                   {unstakeData?.map((unstake, index) => (
                     <tr
-                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl "
+                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl "
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[50px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {unstake?.created_at
                           ? new Date(unstake?.created_at).toLocaleDateString()
                           : "-"}
                       </td>
-                      <td className="text-base text-center font-medium text-black capitalize w-[250px] ">
+                      <td className="text-base text-center font-medium text-black capitalize w-[150px] ">
                         {parseFloat(stakeData?.amt_usd || 0)}
                       </td>
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-left font-medium text-black capitalize w-full max-w-[150px] ">
                         Unstaked
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {unstake?.status}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] "></td>
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] "></td>
                     </tr>
                   ))}
                 </>
@@ -158,13 +170,13 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 <>
                   {withdrawalData?.map((withdrawal, index) => (
                     <tr
-                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl "
+                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl "
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[50px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {withdrawal?.created_at
                           ? new Date(
                               withdrawal?.created_at
@@ -172,13 +184,13 @@ export default function StakingTable({ activeTab, tableConfig }) {
                           : "-"}
                       </td>
 
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
                         {parseFloat(withdrawal?.amt_usd || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {withdrawal?.status}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[150px] ">
                         {index + 1 == 1
                           ? parseFloat(withdrawalReport?.data?.total_income)
                           : "-"}
@@ -199,25 +211,25 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 <>
                   {compoundData?.map((compound, index) => (
                     <tr
-                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl "
+                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl "
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[50px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {compound?.createdAt
                           ? new Date(compound?.createdAt).toLocaleDateString()
                           : "-"}
                       </td>
 
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[150px] ">
                         {parseFloat(compound?.debit || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {compound?.status ? "true" : "false"}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] "></td>
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] "></td>
                     </tr>
                   ))}
                 </>
@@ -234,30 +246,30 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 <>
                   {p2pData?.map((p2p, index) => (
                     <tr
-                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl "
+                      className="w-full  flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl "
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[50px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {p2p?.created_at
                           ? new Date(p2p?.created_at).toLocaleDateString()
                           : "-"}
                       </td>
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-left font-medium text-black capitalize w-full max-w-[150px] ">
                         {p2p?.username}
                       </td>
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-left font-medium text-black capitalize w-full max-w-[150px] ">
                         {parseFloat(p2p?.amount_in_usd || 0)}
                       </td>
-                      <td className="text-base text-center font-medium text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base text-left font-medium text-black capitalize w-full max-w-[150px] ">
                         {p2p?.username == userData?.data?.username
                           ? "In"
                           : "Out"}
                       </td>
                       <td
-                        className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] cursor-pointer"
+                        className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] cursor-pointer"
                         onClick={() => handleCopy(p2p?.txn_hash)}
                       >
                         {`${p2p?.txn_hash.substring(
@@ -266,14 +278,14 @@ export default function StakingTable({ activeTab, tableConfig }) {
                         )}....${p2p?.txn_hash.substring(59, 64)}`}
                       </td>
 
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] ">
                         {(p2p?.status == 0 && "Pending Process") ||
                           (p2p?.status == 1 && "In Process") ||
                           (p2p?.status == 2 && "Complete")}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      {/* <td className="text-base font-medium text-left text-black capitalize w-full max-w-[120px] ">
                         {stakeData?.note}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </>
@@ -291,22 +303,22 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 incomeData?.map((incomeData, index) => (
                   <>
                     <tr
-                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl"
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
 
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {parseFloat(incomeData?.staking?.amt_usd || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-sm font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>
@@ -329,21 +341,21 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.from_username}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full  max-w-[130px] ">
                         {parseFloat(incomeData?.staking?.amt_usd || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>
@@ -363,27 +375,27 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 incomeData?.map((incomeData, index) => (
                   <>
                     <tr
-                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl "
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl "
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.from_username}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {parseFloat(incomeData?.level)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {parseFloat(incomeData?.staking?.amt_usd || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>
@@ -403,22 +415,22 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 incomeData?.map((incomeData, index) => (
                   <>
                     <tr
-                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl"
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-left text-black capitalize w-full max-w-[120px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
 
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[120px] ">
                         {parseFloat(incomeData?.amount || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>
@@ -438,22 +450,22 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 incomeData?.map((incomeData, index) => (
                   <>
                     <tr
-                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl"
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-center text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
 
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[130px] ">
                         {parseFloat(incomeData?.amount || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>
@@ -473,25 +485,25 @@ export default function StakingTable({ activeTab, tableConfig }) {
                 incomeData?.map((incomeData, index) => (
                   <>
                     <tr
-                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      className="w-full flex gap-10 items-center justify-between bg-[#befeb2] mt-5  px-10 p-2 rounded-md shadow-xl"
                       key={index}
                     >
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px]">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[30px]">
                         {index + 1}
                       </td>
-                      <td className="font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="font-medium text-center text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.date
                           ? new Date(incomeData?.date).toLocaleDateString()
                           : "-"}
                       </td>
 
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[130px] ">
                         {incomeData?.username}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-left text-black capitalize w-full max-w-[130px] ">
                         {parseFloat(incomeData?.amount || 0)}
                       </td>
-                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[250px] ">
+                      <td className="text-base font-medium text-center text-black capitalize w-full max-w-[350px] ">
                         {incomeData?.note}
                       </td>
                     </tr>

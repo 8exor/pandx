@@ -38,11 +38,11 @@ export default function Staking() {
 
   const tableConfig = {
     stake: {
-      headers: ["S N", "Date", "Staked Amt $", "Status", "Total Withdrawal"],
+      headers: [ "Date", "Staked Amt $", "Status", "Total Withdrawal"],
     },
     unstake: {
       headers: [
-        "S N",
+        
         "Date",
         "Staked Amt $",
         "Unstaked Amt $",
@@ -52,7 +52,7 @@ export default function Staking() {
     },
     withdrawal: {
       headers: [
-        "S N",
+        
         "Date",
         "Withdrawal Amt $",
         "Status",
@@ -60,27 +60,27 @@ export default function Staking() {
       ],
     },
     compound: {
-      headers: ["S N", "Date", "Compound Amt $", "Status", "Total Withdrawal"],
+      headers: [ "Date", "Compound Amt $", "Status", "Total Withdrawal"],
     },
     p2p: {
       headers: [
-        "S N",
+   
         "Date",
         "username",
         "P2P Amt $",
         "Type",
         "Txn_hash",
         "Status",
-        "Total Withdrawal",
+        // "Total Withdrawal",
       ],
     },
     incomeReports: {
-      TRIAL: ["S N", "Date", "Amt $", "Note"],
-      DAILY: ["S N", "Date", "Amt $", "Note"],
-      DIRECT: ["S N", "Date", "Direct Referral", "Amt $", "Note"],
-      LEVEL: ["S N", "Date", "Username", "Level", "Amt $", "Note"],
-      BOOSTX: ["S N", "Date", "Amt $", "BOOSTX Status"],
-      "UNI-POOL": ["S N", "Date", "Username", "Amt $", "Note"],
+      TRIAL: [ "Date", "Amt $", ],
+      DAILY: [ "Date", "Amt $", ],
+      DIRECT: [ "Date", "Direct Referral", "Amt $", ],
+      LEVEL: [ "Date", "Username", "Level", "Amt $", ],
+      BOOSTX: [ "Date", "Amt $", "BOOSTX Status"],
+      "UNI-POOL": [ "Date", "Username", "Amt $", ],
     },
   };
 
