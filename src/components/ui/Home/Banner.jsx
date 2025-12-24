@@ -217,39 +217,39 @@ const Banner = ({ aboutRef, homeRef }) => {
 
         <section className="mycontainer !mt-20 bg-[#edffe1]">
           <div className="bg-[#f7fff1] border border-[#cfe6b8] rounded-2xl px-6 py-5">
-            <div className="grid grid-cols-2 md:grid-cols-4 text-center divide-x divide-[#cfe6b8]">
-              <div className="px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 text-center divide-x divide-[#cfe6b8]">
+              <div className="px-4 sm:mt-0 mt-5">
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Holders
                 </p>
-                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
                   500
                 </h3>
               </div>
 
-              <div className="px-4">
+              <div className="px-4 sm:mt-0 mt-5">
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Stakers
                 </p>
-                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
                   700
                 </h3>
               </div>
 
-              <div className="px-4">
+              <div className="px-4 sm:mt-0 mt-5">
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Transactions
                 </p>
-                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
                   1,000
                 </h3>
               </div>
 
-              <div className="px-4">
+              <div className="px-4 sm:mt-0 mt-5">
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   TVL
                 </p>
-                <h3 className="text-3xl font-semibold text-[#2f4f0e] mt-1">
+                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
                   $10,000,000
                 </h3>
               </div>
