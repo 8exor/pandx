@@ -13,9 +13,12 @@ import LevelWiseReport from "./LevelWiseReport";
 
 const Report = () => {
   const { userData } = useContext(UserInfoContext);
-  const [activeIndex, setActiveIndex] = useState(false)
-  const [inactiveIndex, setInactiveIndex] = useState(false)
-
+  const [activeIndex, setActiveIndex] = useState(false);
+  const [allTeam , setAllTeam] = useState({
+    index : false,
+    team : false,
+  });
+  const [inactiveIndex, setInactiveIndex] = useState(false);
 
   const [getUserName, setGetUserName] = useState("");
   const [levelUsersData, setLevelUsersData] = useState([]);
@@ -70,6 +73,8 @@ const Report = () => {
       return data.data;
     },
   });
+
+
 
   const reportPool = [
     {
@@ -176,6 +181,7 @@ const Report = () => {
     "Level",
     "Active",
     "In-Active",
+    "All Team",
     "Stake Vol",
     "Level Reward",
     "Total Level Reward",
@@ -250,6 +256,8 @@ const Report = () => {
     el.level_reward = levels[el.level - 1].levelReward;
     return el;
   });
+
+ const allTeamData = levelWiseData?.allUsers;
 
   // const tableLevel = [...levels, ...apiLevel];
 
@@ -381,7 +389,7 @@ const Report = () => {
                     })}
                   </tr>
                 </thead>
-                <tbody className="flex flex-col mt-5 space-y-4 overflow-y-auto flex-nowrap">
+                <tbody className="flex flex-col mt-2 space-y-1 overflow-y-auto flex-nowrap">
                   {levelLoading ? (
                     <TableSkeleton rows={3} cols={8} />
                   ) : levels?.length == 0 ? (
@@ -398,37 +406,69 @@ const Report = () => {
                       return (
                         <tr
                           key={data?.level}
-                          className="rounded-lg  hover:bg-border-color bg-[#c4ffa1] py-2 group/item flex justify-between items-center shadow"
+                          className="rounded-lg  hover:bg-border-color bg-[#c4ffa1]  group/item flex gap-2 justify-between items-center shadow"
                         >
-                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
+                          <td className="capitalize w-full md:max-w-[180px] text-sm font-normal px-5   text-black text-center">
                             {data?.level}
                           </td>
                           <td
-                            className={` w-full md:max-w-[180px] text-center p-5 py-2 text-sm font-normal border-2 border-black rounded-md text-black capitalize ${activeIndex === index && "bg-[#6ba632] text-white"}`}
-                            onClick={() => {
-                              setShowPopUp(true),
-                              
-                                setLevelUsersData(
-                                  levelWiseData.active_users[data?.level]
-                                ),
-                                setDataType("Active");
-                                setActiveIndex(index)
-                            }}
+                            className={` w-full md:max-w-[180px] text-center  text-sm font-normal  text-black capitalize `}
                           >
-                            {data?.active_users} VIEW
+                            <span
+                              className={`p-2 py-1 border-2 border-black rounded-md ${
+                                activeIndex === index &&
+                                "bg-[#6ba632] text-white"
+                              } `}
+                              onClick={() => {
+                                setShowPopUp(true),
+                                  setLevelUsersData(
+                                    levelWiseData.active_users[data?.level]
+                                  ),
+                                  setDataType("Active");
+                                setActiveIndex(index);
+                              setAllTeam({...allTeam,  team : false})
+
+                              }}
+                            >
+                              {data?.active_users} VIEW
+                            </span>
                           </td>
                           <td
-                            className={`capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2 border-2 border-black rounded-md  text-black text-center ${inactiveIndex === index && "bg-[#6ba632] text-white"}`}
-                            onClick={() => {
+                            className={`capitalize w-full md:max-w-[180px] text-sm font-normal   text-black text-center `}
+                          
+                          >
+                             <span className={`p-2 py-1 border-2 border-black rounded-md ${
+                              inactiveIndex === index &&
+                              "bg-[#6ba632] text-white"
+                            }`}  onClick={() => {
                               setShowPopUp(true),
                                 setLevelUsersData(
                                   levelWiseData.inactive_users[data?.level]
                                 ),
-                                setInactiveIndex(index)
-                                setDataType("Inactive");
-                            }}
+                                setInactiveIndex(index);
+                              setDataType("Inactive");
+                              setAllTeam({...allTeam,  team : false})
+                            }}>
+                              {data?.inactive_users} VIEW
+                            </span>
+                          </td>
+                          <td
+                            className={`capitalize w-full md:max-w-[180px] text-sm font-normal  text-black text-center $`}
+                           
                           >
-                            {data?.inactive_users} VIEW
+                            <span className={`p-2 py-1 border-2 border-black rounded-md ${
+                              inactiveIndex === index &&
+                              "bg-[#6ba632] text-white"
+                            }`}  onClick={() => {
+                              setShowPopUp(true),
+                                setLevelUsersData(
+                                 allTeamData
+                                ),
+                                // setInactiveIndex(index);
+                              setAllTeam({...allTeam, index : index, team : true})
+                            }}>
+                              VIEW
+                            </span>
                           </td>
                           <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
                             ${" "}
@@ -456,9 +496,10 @@ const Report = () => {
             data={levelUsersData}
             type={dataType}
             setShowPopUp={setShowPopUp}
-            setActiveIndex = {setActiveIndex}
-            setInactiveIndex = {setInactiveIndex}
-            
+            setActiveIndex={setActiveIndex}
+            setInactiveIndex={setInactiveIndex}
+            allTeam = {allTeam}
+            setAllTeam = {setAllTeam}
           />
         )}
       </div>

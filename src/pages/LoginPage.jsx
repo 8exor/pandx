@@ -108,7 +108,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     onError: (error) => {
       console.log(error, "error");
       if (error?.status == 0) {
-        toast.error(error?.message, {
+        toast.error("INVALID USER", {
           duration: 700
         });
       }
@@ -257,7 +257,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 : "Connect Your Wallet"}{" "}
             </p>
             <button
-              className="bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer"
+              className={`bg-[#5b5bac] text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${address && "border-green-900 bg-green-600"}`}
               onClick={() => {
                 // setClickedOnLogin(false);
                 // setClickedOnSignUpConnect(true);
@@ -265,7 +265,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 setShowError({ ...showError, walletAddress: false })
               }}
             >
-              Connect wallet
+              { address ? "CONNECTED" :  "Connect wallet"}
             </button>
           </div>
 
