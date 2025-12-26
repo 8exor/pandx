@@ -189,7 +189,7 @@ export default function Staking() {
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
-        <div className="z-2 right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
+        <div className="z-2 hidden md:block right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-b-lg  p-4 md:p-6">
           <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2">
             QRA AIRDROP LIVE - EARN UNLIMITED $QRA
           </h1>
@@ -253,7 +253,7 @@ export default function Staking() {
                         </td>
                         <td className="  w-[100px] text-center font-medium text-black capitalize  whitespace-nowrap">
                           {Number(
-                            child?.airdrop_child_user?.qerra_airdrop
+                            child?.token_amount
                           ).toFixed(0)}
                         </td>
                       </tr>
@@ -266,6 +266,82 @@ export default function Staking() {
         </div>
       </div>
       <StakingTable activeTab={activeTab} tableConfig={tableConfig} />
+
+         <div className="z-2 mt-5 md:hidden md:block right-contain w-full md:w-1/2 bg-gradient-to-tr from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px]  lg:h-[790px] xl:h-[670px] sm:border-r sm:border-b border-l-0 border-t-0 border-[#49498A]  rounded-lg  p-4 md:p-6">
+          <h1 className="flex justify-center my-4 text-xl text-center md:text-left blink-text md:my-2 ">
+            QRA AIRDROP LIVE - EARN UNLIMITED $QRA
+          </h1>
+
+          <div className="mx-auto mb-5 circle-animate-logo">
+            <img
+              src="/assets/images/qerralogo.svg"
+              className="w-[150px] sm:w-[136px] h-auto mt-6 md:mt-10"
+            />
+          </div>
+
+          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center rounded-sm">
+            Telegram Join Is Required to Claim the Airdrop
+          </div>
+
+          <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto  mt-5 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
+            Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
+          </div>
+
+          <div className=" mt-6  overflow-auto scrollbar-custom max-h-[240px]  ">
+            <table className="w-full ">
+              <thead className="sticky top-0 z-10 text-black ">
+                <tr className="flex items-center justify-between w-full p-4 py-2 btn-primary">
+                  <th className="font-normal  w-[50px]">S N</th>
+                  <th className="font-normal   w-[100px] whitespace-nowrap">
+                    Username
+                  </th>
+                  <th className="font-normal  w-[100px] whitespace-nowrap">
+                    Status
+                  </th>
+                  <th className="font-normal  w-[120px] whitespace-nowrap">
+                    $QRA AirDrop
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody className="w-full">
+                {isLoading ? (
+                  <TableSkeleton rows={3} cols={4} />
+                ) : !data?.child_air_logs.length ? (
+                  <tr className="flex items-center justify-center w-full p-2 py-15 mt-10 bg-[#E6FFD5] ">
+                    <td>No Data Found</td>
+                  </tr>
+                ) : (
+                  data?.child_air_logs?.map((child, index) => (
+                    <>
+                      <tr
+                        key={index}
+                        className="w-full flex  items-center justify-between bg-[#E6FFD5] mt-5  px-4 p-2 rounded-md shadow-xl"
+                      >
+                        <td className="  w-[50px] text-center font-medium  text-black capitalize whitespace-nowrap ">
+                          {index + 1}
+                        </td>
+                        <td className="  w-[100px]  font-medium text-center text-black capitalize whitespace-nowrap">
+                          {child?.airdrop_child_user?.username}
+                        </td>
+                        <td className=" w-[100px] text-center font-medium text-black capitalize whitespace-nowrap ">
+                          <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-red-400 rounded-md bg-red-400/10 inset-ring inset-ring-red-400/20">
+                            To be claimed
+                          </span>
+                        </td>
+                        <td className="  w-[100px] text-center font-medium text-black capitalize  whitespace-nowrap">
+                          {Number(
+                            child?.token_amount
+                          ).toFixed(0)}
+                        </td>
+                      </tr>
+                    </>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
   );
 }

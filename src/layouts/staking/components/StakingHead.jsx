@@ -23,11 +23,11 @@ export default function StakingHead() {
   return (
     <>
       <div className="relative mt-5  max-w-[1360px] bg-[#49498A] p-8 pb-5 rounded-t-xl text-white font-bold text-[16px] sm:text-[18px] md:text-[20px] ">
-        <div className="absolute lg:left-[50px]  min-[375px]:left-[35px] min-[375px]:top-[35px] left-[10px] left-0 top-[10px] lg:top-[-80px] sm:top-[-80%]">
+        <div className="absolute  lg:left-[50px]  min-[375px]:left-[35px] min-[375px]:top-[35px] left-[10px] left-0 top-[10px] lg:top-[-80px] sm:top-[-80%]">
           <Gift />
         </div>
         <div className="flex sm:flex-row flex-col gap-4 items-center justify-between w-[80%] ml-auto xl:mx-auto">
-          <p className="text-center lg:text-right">
+          <p className="text-center lg:text-right ">
             Trial Bonus $
             {Number(data?.data?.trial_staking?.total_amt_usd || 0).toFixed(0) }
           </p>

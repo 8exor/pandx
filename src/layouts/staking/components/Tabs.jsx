@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { act, useContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import axiosInstance from "@utils/axiosInstance";
@@ -43,7 +43,7 @@ const [clickedOnTab, setClickedOnTab] = useState(false);
       <UnstakeTab/>
     ),
     withdrawal: (
-    <Withdrawl/>
+    <Withdrawl activeTab={activeTab} setActiveTab={setActiveTab}/>
     ),
     compound : (
     <Compound/>

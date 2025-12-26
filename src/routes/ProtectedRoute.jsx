@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 const ProtectedRoute = ({children}) => {
     const token = getAccessToken();
     if(!token){
-        return  <Navigate to={"/"} replace/>
+        return  <Navigate to={"/"} />
     }
   return <Outlet/>;
 }
