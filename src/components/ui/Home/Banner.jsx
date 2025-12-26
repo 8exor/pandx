@@ -1,4 +1,4 @@
-import { useState, useEffect, useref } from "react";
+import { useState, useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { headerLogos, taskNote } from "@constants/index";
@@ -13,11 +13,48 @@ const Banner = ({ aboutRef, homeRef }) => {
 
   const [isCopied, handleCopy] = useCopyToClipBaord();
 
-  // const copyText = () => {
-  //   navigator.clipboard.writeText("0x2170Ed0880ac9A755fd29B2688956BD959F933F8");
-  //   setCopied(true);
-  //   setTimeout(() => setCopied(false), 4000);
-  // };
+  const useCounter = (end, duration = 2000) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+
+          let current = 0;
+          const stepTime = 16; // ~60fps
+          const increment = end / (duration / stepTime);
+
+          const timer = setInterval(() => {
+            current += increment;
+
+            if (current >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.round(current));
+            }
+          }, stepTime);
+        }
+      },
+      { threshold: 0.4 } // start when 40% visible
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return { count, ref };
+};
+
+const { count: holders, ref: holdersRef } = useCounter(500);
+const { count: stakers, ref: stakersRef } = useCounter(700);
+const { count: transactions, ref: transactionsRef } = useCounter(1000);
+const { count: tvl, ref: tvlRef } = useCounter(10000000);
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -43,43 +80,42 @@ const Banner = ({ aboutRef, homeRef }) => {
           </div>
         </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-         <ul
-  className="fixed bg-[#eaffe2] border-[2px] border-[#75ac3f]
+          <ul
+            className="fixed bg-[#eaffe2] border-[2px] border-[#75ac3f]
   flex-col gap-4 rounded-lg px-[5px] md:px-[10px]
   py-[20px] md:py-[25px] z-20 left-[1.5%]"
-  data-aos="slide-up"
->
-  {headerLogos.map((item, index) => {
-    const Content = (
-      <li
-        className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center
+            data-aos="slide-up"
+          >
+            {headerLogos.map((item, index) => {
+              const Content = (
+                <li
+                  className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center
         justify-center border mt-2 rounded-full border-[#00d990]
         hover:drop-shadow-[0_0_10px_#00d990]
         hover:scale-120 duration-300 ease-in-out"
-      >
-        <img
-          className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
-          src={item.img}
-          alt="logo icon"
-        />
-      </li>
-    )
+                >
+                  <img
+                    className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
+                    src={item.img}
+                    alt="logo icon"
+                  />
+                </li>
+              );
 
-    return item.link ? (
-      <a
-        key={index}
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {Content}
-      </a>
-    ) : (
-      <div key={index}>{Content}</div>
-    )
-  })}
-</ul>
-
+              return item.link ? (
+                <a
+                  key={index}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {Content}
+                </a>
+              ) : (
+                <div key={index}>{Content}</div>
+              );
+            })}
+          </ul>
 
           <div className="mycontainer ">
             <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">
@@ -222,8 +258,11 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Holders
                 </p>
-                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
-                  500
+                <h3
+                  ref={holdersRef}
+                  className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1"
+                >
+                  {holders.toLocaleString()}
                 </h3>
               </div>
 
@@ -231,8 +270,11 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Stakers
                 </p>
-                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
-                  700
+                <h3
+                  ref={stakersRef}
+                  className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1"
+                >
+                  {stakers.toLocaleString()}
                 </h3>
               </div>
 
@@ -240,8 +282,11 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   Transactions
                 </p>
-                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
-                  1,000
+                <h3
+                  ref={transactionsRef}
+                  className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1"
+                >
+                  {transactions.toLocaleString()}
                 </h3>
               </div>
 
@@ -249,8 +294,11 @@ const Banner = ({ aboutRef, homeRef }) => {
                 <p className="text-sm uppercase tracking-wide text-[#5f7f2b]">
                   TVL
                 </p>
-                <h3 className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1">
-                  $10,000,000
+                <h3
+                  ref={tvlRef}
+                  className="lg:text-3xl text-xl font-semibold text-[#2f4f0e] mt-1"
+                >
+                  ${tvl.toLocaleString()}
                 </h3>
               </div>
             </div>

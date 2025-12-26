@@ -4,6 +4,37 @@ import ScrollToTop from "./ui/Home/ScrollToTop";
 import { Link } from "react-router-dom";
 
 const TermAndCondition = () => {
+  const headers = [
+    "24H PRICE DROP",
+    "ADDITIONAL SELL BURN TAX",
+    "ALLOCATION",
+    "SUPPLY",
+    "SUSTAINABILITY",
+  ];
+
+  const rows = [
+    {
+      drop: "3% TO 4.99%",
+      tax: "15%",
+      allocation: "100% → BURN",
+      supply: "SUPPLY ↓",
+      sustainability: "PRICE STABILITY ↑",
+    },
+    {
+      drop: "5% TO 9.99%",
+      tax: "30%",
+      allocation: "100% → BURN",
+      supply: "SUPPLY ↓",
+      sustainability: "PRICE STABILITY ↑",
+    },
+    {
+      drop: "10% & above",
+      tax: "50%",
+      allocation: "100% → BURN",
+      supply: "SUPPLY ↓",
+      sustainability: "PRICE STABILITY ↑",
+    },
+  ];
   return (
     <>
       <Header />
@@ -29,11 +60,15 @@ const TermAndCondition = () => {
           >
             <li className="leading-7">USER CAN STAKE/UN-STAKE ANYTIME</li>
             <li className="leading-7">
-ANYTIME PRINCIPAL UNSTAKE: USERS MAY WITHDRAW THEIR PRINCIPAL AMOUNT AT ANY TIME AT THE LIVE TOKEN PRICE. HOWEVER, A FLAT 25% DEDUCTION WILL BE APPLIED ON THE PRINCIPAL, ALONG WITH DEDUCTION OF ALL INCOMES/PROFITS EARNED ON THAT STAKE.
-
+              ANYTIME PRINCIPAL UNSTAKE: USERS MAY WITHDRAW THEIR PRINCIPAL
+              AMOUNT AT ANY TIME AT THE LIVE TOKEN PRICE. HOWEVER, A FLAT 25%
+              DEDUCTION WILL BE APPLIED ON THE PRINCIPAL, ALONG WITH DEDUCTION
+              OF ALL INCOMES/PROFITS EARNED ON THAT STAKE.
             </li>
             <li className="leading-7">
-UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE FORMULA FOR NEW TOP-UP ELIGIBILITY: PRINCIPAL – INCOME/ROI – 25% DEDUCTION
+              UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE
+              FORMULA FOR NEW TOP-UP ELIGIBILITY: PRINCIPAL – INCOME/ROI – 25%
+              DEDUCTION
             </li>
             {/* <li className="leading-7">
               NOW, AFTER UN-STAKE, USER CAN DO RE-STAKE BUT WITH A FEE OF 10% & IT’LL GOES TO REWARD POOL OR BURN POOL
@@ -56,8 +91,8 @@ UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE FORMULA FOR NEW TO
             start={5}
           >
             <li className="leading-7">
-              $100 TRIAL BONUS  VALID FOR 5 DAYS ONLY  NOT WITHDRAWABLE  BUT
-              YOU CAN WITHDRAW DAILY REWARDS IF YOU ARE AN ACTIVE USER.
+              $100 TRIAL BONUS VALID FOR 5 DAYS ONLY NOT WITHDRAWABLE BUT YOU
+              CAN WITHDRAW DAILY REWARDS IF YOU ARE AN ACTIVE USER.
             </li>
           </ol>
 
@@ -206,21 +241,78 @@ UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE FORMULA FOR NEW TO
             start={19}
           >
             <li className="leading-7">
-              <strong>
-                DYNAMIC ORACLE / PRICE GATING  ADVANCED VALUE-PROTECTION SYSTEM
-                INTEGRATED IN THE $PANDX TOKEN{" "}
-              </strong>
+              <strong>DYNAMIC ORACLE / PRICE GATING (ADVANCED)</strong>
             </li>
             <ul className="list-disc list-inside ml-6 space-y-1">
               <li className="leading-7">
-                ON EVERY SELLS, ADDITIONAL TAX & 100% ALLOCATE TO BURN IF THE
-                PRICE GOES DOWN BY MORE THAN A CERTAIN % IN A DAY
+                If $PANDX token’s price declines by more than a predefined
+                percentage within a 24-hour period, an additional dynamic burn
+                tax will be applied to every sell transaction. This mechanism is
+                specifically designed to prevent whale-driven dumping and
+                abnormal selling pressure.
               </li>
-              <li className="leading-7">4% TO 6.99% – 15% BURN TAX</li>
-              <li className="leading-7">7% TO 9.99% – 25% BURN TAX</li>
-              <li className="leading-7">10% OR ABOVE – 50% BURN TAX
-</li>
+              <li className="leading-7">
+                Under this model, 100% of the burn tax is permanently allocated
+                to burning, resulting in a reduction of the circulating supply
+                and the elimination of artificial sell-side pressure.
+              </li>
+              <li className="leading-7">
+                As a result, the $PANDX token’s price remains more stable over
+                the long term, unhealthy volatility is reduced, and community
+                confidence and participation are naturally strengthened.
+              </li>
+              <li className="leading-7">
+                Users can use the #P2P model to save this burn tax.
+              </li>
             </ul>
+          <table
+  style={{
+    borderCollapse: "collapse",
+    width: "100%",
+    textAlign: "center",
+    fontWeight: "400",
+    margin:"50px 0px",
+  }}
+>
+  <thead>
+    <tr>
+      {headers.map((header) => (
+        <th
+          key={header}
+          style={{
+            border: "1px solid #999",
+            padding: "12px 16px",
+            width: `${100 / headers.length}%`,
+            fontWeight: "400",
+            backgroundColor: "#f9f9f9",
+          }}
+        >
+          {header}
+        </th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map(({ drop, tax, allocation, supply, sustainability }, i) => (
+      <tr key={i}>
+        {[drop, tax, allocation, supply, sustainability].map((cell, idx) => (
+          <td
+            key={idx}
+            style={{
+              border: "1px solid #999",
+              padding: "12px 16px",
+              width: `${100 / headers.length}%`,
+              // fontWeight: idx === 0 ? "400" : "medium",
+            }}
+          >
+            {cell}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
           </ol>
 
           <h2 className="font-bold underline text-lg mb-3">
@@ -316,10 +408,73 @@ UPON UN-STAKING, THE SYSTEM WILL VERIFY CAPPING AND APPLY THE FORMULA FOR NEW TO
               THE ABOVE TERMS AND CONDITIONS.
             </li>
           </ol>
-           <Link className="justify-center flex" to={"/"}>
-               <button className="btn-primary px-4 py-2 mb-7">I Understand Back to Home</button>
-               </Link>
-          <ScrollToTop/>
+
+          <h2 className="font-bold underline text-lg mb-3">
+            USER ACKNOWLEDGMENT OF VOLUNTARY PARTICIPATION, RISK ACCEPTANCE &
+            LIABILITY WAIVER
+          </h2>
+
+          <ol
+            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            start={32}
+          >
+            <li className="leading-7">
+              The user expressly acknowledges and agrees that any investment
+              made in this platform/project is entirely voluntary, and is
+              undertaken without any pressure, coercion, inducement, or undue
+              influence from any individual or entity.
+            </li>
+            <li className="leading-7">
+              The user further confirms that the investment decision has been
+              made solely based on their own independent research, analysis, and
+              due diligence, and that they fully understand the potential risks,
+              market volatility, and possible outcomes associated with such
+              investment.
+            </li>
+            <li className="leading-7">
+              The user agrees that they shall not make any claim, demand,
+              complaint, or initiate any legal action against any individual,
+              organization, platform, team member, or system in relation to any
+              loss, profit, delay, price fluctuation, or outcome arising from
+              the investment.
+            </li>
+            <li className="leading-7">
+              These terms shall be deemed to have been read, understood, and
+              fully accepted by the user prior to making any investment.
+            </li>
+            <li className="leading-7">
+              $PANDX IS A CRYPTOCURRENCY TOKEN, AND ITS VALUE IS SUBJECT TO
+              MARKET VOLATILITY. USERS ACKNOWLEDGE AND ACCEPT THAT
+              CRYPTOCURRENCY PARTICIPATION INVOLVES INHERENT RISKS.
+            </li>
+            <li className="leading-7">
+              THE PROJECT DOES NOT GUARANTEE ANY FIXED RETURNS, FIXED PRICES, OR
+              ASSURED PROFITS. ALL RETURNS ARE GENERATED AND DISTRIBUTED
+              STRICTLY ACCORDING TO THE SMART CONTRACT LOGIC AND PROTOCOL RULES.
+            </li>
+            <li className="leading-7">
+              IT IS THE USER’S RESPONSIBILITY TO CAREFULLY READ AND UNDERSTAND
+              ALL RULES, TERMS, AND PROJECT DETAILS BEFORE PARTICIPATING IN
+              STAKING. THE PROJECT SHALL NOT BE HELD LIABLE FOR ANY
+              MISUNDERSTANDING OR MISINTERPRETATION AFTER STAKING.
+            </li>
+            <li className="leading-7">
+              PARTICIPATION IN STAKING IS ENTIRELY VOLUNTARY AND UNDERTAKEN AT
+              THE USER’S OWN RISK. THE PROJECT DOES NOT PROVIDE FINANCIAL,
+              INVESTMENT, OR TRADING ADVICE.
+            </li>
+            <li className="leading-7">
+              BY STAKING $PANDX TOKENS, THE USER CONFIRMS FULL ACCEPTANCE OF ALL
+              THE ABOVE TERMS AND CONDITIONS.
+            </li>
+          </ol>
+
+          <Link className="justify-center flex" to={"/"}>
+            <button className="btn-primary px-4 py-2 mb-7">
+              I Understand Back to Home
+            </button>
+          </Link>
+          <ScrollToTop />
         </div>
       </div>
     </>
