@@ -126,7 +126,7 @@ section.color-shadow:before {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: slide_track 5s linear infinite;
+  animation: slide_track 8s linear infinite;
 }
 
 .marquee-item {
