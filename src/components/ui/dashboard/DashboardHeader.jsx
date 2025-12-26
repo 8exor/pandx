@@ -323,7 +323,7 @@ const DashboardHeader = () => {
               </button>
             </div>
             <NavLink to={"https://swap.qerra.network/"} target="blank">
-              <button className="w-fit text-md gap-1  flex mt-4 py-3 p-2 btn-primary">
+              <button className="flex gap-1 p-2 py-3 mx-auto mt-4 w-fit text-md btn-primary">
                 <img src="/assets/images/panda.svg" alt="panda" />
                 Buy $PANDX
                 <img
