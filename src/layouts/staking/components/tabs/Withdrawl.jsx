@@ -1,19 +1,22 @@
 import { UserInfoContext } from '@contexts/UserInfoContext'
 import FullPageLoader from '@hooks/FullPageLoader';
 import Load from '@hooks/Load';
+import { duration } from '@mui/material';
 import { useAppKitProvider } from '@reown/appkit/react';
 import { TRANSACTIONS } from '@services/panda.api.services';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@utils/axiosInstance';
 import { ethers } from 'ethers';
 import React, { useContext, useEffect, useState } from 'react'
+
 import toast from 'react-hot-toast';
 import { data } from 'react-router-dom';
 
-export default function Withdrawl() {
+export default function Withdrawl({activeTab, setActiveTab}) {
     const { walletProvider } = useAppKitProvider("eip155");
 const {userData, refetch} = useContext(UserInfoContext);
 const [withdrawalAmount, setWithdrawalAmount] = useState("");
+const [switchPopup, setSwitchPopup] = useState(false);
 
 const withdrawaling = useMutation({
   mutationFn : async(Formdata)=>{
@@ -35,7 +38,7 @@ try {
   })
 
   await txn.wait();
-
+   toast.success(data?.message);
   withdrawalHash.mutate({
     "fund_hash" : txn?.hash,
     "amount" : withdrawalAmount,
@@ -43,7 +46,7 @@ try {
 } catch (error) {
   
 }
-    toast.success(data?.message);
+ 
 
   },
   onError : (error)=>{
@@ -89,9 +92,9 @@ const withdrawalHash = useMutation({
   return (
     <>
     {withdrawaling?.isPending && <FullPageLoader/>}
-    <div className="mt-6 lg:px-15">
+    <div className="relative mt-6 lg:px-15">
 
-         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
+         <div className=" grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 bg-white border border-black rounded-lg lg:rounded-full w-full">
           <div className="flex items-center gap-1">
             <p>Avl</p>
             <div className="flex items-center gap-1">
@@ -122,13 +125,40 @@ const withdrawalHash = useMutation({
           <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div> */}
 
-        <p className="mt-2 text-right sm:text-left">5% Pool Fee</p>
+        <p className="mt-2 text-right sm:text-left blink-text">5% Pool Fee = ⚠️ 5% POOL FEE ⚠️</p>
 
-        <div className="flex justify-center ">
-          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>
+        <div className="flex justify-center mt-2 ">
+          <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>{
+            if(withdrawalAmount){
+            setSwitchPopup(true)
+          }
+          else{
+            toast.error("Amount field is required", {duration : 700})
+          }
+            }
+            
+          } >
          {withdrawaling?.isPending ? <Load/>  : "Submit"}
           </button>
         </div>
+
+     { switchPopup &&  <div className='absolute left-0 flex items-center justify-center w-full h-full -top-20'>
+      <div className='fixed top-0 left-0 z-10 w-full h-full' onClick={()=>setSwitchPopup(false)}/>
+          <div className='p-5 text-white bg-[#000000dc] rounded-md z-20'>
+             <div className='flex justify-end'>
+            <button className='bg-[#ff403a9e] rounded-full  p-2' onClick={()=>setSwitchPopup(false)}>
+              <img className='' src="/assets/images/close.png" alt="close" />
+            </button>
+          </div>
+          <h3 className='text-center'>⚠️ 5% POOL FEE APPLIES ⚠️</h3>
+          <h3 className='text-center'>💡 SWITCH TO P2P AND SAVE 100% OF THIS FEE</h3>
+
+          <div className='flex items-center justify-center gap-5 mt-3'>
+          <button className='p-2 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>Switch to P2p</button>
+          <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed </button>
+          </div>
+          </div>
+        </div>}
       </div>
       </>
   )

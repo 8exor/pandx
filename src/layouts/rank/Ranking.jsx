@@ -110,12 +110,12 @@ const Ranking = () => {
     "rank5_team",
     "rank6_team",
   ];
-  let d= {}
+  let d = {};
   keys?.map((e, i) => {
     // console.log({e,i , levelWiseTeam})
     // return { [i]: levelWiseTeam[e] || 0 };
 
-    return d[i] = levelWiseTeam[e] || 0 
+    return (d[i] = levelWiseTeam[e] || 0);
 
     // return
 
@@ -167,21 +167,25 @@ const Ranking = () => {
                                                 }
                          
                             ${
-                            key === "vol" && rowIndex == rankData?.data?.current_rank?.rank && rankData?.data?.user?.total_invested <=
-                            parseInt(value.slice(1))  &&   "bg-red-600 blink-text text-white"
-                          }                 
+                              key === "vol" &&
+                              rowIndex == rankData?.data?.current_rank?.rank &&
+                              rankData?.data?.user?.total_invested <=
+                                parseInt(value.slice(1)) &&
+                              "bg-red-600 blink-text text-white"
+                            }                 
                                                 
                                                 ${
-                          key == "vol" &&
-                          rankData?.data?.user?.total_invested >=
-                            parseInt(value.slice(1)) &&
-                          "bg-green-600 text-white"
-                        }
+                                                  key == "vol" &&
+                                                  rankData?.data?.user
+                                                    ?.total_invested >=
+                                                    parseInt(value.slice(1)) &&
+                                                  "bg-green-600 text-white"
+                                                }
                      
                         
                         ${
                           key == "directs" &&
-                        rankData?.data?.user?.total_directs >=
+                          rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
                           "bg-green-600 text-white"
                         } ${
@@ -203,7 +207,8 @@ const Ranking = () => {
                           "bg-green-600 text-white"
                         } ${
                           key == "teamReq" &&
-                          rowIndex == rankData?.data?.current_rank?.rank && !( d[row.rank-1] >=(parseInt(value) || 0))  &&
+                          rowIndex == rankData?.data?.current_rank?.rank &&
+                          !(d[row.rank - 1] >= (parseInt(value) || 0)) &&
                           "bg-red-600 blink-text text-white"
                         } 
                        
@@ -215,7 +220,12 @@ const Ranking = () => {
                           "bg-green-600 text-white"
                         } ${
                           key == "totalTeam" &&
-                          rowIndex == rankData?.data?.current_rank?.rank && !(rankData?.data?.user?.total_directs + d[row.rank-1] >= (parseInt(value) || 0)) &&
+                          rowIndex == rankData?.data?.current_rank?.rank &&
+                          !(
+                            rankData?.data?.user?.total_directs +
+                              d[row.rank - 1] >=
+                            (parseInt(value) || 0)
+                          ) &&
                           "bg-red-600 blink-text text-white"
                         }`}
                       >
@@ -235,13 +245,11 @@ const Ranking = () => {
                               <>
                                 <span>{`${value}${
                                   rowIndex >= 1
-                                    ? ` / ${rankData?.data?.user?.total_directs || 0}`
+                                    ? ` / ${
+                                        rankData?.data?.user?.total_directs || 0
+                                      }`
                                     : ""
                                 }`}</span>
-
-                                {/* {
-                                  console.log({req : parseInt(value) || 0, pass : rankData?.data?.user?.total_directs , check : rankData?.data?.user?.total_directs >= (parseInt(value) || 0 )})
-                                } */}
 
                                 {rankData?.data?.user?.total_directs >=
                                   (parseInt(value) || 0) && (
@@ -257,12 +265,13 @@ const Ranking = () => {
                             {key == "teamReq" && (
                               <>
                                 <span>{`${value}${
-                                  rowIndex >= 1 ? ` / ${d[row.rank-1] || 0}` : ""
+                                  rowIndex >= 1
+                                    ? ` / ${d[row.rank - 1] || 0}`
+                                    : ""
                                 }`}</span>
 
                                 {/* {console.log({ row, fff: d[row.rank-1] , d , rrr: row.rank })} */}
-                                {d[row.rank-1] >=
-                                  (parseInt(value) || 0) && (
+                                {d[row.rank - 1] >= (parseInt(value) || 0) && (
                                   <img
                                     className="w-5"
                                     src="/assets/images/checkmark.png"
@@ -275,7 +284,10 @@ const Ranking = () => {
                               <>
                                 <span>{`${value}${
                                   rowIndex >= 1
-                                    ? ` / ${rankData?.data?.user?.total_directs + (d[row.rank-1]) || 0}`
+                                    ? ` / ${
+                                        rankData?.data?.user?.total_directs +
+                                          d[row.rank - 1] || 0
+                                      }`
                                     : ""
                                 }`}</span>
                                 {rankData?.data?.user?.overall_team >=
@@ -306,47 +318,6 @@ const Ranking = () => {
                 </tr>
               ))}
             </tbody>
-            {/* <tbody>
-              {tableData.map((data, rowIndex) => (
-                <tr>
-                  <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                   <td
-                    className={`mx-2 my-2 p-2  border border-black shadow rounded-md text-center flex justify-center items-center gap-2 hover:bg-green-200 font-[Lato] font-bold`}
-                  >
-                    
-                  </td>
-                </tr>
-              ))}
-            </tbody> */}
           </table>
         </div>
 
@@ -387,10 +358,11 @@ const Ranking = () => {
                       "bg-green-600 text-white"
                     } ${
                       key == "directs" &&
-                        index == rankData?.data?.current_rank?.rank &&
-                          !(
-                            rankData?.data?.user?.total_directs >=
-                            (parseInt(value) || 0)) &&
+                      index == rankData?.data?.current_rank?.rank &&
+                      !(
+                        rankData?.data?.user?.total_directs >=
+                        (parseInt(value) || 0)
+                      ) &&
                       "bg-red-600 blink-text text-white"
                     } ${
                       key == "teamReq" &&
@@ -399,23 +371,26 @@ const Ranking = () => {
                       "bg-green-600 text-white"
                     } ${
                       key == "teamReq" &&
-                      index == rankData?.data?.current_rank?.rank && !( d[row.rank-1] >=(parseInt(value) || 0))  &&
+                      index == rankData?.data?.current_rank?.rank &&
+                      !(d[row.rank - 1] >= (parseInt(value) || 0)) &&
                       "bg-red-600 blink-text text-white"
                     } ${
                       key == "totalTeam" &&
-                        rankData?.data?.user?.overall_team >=
-                            (parseInt(value) || 0) &&
+                      rankData?.data?.user?.overall_team >=
+                        (parseInt(value) || 0) &&
                       "bg-green-600 text-white"
                     } ${
                       key == "totalTeam" &&
-                       index == rankData?.data?.current_rank?.rank && !(rankData?.data?.user?.total_directs + d[row.rank-1] >= (parseInt(value) || 0))  &&
+                      index == rankData?.data?.current_rank?.rank &&
+                      !(
+                        rankData?.data?.user?.total_directs + d[row.rank - 1] >=
+                        (parseInt(value) || 0)
+                      ) &&
                       "bg-red-600 blink-text text-white"
                     }
                     
                     
                     `}
-
-                    
                   >
                     {key !== "capping" ? (
                       <>
@@ -426,84 +401,70 @@ const Ranking = () => {
                             className="w-4 h-4"
                           />
                         )}
-                        <span>{value}</span>
-                        {/* {(key === "rank" ||
-                          key === "daily %" ||
-                          key === "current level") &&
-                          row.rank == rankData?.data?.current_rank?.rank && (
-                            <img
-                              src="/assets/images/check 1.svg"
-                              className="w-6"
-                              alt="check"
-                            />
-                          )}
+                        {key != "directs" &&
+                              key != "teamReq" &&
+                              key != "totalTeam" && <span>{value}</span>}
 
-                        {key == "vol" &&
-                          rankData?.data?.user?.total_invested >=
-                            value.slice(1) && (
-                            <img
-                              className="w-6"
-                              src="/assets/images/check 1.svg"
-                              alt="check"
-                            />
-                          )}
+                         {key == "directs" && (
+                              <>
+                                <span>{`${value}${
+                                  index >= 1
+                                    ? ` / ${
+                                        rankData?.data?.user?.total_directs || 0
+                                      }`
+                                    : ""
+                                }`}</span>
 
-                        {key == "directs" &&
-                        rankData?.data?.user?.total_directs >=
-                          (parseInt(value) || 0) ? (
-                          <img
-                            className="w-6"
-                            src="/assets/images/check 1.svg"
-                            alt="check"
-                          />
-                        ) : (
-                          key == "directs" &&
-                          index == rankData?.data?.current_rank?.rank && (
-                            <img
-                              className="w-6 "
-                              src="/assets/images/cancel 1.svg"
-                              alt=""
-                            />
-                          )
-                        )}
+                                {rankData?.data?.user?.total_directs >=
+                                  (parseInt(value) || 0) && (
+                                  <img
+                                    className="w-5"
+                                    src="/assets/images/checkmark.png"
+                                    alt="checkmark"
+                                  />
+                                )}
+                              </>
+                            )}
 
-                        {key == "teamReq" &&
-                        rankData?.data?.user?.total_team >=
-                          (parseInt(value) || 0) ? (
-                          <img
-                            className="w-6"
-                            src="/assets/images/check 1.svg"
-                            alt="check"
-                          />
-                        ) : (
-                          key == "teamReq" &&
-                          index == rankData?.data?.current_rank?.rank && (
-                            <img
-                              className="w-6 "
-                              src="/assets/images/cancel 1.svg"
-                              alt=""
-                            />
-                          )
-                        )}
+                             {key == "teamReq" && (
+                              <>
+                                <span>{`${value}${
+                                  index >= 1
+                                    ? ` / ${d[row.rank - 1] || 0}`
+                                    : ""
+                                }`}</span>
 
-                        {key == "totalTeam" &&
-                        rankData?.data?.user?.overall_team >=
-                          (parseInt(value) || 0) ? (
-                          <img
-                            className="w-6"
-                            src="/assets/images/check 1.svg"
-                            alt="check"
-                          />
-                        ) : (
-                          key == "totalTeam" &&
-                          index == rankData?.data?.current_rank?.rank && (
-                            <img
-                              className="w-6 "
-                              src="/assets/images/cancel 1.svg"
-                              alt=""
-                            />
-                          )
-                        )} */}
+                                {/* {console.log({ row, fff: d[row.rank-1] , d , rrr: row.rank })} */}
+                                {d[row.rank - 1] >= (parseInt(value) || 0) && (
+                                  <img
+                                    className="w-5"
+                                    src="/assets/images/checkmark.png"
+                                    alt="checkmark"
+                                  />
+                                )}
+                              </>
+                            )}
+                               {key == "totalTeam" && (
+                              <>
+                                <span>{`${value}${
+                                  index >= 1
+                                    ? ` / ${
+                                        rankData?.data?.user?.total_directs +
+                                          d[row.rank - 1] || 0
+                                      }`
+                                    : ""
+                                }`}</span>
+                                {rankData?.data?.user?.overall_team >=
+                                  (parseInt(value) || 0) && (
+                                  <img
+                                    className="w-5"
+                                    src="/assets/images/checkmark.png"
+                                    alt="checkmark"
+                                  />
+                                )}
+                              </>
+                            )}
+              
                       </>
                     ) : (
                       <div className="flex items-center gap-2">

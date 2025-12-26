@@ -26,9 +26,9 @@ const LevelWiseReport = ({ data, type, setShowPopUp, setActiveIndex, setInactive
         </li>
         :
         data?.map((d, i) => (
-          <li key={i} className={`flex items-center p-1 px-2 justify-between mb-2 border border-green-900 rounded-md bg-[#68a12b] `}>
+          <li key={i} className={`flex items-center p-1 px-2 ${allTeam?.team ? "justify-between " : "justify-center"} mb-2 border border-green-900 rounded-md bg-[#68a12b] `}>
             <p>{d.username}</p>
-           {allTeam?.team && <p className={`p-1 btn-primary ${d?.is_active  ? "btn-primary" : "btn-red"}`}>{d?.is_active ? "Active" : "Inactive"}</p>}
+           {allTeam?.team && <p className={`p-1 btn-primary ${d?.is_active  ? "btn-primary" : "btn-red"}`}>{d?.is_active ? "Active" : "In-Active"}</p>}
           </li>
         ))}
       </ul>

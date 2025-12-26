@@ -62,10 +62,10 @@ export default function AppRoutes() {
     <div>
       <Routes>
         {Router}
+        <Route path="/terms-and-conditions" element={<TermAndCondition />} />
         <Route element={<ProtectedRoute />}>
           <Route element={<StakingHeader />}>{stakeRouter}</Route>
         </Route>
-        <Route path="/terms-and-conditions" element={<TermAndCondition />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

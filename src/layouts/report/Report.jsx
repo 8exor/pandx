@@ -467,7 +467,7 @@ const Report = () => {
                                 // setInactiveIndex(index);
                               setAllTeam({...allTeam, index : index, team : true})
                             }}>
-                              VIEW
+                             {allTeamData?.length} VIEW
                             </span>
                           </td>
                           <td className="capitalize w-full md:max-w-[180px] text-sm font-normal p-5 py-2   text-black text-center">
