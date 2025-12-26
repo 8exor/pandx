@@ -145,10 +145,10 @@ export default function Staking() {
             >
               <div className="marquee-track">
                 <span className="marquee-item">
-                  Upgrade Rank & Get {upgrade}
+                 Stake Now & Get QERRA Airdrop — Start Your Journey. Hurry Up! {upgrade}
                 </span>
                 <span className="marquee-item">
-                  Upgrade Rank & Get {upgrade}
+                           Stake Now & Get QERRA Airdrop — Start Your Journey. Hurry Up! {upgrade}
                 </span>
               </div>
             </div>
@@ -175,8 +175,8 @@ export default function Staking() {
             onClick={() => navigate("/Ranking")}
           >
             <div className="marquee-track">
-              <span className="marquee-item">Upgrade Rank & Get {upgrade}</span>
-              <span className="marquee-item">Upgrade Rank & Get {upgrade}</span>
+              <span className="marquee-item"> Stake Now & Get QERRA Airdrop — Start Your Journey. Hurry Up!  {upgrade}</span>
+              <span className="marquee-item"> Stake Now & Get QERRA Airdrop — Start Your Journey. Hurry Up!  {upgrade}</span>
             </div>
           </div>
           {/* mobile marqee */}
