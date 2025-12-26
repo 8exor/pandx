@@ -21,7 +21,7 @@ export default function StakingHead() {
   // const maxCap = 50;
   const trialExpiry = new Date(data?.data?.trial_staking?.expiry);
  const trialDate = trialExpiry.getDate() ;
- const trialMonth = trialExpiry.getMonth();
+ const trialMonth = trialExpiry.getMonth()+1;
  const trialYear = trialExpiry.getFullYear();
 
   return (
