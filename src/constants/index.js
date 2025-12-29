@@ -14,7 +14,7 @@ export const dappNavLinks = [
     title: "REPORTS",
     link: "/Report",
   },
-    {
+  {
     id: "how to",
     title: "HOW TO",
     link: "",
@@ -56,7 +56,7 @@ export const myRank = [
     title: "My Team",
     value: "1000",
   },
-   {
+  {
     title: "BOOSTX",
     value: "$100",
   },
@@ -75,7 +75,7 @@ export const myRank = [
 ];
 
 export const myLevel = [
-   {
+  {
     title: "BOOSTX",
     value: "$100",
   },
@@ -92,8 +92,6 @@ export const myLevel = [
     value: "$100",
   },
 ];
-
-
 
 // export const reportPool = [
 //   {
@@ -146,27 +144,41 @@ export const myLevel = [
 //   },
 // ];
 export const headerLogos = [
-  { img: "assets/images/BSCSCAN.svg" },
-  { img: "assets/images/start-up.svg" },
-  { img: "assets/images/qerra-logo.png" },
-  { img: "assets/images/Dextool.svg" },
-  { img: "assets/images/dex-screener.svg" },
+  {
+    img: "assets/images/BSCSCAN.svg",
+    link: "https://bscscan.com/",
+  },
+  {
+    img: "assets/images/start-up.svg",
+    link: "https://launchpad.qerra.network/",
+  },
+  {
+    img: "assets/images/qerra-logo.png",
+    link: "https://launchpad.qerra.network/",
+  },
+  {
+    img: "assets/images/Dextool.svg",
+    link: "https://www.dextools.io/app/en/bnb/pair-explorer/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330?t=1753485448380",
+  },
+  {
+    img: "assets/images/dex-screener.svg",
+    link: "https://dexscreener.com/bsc/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330",
+  },
   { img: "assets/images/fire.svg" },
 
   {
     img: "assets/images/ppt.svg",
-    link: "https://drive.google.com/file/d/107TUnAn-cleeeixGp5qaZP64d0BgIEvI/view?usp=sharing"
-  },
+    link: "https://drive.google.com/file/d/107TUnAn-cleeeixGp5qaZP64d0BgIEvI/view?usp=sharing",
+  },  
   {
     img: "assets/images/meet.png",
-    link: "https://meet.google.com/bco-rfba-iyh"
-  }
-]
-
+    link: "https://meet.google.com/bco-rfba-iyh",
+  },
+];
 
 export const taskNote = {
-  title : "NOTE:",
-  des : " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
-  des2 : "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
-  des3 : "Earn Staking Rewards upto 1% Daily — powered by IPFS"
-}
+  title: "NOTE:",
+  des: " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
+  des2: "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
+  des3: "Earn Staking Rewards upto 1% Daily — powered by IPFS",
+};

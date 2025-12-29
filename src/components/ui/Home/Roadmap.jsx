@@ -64,7 +64,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
               <div className="border-[#66a22a] bg-[#5b5ca9] border-[5px] px-15 py-5 rounded-xl p-4">
                 <img className="m-auto" src="assets/images/fund.svg" alt="" />
               </div>
-              <a href="https://swap.qerra.network/" target="blank">
+              <a href="https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56/" target="blank">
                 <h3 className="text-[20px] text-center sm:text-[24px] pt-4 leading-[26px]">
                   Connect to our Partner DEX – qerraSWAP
                 </h3>
@@ -124,9 +124,9 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
 
             <button
               ref={roadmapRef}
-              onClick={() =>
-                handleCopy("0x2170Ed0880ac9A755fd29B2688956BD959F933F8")
-              }
+              // onClick={() =>
+              //   handleCopy("0x2170Ed0880ac9A755fd29B2688956BD959F933F8")
+              // }
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
               Copy
@@ -151,9 +151,9 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
               </a>
             </p>
             <button
-              onClick={() =>
-                handleCopy("0x55d398326f99059ff775485246999027b3197955")
-              }
+              // onClick={() =>
+              //   handleCopy("0x55d398326f99059ff775485246999027b3197955")
+              // }
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
               Copy
