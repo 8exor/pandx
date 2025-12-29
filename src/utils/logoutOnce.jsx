@@ -1,19 +1,13 @@
-import {  getAccessToken, deleteCookies } from "./Session";
+import {  getAccessToken, deleteCookies, setAccessToken } from "./Session";
 
 export const logoutOnce = () => {
 
   try {
-    
- 
-
-
-
-  // console.log("what up I am goonna get yoou : ", sessionStorage.getItem("LOGOUT_IN_PROGRESS"))
-  if (sessionStorage.getItem("LOGOUT_IN_PROGRESS")) return;
-  // console.log("is this function is running or not ::: ");
-  sessionStorage.setItem("LOGOUT_IN_PROGRESS", "true");
+  // if (sessionStorage.getItem("LOGOUT_IN_PROGRESS")) return;
+  // sessionStorage.setItem("LOGOUT_IN_PROGRESS", "true");
+  console.log("what s up getaccestoken ", getAccessToken())
   if (getAccessToken()) {
-    deleteCookies();
+   deleteCookies();
     window.location.replace("/");
 
   }

@@ -125,7 +125,7 @@ const withdrawalHash = useMutation({
           <button className='p-2 px-5 font-extralight' onClick={()=>setWithdrawalAmount(userData?.data?.withdrawable_balance * 99/100)}>100%</button>
         </div> */}
 
-        <p className="mt-2 text-right sm:text-left blink-text"> ⚠️ 5% POOL FEE ⚠️</p>
+        <p className="mt-2 text-right sm:text-left blink-text">⚠️ 5% REWARD POOL FEE ⚠️</p>
 
         <div className="flex justify-center mt-2 ">
           <button className="bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2  rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center" onClick={()=>{
@@ -154,8 +154,8 @@ const withdrawalHash = useMutation({
           <h3 className='text-center'>💡 SWITCH TO P2P AND SAVE 100% OF THIS FEE</h3>
 
           <div className='flex items-center justify-center gap-5 mt-3'>
-          <button className='p-2 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>Switch to P2p</button>
-          <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed </button>
+          <button className='p-2 px-4 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>P2p</button>
+          <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed to Withdrawal </button>
           </div>
           </div>
         </div>}

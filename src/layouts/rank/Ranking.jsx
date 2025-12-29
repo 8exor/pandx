@@ -26,67 +26,67 @@ const Ranking = () => {
   const tableData = [
     {
       rank: 1,
-      vol: "$100",
+      "self staking": "$100",
       "daily %": "0.50%",
-      directs: "",
-      "current level": "-",
+      "directs referrals": "",
+      "level open": "-",
       // boostx: "-",
-      teamReq: "",
+      team: "",
       totalTeam: "",
       capping: "2X",
     },
     {
       rank: 2,
-      vol: "$250",
+      "self staking": "$250",
       "daily %": "0.60%",
-      directs: "3",
-      "current level": "3 Levels",
+      "directs referrals": "3",
+      "level open": "3 Levels",
       // boostx: "right",
-      teamReq: "7 ",
+      team: "7 ",
       totalTeam: 10,
       capping: "2X",
     },
     {
       rank: 3,
-      vol: "$500",
+      "self staking": "$500",
       "daily %": "0.70%",
-      directs: 5,
-      " current level": "5 Levels",
+      "directs referrals": 5,
+      "level open": "5 Levels",
       // boostx: "cross",
-      teamReq: "20",
+      team: "20",
       totalTeam: 25,
       capping: "3X",
     },
     {
       rank: 4,
-      vol: "$1000",
+      "self staking": "$1000",
       "daily %": "0.80%",
-      directs: 8,
-      "current level": "8 Levels",
+      "directs referrals": 8,
+      "level open": "8 Levels",
       // boostx: "cross",
-      teamReq: "62",
+      team: "62",
       totalTeam: 70,
       capping: "3X",
     },
     {
       rank: 5,
-      vol: "$2500",
+      "self staking": "$2500",
       "daily %": "0.90%",
-      directs: 10,
-      "current level": "10 Levels",
+      "directs referrals": 10,
+      "level open": "10 Levels",
       // boostx: "cross",
-      teamReq: "115",
+      team: "115",
       totalTeam: 125,
       capping: "3X",
     },
     {
       rank: 6,
-      vol: "$5000",
+      "self staking": "$5000",
       "daily %": "1.00%",
-      directs: 15,
-      "current level": "15 Levels",
+      "directs referrals": 15,
+      "level open": "15 Levels",
       // boostx: "cross",
-      teamReq: "185",
+      team: "185",
       totalTeam: 200,
       capping: "3X",
     },
@@ -159,7 +159,7 @@ const Ranking = () => {
                                                 hover:bg-green-200 font-[Lato] font-bold ${
                                                   (key === "rank" ||
                                                     key === "daily %" ||
-                                                    key === "current level") &&
+                                                    key === "level open") &&
                                                   row.rank ==
                                                     rankData?.data?.current_rank
                                                       ?.rank &&
@@ -167,7 +167,7 @@ const Ranking = () => {
                                                 }
                          
                             ${
-                              key === "vol" &&
+                              key === "self staking" &&
                               rowIndex == rankData?.data?.current_rank?.rank &&
                               rankData?.data?.user?.total_invested <=
                                 parseInt(value.slice(1)) &&
@@ -175,7 +175,7 @@ const Ranking = () => {
                             }                 
                                                 
                                                 ${
-                                                  key == "vol" &&
+                                                  key == "self staking" &&
                                                   rankData?.data?.user
                                                     ?.total_invested >=
                                                     parseInt(value.slice(1)) &&
@@ -184,12 +184,12 @@ const Ranking = () => {
                      
                         
                         ${
-                          key == "directs" &&
+                          key == "directs referrals" &&
                           rankData?.data?.user?.total_directs >=
                             (parseInt(value) || 0) &&
                           "bg-green-600 text-white"
                         } ${
-                          key == "directs" &&
+                          key == "directs referrals" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
                           !(
                             rankData?.data?.user?.total_directs >=
@@ -201,12 +201,12 @@ const Ranking = () => {
                       
                         
                         ${
-                          key == "teamReq" &&
+                          key == "team" &&
                           rankData?.data?.user?.total_team >=
                             (parseInt(value) || 0) &&
                           "bg-green-600 text-white"
                         } ${
-                          key == "teamReq" &&
+                          key == "team" &&
                           rowIndex == rankData?.data?.current_rank?.rank &&
                           !(d[row.rank - 1] >= (parseInt(value) || 0)) &&
                           "bg-red-600 blink-text text-white"
@@ -238,10 +238,10 @@ const Ranking = () => {
                                 className="w-4 h-4"
                               />
                             )}
-                            {key != "directs" &&
-                              key != "teamReq" &&
+                            {key != "directs referrals" &&
+                              key != "team" &&
                               key != "totalTeam" && <span>{value}</span>}
-                            {key == "directs" && (
+                            {key == "directs referrals" && (
                               <>
                                 <span>{`${value}${
                                   rowIndex >= 1
@@ -262,7 +262,7 @@ const Ranking = () => {
                               </>
                             )}
 
-                            {key == "teamReq" && (
+                            {key == "team" && (
                               <>
                                 <span>{`${value}${
                                   rowIndex >= 1
@@ -335,29 +335,29 @@ const Ranking = () => {
                   key={i}
                   className="flex items-center justify-between py-1 border-b last:border-none "
                 >
-                  <span className="text-sm font-semibold capitalize">
+                  <span className="text-sm font-semibold uppercase">
                     {key.replace(/([A-Z])/g, " $1")}
                   </span>
 
                   <span
-                    className={`flex items-center gap-1 text-sm p-1 px-3 rounded-xl ${
+                    className={`flex items-center gap-1 text-sm p-1 px-3 rounded-xl uppercase ${
                       (key === "rank" ||
                         key === "daily %" ||
-                        key === "current level") &&
+                        key === "level open") &&
                       row.rank == rankData?.data?.current_rank?.rank &&
                       "bg-green-600"
                     } ${
-                      key == "vol" &&
+                      key == "self staking" &&
                       rankData?.data?.user?.total_invested >=
                         parseInt(value.slice(1)) &&
                       "bg-green-600 text-white"
                     } ${
-                      key == "directs" &&
+                      key == "directs referrals" &&
                       rankData?.data?.user?.total_directs >=
                         (parseInt(value) || 0) &&
                       "bg-green-600 text-white"
                     } ${
-                      key == "directs" &&
+                      key == "directs referrals" &&
                       index == rankData?.data?.current_rank?.rank &&
                       !(
                         rankData?.data?.user?.total_directs >=
@@ -365,12 +365,12 @@ const Ranking = () => {
                       ) &&
                       "bg-red-600 blink-text text-white"
                     } ${
-                      key == "teamReq" &&
+                      key == "team" &&
                       rankData?.data?.user?.total_team >=
                         (parseInt(value) || 0) &&
                       "bg-green-600 text-white"
                     } ${
-                      key == "teamReq" &&
+                      key == "team" &&
                       index == rankData?.data?.current_rank?.rank &&
                       !(d[row.rank - 1] >= (parseInt(value) || 0)) &&
                       "bg-red-600 blink-text text-white"
@@ -401,11 +401,11 @@ const Ranking = () => {
                             className="w-4 h-4"
                           />
                         )}
-                        {key != "directs" &&
-                              key != "teamReq" &&
+                        {key != "directs referrals" &&
+                              key != "team" &&
                               key != "totalTeam" && <span>{value}</span>}
 
-                         {key == "directs" && (
+                         {key == "directs referrals" && (
                               <>
                                 <span>{`${value}${
                                   index >= 1
@@ -426,7 +426,7 @@ const Ranking = () => {
                               </>
                             )}
 
-                             {key == "teamReq" && (
+                             {key == "team" && (
                               <>
                                 <span>{`${value}${
                                   index >= 1

@@ -11,7 +11,7 @@ const TableSkeleton = ({ rows = 1, cols = 5 }) => {
               key={colIndex}
               className="px-4 py-3 w-[150px] "
             >
-              <div className="w-full h-4 bg-green-300 rounded" />
+              {/* <div className="w-full h-4 bg-green-300 rounded" /> */}
             </td>
           ))}
         </tr>
