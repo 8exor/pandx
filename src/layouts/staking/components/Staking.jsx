@@ -8,7 +8,7 @@ import { useAppKitAccount } from "@reown/appkit/react";
 import Tabs from "./Tabs";
 
 import StakingTable from "./StakingTable";
-import { useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import toast from "react-hot-toast";
 import { taskNote } from "@constants/index";
@@ -201,9 +201,11 @@ export default function Staking() {
             />
           </div>
 
-          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center rounded-sm">
+          <NavLink to="https://t.me/pandxxyz" className="font-extrabold" target="_blank">
+          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center  rounded-sm">
             Telegram Join Is Required to Claim the Airdrop
           </div>
+         </NavLink>
 
           <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto  mt-5 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
@@ -279,13 +281,17 @@ export default function Staking() {
             />
           </div>
 
-          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center rounded-sm">
+            <NavLink to="https://t.me/pandxxyz" className="font-extrabold" target="_blank">
+          <div className="lg:w-[450px] p-4 py-2  mx-auto mt-10 bg-[#BFFEB0] btn-primary blink-text text-center  rounded-sm">
             Telegram Join Is Required to Claim the Airdrop
           </div>
+         </NavLink>
 
+  
           <div className="w-[260px] sm:w-[260px] p-4 py-2  mx-auto  mt-5 bg-[#BFFEB0] btn-primary  text-center rounded-sm">
             Total AirDrop {Number(data?.qerra_airdrop).toFixed(0)} $QRA
           </div>
+       
 
           <div className=" mt-6  overflow-auto scrollbar-custom max-h-[240px]  ">
             <table className="w-full ">

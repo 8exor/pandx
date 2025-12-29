@@ -12,5 +12,5 @@ export  function getAccessToken(){
 }
 
 export  function deleteCookies(){
-    Cookies.remove("ACCESS_TOKEN")
+  return  Cookies.remove("ACCESS_TOKEN")
 }

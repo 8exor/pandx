@@ -53,6 +53,9 @@ export default function StakingTable({ activeTab, tableConfig }) {
   const compoundData = compoundReport?.data?.rows;
   const unstakeData = unstakeReport?.data?.rows;
 
+
+  console.log("what is stake data !!! : ", stakeData===null)
+
   return (
     <div className="w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5  border border-[#6f6fb5] rounded-md">
       <div className="overflow-auto rounded-md scrollbar-custom">
@@ -94,7 +97,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               <>
                 {incomeLoading ? (
                   <TableSkeleton rows={1} cols={5} />
-                ) :( stakeData && stakeData?.length === 0 )? (
+                ) :( !stakeData || stakeData?.length === 0 )? (
                   <tr className="flex items-center justify-center w-full mt-5">
                     <td className="w-full text-center">No Data Found</td>
                   </tr>
@@ -125,7 +128,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "unstake" &&
               (unstakeLoading ? (
                 <TableSkeleton rows={1} cols={6} />
-              ) : (unstakeData && unstakeData.length === 0) ? (
+              ) : (!unstakeData || unstakeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -162,7 +165,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "withdrawal" &&
               (withdrawalLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : (withdrawalData && withdrawalData.length === 0) ? (
+              ) : (!withdrawalData || withdrawalData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -203,7 +206,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "compound" &&
               (compoundLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : (compoundData && compoundData.length === 0) ? (
+              ) : (!compoundData || compoundData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -238,7 +241,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
             {activeTab?.mainTabs === "p2p" &&
               (p2pLoading ? (
                 <TableSkeleton rows={3} cols={7} />
-              ) : (p2pData && p2pData.length === 0) ? (
+              ) : (!p2pData || p2pData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -295,7 +298,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "DAILY" &&
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={4} />
-              ) : (incomeData && incomeData.length === 0) ? (
+              ) : (!incomeData || incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -330,7 +333,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "DIRECT" &&
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) :(incomeData && incomeData.length === 0) ? (
+              ) :(!incomeData || incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -367,7 +370,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "LEVEL" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={6} />
-              ) : (incomeData && incomeData.length === 0)? (
+              ) : (!incomeData || incomeData.length === 0)? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -407,7 +410,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "TRIAL" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={4} />
-              ) : (incomeData && incomeData.length === 0) ? (
+              ) : (!incomeData || incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -442,7 +445,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "BOOSTX" &&
               (incomeLoading ? (
                 <TableSkeleton rows={1} cols={4} />
-              ) : (incomeData && incomeData.length === 0) ? (
+              ) : (!incomeData || incomeData.length === 0) ? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>
@@ -477,7 +480,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
               activeTab?.incomeTabs === "UNI-POOL" && 
               (incomeLoading ? (
                 <TableSkeleton rows={3} cols={5} />
-              ) : (incomeData && incomeData.length === 0)? (
+              ) : (!incomeData || incomeData.length === 0)? (
                 <tr className="flex items-center justify-center w-full mt-5">
                   <td className="w-full text-center">No Data Found</td>
                 </tr>

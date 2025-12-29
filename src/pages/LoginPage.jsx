@@ -355,9 +355,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 : "Paste"}
             </button>
           </div>
-          <div className="flex gap-2 mt-3">
+          <div className="flex justify-center gap-2 mt-3">
             <input type="checkbox" value={termsCheck} onChange={(e)=>{setTermsCheck(e.target.checked); setShowError({...showError, termsCheck : false})} }/>
-            <NavLink to={"/terms-and-conditions"} target="blank" className="text-[#0000EE] underline">I Accept All The T&C</NavLink>
+            <NavLink to={"/terms-and-conditions"} target="blank" className="text-[#0000EE] underline font-extrabold ">I Accept All The T&C</NavLink>
           </div>
         {/* {showError.termsCheck &&  <p className="text-red-500">*Please accept the Terms and Conditions to proceed</p>} */}
 

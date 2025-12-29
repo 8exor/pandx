@@ -351,11 +351,11 @@ const Header = ({
                     href=" https://swap.qerra.network/"
                     target="blank"
                   ></a>
-                  {isLoggedIn && token && (
+                  {isConnected && token && (
                     <NavLink
                       to={isConnected ? "/StakingPage" : "/"}
                       className={
-                        "flex justify-center items-center mt-6 lg:hidden"
+                        "flex justify-center items-center mt-3 lg:hidden"
                       }
                     >
                       <button className="flex gap-2 px-6 py-3 text-lg font-medium text-white cursor-pointer btn-primary lg:hidden">
