@@ -8,7 +8,7 @@ export default function MaxCapProgress({ value, maxCap, percent }) {
     const safeValue = Math.min(100, Math.max(0, value));
     setTimeout(() => setWidth(`${safeValue || 0}%`), 50);
   }, [value]);
-console.log("what with the width : ",width, value)
+// console.log("what with the width : ",width, value)
   return (
     <div className="flex flex-col items-center gap-2 md:ml-auto">
     {maxCap &&  <p className="text-[16px] w-full text-center sm:text-[18px] 
