@@ -141,6 +141,7 @@ const withdrawalHash = useMutation({
          {withdrawaling?.isPending ? <Load/>  : "Submit"}
           </button>
         </div>
+        {/* {console.log("just to push I NEED TO USE YOYU ::: ")} */}
 
      { switchPopup &&  <div className='absolute left-0 flex items-center justify-center w-full h-full -top-20'>
       <div className='fixed top-0 left-0 z-10 w-full h-full' onClick={()=>setSwitchPopup(false)}/>
@@ -154,8 +155,9 @@ const withdrawalHash = useMutation({
           <h3 className='text-center'>💡 SWITCH TO P2P AND SAVE 100% OF THIS FEE</h3>
 
           <div className='flex items-center justify-center gap-5 mt-3'>
-          <button className='p-2 px-4 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>P2p</button>
-          <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed to Withdrawal </button>
+          <button className='p-2 px-4 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>P2P</button>
+          <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed to Withdrawal</button>
+      
           </div>
           </div>
         </div>}
