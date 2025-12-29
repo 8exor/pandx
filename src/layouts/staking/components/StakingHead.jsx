@@ -40,31 +40,31 @@ export default function StakingHead() {
          <Gift />
         </div>
          }
-        <div className="flex sm:flex-row  flex-col gap-4 items-top justify-between w-[90%] min-[400px]:max-[428px]:pr-15 ml-auto xl:mx-auto ">
+        <div className="flex sm:flex-row  flex-col gap-4 items-top justify-between w-[90%] min-[400px]:max-[428px]:pr-20 min-[370px]:max-[380px]:pr-15 ml-auto xl:mx-auto ">
           <p className={`text-right text-lg   w-full ${data?.data?.trial_staking?.remaining_days === 0 ? "text-gray-400" : "text-white"} `}>
             Trial Bonus $
             {Number(data?.data?.trial_staking?.total_amt_usd || 0).toFixed(0) }
           </p>
-          <div className="text-right text-lg   w-full">
-           <p className="  ">
+          <div className="w-full text-lg text-right">
+           <p className="">
             Trial Bonus Expiry <br/>
            
           </p>
           <p className="text-right sm:text-right text-md"> {trialDate}-{trialMonth}-{trialYear}</p>
           </div>
-          <p className="text-right text-lg  w-full">
+          <p className="w-full text-lg text-right">
             My Stake ${Number(data?.data?.staking?.amt_usd || 0).toFixed(0) }
           </p>
-          <p className="text-right text-lg  w-full">Daily SR 0.5%</p> 
-          <p className="text-right text-lg  w-full">Daily SR $0.5</p>
+          <p className="w-full text-lg text-right">Daily SR 0.5%</p> 
+          <p className="w-full text-lg text-right">Daily SR $0.5</p>
           {/* desktop view caping */}
-          <div className="flex text-right w-full hidden md:block ">
+          <div className="flex hidden w-full text-right md:block ">
 
           <MaxCapProgress  value={maxCap} maxCap={true} />
           </div>
         </div>
         {/* mobile view caping  */}
-         <div className="pt-7 text-right w-full md:hidden ">
+         <div className="w-full text-right pt-7 md:hidden ">
 
           <MaxCapProgress  value={maxCap} maxCap={true} />
           </div>

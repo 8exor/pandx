@@ -303,7 +303,7 @@ const Report = () => {
                   <div className="mt-2">
                     <MaxCapProgress
                       maxCap={false}
-                      value={pool?.title == "Capping" && pool?.value}
+                      value={pool?.title == "Capping" && pool?.value.slice(0,-1)}
                       percent={pool?.title == "Capping" && pool?.value}
                     />
                   </div>
