@@ -163,7 +163,7 @@ const { count: tvl, ref: tvlRef } = useCounter(10000000);
                   </p>
                 </div>
                 <a
-                  href="https://swap.qerra.network/"
+                  href="https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56/"
                   target="blank"
                   className="flex justify-center pt-8"
                 >
@@ -378,7 +378,7 @@ const { count: tvl, ref: tvlRef } = useCounter(10000000);
                   </a>
                 </p>
                 <button
-                  onClick={() => handleCopy(address)}
+                  // onClick={() => handleCopy(address)}
                   className="btn-primary  !text-center sm:w-fit text-white font-semibold px-6 py-2 rounded-full shadow-sm transition"
                 >
                   Copy

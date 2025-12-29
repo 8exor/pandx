@@ -146,7 +146,7 @@ const DashboardHeader = () => {
           </ul>
         </div>
         <div className="relative flex items-center gap-5 ">
-          <NavLink to={"https://swap.qerra.network/"} target="blank">
+          <NavLink to={"https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56/"} target="blank">
             <button className="items-center justify-between hidden gap-2 px-6 py-2 text-lg font-medium text-white duration-300 ease-in-out md:px-2 lg:px-6 xl:flex btn-primary">
               <img src="/assets/images/panda.svg" alt="panda" />
               Buy $PANDX
@@ -322,7 +322,7 @@ const DashboardHeader = () => {
                 LOGOUT
               </button>
             </div>
-            <NavLink to={"https://swap.qerra.network/"} target="blank">
+            <NavLink to={"https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56/"} target="blank">
               <button className="flex gap-1 p-2 py-3 mx-auto mt-4 w-fit text-md btn-primary">
                 <img src="/assets/images/panda.svg" alt="panda" />
                 Buy $PANDX

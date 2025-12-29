@@ -188,11 +188,13 @@ const Header = ({
                 </a>
               </div>
               <div className="hidden  cursor-pointer hover:scale-110 sm:block bg-white hover:bg-[#5b5ca9]  duration-300 ease-in-out p-2 rounded-lg border border-black shadow transform-gpu rotate-6">
-                <img
+              <a href="https://gleam.io/DxkrP/qerra-mega-airdrop-" target="blank">
+                  <img
                   className="w-[25px] h-[25px]"
                   src="/assets/images/telegram.svg"
-                  alt="telegram"
+                  alt="twitter"
                 />
+              </a>
               </div>
 
               <div className="items-center hidden gap-7 mr-[-25px] lg:flex">

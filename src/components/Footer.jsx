@@ -53,7 +53,7 @@ const Footer = () => {
                     </a>
                   </div>
                   <div className="bg-white w-fit  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black shadow rotate-6">
-                    <a href="https://t.me/pandxxyz" target="blank">
+                    <a href="https://gleam.io/DxkrP/qerra-mega-airdrop-" target="blank">
                       <img src="/assets/images/telegram.svg" alt="telegram" />
                     </a>
                   </div>
@@ -72,7 +72,7 @@ const Footer = () => {
               <div className="flex items-center justify-center gap-2 mt-5  md:gap-8">
                 <div className="hidden md:block">
                   <a
-                    href="https://swap.qerra.network/"
+                    href="https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56/"
                     target="blank"
                     className="flex justify-center "
                   >
@@ -102,8 +102,8 @@ const Footer = () => {
                   </a>
                 </div>
                 <div className="bg-white md:block hidden  hover:bg-[#5b5ca9]  duration-300 ease-in-out p-3 rounded-lg border border-black transform-gpu shadow rotate-6">
-                  <a href="https://t.me/pandxxyz" target="blank">
-                    <img src="/assets/images/telegram.svg" alt="telegram" />
+                  <a href="https://gleam.io/DxkrP/qerra-mega-airdrop-" target="blank">
+                    <img src="/assets/images/telegram.svg" alt="Twitter" />
                   </a>
                 </div>
               </div>
