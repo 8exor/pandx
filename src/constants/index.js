@@ -19,6 +19,11 @@ export const dappNavLinks = [
     title: "HOW TO",
     link: "",
   },
+    {
+    id: "stats",
+    title: "STATS",
+    link: "",
+  },
 ];
 
 export const stakers = [
