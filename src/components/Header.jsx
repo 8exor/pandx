@@ -18,6 +18,7 @@ import { getAccessToken, setAccessToken } from "@utils/Session";
 import FullPageLoader from "@hooks/FullPageLoader";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import { useWalletLogin } from "@hooks/useWalletLogin";
+import { duration } from "@mui/material";
 const Header = ({
   aboutRef,
   tokenomicsRef,
@@ -106,6 +107,7 @@ const Header = ({
   
         setAccessToken("");
         disconnect();
+        toast.success("User has been logged-out successfully ✅",{duration:1000})
  
   };
 

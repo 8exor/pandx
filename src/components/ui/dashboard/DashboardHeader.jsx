@@ -10,6 +10,7 @@ import { ethers } from "ethers";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import { setAccessToken } from "@utils/Session";
 import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
+import toast from "react-hot-toast";
 
 const DashboardHeader = () => {
   const { address } = useAppKitAccount();
@@ -23,8 +24,10 @@ const DashboardHeader = () => {
   const [activeNav, setActiveNav] = useState(false);
 
   const handleDisconnet = async () => {
+    toast.success("User has been logged-out successfully ✅",{duration:1000})
     disconnect();
     setAccessToken("");
+
     navigate("/");
   };
 

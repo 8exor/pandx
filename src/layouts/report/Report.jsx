@@ -326,14 +326,14 @@ const Report = () => {
   return (
     <div className="w-full h-full min-h-screen bg-[#e5ffd5] p-2">
       <div className="w-full max-w-[1360px] mx-auto text-xl">
-        <div className="w-full max-w-[1360px] mx-auto  flex items-center justify-center gap-2 p-3">
+        <div className="w-full max-w-[1360px] mx-auto mt-15  flex items-center justify-center gap-2 p-3">
           <span className="blink-text">{taskNote?.title}</span>
           <marquee behavior="alternate" scrollamount="10" direction="">
             {taskNote?.des}
           </marquee>
         </div>
 
-        <div className="bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-10 p-7 px-1 xl:px-11">
+        <div className="bg-[#efffe3] border-2 border-[#5b5bac] rounded-md mt-2 p-7 px-1 xl:px-11">
           <div className="grid items-center justify-between grid-cols-2 gap-5 text-sm md:text-xl lg:text-sm md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-2">
             {reportPool?.map((pool, i) => (
               <div
