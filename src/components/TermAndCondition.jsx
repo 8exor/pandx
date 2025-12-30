@@ -51,7 +51,7 @@ const TermAndCondition = () => {
       REFERRALS: "25 $QRA ",
     },
     {
-      AIRDROP: "7501 TO 10,000%",
+      AIRDROP: "7501 TO 10,000",
       signup: "10 $QRA ",
       REFERRALS: "10 $QRA ",
     },
@@ -121,7 +121,7 @@ const TermAndCondition = () => {
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="list-decimal list-outside pl-6  space-y-3"
             start={6}
           >
             <li className="leading-7">
