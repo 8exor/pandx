@@ -151,9 +151,9 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
               </a>
             </p>
             <button
-              // onClick={() =>
-              //   handleCopy("0x55d398326f99059ff775485246999027b3197955")
-              // }
+              onClick={() =>
+                handleCopy("0x55d398326f99059ff775485246999027b3197955")
+              }
               className="  w-full sm:w-fit btn-primary font-semibold px-6 py-2 rounded-full shadow-sm transition"
             >
               Copy

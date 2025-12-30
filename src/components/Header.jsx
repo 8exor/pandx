@@ -235,11 +235,11 @@ const Header = ({
                   Sign up
                 </button>
 
-                <a href="https://swap.qerra.network/" target="blank">
-                  {" "}
+                <a href="https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56" target="blank">
+                 
                   <button className="flex items-center justify-center hidden w-full gap-2 px-2 py-3 text-sm text-white sm:px-6 sm:text-lg btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
-                    Buy $PANDX{" "}
+                    Buy $PANDX
                     <img
                       className="sm:h-[20px] h-[15px] w-[15px] sm:w-[20px]"
                       src="/assets/images/qerra.png"
@@ -377,10 +377,12 @@ const Header = ({
                     <img src="/assets/images/panda.svg" alt="panda" />
                     {isConnected ? "Disconnect" : " Connect"}
                   </button>
-                  <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
+                 <NavLink to={"https://swap.qerra.network/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x617c0440334bb4a63b75847345f906c782b419ab&chain=56"} target="blank">
+                   <button className="flex gap-2 px-6 py-3 mx-auto mt-3 text-lg font-medium text-white cursor-pointer btn-primary">
                     <img src="/assets/images/panda.svg" alt="panda" />
                     Buy $Pandx
                   </button>
+                 </NavLink>
                 </div>
               )}
             </div>
