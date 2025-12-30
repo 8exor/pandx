@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import TableSkeleton from "./TableSkelton";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
+import { NavLink } from "react-router-dom";
 
 export default function StakingTable({ activeTab, tableConfig }) {
   const { userData, incomeReporting, incomeLoading, incomeRefetch } =
@@ -273,12 +274,14 @@ export default function StakingTable({ activeTab, tableConfig }) {
                       </td>
                       <td
                         className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] cursor-pointer"
-                        onClick={() => handleCopy(p2p?.txn_hash)}
                       >
+                      <NavLink to={import.meta.env.VITE_ENV === "development" ? `https://sepolia.etherscan.io/tx/${p2p?.txn_hash}` : `https://bscscan.com/tx/${p2p?.txn_hash}`} className="font-extrabold" target="_blank">
                         {`${p2p?.txn_hash.substring(
                           0,
                           5
                         )}....${p2p?.txn_hash.substring(59, 64)}`}
+                      </NavLink>
+                      
                       </td>
 
                       <td className="text-base font-medium text-left text-black capitalize w-full max-w-[150px] ">

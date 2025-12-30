@@ -90,6 +90,7 @@ export default function P2p() {
       return data;
     },
     onSuccess: async (data) => {
+      toast.success("P2P successfully completed to user & user has been activated ✅",{duration :1000})
       setUserName("");
       setp2pAmount("");
       refetch();

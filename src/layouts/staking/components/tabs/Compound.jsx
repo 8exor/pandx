@@ -20,7 +20,7 @@ export default function Compound() {
       return data;
     },
     onSuccess: async (data) => {
-      toast.success(data?.message);
+      toast.success("Compounding successfully completed ✅",{duration:1000});
       setCompoundAmount("");
       refetch();
     },

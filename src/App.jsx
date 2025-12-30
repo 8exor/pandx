@@ -25,12 +25,6 @@ function App() {
   const { disconnect } = useDisconnect();
   const { walletProvider } = useAppKitProvider("eip155");
   const { address, isConnected } = useAppKitAccount();
-
-
-
-
-
-
   const [queryClient] = useState(() => new QueryClient());
 
   return (

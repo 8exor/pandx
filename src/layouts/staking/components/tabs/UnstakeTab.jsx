@@ -23,7 +23,7 @@ export default function UnstakeTab() {
       return data;
     },
     onSuccess: async (data) => {
-      toast.success(data?.message);
+      // toast.success(data?.message);
       try {
         // debugger;
         // console.log({ data });
@@ -68,7 +68,7 @@ export default function UnstakeTab() {
       return data;
     },
     onSuccess: async (data) => {
-      toast.success(data?.message, {
+      toast.success("UNSTAKED successfully ✅", {
         duration: 700,
       });
     },
