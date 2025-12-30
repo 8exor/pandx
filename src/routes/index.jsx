@@ -11,6 +11,7 @@ import { Component } from "@amcharts/amcharts4/core";
 import HomePopup from "@components/HomePopup";
 import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "./PageNotFound";
+import HowTo from "@layouts/howto/HowTo";
 
 export default function AppRoutes() {
   const routes = [
@@ -47,6 +48,11 @@ export default function AppRoutes() {
       name: "Report",
       path: "/Report",
       Component: Report,
+    },
+     {
+      name: "HowTo",
+      path: "/HowTo",
+      Component: HowTo,
     },
   ];
 

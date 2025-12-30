@@ -120,10 +120,7 @@ const TermAndCondition = () => {
             FREE $QRA AIRDROP ON EVERY ACTIVE STAKING
           </h2>
 
-          <ol
-            className="pl-6 space-y-3 list-decimal list-outside"
-            start={6}
-          >
+          <ol className="list-decimal list-outside pl-6  space-y-3" start={6}>
             <li className="leading-7">
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
               (FCFS) BASIS, AND USERS MUST CLAIM THEIR TOKENS ACCORDING TO THE
@@ -132,10 +129,10 @@ const TermAndCondition = () => {
               THIS OFFER WILL BE AVAILABLE ON A FIRST-COME, FIRST-SERVED BASIS
               TO THOSE WHO COMPLETE THE TOP-UP FIRST.
             </li>
-          
           </ol>
           <div className="overflow-x-auto">
-            <table className="min-w-[320px] sm:w-full"
+            <table
+              className="min-w-[320px] sm:w-full"
               style={{
                 borderCollapse: "collapse",
                 width: "100%",
@@ -181,8 +178,8 @@ const TermAndCondition = () => {
                 ))}
               </tbody>
             </table>
-            </div>
-          <h2 className="mb-3 text-lg font-bold underline">
+          </div>
+          <h2 className="font-bold underline text-lg mb-3">
             DIRECT REFERRAL REWARD ON TOP-UP
           </h2>
 
@@ -337,58 +334,58 @@ const TermAndCondition = () => {
               </li>
             </ul>
             <div className="overflow-x-auto">
-            <table className="min-w-[320px] sm:w-full"
-              style={{
-                borderCollapse: "collapse",
-                width: "100%",
-                textAlign: "center",
-                fontWeight: "400",
-                margin: "50px 0px",
-              }}
-            >
-              <thead>
-                <tr>
-                  {headers.map((header) => (
-                    <th
-                      key={header}
-                      style={{
-                        border: "1px solid #999",
-                        padding: "12px 16px",
-                        width: `${100 / headers.length}%`,
-                        fontWeight: "400",
-                        backgroundColor: "#f9f9f9",
-                      }}
-                    >
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map(
-                  ({ drop, tax, allocation, supply, sustainability }, i) => (
-                    <tr key={i}>
-                      {[drop, tax, allocation, supply, sustainability].map(
-                        (cell, idx) => (
-                          <td
-                            key={idx}
-                            style={{
-                              border: "1px solid #999",
-                              padding: "12px 16px",
-                              width: `${100 / headers.length}%`,
-                            }}
-                          >
-                            {cell}
-                          </td>
-                        )
-                      )}
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
+              <table
+                className="min-w-[320px] sm:w-full"
+                style={{
+                  borderCollapse: "collapse",
+                  width: "100%",
+                  textAlign: "center",
+                  fontWeight: "400",
+                  margin: "50px 0px",
+                }}
+              >
+                <thead>
+                  <tr>
+                    {headers.map((header) => (
+                      <th
+                        key={header}
+                        style={{
+                          border: "1px solid #999",
+                          padding: "12px 16px",
+                          width: `${100 / headers.length}%`,
+                          fontWeight: "400",
+                          backgroundColor: "#f9f9f9",
+                        }}
+                      >
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map(
+                    ({ drop, tax, allocation, supply, sustainability }, i) => (
+                      <tr key={i}>
+                        {[drop, tax, allocation, supply, sustainability].map(
+                          (cell, idx) => (
+                            <td
+                              key={idx}
+                              style={{
+                                border: "1px solid #999",
+                                padding: "12px 16px",
+                                width: `${100 / headers.length}%`,
+                              }}
+                            >
+                              {cell}
+                            </td>
+                          )
+                        )}
+                      </tr>
+                    )
+                  )}
+                </tbody>
+              </table>
             </div>
-            
           </ol>
 
           <h2 className="mb-3 text-lg font-bold underline">
