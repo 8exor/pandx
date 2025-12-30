@@ -61,8 +61,8 @@ const TermAndCondition = () => {
       <Header />
       <div className="max-w-[900px] mx-auto text-justify  px-5">
         <div className="pt-30 verdanaWrapper">
-          <h2 className="font-bold text-lg underline mb-3">MINIMUM STAKING</h2>
-          <ol className="list-decimal list-outside pl-6 mb-6 space-y-3">
+          <h2 className="mb-3 text-lg font-bold underline">MINIMUM STAKING</h2>
+          <ol className="pl-6 mb-6 space-y-3 list-decimal list-outside">
             <li className="leading-7">
               REGISTRATIONS START FROM A MINIMUM OF $10. HOWEVER, THE USER WILL
               BE CONSIDERED AN “INVALID USER” UNTIL A MINIMUM TOP-UP OF $100 IS
@@ -71,11 +71,11 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             STAKING & UN-STAKING
           </h2>
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={2}
           >
             <li className="leading-7">USER CAN STAKE/UN-STAKE ANYTIME</li>
@@ -104,10 +104,10 @@ const TermAndCondition = () => {
             </li> */}
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">TRIAL BONUS</h2>
+          <h2 className="mb-3 text-lg font-bold underline">TRIAL BONUS</h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={5}
           >
             <li className="leading-7">
@@ -116,12 +116,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             FREE $QRA AIRDROP ON EVERY ACTIVE STAKING
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6  space-y-3"
+            className="pl-6 space-y-3 list-decimal list-outside"
             start={6}
           >
             <li className="leading-7">
@@ -182,12 +182,12 @@ const TermAndCondition = () => {
               </tbody>
             </table>
             </div>
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             DIRECT REFERRAL REWARD ON TOP-UP
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={7}
           >
             <li className="leading-7">
@@ -198,12 +198,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             BOOSTX WITHIN 96 HOURS
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={8}
           >
             <li className="leading-7">
@@ -213,12 +213,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             5% WITHDRAWAL FEE
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={9}
           >
             <li className="leading-7">
@@ -227,12 +227,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             P2P FREE & UNLIMITED
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={10}
           >
             <li className="leading-7">
@@ -241,10 +241,10 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">COMPOUNDING</h2>
+          <h2 className="mb-3 text-lg font-bold underline">COMPOUNDING</h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={11}
           >
             <li className="leading-7">
@@ -253,12 +253,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             AUTO BURNING MECHANISM
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={12}
           >
             <li className="leading-7">
@@ -267,12 +267,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             STAKING REWARDS SETTLEMENTS
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={13}
           >
             <li className="leading-7">
@@ -285,10 +285,10 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">CAPPING</h2>
+          <h2 className="mb-3 text-lg font-bold underline">CAPPING</h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={15}
           >
             <li className="leading-7">CAPPING RANGES FROM 2X TO 3X</li>
@@ -305,16 +305,16 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">TRADING FEATURES</h2>
+          <h2 className="mb-3 text-lg font-bold underline">TRADING FEATURES</h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={19}
           >
             <li className="leading-7">
               <strong>DYNAMIC ORACLE / PRICE GATING (ADVANCED)</strong>
             </li>
-            <ul className="list-disc list-inside ml-6 space-y-1">
+            <ul className="ml-6 space-y-1 list-disc list-inside">
               <li className="leading-7">
                 If $PANDX token’s price declines by more than a predefined
                 percentage within a 24-hour period, an additional dynamic burn
@@ -391,12 +391,12 @@ const TermAndCondition = () => {
             
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             RANK UPGRADE & DOWNGRADE
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={20}
           >
             <li className="leading-7">
@@ -406,12 +406,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             BONANZA OR REWARDS
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={21}
           >
             <li className="leading-7">
@@ -426,12 +426,12 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             ON-CHAIN SELF WALLET WALLET
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={23}
           >
             <li className="leading-7">
@@ -485,13 +485,13 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-3 text-lg font-bold underline">
             USER ACKNOWLEDGMENT OF VOLUNTARY PARTICIPATION, RISK ACCEPTANCE &
             LIABILITY WAIVER
           </h2>
 
           <ol
-            className="list-decimal list-outside pl-6 mb-6 space-y-3"
+            className="pl-6 mb-6 space-y-3 list-decimal list-outside"
             start={32}
           >
             <li className="leading-7">
@@ -545,9 +545,9 @@ const TermAndCondition = () => {
             </li>
           </ol>
 
-          <Link className="justify-center flex" to={"/"}>
-            <button className="btn-primary px-4 py-2 mb-7">
-              I Understand Back to Home
+          <Link className="flex justify-center" to={"/"}>
+            <button className="px-4 py-2 btn-primary mb-7">
+              I Understand, Back to Home.
             </button>
           </Link>
           <ScrollToTop />

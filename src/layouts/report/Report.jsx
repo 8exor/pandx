@@ -371,7 +371,7 @@ const Report = () => {
             ))}
 
             <div
-              className="p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
+              className="p-1 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
               onClick={() => {
                 setShowPopUp(true),
                   setLevelUsersData(allTeamData),
@@ -380,7 +380,7 @@ const Report = () => {
               }}
             >
               <span>Total Team</span>
-              <span>{allTeamData?.length || 0}</span>
+              <span className="p-1 border-black rounded-md border-1">{allTeamData?.length || 0} View</span>
             </div>
 
             <div className="p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-3 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">

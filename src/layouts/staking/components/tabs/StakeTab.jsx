@@ -99,7 +99,7 @@ export default function StakeTab() {
       return data;
     },
     onSuccess: async (data) => {
-      // toast.success(data?.message);
+      toast.success("Staking successfully completed ✅",{duration : 1000});
       setStakeAmount("");
       refetch();
       // console.log("what s up bro are you hanging out here:::::::");

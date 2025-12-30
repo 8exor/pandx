@@ -9,7 +9,12 @@ import axiosInstance from "@utils/axiosInstance";
 import { AUTH } from "../services/panda.api.services";
 import toast from "react-hot-toast";
 import { setAccessToken } from "@utils/Session";
-import { NavLink, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  NavLink,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { UserInfoContext } from "@contexts/UserInfoContext";
 import FullPageLoader from "@hooks/FullPageLoader";
 import TypeWriterEffect from "@hooks/TypeWriterEffect";
@@ -34,7 +39,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     walletAddress: false,
     userName: false,
     referralCode: false,
-    termsCheck : false
+    termsCheck: false,
+    isUserValidated: false,
+    isReferralValidated: false,
   });
   const [isUserNameChecked, setIsUserNameChecked] = useState(false);
   const [isReferralCodeChecked, setIsReferralCodeChecked] = useState(false);
@@ -69,6 +76,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     },
     onSuccess: async (data) => {
       setIsUserNameChecked(true);
+      setShowError({ ...showError, isUserValidated: false });
     },
     onError: (error) => {
       console.log(error, "error");
@@ -99,6 +107,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     },
     onSuccess: async (data) => {
       setIsReferralCodeChecked(true);
+      setShowError({ ...showError, isReferralValidated: false });
     },
     onError: (error) => {
       console.log(error, "error");
@@ -119,7 +128,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
         walletAddress: true,
         userName: true,
         referralCode: true,
-        termsCheck : true
+        termsCheck: true,
       });
       return toast.error("All fields are required", {
         duration: 700,
@@ -143,11 +152,39 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
         duration: 700,
       });
     }
-    if(!termsCheck){
-      setShowError({...showError, termsCheck : true})
-      return toast.error("Please accept the Terms and Conditions to proceed",{
-        duration : 700,
-      })
+    if (!termsCheck) {
+      setShowError({ ...showError, termsCheck: true });
+      return toast.error("Please accept the Terms and Conditions to proceed", {
+        duration: 700,
+      });
+    }
+
+    if (!isUserNameChecked && !isReferralCodeChecked) {
+      setShowError({
+        ...showError,
+        isUserValidated: true,
+        isReferralValidated: true,
+      });
+      return toast.error(
+        "Please validate the Username and Referral code to proceed",
+        {
+          duration: 700,
+        }
+      );
+    }
+
+    if (!isUserNameChecked) {
+      setShowError({ ...showError, isUserValidated: true });
+      return toast.error("Please validate the Username to proceed", {
+        duration: 700,
+      });
+    }
+
+    if (!isReferralCodeChecked) {
+      setShowError({ ...showError, isReferralValidated: true });
+      return toast.error("Please validate the Referral code to proceed", {
+        duration: 700,
+      });
     }
 
     registerUser.mutate({
@@ -197,11 +234,14 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   useEffect(() => {
     setIsReferralCodeChecked(false);
     setInvalidUser(false);
+    setShowError({...showError, isReferralValidated : false})
   }, [referralCode]);
 
   useEffect(() => {
     setIsUserNameChecked(false);
     setAlreadyExist(false);
+    setShowError({...showError, isUserValidated : false})
+
   }, [userName]);
 
   useEffect(() => {
@@ -294,7 +334,9 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 isUserNameChecked
                   ? "border-green-900 bg-green-600"
                   : "bg-[#5b5bac]"
-              } ${alreadyExist ? "border-red-900 bg-red-600" : "bg-[#5b5bac]" }`}
+              } ${
+                alreadyExist ? "border-red-900 bg-red-600" : "bg-[#5b5bac]"
+              } ${showError.isUserValidated && "border-red-600 text-red-500"}`}
               onClick={() => {
                 if (userName.length == 0) {
                   setShowError({ ...showError, userName: true });
@@ -339,7 +381,11 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
                 referralCode && isReferralCodeChecked
                   ? "border-green-900 bg-green-600"
                   : "bg-[#5b5bac]"
-              } ${invalidUser ? "border-red-900 bg-red-600" : "bg-[#5b5bac]" } text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer`}
+              } ${
+                invalidUser ? "border-red-900 bg-red-600" : "bg-[#5b5bac]"
+              } text-white font-light p-2 w-full md:max-w-[150px] border border-black  rounded-md cursor-pointer ${
+                showError?.isReferralValidated && "border-red-600 text-red-500"
+              }`}
               onClick={() => {
                 referralCode ? validateReferralCode() : pasteButton();
               }}
@@ -356,10 +402,23 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             </button>
           </div>
           <div className="flex justify-center gap-2 mt-3">
-            <input type="checkbox" value={termsCheck} onChange={(e)=>{setTermsCheck(e.target.checked); setShowError({...showError, termsCheck : false})} }/>
-            <NavLink to={"/terms-and-conditions"} target="blank" className="text-[#0000EE] underline font-extrabold ">I Accept All The T&C</NavLink>
+            <input
+              type="checkbox"
+              value={termsCheck}
+              onChange={(e) => {
+                setTermsCheck(e.target.checked);
+                setShowError({ ...showError, termsCheck: false });
+              }}
+            />
+            <NavLink
+              to={"/terms-and-conditions"}
+              target="blank"
+              className="text-[#0000EE] underline font-extrabold "
+            >
+              I Accept All The T&C
+            </NavLink>
           </div>
-        {/* {showError.termsCheck &&  <p className="text-red-500">*Please accept the Terms and Conditions to proceed</p>} */}
+          {/* {showError.termsCheck &&  <p className="text-red-500">*Please accept the Terms and Conditions to proceed</p>} */}
 
           <div className="flex items-center justify-between mt-5 gap-7">
             <button
@@ -380,11 +439,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
               Login
             </button>
           </div>
-        
-        
-        
         </div>
-   
       </div>
     </>
   );

@@ -38,7 +38,7 @@ try {
   })
 
   await txn.wait();
-   toast.success(data?.message);
+  //  toast.success(data?.message);
   withdrawalHash.mutate({
     "fund_hash" : txn?.hash,
     "amount" : withdrawalAmount,
@@ -63,7 +63,7 @@ const withdrawalHash = useMutation({
     return data;
   },
   onSuccess : async(data)=>{
-    // toast.success(data?.message);
+    toast.success("Withdrawal successfully completed ✅",{duration:1000});
     setWithdrawalAmount("");
      refetch();
   },
