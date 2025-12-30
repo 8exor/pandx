@@ -31,4 +31,5 @@ export const REPORTS = {
   unstakeReport: "report/unstake-report",
   LevelReport: "report/level-report",
   levelWiseReport: "report/level-wise-report",
+  businessReport: "report/business-report",
 };

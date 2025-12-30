@@ -111,6 +111,26 @@ const Report = () => {
     },
   });
 
+const {
+  data : businessData,
+  isLoading : businessLoading,
+  refetch : businessRefetch
+ } = useQuery({
+  queryKey: [
+    "businessData",
+     filters.username,
+      filters?.rank,
+      filters?.from,
+      filters?.to,
+  ],
+  queryFn : async()=>{
+    const {data} = await axiosInstance.get(`${REPORTS?.businessReport}?username=${filters.username}`);
+    return data?.data;
+  }
+ })
+
+
+
   const reportPool = [
     {
       title: "Self Vol",
@@ -371,7 +391,7 @@ const Report = () => {
             ))}
 
             <div
-              className="p-1 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
+              className="p-1 px-5 md:p-5 lg:p-1  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
               onClick={() => {
                 setShowPopUp(true),
                   setLevelUsersData(allTeamData),
@@ -383,12 +403,16 @@ const Report = () => {
               <span className="p-1 border-black rounded-md border-1">{allTeamData?.length || 0} View</span>
             </div>
 
-            <div className="p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-3 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
-              Primary Team Volume 40%
+            <div className="p-4 md:p-2 lg:p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-3 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+            <span> Primary Team Volume 40%</span> 
+            <span className="block">{businessData?.power_leg_sum}</span> 
+
             </div>
 
-            <div className="p-4 md:p-2 px-5 lg:p-4 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-5 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
-              Combined Team Volume 60%
+            <div className="p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-5 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+             <span> Combined Team Volume 60%</span>
+             <span className="block">{businessData?.weak_leg_sum}</span>
+
             </div>
 
             {/* <button

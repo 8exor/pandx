@@ -204,9 +204,11 @@ export default function StakeTab() {
 
       <div className="flex justify-center mt-2">
         <button
-          className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center ${userData?.data?.is_deactivated && "grayscale"}`}
+          className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center `}
           onClick={() => staking.mutate({ stake_amount: stakeAmount })}
-          disabled={staking?.isPending && true || (userData?.data?.is_deactivated)&&true}
+          // disabled={staking?.isPending && true || (userData?.data?.is_deactivated)&&true}
+          disabled={staking?.isPending && true }
+
         >
           {staking?.isPending ? "loading...." : "submit"}
         </button>
