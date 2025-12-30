@@ -168,7 +168,7 @@ export const headerLogos = [
 
   {
     img: "assets/images/ppt.svg",
-    link: "https://drive.google.com/file/d/107TUnAn-cleeeixGp5qaZP64d0BgIEvI/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1gsaODbx5dvUcwC0FG5Q3DaDt8SvHUUn8/view?usp=sharing",
   },  
   {
     img: "assets/images/meet.png",

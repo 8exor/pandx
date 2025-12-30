@@ -2,14 +2,15 @@ import React from "react";
 import Header from "./Header";
 import ScrollToTop from "./ui/Home/ScrollToTop";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const TermAndCondition = () => {
   const headers = [
     "24H PRICE DROP",
     "ADDITIONAL SELL BURN TAX",
     "ALLOCATION",
-    "SUPPLY",
-    "SUSTAINABILITY",
+    "supply",
+    "sustainability",
   ];
 
   const rows = [
@@ -35,10 +36,29 @@ const TermAndCondition = () => {
       sustainability: "PRICE STABILITY ↑",
     },
   ];
+
+  const AirdropHeader = ["AIRDROP ON FCFS", "SELF SIGNUP", "REFERRALS"];
+
+  const airdroprows = [
+    {
+      AIRDROP: "1 TO 2000",
+      signup: "50 $QRA ",
+      REFERRALS: "50 $QRA ",
+    },
+    {
+      AIRDROP: "2001 TO 7500",
+      signup: "25 $QRA ",
+      REFERRALS: "25 $QRA ",
+    },
+    {
+      AIRDROP: "7501 TO 10,000%",
+      signup: "10 $QRA ",
+      REFERRALS: "10 $QRA ",
+    },
+  ];
   return (
     <>
       <Header />
-
       <div className="max-w-[900px] mx-auto text-justify  px-5">
         <div className="pt-30 verdanaWrapper">
           <h2 className="font-bold text-lg underline mb-3">MINIMUM STAKING</h2>
@@ -108,9 +128,60 @@ const TermAndCondition = () => {
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
               (FCFS) BASIS, AND USERS MUST CLAIM THEIR TOKENS ACCORDING TO THE
               DEFINED VESTING SCHEDULES. THE LAST DATE TO EARN MORE $QRA IS 15TH
-              OF JAN’2026.
+              OF JAN’2026. TO CLAIM THE AIRDROP, A SELF TOP-UP IS MANDATORY.
+              THIS OFFER WILL BE AVAILABLE ON A FIRST-COME, FIRST-SERVED BASIS
+              TO THOSE WHO COMPLETE THE TOP-UP FIRST.
             </li>
+          
           </ol>
+          <div className="overflow-x-auto">
+            <table className="min-w-[320px] sm:w-full"
+              style={{
+                borderCollapse: "collapse",
+                width: "100%",
+                textAlign: "center",
+                fontWeight: "400",
+                margin: "40px 0px",
+              }}
+            >
+              <thead>
+                <tr>
+                  {AirdropHeader.map((AirdropHeader) => (
+                    <th
+                      key={AirdropHeader}
+                      style={{
+                        border: "1px solid #999",
+                        padding: "12px 16px",
+                        width: `${100 / AirdropHeader.length}%`,
+                        fontWeight: "400",
+                        backgroundColor: "#f9f9f9",
+                      }}
+                    >
+                      {AirdropHeader}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {airdroprows.map(({ AIRDROP, signup, REFERRALS }, i) => (
+                  <tr key={i}>
+                    {[AIRDROP, signup, REFERRALS].map((cell, idx) => (
+                      <td
+                        key={idx}
+                        style={{
+                          border: "1px solid #999",
+                          padding: "12px 16px",
+                          width: `${100 / AirdropHeader.length}%`,
+                        }}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            </div>
           <h2 className="font-bold underline text-lg mb-3">
             DIRECT REFERRAL REWARD ON TOP-UP
           </h2>
@@ -265,54 +336,59 @@ const TermAndCondition = () => {
                 Users can use the #P2P model to save this burn tax.
               </li>
             </ul>
-          <table
-  style={{
-    borderCollapse: "collapse",
-    width: "100%",
-    textAlign: "center",
-    fontWeight: "400",
-    margin:"50px 0px",
-  }}
->
-  <thead>
-    <tr>
-      {headers.map((header) => (
-        <th
-          key={header}
-          style={{
-            border: "1px solid #999",
-            padding: "12px 16px",
-            width: `${100 / headers.length}%`,
-            fontWeight: "400",
-            backgroundColor: "#f9f9f9",
-          }}
-        >
-          {header}
-        </th>
-      ))}
-    </tr>
-  </thead>
-  <tbody>
-    {rows.map(({ drop, tax, allocation, supply, sustainability }, i) => (
-      <tr key={i}>
-        {[drop, tax, allocation, supply, sustainability].map((cell, idx) => (
-          <td
-            key={idx}
-            style={{
-              border: "1px solid #999",
-              padding: "12px 16px",
-              width: `${100 / headers.length}%`,
-              // fontWeight: idx === 0 ? "400" : "medium",
-            }}
-          >
-            {cell}
-          </td>
-        ))}
-      </tr>
-    ))}
-  </tbody>
-</table>
-
+            <div className="overflow-x-auto">
+            <table className="min-w-[320px] sm:w-full"
+              style={{
+                borderCollapse: "collapse",
+                width: "100%",
+                textAlign: "center",
+                fontWeight: "400",
+                margin: "50px 0px",
+              }}
+            >
+              <thead>
+                <tr>
+                  {headers.map((header) => (
+                    <th
+                      key={header}
+                      style={{
+                        border: "1px solid #999",
+                        padding: "12px 16px",
+                        width: `${100 / headers.length}%`,
+                        fontWeight: "400",
+                        backgroundColor: "#f9f9f9",
+                      }}
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map(
+                  ({ drop, tax, allocation, supply, sustainability }, i) => (
+                    <tr key={i}>
+                      {[drop, tax, allocation, supply, sustainability].map(
+                        (cell, idx) => (
+                          <td
+                            key={idx}
+                            style={{
+                              border: "1px solid #999",
+                              padding: "12px 16px",
+                              width: `${100 / headers.length}%`,
+                            }}
+                          >
+                            {cell}
+                          </td>
+                        )
+                      )}
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
+            </div>
+            
           </ol>
 
           <h2 className="font-bold underline text-lg mb-3">
@@ -477,6 +553,7 @@ const TermAndCondition = () => {
           <ScrollToTop />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
