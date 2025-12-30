@@ -10,6 +10,7 @@ import { LoaderIcon } from "react-hot-toast";
 import Load from "@hooks/Load";
 import MaxCapProgress from "@layouts/staking/components/MaxCapProgress";
 import LevelWiseReport from "./LevelWiseReport";
+import { data } from "react-router-dom";
 
 const Report = () => {
   const { userData } = useContext(UserInfoContext);
@@ -19,7 +20,7 @@ const Report = () => {
     team: false,
   });
   const [inactiveIndex, setInactiveIndex] = useState(false);
-
+  const [reset, setReset] = useState(false);
   const [getUserName, setGetUserName] = useState("");
   const [levelUsersData, setLevelUsersData] = useState([]);
 
@@ -32,46 +33,80 @@ const Report = () => {
   const [rank, setRank] = useState("");
   const [history, setHistory] = useState([]);
 
+  const [filters, setFilters] = useState({
+    username: "",
+    rank: "",
+    from: null,
+    to: null,
+  });
+
   const {
     data: profileData,
     isLoading: profileLoading,
     error: profileError,
-    refetch : profileRefecth
+    refetch: profileRefecth,
   } = useQuery({
-    queryKey: ["profileData"],
-    queryFn: async () => {
-      const { data } = await axiosInstance.get(`${REPORTS?.profile}?username=${getUserName}`);
-      return data;
-    },
-  });
-
-  const {
-    data: teamData,
-    isLoading: teamLoading,
-    error: teamError,
-    refetch : teamRefetch
-  } = useQuery({
-    queryKey: ["teamData"],
+    queryKey: ["profileData", filters.username],
     queryFn: async () => {
       const { data } = await axiosInstance.get(
-        `${REPORTS?.teamInfo}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`
+        `${REPORTS?.profile}?username=${filters?.username}`
       );
       return data;
     },
   });
 
-  const { data: levelData, isLoading: levelLoading, refetch : levelRefetch } = useQuery({
-    queryKey: ["levelData", ],
+  // const {
+  //   data: teamData,
+  //   isLoading: teamLoading,
+  //   error: teamError,
+  //   refetch : teamRefetch
+  // } = useQuery({
+  //   queryKey: ["teamData", getUserName, rank, date.from, date.to],
+  //   queryFn: async () => {
+  //     const { data } = await axiosInstance.get(
+  //       `${REPORTS?.teamInfo}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`
+  //     );
+  //     return data;
+  //   },
+  //   enabled : false
+  // });
+
+  const {
+    data: levelData,
+    isLoading: levelLoading,
+    refetch: levelRefetch,
+  } = useQuery({
+    queryKey: [
+      "levelData",
+      filters.username,
+      filters?.rank,
+      filters?.from,
+      filters?.to,
+    ],
     queryFn: async () => {
-      const { data } = await axiosInstance.get(`${REPORTS?.LevelReport}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`);
+      const { data } = await axiosInstance.get(
+        `${REPORTS?.LevelReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from}&date_to=${filters?.to}`
+      );
       return data;
     },
   });
 
-  const { data: levelWiseData, isLoading: levelWiseLoading, refetch : levelWiseRefetch } = useQuery({
-    queryKey: ["levelWiseData"],
+  const {
+    data: levelWiseData,
+    isLoading: levelWiseLoading,
+    refetch: levelWiseRefetch,
+  } = useQuery({
+    queryKey: [
+      "levelWiseData",
+      filters.username,
+      filters?.rank,
+      filters?.from,
+      filters?.to,
+    ],
     queryFn: async () => {
-      const { data } = await axiosInstance.get(`${REPORTS?.levelWiseReport}?username=${getUserName}&rank=${rank}&date_from=${date?.from}&date_to=${date?.to}`);
+      const { data } = await axiosInstance.get(
+        `${REPORTS?.levelWiseReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from}&date_to=${filters?.to}`
+      );
       return data.data;
     },
   });
@@ -103,7 +138,9 @@ const Report = () => {
     {
       title: "Direct Vol",
       value: `$${
-        (teamData && Number(profileData?.data?.direct_business).toFixed(0)) || 0
+        (profileData &&
+          Number(profileData?.data?.direct_business).toFixed(0)) ||
+        0
       }`,
     },
     {
@@ -119,13 +156,14 @@ const Report = () => {
     {
       title: "Total Team",
       value: `${
-        (teamData && Number(profileData?.data?.total_team).toFixed(0)) || 0
+        (profileData && Number(profileData?.data?.total_team).toFixed(0)) || 0
       }`,
     },
     {
       title: "Total Team Vol",
       value: `$${
-        (teamData && Number(profileData?.data?.total_business).toFixed(0)) || 0
+        (profileData && Number(profileData?.data?.total_business).toFixed(0)) ||
+        0
       }`,
     },
     {
@@ -158,6 +196,8 @@ const Report = () => {
       title: `Capping`,
       value: `${
         (profileData &&
+          profileData?.data?.total_capping > 0 &&
+          profileData?.data?.used_capping > 0 &&
           parseFloat(
             parseFloat(
               (profileData?.data?.used_capping /
@@ -276,6 +316,13 @@ const Report = () => {
     });
   };
 
+  {
+    console.log(
+      "what is the tableleve coming and what its length : ",
+      levelData?.data
+    );
+  }
+
   return (
     <div className="w-full h-full min-h-screen bg-[#e5ffd5] p-2">
       <div className="w-full max-w-[1360px] mx-auto text-xl">
@@ -293,7 +340,17 @@ const Report = () => {
                 key={i}
                 className="flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow"
               >
-                <span>{pool?.title != "Capping" ? pool.title : `${pool.title}${(profileData?.data?.rank_id >0 && profileData?.data?.rank_id<=2) && "(2X)" || (profileData?.data?.rank_id >=3) && "(3X)"}`}</span>
+                <span>
+                  {pool?.title != "Capping"
+                    ? pool.title
+                    : `${pool.title}${
+                        (profileData?.data?.rank_id > 0 &&
+                          profileData?.data?.rank_id <= 2 &&
+                          "(2X)") ||
+                        (profileData?.data?.rank_id >= 3 && "(3X)") ||
+                        (profileData?.data?.rank_id == 0 && "")
+                      }`}
+                </span>
                 {pool?.value ? (
                   <span>{pool?.title != "Capping" && pool?.value}</span>
                 ) : (
@@ -303,7 +360,9 @@ const Report = () => {
                   <div className="mt-2">
                     <MaxCapProgress
                       maxCap={false}
-                      value={pool?.title == "Capping" && pool?.value.slice(0,-1)}
+                      value={
+                        pool?.title == "Capping" && pool?.value.slice(0, -1)
+                      }
                       percent={pool?.title == "Capping" && pool?.value}
                     />
                   </div>
@@ -311,17 +370,17 @@ const Report = () => {
               </div>
             ))}
 
-            <div className="p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "  onClick={() => {
-                              setShowPopUp(true),
-                                setLevelUsersData(
-                                 allTeamData
-                                ),
-                                // setInactiveIndex(index);
-                              setAllTeam({...allTeam, team : true})}} >
-         
-             <span>All Team</span>
-             <span>{allTeamData?.length || 0}</span>
-       
+            <div
+              className="p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
+              onClick={() => {
+                setShowPopUp(true),
+                  setLevelUsersData(allTeamData),
+                  // setInactiveIndex(index);
+                  setAllTeam({ ...allTeam, team: true });
+              }}
+            >
+              <span>Total Team</span>
+              <span>{allTeamData?.length || 0}</span>
             </div>
 
             <div className="p-4 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-3 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
@@ -339,9 +398,13 @@ const Report = () => {
               Back
             </button> */}
 
-         
-              <input type="text" className="col-span-2 p-4 px-5 text-center border border-gray-300 rounded-md lg:col-start-2 lg:row-start-4 md:col-span-1 lg:col-span-1" placeholder="Search Username" value={getUserName} onChange={(e)=>setGetUserName(e.target.value)} />
-       
+            <input
+              type="text"
+              className="col-span-2 p-4 px-5 text-center border border-gray-300 rounded-md lg:col-start-2 lg:row-start-4 md:col-span-1 lg:col-span-1"
+              placeholder="Search Username"
+              value={getUserName}
+              onChange={(e) => setGetUserName(e.target.value)}
+            />
 
             <DatePicker
               value={date?.from}
@@ -372,8 +435,35 @@ const Report = () => {
               Reset
             </button> */}
 
-            <div className="col-span-2 mx-auto md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2">
-              <button className="p-4 px-20 rounded-md border border-black bg-[#c4ffa1] btn-primary" onClick={()=>{teamRefetch();levelRefetch();levelWiseRefetch();profileRefecth()}}>
+            <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2">
+              <button
+                className="p-4 px-20   lg:px-15 xl:px-20 rounded-md border border-black bg-[#c4ffa1] btn-primary"
+                onClick={() => {
+                    setFilters({
+                    ...filters,
+                    username: "",
+                    from: null,
+                    to: null,
+                  })
+                  setGetUserName("");
+                  setDate({ ...date, to: null, from: null });
+                }}
+              >
+                Reset
+              </button>
+            </div>
+            <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-4 lg:row-start-5 md:col-span-1 lg:col-span-2">
+              <button
+                className="p-4 px-19 lg:px-15 xl:px-19 rounded-md border border-black bg-[#c4ffa1] btn-primary"
+                onClick={() => {
+                  setFilters({
+                    ...filters,
+                    username: getUserName,
+                    from: date?.from,
+                    to: date?.to,
+                  });
+                }}
+              >
                 submit
               </button>
             </div>
@@ -410,7 +500,7 @@ const Report = () => {
                 <tbody className="flex flex-col mt-2 space-y-1 overflow-y-auto flex-nowrap">
                   {levelLoading ? (
                     <TableSkeleton rows={3} cols={8} />
-                  ) : !tableLevel ||  tableLevel?.length == 0 ? (
+                  ) : !tableLevel || tableLevel?.length == 0 ? (
                     <tr className="mx-auto text-center ">
                       <td
                         colSpan={9}
