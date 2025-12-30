@@ -147,7 +147,7 @@ const Roadmap = ({ getStartedRef, roadmapRef }) => {
                 href="https://bscscan.com"
                 target="blank"
               >
-              Coming Soon
+             0x55d398326f99059ff775485246999027b3197955
               </a>
             </p>
             <button
