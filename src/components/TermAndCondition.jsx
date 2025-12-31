@@ -550,7 +550,7 @@ const TermAndCondition = () => {
           <ScrollToTop />
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 };

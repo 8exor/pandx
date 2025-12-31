@@ -14,47 +14,47 @@ const Banner = ({ aboutRef, homeRef }) => {
   const [isCopied, handleCopy] = useCopyToClipBaord();
 
   const useCounter = (end, duration = 2000) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const started = useRef(false);
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const started = useRef(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !started.current) {
+            started.current = true;
 
-          let current = 0;
-          const stepTime = 16; // ~60fps
-          const increment = end / (duration / stepTime);
+            let current = 0;
+            const stepTime = 16; // ~60fps
+            const increment = end / (duration / stepTime);
 
-          const timer = setInterval(() => {
-            current += increment;
+            const timer = setInterval(() => {
+              current += increment;
 
-            if (current >= end) {
-              setCount(end);
-              clearInterval(timer);
-            } else {
-              setCount(Math.round(current));
-            }
-          }, stepTime);
-        }
-      },
-      { threshold: 0.4 } // start when 40% visible
-    );
+              if (current >= end) {
+                setCount(end);
+                clearInterval(timer);
+              } else {
+                setCount(Math.round(current));
+              }
+            }, stepTime);
+          }
+        },
+        { threshold: 0.4 } // start when 40% visible
+      );
 
-    if (ref.current) observer.observe(ref.current);
+      if (ref.current) observer.observe(ref.current);
 
-    return () => observer.disconnect();
-  }, [end, duration]);
+      return () => observer.disconnect();
+    }, [end, duration]);
 
-  return { count, ref };
-};
+    return { count, ref };
+  };
 
-const { count: holders, ref: holdersRef } = useCounter(500);
-const { count: stakers, ref: stakersRef } = useCounter(700);
-const { count: transactions, ref: transactionsRef } = useCounter(1000);
-const { count: tvl, ref: tvlRef } = useCounter(10000000);
+  const { count: holders, ref: holdersRef } = useCounter(500);
+  const { count: stakers, ref: stakersRef } = useCounter(700);
+  const { count: transactions, ref: transactionsRef } = useCounter(1000);
+  const { count: tvl, ref: tvlRef } = useCounter(10000000);
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -80,42 +80,74 @@ const { count: tvl, ref: tvlRef } = useCounter(10000000);
           </div>
         </div>
         <section className="relative pt-20 bg-bottom bg-no-repeat bg-cover ">
-          <ul
-            className="fixed bg-[#eaffe2] border-[2px] border-[#75ac3f]
-  flex-col gap-4 rounded-lg px-[5px] md:px-[10px]
-  py-[20px] md:py-[25px] z-20 left-[1.5%]"
-            data-aos="slide-up"
-          >
-            {headerLogos.map((item, index) => {
-              const Content = (
-                <li
-                  className="md:h-9 md:w-9 h-6 w-6 animate-float flex items-center
-        justify-center border mt-2 rounded-full border-[#00d990]
-        hover:drop-shadow-[0_0_10px_#00d990]
-        hover:scale-120 duration-300 ease-in-out"
-                >
-                  <img
-                    className="w-2 h-2 cursor-pointer md:h-5 md:w-5"
-                    src={item.img}
-                    alt="logo icon"
-                  />
-                </li>
-              );
+       <ul
+  className="fixed bg-[#eaffe2] border-[2px] border-[#75ac3f]
+  flex flex-col gap-4 rounded-lg px-[5px] md:px-[10px]
+  py-[20px] md:py-[30px] z-20 left-[1.5%] overflow-visible"
+  data-aos="slide-up"
+>
+  {headerLogos.map((item, index) => {
+    const Content = (
+      <li
+        className="
+          relative group
+          h-6 md:h-9
+          w-6 md:w-9 animate-float
+        "
+      >
+        {/* HOVER EXPAND BOX */}
+        <div
+          className="
+            absolute left-0 top-0
+            flex items-center gap-2
+            h-6 md:h-9
+            w-6 md:w-9
+            group-hover:w-auto
+            px-2
+            rounded-full
+            border border-[#00d990]
+            bg-[#eaffe2]
+            z-50
+            transition-all duration-300 ease-in-out
+          "
+        >
+          {/* ICON */}
+          <img
+            className="w-2 h-2 md:w-5 md:h-5 shrink-0"
+            src={item.img}
+            alt="logo icon"
+          />
 
-              return item.link ? (
-                <a
-                  key={index}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {Content}
-                </a>
-              ) : (
-                <div key={index}>{Content}</div>
-              );
-            })}
-          </ul>
+          {/* TEXT */}
+          {item.text && (
+            <span
+              className="
+                text-xs whitespace-nowrap
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-300
+              "
+            >
+              {item.text}
+            </span>
+          )}
+        </div>
+      </li>
+    );
+    return item.link ? (
+      <a
+        key={index}
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {Content}
+      </a>
+    ) : (
+      <div key={index}>{Content}</div>
+    );
+  })}
+</ul>
+
 
           <div className="mycontainer ">
             <div className="absolute top-30 max-w-[400px]   sm:left-10 lg:left-[6%] lg:top-[9%] xl:top-[14%]  xl:left-[11%] left-0">

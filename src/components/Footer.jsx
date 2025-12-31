@@ -5,8 +5,8 @@ const Footer = () => {
       <footer>
         <section className="bg-graydient relative pb-4 pt-20">
           <div className="mycontainer text-center">
-            <div className="md:py-15 pt-15" data-aos="slide-up">
-              <h2 className="text-[30px] sm:text-5xl md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center">
+            <div className="md:py-15 pt-15" >
+              <h2 className="text-[30px] sm:text-5xl md:text-[40px] lg:text-[82px] leading-tight md:leading-[60px] lg:leading-[90px] text-center" >
                 Join the Movement
               </h2>
               <p className="lg:text-2xl text-xl text-[#4a4a4a] w-full lg:max-w-[700px] max-w-[500px] m-auto pt-2">
@@ -113,7 +113,7 @@ const Footer = () => {
           <div className="mycontainer">
             <div className="flex flex-wrap justify-between items-center gap-5 pt-8  border-graydient">
               <div className="logo md:block hidden">
-                <a href=" https://swap.qerra.network/" target="blank">
+                <a href="https://pandx.xyz/" target="blank">
                   <img
                     className="md:w-[180px] w-[120px]"
                     src="/assets/images/Logo.png"
@@ -156,7 +156,8 @@ const Footer = () => {
           {/* images panda  */}
           <div
             className="absolute  top-[10%] lg:top-[32%] lg:right-[0%] xl:right-[12%] xl:top-[20%] mac-mr-10 right-[5%]"
-            data-aos="zoom-in"
+           
+            
           >
             <img
               className="hidden lg:block mac-right-3 lg:w-[50%] xl:w-[80%] md:ml-auto xl:ml-[10%]"
@@ -164,7 +165,7 @@ const Footer = () => {
               alt=""
             />
           </div>
-          <div className="absolute top-0 left-[5%] " data-aos="zoom-in">
+          <div className="absolute top-0 left-[5%] " >
             <img
               className="lg:[60%] w-[50%] xl:w-full"
               src="assets/images/Charactertree.svg"

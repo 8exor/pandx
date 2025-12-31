@@ -185,7 +185,7 @@ export default function P2p() {
       </div>
 
       <p className="my-2 font-semibold text-center uppercase sm:text-left">
-        P2P unlimited and free
+        P2P unlimited and (MIN $10)
       </p>
 
       <div className="flex justify-center mb-4">
