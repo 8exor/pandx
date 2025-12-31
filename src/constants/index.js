@@ -16,10 +16,10 @@ export const dappNavLinks = [
   },
   {
     id: "how to",
-    title: "HOW TO",
+    title: "INFO",
     link: "/HowTo",
   },
-    {
+  {
     id: "stats",
     title: "STATS",
     link: "",
@@ -152,32 +152,42 @@ export const headerLogos = [
   {
     img: "assets/images/BSCSCAN.svg",
     link: "https://bscscan.com/",
+    text: "VERIFIED SMART CONTRACT",
   },
   {
     img: "assets/images/start-up.svg",
     link: "https://launchpad.qerra.network/",
+    text: "hYBRID Launchpad",
   },
   {
     img: "assets/images/qerra-logo.png",
-    link: "https://launchpad.qerra.network/",
+    link: "https://www.qerra.news/",
+    text: "qerraNEWS",
   },
   {
     img: "assets/images/Dextool.svg",
     link: "https://www.dextools.io/app/en/bnb/pair-explorer/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330?t=1753485448380",
+    text: "DexTools.io",
   },
   {
     img: "assets/images/dex-screener.svg",
     link: "https://dexscreener.com/bsc/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330",
+    text: " DexScreener.com",
   },
-  { img: "assets/images/fire.svg" },
+  { img: "assets/images/fire.svg",
+    text:"Verify LP Token Burn"
+   },
+
 
   {
     img: "assets/images/ppt.svg",
     link: "https://drive.google.com/file/d/1gsaODbx5dvUcwC0FG5Q3DaDt8SvHUUn8/view?usp=sharing",
+    text: "Presentation",
   },
   {
     img: "assets/images/meet.png",
     link: "https://meet.google.com/bco-rfba-iyh",
+    text: "Google Meet",
   },
 ];
 
@@ -186,35 +196,48 @@ export const taskNote = {
   des: " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
   des2: "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
   des3: "Earn Staking Rewards upto 1% Daily — powered by IPFS",
+  des4:" ⭐ ALL OFFICIAL LINKS ARE PROVIDED HERE — PLEASE VERIFY BEFORE PROCEEDING ⭐ " 
 };
 
 export const howTOLogos = [
   {
     img: "assets/images/BSCSCAN.svg",
     link: "https://bscscan.com/",
-    title: "BSC scan",
+    title: "VERIFIED SMART CONTRACT",
+  },
+  {
+    img: "assets/images/BSCSCAN.svg",
+    link: "",
+    title: "VERIFIED STAKING SMART CONTRACT",
   },
   {
     img: "assets/images/start-up.svg",
     link: "https://launchpad.qerra.network/",
-    title: "Launchpad",
+    title: " qerra — hYBRID Launchpad",
+  },
+  {
+    img: "assets/images/qerra-logo.png",
+    link: "https://www.qerra.news/",
+    title: " qerraNEWS",
   },
   {
     img: "assets/images/qerra-logo.png",
     link: "https://launchpad.qerra.network/",
-    title: "Qerra",
+    title: " qerraSWAP",
   },
   {
     img: "assets/images/Dextool.svg",
     link: "https://www.dextools.io/app/en/bnb/pair-explorer/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330?t=1753485448380",
-    title: "Desktools",
+    title: " DexTools.io",
   },
 
-  { img: "assets/images/fire.svg", title: "Fire" },
   {
     img: "assets/images/dex-screener.svg",
     link: "https://dexscreener.com/bsc/0xbda19bb24ef8aa2ae8b5c6741d92f3eb1b805330",
-    title: "Dex Screener",
+    title: "DexScreener.com",
+  },
+  { img: "assets/images/fire.svg",
+    title: "Verify LP Token Burn" 
   },
   {
     img: "assets/images/ppt.svg",

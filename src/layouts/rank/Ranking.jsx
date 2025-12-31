@@ -402,69 +402,66 @@ const Ranking = () => {
                           />
                         )}
                         {key != "directs referrals" &&
-                              key != "team" &&
-                              key != "totalTeam" && <span>{value}</span>}
+                          key != "team" &&
+                          key != "totalTeam" && <span>{value}</span>}
 
-                         {key == "directs referrals" && (
-                              <>
-                                <span>{`${value}${
-                                  index >= 1
-                                    ? ` / ${
-                                        rankData?.data?.user?.total_directs || 0
-                                      }`
-                                    : ""
-                                }`}</span>
+                        {key == "directs referrals" && (
+                          <>
+                            <span>{`${value}${
+                              index >= 1
+                                ? ` / ${
+                                    rankData?.data?.user?.total_directs || 0
+                                  }`
+                                : ""
+                            }`}</span>
 
-                                {rankData?.data?.user?.total_directs >=
-                                  (parseInt(value) || 0) && (
-                                  <img
-                                    className="w-5"
-                                    src="/assets/images/checkmark.png"
-                                    alt="checkmark"
-                                  />
-                                )}
-                              </>
+                            {rankData?.data?.user?.total_directs >=
+                              (parseInt(value) || 0) && (
+                              <img
+                                className="w-5"
+                                src="/assets/images/checkmark.png"
+                                alt="checkmark"
+                              />
                             )}
+                          </>
+                        )}
 
-                             {key == "team" && (
-                              <>
-                                <span>{`${value}${
-                                  index >= 1
-                                    ? ` / ${d[row.rank - 1] || 0}`
-                                    : ""
-                                }`}</span>
+                        {key == "team" && (
+                          <>
+                            <span>{`${value}${
+                              index >= 1 ? ` / ${d[row.rank - 1] || 0}` : ""
+                            }`}</span>
 
-                                {/* {console.log({ row, fff: d[row.rank-1] , d , rrr: row.rank })} */}
-                                {d[row.rank - 1] >= (parseInt(value) || 0) && (
-                                  <img
-                                    className="w-5"
-                                    src="/assets/images/checkmark.png"
-                                    alt="checkmark"
-                                  />
-                                )}
-                              </>
+                            {/* {console.log({ row, fff: d[row.rank-1] , d , rrr: row.rank })} */}
+                            {d[row.rank - 1] >= (parseInt(value) || 0) && (
+                              <img
+                                className="w-5"
+                                src="/assets/images/checkmark.png"
+                                alt="checkmark"
+                              />
                             )}
-                               {key == "totalTeam" && (
-                              <>
-                                <span>{`${value}${
-                                  index >= 1
-                                    ? ` / ${
-                                        rankData?.data?.user?.total_directs +
-                                          d[row.rank - 1] || 0
-                                      }`
-                                    : ""
-                                }`}</span>
-                                {rankData?.data?.user?.overall_team >=
-                                  (parseInt(value) || 0) && (
-                                  <img
-                                    className="w-5"
-                                    src="/assets/images/checkmark.png"
-                                    alt="checkmark"
-                                  />
-                                )}
-                              </>
+                          </>
+                        )}
+                        {key == "totalTeam" && (
+                          <>
+                            <span>{`${value}${
+                              index >= 1
+                                ? ` / ${
+                                    rankData?.data?.user?.total_directs +
+                                      d[row.rank - 1] || 0
+                                  }`
+                                : ""
+                            }`}</span>
+                            {rankData?.data?.user?.overall_team >=
+                              (parseInt(value) || 0) && (
+                              <img
+                                className="w-5"
+                                src="/assets/images/checkmark.png"
+                                alt="checkmark"
+                              />
                             )}
-              
+                          </>
+                        )}
                       </>
                     ) : (
                       <div className="flex items-center gap-2">
