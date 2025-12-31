@@ -222,7 +222,7 @@ export const howTOLogos = [
   },
   {
     img: "assets/images/qerra-logo.png",
-    link: "https://launchpad.qerra.network/",
+    link: "https://swap.qerra.network/",
     title: " qerraSWAP",
   },
   {
