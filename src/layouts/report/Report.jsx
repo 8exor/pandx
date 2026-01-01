@@ -11,6 +11,9 @@ import Load from "@hooks/Load";
 import MaxCapProgress from "@layouts/staking/components/MaxCapProgress";
 import LevelWiseReport from "./LevelWiseReport";
 import { data } from "react-router-dom";
+import { last } from "@amcharts/amcharts4/.internal/core/utils/Array";
+import dayjs from "dayjs";
+import { getTodayDate } from "@mui/x-date-pickers/internals";
 
 const Report = () => {
   const { userData } = useContext(UserInfoContext);
@@ -124,7 +127,7 @@ const {
       filters?.to,
   ],
   queryFn : async()=>{
-    const {data} = await axiosInstance.get(`${REPORTS?.businessReport}?username=${filters.username}`);
+    const {data} = await axiosInstance.get(`${REPORTS?.businessReport}?username=${filters.username}&date_from=${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`);
     return data?.data;
   }
  })
@@ -343,6 +346,13 @@ const {
     );
   }
 
+//  const now =   new Date(); 
+// const firstDate = new Date(now.getFullYear(), now.getMonth(), 1);
+// const lastDate = new Date(now.getFullYear(), now.getMonth()+1, 0)
+
+// console.log("what is the first date and last date of the month ::: ", firstDate, lastDate)
+
+
   return (
     <div className="w-full h-full min-h-screen bg-[#e5ffd5] p-2">
       <div className="w-full max-w-[1360px] mx-auto text-xl">
@@ -389,9 +399,10 @@ const {
                 )}
               </div>
             ))}
+            
 
             <div
-              className="p-1 px-5 md:p-5 lg:p-1  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 flex flex-col items-center "
+              className="p-2 px-5 md:p-5 lg:p-1  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 flex flex-col items-center "
               onClick={() => {
                 setShowPopUp(true),
                   setLevelUsersData(allTeamData),
@@ -403,16 +414,21 @@ const {
               <span className="p-1 border-black rounded-md border-1">{allTeamData?.length || 0} View</span>
             </div>
 
-            <div className="p-4 md:p-2 lg:p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-3 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+            <div className="p-1 md:p-2 lg:p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center">
             <span> Primary Team Volume 40%</span> 
-            <span className="block">{businessData?.power_leg_sum}</span> 
+            <span className="block">{businessData?.power_leg_sum || 0}</span> 
 
             </div>
 
-            <div className="p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-5 lg:row-start-3 col-span-2 md:col-span-1 lg:col-span-2 text-center">
+            <div className="p-1 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center">
              <span> Combined Team Volume 60%</span>
-             <span className="block">{businessData?.weak_leg_sum}</span>
+             <span className="block">{businessData?.weak_leg_sum || 0}</span>
 
+            </div>
+
+              <div className="p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-6 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 text-center">
+             <span>Total Eligible Vol</span>
+             <span className="block">{businessData?.power_leg_sum + businessData?.weak_leg_sum}</span>
             </div>
 
             {/* <button
@@ -424,7 +440,7 @@ const {
 
             <input
               type="text"
-              className="col-span-2 p-4 px-5 text-center border border-gray-300 rounded-md lg:col-start-2 lg:row-start-4 md:col-span-1 lg:col-span-1"
+              className="col-span-2 p-4 px-5 text-center border border-gray-300 rounded-md lg:p-4 md:p-4 lg:col-start-2 lg:row-start-4 md:col-span-1 lg:col-span-1"
               placeholder="Search Username"
               value={getUserName}
               onChange={(e) => setGetUserName(e.target.value)}
@@ -434,32 +450,48 @@ const {
               value={date?.from}
               onChange={(newValue) => setDate({ ...date, from: newValue })}
               label="From Date"
-              className="lg:col-start-3 lg:row-start-4 "
+              className=" lg:col-start-3 lg:row-start-4"
               format="DD/MM/YYYY"
             />
             <DatePicker
               value={date?.to}
-              onChange={(newValue) => setDate({ ...date, to: newValue })}
+              onChange={(newValue) => setDate({ ...date, to: newValue})}
               label="To Date"
               className="lg:col-start-4 lg:row-start-4"
               format="DD/MM/YYYY"
             />
-
-            {/* <button
-              className="p-4 px-2 rounded-md border border-black bg-[#c4ffa1] lg:col-start-5 lg:row-start-4 col-span-2 md:col-span-1"
-              onClick={() => {
-                setGetUserName("");
-                setDate({
-                  from: null,
-                  to: null,
-                });
-                setRank("");
-              }}
+        
+           <div
+              className="p-5 px-5 md:p-5 lg:p-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-5 lg:row-start-4  md:col-span-1 flex flex-col items-center "
+             onClick={()=>{setDate({...date, from : dayjs().startOf("month"), to : dayjs().endOf("month")})}}
             >
-              Reset
-            </button> */}
+             This month
+            </div>
 
+              <div
+              className="p-5 px-5 md:p-5 lg:p-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-6 lg:row-start-4  md:col-span-1 flex flex-col items-center "
+          onClick={()=>{setDate({...date, from : dayjs(), to : dayjs().subtract(30, "day")})}}
+            >
+            Last 30 Days
+            </div>
+      
+           
             <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2">
+              <button
+                className="p-4 px-19 lg:px-15 xl:px-19 rounded-md border border-black bg-[#c4ffa1] btn-primary"
+                onClick={() => {
+                  setFilters({
+                    ...filters,
+                    username: getUserName,
+                    from: date?.from.format("YYYY-MM-DD"),
+                    to: date?.to.format("YYYY-MM-DD"),
+                  });
+                }}
+              >
+                submit
+              </button>
+            </div>
+             <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-4 lg:row-start-5 md:col-span-1 lg:col-span-2">
               <button
                 className="p-4 px-20   lg:px-15 xl:px-20 rounded-md border border-black bg-[#c4ffa1] btn-primary"
                 onClick={() => {
@@ -474,21 +506,6 @@ const {
                 }}
               >
                 Reset
-              </button>
-            </div>
-            <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-4 lg:row-start-5 md:col-span-1 lg:col-span-2">
-              <button
-                className="p-4 px-19 lg:px-15 xl:px-19 rounded-md border border-black bg-[#c4ffa1] btn-primary"
-                onClick={() => {
-                  setFilters({
-                    ...filters,
-                    username: getUserName,
-                    from: date?.from,
-                    to: date?.to,
-                  });
-                }}
-              >
-                submit
               </button>
             </div>
           </div>
