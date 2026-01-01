@@ -156,6 +156,7 @@ const withdrawalHash = useMutation({
 
           <div className='flex items-center justify-center gap-5 mt-3'>
           <button className='p-2 btn-primary' onClick={()=>{setActiveTab({...activeTab, mainTabs : "p2p"});setSwitchPopup(false)}}>Switch to P2P</button>
+          <button className='p-2 btn-primary blink-text'>Final Amount {parseFloat(withdrawalAmount * 0.95)}</button>
           <button className='p-2 btn-primary' onClick={()=>withdrawaling.mutate({"amount":withdrawalAmount})}  disabled={withdrawaling?.isPending && true}>Proceed to Withdrawal</button>
       
           </div>

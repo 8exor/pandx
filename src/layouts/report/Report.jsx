@@ -88,7 +88,7 @@ const Report = () => {
     ],
     queryFn: async () => {
       const { data } = await axiosInstance.get(
-        `${REPORTS?.LevelReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from}&date_to=${filters?.to}`
+        `${REPORTS?.LevelReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`
       );
       return data;
     },
@@ -108,7 +108,7 @@ const Report = () => {
     ],
     queryFn: async () => {
       const { data } = await axiosInstance.get(
-        `${REPORTS?.levelWiseReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from}&date_to=${filters?.to}`
+        `${REPORTS?.levelWiseReport}?username=${filters.username}&rank=${filters?.rank}&date_from=$${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`
       );
       return data.data;
     },
@@ -359,7 +359,7 @@ const {
         <div className="w-full max-w-[1360px] mx-auto mt-15  flex items-center justify-center gap-2 p-3">
           <span className="blink-text">{taskNote?.title}</span>
           <marquee behavior="alternate" scrollamount="10" direction="">
-            {taskNote?.des}
+            {taskNote?.des5}
           </marquee>
         </div>
 
