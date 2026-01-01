@@ -14,17 +14,17 @@ const HowTo = () => {
         </div>
         <div className="max-w-[1360px] mx-auto">
           <div className="bg-[#e5ffd5] rounded-sm  mx-2  border ">
-            <div className="grid lg:grid-cols-5 md:grid-cols-2 p-5">
+            <div className="grid p-5 lg:grid-cols-5 md:grid-cols-2">
               {howTOLogos.map((item) => {
                 return (
                   <>
                     <div
                       key={item}
-                      className="bg-[#c4ffa1] flex items-center justify-center text-center p-4  border border-[#68a12b] rounded-md shadow m-2 "
+                      className="hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_35px_30px_#72a315,0_5px_10px_#00000070] bg-[#c4ffa1] shadow-none hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_70px_30px_#72a315,0_5px_10px_#00000070] flex items-center justify-center text-center p-4 border border-[#68a12b] rounded-md m-2 transition-all duration-300"
                     >
                       <Link to={item.link} target="blank">
                         <img
-                          className="w-10  mx-auto h-10"
+                          className="w-10 h-10 mx-auto"
                           src={item.img}
                           alt="img"
                         />

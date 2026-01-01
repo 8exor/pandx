@@ -24,7 +24,7 @@ const token = getAccessToken();
 createAppKit({
   adapters: [new Ethers5Adapter()],
   metadata,
-  networks: [sepolia],
+  networks: [bsc],
   projectId,
   features: {
     analytics: true,
