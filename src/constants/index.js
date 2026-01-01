@@ -196,7 +196,8 @@ export const taskNote = {
   des: " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
   des2: "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
   des3: "Earn Staking Rewards upto 1% Daily — powered by IPFS",
-  des4:" ⭐ ALL OFFICIAL LINKS ARE PROVIDED HERE — PLEASE VERIFY BEFORE PROCEEDING ⭐ " 
+  des4:" ⭐ ALL OFFICIAL LINKS ARE PROVIDED HERE — PLEASE VERIFY BEFORE PROCEEDING ⭐ " ,
+  des5: "HERE YOU CAN VIEW YOUR OWN AND YOUR TEAM’S INFORMATION"
 };
 
 export const howTOLogos = [
