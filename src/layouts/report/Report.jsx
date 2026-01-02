@@ -88,7 +88,11 @@ const Report = () => {
     ],
     queryFn: async () => {
       const { data } = await axiosInstance.get(
-        `${REPORTS?.LevelReport}?username=${filters.username}&rank=${filters?.rank}&date_from=${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`
+        `${REPORTS?.LevelReport}?username=${filters.username || ""}&rank=${
+          filters?.rank
+        }&date_from=${filters?.from === null ? "" : filters?.from}&date_to=${
+          filters?.to === null ? "" : filters?.to
+        }`
       );
       return data;
     },
@@ -108,31 +112,37 @@ const Report = () => {
     ],
     queryFn: async () => {
       const { data } = await axiosInstance.get(
-        `${REPORTS?.levelWiseReport}?username=${filters.username}&rank=${filters?.rank}&date_from=$${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`
+        `${REPORTS?.levelWiseReport}?username=${filters.username || ""}&rank=${
+          filters?.rank
+        }&date_from=${filters?.from === null ? "" : filters?.from}&date_to=${
+          filters?.to === null ? "" : filters?.to
+        }`
       );
       return data.data;
     },
   });
 
-const {
-  data : businessData,
-  isLoading : businessLoading,
-  refetch : businessRefetch
- } = useQuery({
-  queryKey: [
-    "businessData",
-     filters.username,
+  const {
+    data: businessData,
+    isLoading: businessLoading,
+    refetch: businessRefetch,
+  } = useQuery({
+    queryKey: [
+      "businessData",
+      filters.username,
       filters?.rank,
       filters?.from,
       filters?.to,
-  ],
-  queryFn : async()=>{
-    const {data} = await axiosInstance.get(`${REPORTS?.businessReport}?username=${filters.username}&date_from=${filters?.from === null ? "" :filters?.from  }&date_to=${filters?.to === null ? "" : filters?.to}`);
-    return data?.data;
-  }
- })
-
-
+    ],
+    queryFn: async () => {
+      const { data } = await axiosInstance.get(
+        `${REPORTS?.businessReport}?username=${filters.username || ""}&date_from=${
+          filters?.from === null ? "" : filters?.from
+        }&date_to=${filters?.to === null ? "" : filters?.to}`
+      );
+      return data?.data;
+    },
+  });
 
   const reportPool = [
     {
@@ -346,18 +356,17 @@ const {
     );
   }
 
-//  const now =   new Date(); 
-// const firstDate = new Date(now.getFullYear(), now.getMonth(), 1);
-// const lastDate = new Date(now.getFullYear(), now.getMonth()+1, 0)
+  //  const now =   new Date();
+  // const firstDate = new Date(now.getFullYear(), now.getMonth(), 1);
+  // const lastDate = new Date(now.getFullYear(), now.getMonth()+1, 0)
 
-// console.log("what is the first date and last date of the month ::: ", firstDate, lastDate)
-
+  // console.log("what is the first date and last date of the month ::: ", firstDate, lastDate)
 
   return (
     <div className="w-full h-full min-h-screen bg-[#e5ffd5] p-2">
       <div className="w-full max-w-[1360px] mx-auto text-xl">
         <div className="w-full max-w-[1360px] mx-auto mt-15  flex items-center justify-center gap-2 p-3">
-          <span className="blink-text">{taskNote?.title}</span>
+          {/* <span className="blink-text">{taskNote?.title}</span> */}
           <marquee behavior="alternate" scrollamount="10" direction="">
             {taskNote?.des5}
           </marquee>
@@ -368,7 +377,7 @@ const {
             {reportPool?.map((pool, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md shadow"
+                className="flex flex-col items-center bg-[#c4ffa1] p-2  border border-[#68a12b] rounded-md hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300"
               >
                 <span>
                   {pool?.title != "Capping"
@@ -399,10 +408,10 @@ const {
                 )}
               </div>
             ))}
-            
 
+            {/* mobile and tab view */}
             <div
-              className="p-2 px-5 md:p-5 lg:p-1  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 flex flex-col items-center "
+              className="lg:hidden p-2 px-5 md:p-5 lg:p-1  border  border-[#68a12b] rounded-md  bg-[#c4ffa1] btn-primary lg:col-start-1 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 flex flex-col items-center "
               onClick={() => {
                 setShowPopUp(true),
                   setLevelUsersData(allTeamData),
@@ -411,32 +420,72 @@ const {
               }}
             >
               <span>Total Team</span>
-              <span className="p-1 border-black rounded-md border-1">{allTeamData?.length || 0} View</span>
+              <span className="p-1 border-black rounded-md border-1">
+                {allTeamData?.length || 0} View
+              </span>
             </div>
 
-            <div className="p-1 md:p-2 lg:p-2 px-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center">
-            <span> Primary Team Volume 40%</span> 
-            <span className="block">{businessData?.power_leg_sum || 0}</span> 
-
+            <div className="lg:hidden p-1 md:p-2 lg:p-4 px-5  border  border-[#68a12b] rounded-md  bg-[#c4ffa1] lg:col-start-2 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+              <span> Primary Team Vol 40%</span>
+              <span className="block">{businessData?.power_leg_sum || 0}</span>
             </div>
 
-            <div className="p-1 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center">
-             <span> Combined Team Volume 60%</span>
-             <span className="block">{businessData?.weak_leg_sum || 0}</span>
-
+            <div className="lg:hidden p-1 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b]  bg-[#c4ffa1] lg:col-start-4 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-2 text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+              <span> Combined Team Vol 60%</span>
+              <span className="block">{businessData?.weak_leg_sum || 0}</span>
             </div>
 
-              <div className="p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b] shadow bg-[#c4ffa1] lg:col-start-6 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 text-center">
-             <span>Total Eligible Vol</span>
-             <span className="block">{businessData?.power_leg_sum + businessData?.weak_leg_sum}</span>
+            <div className="lg:hidden p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b]  bg-[#c4ffa1] lg:col-start-6 lg:row-start-3 col-span-1 md:col-span-1 lg:col-span-1 text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+              <span>Total Eligible Vol</span>
+              <span className="block">
+                {businessData?.power_leg_sum + businessData?.weak_leg_sum}
+              </span>
             </div>
 
-            {/* <button
-              className="p-4 px-5 rounded-md border border-black bg-[#c4ffa1] lg:col-start-2 lg:row-start-4 col-span-2 md:col-span-1"
-              onClick={() => goBack()}
-            >
-              Back
-            </button> */}
+            {/* desktop view */}
+            <div className="hidden lg:block lg:col-start-1 lg:row-start-3 md:col-span-2 lg:col-span-3">
+              <div className="items-center justify-between gap-5 md:flex">
+                <div
+                  className="p-2 px-5 md:p-5 lg:p-1 w-full border border-[#68a12b] rounded-md  bg-[#c4ffa1] btn-primary flex flex-col items-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300"
+                  onClick={() => {
+                    setShowPopUp(true),
+                      setLevelUsersData(allTeamData),
+                      // setInactiveIndex(index);
+                      setAllTeam({ ...allTeam, team: true });
+                  }}
+                >
+                  <span>Total Team</span>
+                  <span className="p-1 border-black rounded-md border-1">
+                    {allTeamData?.length || 0} View
+                  </span>
+                </div>
+
+                <div className="w-full p-1 md:p-2 lg:p-2 px-5 border border-[#68a12b] rounded-md  bg-[#c4ffa1] l text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+                  <span> Primary Team Vol 40%</span>
+                  <span className="block">
+                    {businessData?.power_leg_sum || 0}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden lg:block lg:col-start-4 lg:row-start-3 md:col-span-2 lg:col-span-3">
+              <div className="items-center gap-5 md:flex">
+                <div className="w-full p-1 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b]  bg-[#c4ffa1] text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+                  <span> Combined Team Vol 60%</span>
+                  <span className="block">
+                    {businessData?.weak_leg_sum || 0}
+                  </span>
+                </div>
+
+                <div className="w-full p-4 md:p-2 px-5 lg:p-2 rounded-md border border-[#68a12b]  bg-[#c4ffa1] text-center hover:bg-[linear-gradient(90deg,_#ffffff,_#edfee1,_#ffffff)] hover:shadow-[inset_0_0_5px_#ffffff96,inset_0_30px_30px_#72a315,0_5px_10px_#00000070] transition-all duration-300">
+                  <span>Total Eligible Vol</span>
+                  <span className="block">
+                    {businessData?.power_leg_sum + businessData?.weak_leg_sum}
+                  </span>
+                </div>
+              </div>
+            </div>
 
             <input
               type="text"
@@ -455,52 +504,63 @@ const {
             />
             <DatePicker
               value={date?.to}
-              onChange={(newValue) => setDate({ ...date, to: newValue})}
+              onChange={(newValue) => setDate({ ...date, to: newValue })}
               label="To Date"
               className="lg:col-start-4 lg:row-start-4"
               format="DD/MM/YYYY"
             />
-        
-           <div
+
+            <div
               className="p-5 px-5 md:p-5 lg:p-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-5 lg:row-start-4  md:col-span-1 flex flex-col items-center "
-             onClick={()=>{setDate({...date, from : dayjs().startOf("month"), to : dayjs().endOf("month")})}}
+              onClick={() => {
+                setDate({
+                  ...date,
+                  from: dayjs().startOf("month"),
+                  to: dayjs().endOf("month"),
+                });
+              }}
             >
-             This month
+              This month
             </div>
 
-              <div
+            <div
               className="p-5 px-5 md:p-5 lg:p-5  border  border-[#68a12b] rounded-md shadow bg-[#c4ffa1] btn-primary lg:col-start-6 lg:row-start-4  md:col-span-1 flex flex-col items-center "
-          onClick={()=>{setDate({...date, from : dayjs(), to : dayjs().subtract(30, "day")})}}
+              onClick={() => {
+                setDate({
+                  ...date,
+                  from: dayjs(),
+                  to: dayjs().subtract(30, "day"),
+                });
+              }}
             >
-            Last 30 Days
+              Last 30 Days
             </div>
-      
-           
+
             <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-3 lg:row-start-5 md:col-span-1 lg:col-span-2">
               <button
-                className="p-4 px-19 lg:px-15 xl:px-19 rounded-md border border-black bg-[#c4ffa1] btn-primary"
+                className="p-4 px-19 lg:px-15 xl:px-19 rounded-md border border-black bg-[#c4ffa1] btn-primary "
                 onClick={() => {
                   setFilters({
                     ...filters,
                     username: getUserName,
-                    from: date?.from.format("YYYY-MM-DD"),
-                    to: date?.to.format("YYYY-MM-DD"),
+                    from:date? date?.from?.format("YYYY-MM-DD") : "",
+                    to: date? date?.to?.format("YYYY-MM-DD") : "",
                   });
                 }}
               >
-                submit
+                Submit
               </button>
             </div>
-             <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-4 lg:row-start-5 md:col-span-1 lg:col-span-2">
+            <div className="col-span-2 mx-auto md:mx-0 md:col-start-2 lg:col-start-4 lg:row-start-5 md:col-span-1 lg:col-span-2">
               <button
                 className="p-4 px-20   lg:px-15 xl:px-20 rounded-md border border-black bg-[#c4ffa1] btn-primary"
                 onClick={() => {
-                    setFilters({
+                  setFilters({
                     ...filters,
                     username: "",
                     from: null,
                     to: null,
-                  })
+                  });
                   setGetUserName("");
                   setDate({ ...date, to: null, from: null });
                 }}

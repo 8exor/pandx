@@ -7,7 +7,7 @@ const HowTo = () => {
     <>
       <section className="bg-[#e5ffd5]  min-h-screen pt-20">
         <div className="max-w-[1360px] mx-auto  flex items-center justify-center gap-2 mb-1 p-3 text-xl">
-          <span className="blink-text">{taskNote?.title}</span>
+          {/* <span className="blink-text">{taskNote?.title}</span> */}
           <marquee behavior="alternate" scrollamount="10" direction="">
             {taskNote?.des4}
           </marquee>

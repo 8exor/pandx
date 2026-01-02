@@ -107,9 +107,9 @@ export default function Staking() {
   return (
     <div className="maincontainer h-full sm:w-full max-w-[1360px] rounded-xl md:mx-auto mt-[70px] sm:mx-auto mx-2 pb-10">
       <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center gap-2 p-3 text-xl ">
-        <span className="blink-text sm:ml-30">{taskNote?.title}</span>
+        {/* <span className="blink-text sm:ml-30">{taskNote?.title}</span> */}
         <marquee behavior="alternate" scrollamount="10" direction="">
-          {taskNote?.des}
+          {taskNote?.des1}
         </marquee>
       </div>
       <div className="w-fit mx-auto flex items-center justify-center gap-2 p-3 text-xl border rounded-lg border-[#6ba631]">

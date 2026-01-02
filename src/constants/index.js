@@ -193,11 +193,12 @@ export const headerLogos = [
 
 export const taskNote = {
   title: "NOTE:",
-  des: " ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
+  des: "NOTE : ⭐ COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS! ⭐",
+  des1: "NOTE : COMPLETE YOUR NEXT TASK — UNLOCK HIGHER RANKS & BIGGER REWARDS!",
   des2: "$PANDX is scheduled to launch soon on the “qerra” – hYBRID Launchpad Ecosystem. Users will be able to trade $PANDX on “qerraSWAP” and Stake their tokens to earn competitive APYs",
   des3: "Earn Staking Rewards upto 1% Daily — powered by IPFS",
-  des4:" ⭐ ALL OFFICIAL LINKS ARE PROVIDED HERE — PLEASE VERIFY BEFORE PROCEEDING ⭐ " ,
-  des5: "HERE YOU CAN VIEW YOUR OWN AND YOUR TEAM’S INFORMATION"
+  des4:"NOTE : ALL OFFICIAL LINKS ARE PROVIDED HERE — PLEASE VERIFY BEFORE PROCEEDING " ,
+  des5: "NOTE : HERE YOU CAN VIEW YOUR OWN AND YOUR TEAM’S INFORMATION"
 };
 
 export const howTOLogos = [
@@ -247,7 +248,7 @@ export const howTOLogos = [
   },
   {
     img: "assets/images/meet.png",
-    link: "https://meet.google.com/bco-rfba-iyh",
+    link: "https://meet.google.com/xwn-iwyn-ans",
     title: "Google meet",
   },
 ];
