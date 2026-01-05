@@ -90,6 +90,12 @@ export default function UnstakeTab() {
     };
   }, [unstake?.isPending]);
 
+console.log("what it titototoot invedted : ", userData?.data?.total_invested)
+
+
+  const totalUnstake = (userData?.data?.total_invested - userData?.data?.total_income) * 0.75;
+  console.log("how much is total unstake : ", totalUnstake)
+
   return (
     <>
       {unstake?.isPending && <FullPageLoader />}
@@ -141,23 +147,24 @@ export default function UnstakeTab() {
                 className="fixed top-0 left-0 z-10 w-full h-full"
                 onClick={() => setUnstakePopup(false)}
               />
-              <div className="p-5 py-3 text-white bg-[#000000dc] rounded-md z-20">
+              <div className="p-5 py-3 text-white bg-[#000000dc] rounded-md z-20 text-center">
                 <h3>
-                  By proceeding with Un-Staking, you confirm that you have read
-                  and accepted the{" "}
+                 By proceeding, you confirm that you have read and accepted the 
                   <NavLink
                     to={"/terms-and-conditions"}
                     target="blank"
                     className="text-[#68c8ee] underline font-extrabold "
                   >
-                    applicable T&C during Staking
+                    applicable T&C during Staking.
                   </NavLink>
-                  . The system will verify all capping limits & the final amt
-                  will be calculated as follows: Principal Amount − (Total
-                  Rewards Earned + 25% Un-Staking Deduction)
+                  Capping limits and deductions will be applied as per policy.
                 </h3>
+                <div className="flex items-center gap-3">
+                <h3>Final Amount You Will Receive : </h3>
+                <h3>${totalUnstake > 0 ? totalUnstake : 0}</h3>
+                </div>
 
-                <div className="flex items-center gap-3 mt-3 leading-0">
+                <div className="flex items-center justify-center gap-3 mt-3 leading-0">
                   <input
                     type="checkbox"
                     className=""

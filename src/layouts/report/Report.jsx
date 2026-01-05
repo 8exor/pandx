@@ -350,10 +350,10 @@ const Report = () => {
   };
 
   {
-    console.log(
-      "what is the tableleve coming and what its length : ",
-      levelData?.data
-    );
+    // console.log(
+    //   "what is the tableleve coming and what its length : ",
+    //   levelData?.data
+    // );
   }
 
   //  const now =   new Date();

@@ -22,10 +22,13 @@ import TypeWriterEffect from "@hooks/TypeWriterEffect";
 import Gift from "@layouts/staking/components/Gift";
 import { useWalletLogin } from "@hooks/useWalletLogin";
 import { replace } from "@amcharts/amcharts4/.internal/core/utils/Array";
+import RainbowConfetti from "./signUpConfetti";
+import TrialBonsuPopUp from "./TrialBonsuPopUp";
 
 export default function LoginPage({ setOpenLoginModal, setShow }) {
   const { open } = useAppKit();
   const [confirmationPopup, setConfirmationPopup] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const [clickedOnLogin, setClickedOnLogin] = useState(false);
   const [clickedOnRegister, setClickedOnRegister] = useState(false);
   const [clickedOnSignUpConnect, setClickedOnSignUpConnect] = useState(false);
@@ -202,6 +205,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     onSuccess: async (data) => {
       toast.success(data?.message);
       LoginUser.mutate({ wallet_address: address });
+   
+     
     },
     onError: (error) => {
       if (error?.status === 0) toast.error(error?.message);
@@ -220,8 +225,10 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       // await new Promise((p) => setTimeout(p, 3000));
       setAccessToken(data?.data?.token);
       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
-      navigate("/StakingPage", { replace: true });
-      setOpenLoginModal(false);
+      //  navigate("/trialbonus")
+      // navigate("/StakingPage", { replace: true });
+      setIsRegistered(true)
+      // setOpenLoginModal(false);
       // setClickedOnRegister(false);
       // console.log("why are you disconnecting:::::::", isConnected)
     },
@@ -256,7 +263,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   return (
     <>
       {LoginUser?.isPending || (registerUser?.isPending && <FullPageLoader />)}
-      <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
+     {!isRegistered ? <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
         <div className=" z-50 w-full max-w-md p-4 py-4  bg-[#C5FF9E] border border-black rounded-md">
           <button
             className="flex justify-end w-full"
@@ -424,6 +431,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             <button
               className="bg-[#5b5bac] text-white font-light p-2 w-full  border border-black  rounded-md cursor-pointer"
               onClick={() => checkRegsiter()}
+              // onClick={()=>setIsRegistered(true)}
             >
               Register
             </button>
@@ -440,7 +448,8 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
             </button>
           </div>
         </div>
-      </div>
+    
+      </div> : <TrialBonsuPopUp />}
     </>
   );
 }

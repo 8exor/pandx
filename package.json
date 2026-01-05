@@ -25,6 +25,7 @@
     "animejs": "^4.2.2",
     "aos": "^2.3.4",
     "axios": "^1.13.2",
+    "canvas-confetti": "^1.9.4",
     "chart.js": "^4.5.1",
     "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",

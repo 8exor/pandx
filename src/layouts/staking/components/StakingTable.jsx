@@ -55,7 +55,7 @@ export default function StakingTable({ activeTab, tableConfig }) {
   const unstakeData = unstakeReport?.data?.rows;
 
 
-  console.log("what is stake data !!! : ", stakeData===null)
+  // console.log("what is stake data !!! : ", stakeData===null)
 
   return (
     <div className="w-full max-w-[1360px] bg-[#E3FFDE] p-4 mt-5  border border-[#6f6fb5] rounded-md">
