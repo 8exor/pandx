@@ -12,6 +12,7 @@ import HomePopup from "@components/HomePopup";
 import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "./PageNotFound";
 import HowTo from "@layouts/howto/HowTo";
+import TrialBonsuPopUp from "@pages/TrialBonsuPopUp";
 
 export default function AppRoutes() {
   const routes = [
@@ -31,6 +32,11 @@ export default function AppRoutes() {
       path: "/login",
       Component: LoginPage,
     },
+    //   {
+    //   name: "trialbonus",
+    //   path: "/trialbonus",
+    //   Component: TrialBonsuPopUp,
+    // },
   ];
 
   const stakingRoutes = [
