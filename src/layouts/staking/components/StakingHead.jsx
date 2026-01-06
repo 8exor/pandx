@@ -8,7 +8,7 @@ import { ProgressBar } from "./ProgressBar";
 import { ValueSkelton } from "../ValueLoaders";
 import Gift from "./Gift";
 
-export default function StakingHead() {
+export default function StakingHead({isClaimed}) {
   const { data, isLoading } = useQuery({
     queryKey: ["userData"],
     queryFn: async () => {
@@ -43,7 +43,7 @@ export default function StakingHead() {
         <div className="flex sm:flex-row  flex-col gap-4 items-top justify-between w-[90%] min-[400px]:max-[428px]:pr-20 min-[370px]:max-[380px]:pr-15 ml-auto xl:mx-auto ">
           <p className={`text-right text-lg   w-full ${data?.data?.trial_staking?.remaining_days === 0 ? "text-gray-400" : "text-white"} `}>
             Trial Bonus $
-            {Number(data?.data?.trial_staking?.total_amt_usd || 0).toFixed(0) }
+            {isClaimed ?  Number(data?.data?.trial_staking?.total_amt_usd || 0).toFixed(0) : 0}
           </p>
           <div className="w-full text-lg text-right">
            <p className="">

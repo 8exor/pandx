@@ -16,7 +16,7 @@ import TableSkeleton from "./TableSkelton";
 import { useTimerCounter } from "@hooks/useTimeCounter";
 import useCopyToClipBaord from "@hooks/useCopyToClipBoard";
 
-export default function Staking() {
+export default function Staking({isClaimed}) {
   const { address } = useAppKitAccount();
   const navigate = useNavigate();
 
@@ -122,7 +122,7 @@ export default function Staking() {
           {`${totalHours}h : ${minutes}s : ${seconds}m`}
         </span>
       </div>
-      <StakingHead />
+      <StakingHead isClaimed={isClaimed}/>
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="left w-full md:w-1/2  bg-gradient-to-tl from-[#8885D4] via-[#A6A0E3] to-[#D4CCFB] h-auto md:h-[800px] lg:h-[790px] xl:h-[670px] sm:border-l border-b border-r-0 border-t-0 sm:border-r border-[#49498A] sm:rounded-b-lg rounded-none">
           <div className="relative flex items-center justify-between w-full gap-3 p-4 text-black lg:px-15 sm:mt-2">

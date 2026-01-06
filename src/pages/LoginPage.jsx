@@ -204,6 +204,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
     },
     onSuccess: async (data) => {
       toast.success(data?.message);
+      localStorage.setItem("isRegistered", true);
       LoginUser.mutate({ wallet_address: address });
    
      
@@ -226,7 +227,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
       setAccessToken(data?.data?.token);
       sessionStorage.removeItem("LOGOUT_IN_PROGRESS");
       //  navigate("/trialbonus")
-      // navigate("/StakingPage", { replace: true });
+      navigate("/StakingPage", { replace: true });
       setIsRegistered(true)
       // setOpenLoginModal(false);
       // setClickedOnRegister(false);
@@ -263,7 +264,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
   return (
     <>
       {LoginUser?.isPending || (registerUser?.isPending && <FullPageLoader />)}
-     {!isRegistered ? <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
+ <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
         <div className=" z-50 w-full max-w-md p-4 py-4  bg-[#C5FF9E] border border-black rounded-md">
           <button
             className="flex justify-end w-full"
@@ -449,7 +450,7 @@ export default function LoginPage({ setOpenLoginModal, setShow }) {
           </div>
         </div>
     
-      </div> : <TrialBonsuPopUp />}
+      </div> 
     </>
   );
 }

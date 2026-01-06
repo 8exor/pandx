@@ -113,6 +113,8 @@ export default function StakeTab() {
     },
   });
 
+
+
   return (
   <>
   {staking?.isPending && <FullPageLoader/>}
@@ -181,7 +183,7 @@ export default function StakeTab() {
                text-white  font-extralight text-sm cursor-pointer shadow-sm"
               onClick={() =>
                 setStakeAmount(
-                  parseFloat(parseFloat(userData?.data?.wallet_balance).toFixed(2))
+                 Math.floor(userData?.data?.wallet_balance)
                 )
               }
             >
@@ -205,7 +207,7 @@ export default function StakeTab() {
       <div className="flex justify-center mt-2">
         <button
           className={`bg-[#72A314] btn-primary  text-white px-6 sm:px-6 py-2 sm:py-2 rounded-full shine hover:scale-110 duration-300 ease-in-out border border-[#181724] font-extralight text-center `}
-          onClick={() => staking.mutate({ stake_amount: stakeAmount })}
+          onClick={() => staking.mutate({ stake_amount: Math.floor(stakeAmount) })}
           // disabled={staking?.isPending && true || (userData?.data?.is_deactivated)&&true}
           disabled={staking?.isPending && true }
 
