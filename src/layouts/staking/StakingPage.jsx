@@ -13,16 +13,19 @@ import { UserInfoContext } from "@contexts/UserInfoContext";
 import BuyPandaPopUp from "./BuyPandaPopUp";
 import { getAccessToken } from "@utils/Session";
 import { useNavigate } from "react-router-dom";
+import TrialBonsuPopUp from "@pages/TrialBonsuPopUp";
+import RainbowConfetti from "@pages/signUpConfetti";
 
 const StakingPage = () => {
   const { open } = useAppKit();
   const { disconnect } = useDisconnect();
   const { isConnected, address } = useAppKitAccount();
+    const [bonusPopup, setBonusPopup] = useState(false);
   const {isLogin} =useContext(UserInfoContext)
   const [buyPandx, setBuyPandx] = useState(true);
   const navigate = useNavigate();
   // const [token, setToken] = useState("");
-
+const [isClaimed, setIsClaimed] = useState(false)
  
 
 
@@ -38,7 +41,8 @@ const StakingPage = () => {
   //   getTheToken();
   // },[])
 
-
+const isRegistered = localStorage.getItem("isRegistered");
+console.log("what is isregisteed in the stakingpage: ", isRegistered)
 
   return (
     <>
@@ -46,11 +50,14 @@ const StakingPage = () => {
  
   
       <div className="sm:w-full h-full min-h-screen bg-[#eaffdd] ">
-       
+{(localStorage.getItem("isRegistered") && !bonusPopup) && <TrialBonsuPopUp setBonusPopup={setBonusPopup} bonusPopup={bonusPopup} setIsClaimed={setIsClaimed} />}
+   {(bonusPopup && isClaimed) && (
+        <RainbowConfetti trigger={true} duration={3} intensity={3} />
+      )}
 {
-    buyPandx &&
+    (buyPandx && !isRegistered) &&
       <BuyPandaPopUp setBuyPandx={setBuyPandx}/>}
-          <Staking />
+          <Staking isClaimed={isClaimed}/>
 
           {/* <div className="flex items-center justify-center w-full mt-30">
             <button

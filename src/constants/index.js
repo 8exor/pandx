@@ -186,7 +186,7 @@ export const headerLogos = [
   },
   {
     img: "assets/images/meet.png",
-    link: "https://meet.google.com/xwn-iwyn-ans",
+    link: "https://meet.google.com/yhn-rnwr-ffd",
     text: "Google Meet",
   },
 ];
@@ -248,7 +248,7 @@ export const howTOLogos = [
   },
   {
     img: "assets/images/meet.png",
-    link: "https://meet.google.com/xwn-iwyn-ans",
+    link: "https://meet.google.com/yhn-rnwr-ffd",
     title: "Google meet",
   },
 ];

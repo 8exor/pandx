@@ -15,7 +15,7 @@ export default function BuyPandaPopUp({setBuyPandx}) {
             </button>
           </div>
           <NavLink to={"https://swap.qerra.network/"} target="blank">
-            <button className=" flex items-center gap-2  w-full gap-2 px-2 py-3 mt-5 text-lg text-white sm:px-6 sm:text-xl md:text-2xl rounded-lg">
+            <button className="flex items-center w-full gap-2 px-2 py-3 mt-5 text-lg text-white rounded-lg sm:px-6 sm:text-xl md:text-2xl">
               Join Official Telegram Group
             </button>
           </NavLink>

@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import RainbowConfetti from "./signUpConfetti";
 import { useNavigate } from "react-router-dom";
 
-const TrialBonsuPopUp = () => {
-  const [isClaimed, setIsClaimed] = useState(false);
-  const [trigger, setTrigger] = useState(false)
-  const navigate = useNavigate();
-    useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/StakingPage", { replace: true });
-    }, 5000);
+const TrialBonsuPopUp = ({setBonusPopup, bonusPopup, setIsClaimed}) => {
 
-    return () => clearTimeout(timer); // cleanup
-  }, [trigger]);
+
+  // const [trigger, setTrigger] = useState(false)
+  // const navigate = useNavigate();
+  //   useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     navigate("/StakingPage", { replace: true });
+  //   }, 5000);
+
+  //   return () => clearTimeout(timer); // cleanup
+  // }, [trigger]);
+
+
 
   return (
     <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
@@ -20,8 +23,8 @@ const TrialBonsuPopUp = () => {
         <button
           className="flex justify-end w-full"
           onClick={() => {
-            setOpenLoginModal(false);
-            setShow(false);
+            localStorage.removeItem("isRegistered")
+            setBonusPopup(true)
           }}
         >
           <img
@@ -39,16 +42,15 @@ const TrialBonsuPopUp = () => {
             className="  bg-[#ccf1b3] text-[#5b5bac] p-2 px-5  border border-black  rounded-md cursor-pointer"
             onClick={async () => {
               setIsClaimed(true);
-              setTrigger(true)
+            localStorage.removeItem("isRegistered")
+            setBonusPopup(true)
             }}
           >
             CLAIM NOW
           </button>
         </div>
       </div>
-      {isClaimed && (
-        <RainbowConfetti trigger={true} duration={3} intensity={3} />
-      )}
+   
     </div>
   );
 };
