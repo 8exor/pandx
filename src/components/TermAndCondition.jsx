@@ -117,10 +117,10 @@ const TermAndCondition = () => {
           </ol>
 
           <h2 className="mb-3 text-lg font-bold underline">
-            FREE $QRA AIRDROP ON EVERY ACTIVE STAKING
+         $QRA AIRDROP FOR ACTIVE STAKING ON FCFS
           </h2>
 
-          <ol className="list-decimal list-outside pl-6  space-y-3" start={6}>
+          <ol className="pl-6 space-y-3 list-decimal list-outside" start={6}>
             <li className="leading-7">
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
               (FCFS) BASIS, AND USERS MUST CLAIM THEIR TOKENS ACCORDING TO THE
@@ -179,7 +179,8 @@ const TermAndCondition = () => {
               </tbody>
             </table>
           </div>
-          <h2 className="font-bold underline text-lg mb-3">
+          <h2 className="mb-10 font-bold">NOTE: Users who Stake earlier, as per the table below, will be eligible to receive the airdrop in accordance with the specified allocation in the same table</h2>
+          <h2 className="mb-3 text-lg font-bold underline">
             DIRECT REFERRAL REWARD ON TOP-UP
           </h2>
 
