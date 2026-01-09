@@ -20,7 +20,7 @@ const TrialBonsuPopUp = ({setBonusPopup, bonusPopup, setIsClaimed}) => {
   return (
     <div className="z-45 fixed flex items-center justify-center inset-0 w-full h-full min-h-screen bg-[#00000081]">
       <div className=" z-50 w-full max-w-md p-4 py-4  bg-[#C5FF9E] border border-black rounded-md">
-        <button
+        {/* <button
           className="flex justify-end w-full"
           onClick={() => {
             localStorage.removeItem("isRegistered")
@@ -32,7 +32,7 @@ const TrialBonsuPopUp = ({setBonusPopup, bonusPopup, setIsClaimed}) => {
             src="/assets/icons/close.svg"
             alt="clsoe"
           />
-        </button>
+        </button> */}
         <div className="flex items-center gap-2">
           <img src="/assets/images/gift.svg" className="w-20" alt="gift" />
           <h2 className="text-xl text-center">$100 TRIAL BONUS FOR 5 DAYS</h2>
