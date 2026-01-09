@@ -51,7 +51,7 @@ const TermAndCondition = () => {
       REFERRALS: "25 $QRA ",
     },
     {
-      AIRDROP: "7501 TO 10,000",
+      AIRDROP: "7501 TO 20,000",
       signup: "10 $QRA ",
       REFERRALS: "10 $QRA ",
     },
@@ -117,17 +117,18 @@ const TermAndCondition = () => {
           </ol>
 
           <h2 className="mb-3 text-lg font-bold underline">
-         $QRA AIRDROP FOR ACTIVE STAKING ON FCFS
+            $QRA AIRDROP FOR ACTIVE STAKERS ON FCFS TOP-UP
           </h2>
 
           <ol className="pl-6 space-y-3 list-decimal list-outside" start={6}>
             <li className="leading-7">
-              THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FIRST-COME, FIRST-SERVED
-              (FCFS) BASIS, AND USERS MUST CLAIM THEIR TOKENS ACCORDING TO THE
-              DEFINED VESTING SCHEDULES. THE LAST DATE TO EARN MORE $QRA IS 15TH
-              OF JAN’2026. TO CLAIM THE AIRDROP, A SELF TOP-UP IS MANDATORY.
-              THIS OFFER WILL BE AVAILABLE ON A FIRST-COME, FIRST-SERVED BASIS
-              TO THOSE WHO COMPLETE THE TOP-UP FIRST.
+              THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FCFS (FIRST COME — FIRST
+              SERVED) TOP-UP BASIS, AND USERS MUST CLAIM THEIR $QRA TOKENS
+              ACCORDING TO THE DEFINED VESTING SCHEDULES (10 MONTHS VESTING
+              SCHEDULE WITH 15 DAYS CLIFF — MEANS CLAIM 10% EACH MONTH & NEXT
+              CLAIM AFTER 30 DAYS OF FIRST/LAST CLAIM). THE LAST DATE TO EARN
+              MORE $QRA IS 31ST OF JANUARY 2026. TO CLAIM THE AIRDROP, AN ACTIVE
+              ACCOUNT IS NECESSARY.
             </li>
           </ol>
           <div className="overflow-x-auto">
@@ -179,7 +180,11 @@ const TermAndCondition = () => {
               </tbody>
             </table>
           </div>
-          <h2 className="mb-10 font-bold">NOTE: Users who Stake earlier, as per the table below, will be eligible to receive the airdrop in accordance with the specified allocation in the same table</h2>
+          <h2 className="mb-10 font-bold">
+            NOTE: Users who Stake earlier, as per the table below, will be
+            eligible to receive the airdrop in accordance with the specified
+            allocation in the same table
+          </h2>
           <h2 className="mb-3 text-lg font-bold underline">
             DIRECT REFERRAL REWARD ON TOP-UP
           </h2>
@@ -551,7 +556,7 @@ const TermAndCondition = () => {
           <ScrollToTop />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
