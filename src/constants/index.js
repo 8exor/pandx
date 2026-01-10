@@ -22,7 +22,7 @@ export const dappNavLinks = [
   {
     id: "stats",
     title: "STATS",
-    link: "",
+    link: "/Stats",
   },
 ];
 
@@ -252,3 +252,31 @@ export const howTOLogos = [
     title: "Google meet",
   },
 ];
+
+
+export const statsRanks =[
+  {
+    title : "STAR 1",
+    value : "0"
+  },
+   {
+    title : "STAR 2",
+    value : "0"
+  },
+   {
+    title : "STAR 3",
+    value : "0"
+  },
+   {
+    title : "STAR 4",
+    value : "0"
+  },
+   {
+    title : "STAR 5",
+    value : "0"
+  },
+   {
+    title : "STAR 6",
+    value : "0"
+  },
+]

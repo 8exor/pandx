@@ -13,6 +13,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "./PageNotFound";
 import HowTo from "@layouts/howto/HowTo";
 import TrialBonsuPopUp from "@pages/TrialBonsuPopUp";
+import Stats from "@layouts/stats/Stats";
 
 export default function AppRoutes() {
   const routes = [
@@ -59,6 +60,11 @@ export default function AppRoutes() {
       name: "HowTo",
       path: "/HowTo",
       Component: HowTo,
+    },
+       {
+      name: "Stats",
+      path: "/Stats",
+      Component: Stats,
     },
   ];
 
