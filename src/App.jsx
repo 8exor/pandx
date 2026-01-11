@@ -18,11 +18,13 @@ import { getAccessToken } from "@utils/Session";
 import { ethers } from "ethers";
 import { replace } from "@amcharts/amcharts4/.internal/core/utils/Array";
 import WalletAccountListener from "@utils/WalletAccountListener";
+import GoodNewsPopup from "@hooks/GoodNewsPopup";
 
 // import Header from "./components/ui/Header";
 
 function App() {
   const { disconnect } = useDisconnect();
+  const {goodnews, setGoodnews} = useState(true);
   const { walletProvider } = useAppKitProvider("eip155");
   const { address, isConnected } = useAppKitAccount();
   const [queryClient] = useState(() => new QueryClient());

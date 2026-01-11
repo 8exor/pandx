@@ -16,20 +16,20 @@ const TermAndCondition = () => {
   const rows = [
     {
       drop: "3% TO 4.99%",
-      tax: "15%",
+      tax: "25%",
       allocation: "100% → BURN",
       supply: "SUPPLY ↓",
       sustainability: "PRICE STABILITY ↑",
     },
     {
-      drop: "5% TO 9.99%",
-      tax: "30%",
+      drop: "5% TO 7.99%",
+      tax: "40%",
       allocation: "100% → BURN",
       supply: "SUPPLY ↓",
       sustainability: "PRICE STABILITY ↑",
     },
     {
-      drop: "10% & above",
+      drop: "8% & above",
       tax: "50%",
       allocation: "100% → BURN",
       supply: "SUPPLY ↓",
@@ -90,6 +90,13 @@ const TermAndCondition = () => {
               FORMULA FOR NEW TOP-UP ELIGIBILITY: PRINCIPAL – INCOME/ROI – 25%
               DEDUCTION
             </li>
+            <li className="leading-7 uppercase">
+              Under this Staking Protocol, a user is allowed to Stake/Compound a
+              maximum of $5000 worth of $PANDX tokens only. Staking above the
+              specified maximum limit will not be permitted under any
+              circumstances. This limit is predefined by the protocol and is
+              final and binding for all participants.
+            </li>
             {/* <li className="leading-7">
               NOW, AFTER UN-STAKE, USER CAN DO RE-STAKE BUT WITH A FEE OF 10% & IT’LL GOES TO REWARD POOL OR BURN POOL
             </li> */}
@@ -108,7 +115,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={5}
+            start={6}
           >
             <li className="leading-7">
               $100 TRIAL BONUS VALID FOR 5 DAYS ONLY NOT WITHDRAWABLE BUT YOU
@@ -120,7 +127,7 @@ const TermAndCondition = () => {
             $QRA AIRDROP FOR ACTIVE STAKERS ON FCFS TOP-UP
           </h2>
 
-          <ol className="pl-6 space-y-3 list-decimal list-outside" start={6}>
+          <ol className="pl-6 space-y-3 list-decimal list-outside" start={7}>
             <li className="leading-7">
               THE $QRA AIRDROP WILL BE DISTRIBUTED ON A FCFS (FIRST COME — FIRST
               SERVED) TOP-UP BASIS, AND USERS MUST CLAIM THEIR $QRA TOKENS
@@ -191,7 +198,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={7}
+            start={8}
           >
             <li className="leading-7">
               WHENEVER A USER PERFORMS A TOP-UP, THE SPONSOR WILL RECEIVE A 5%
@@ -207,7 +214,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={8}
+            start={9}
           >
             <li className="leading-7">
               REFER 3 USERS WITHIN 96 HOURS, EACH WITH A MINIMUM STAKE OF $100,
@@ -222,7 +229,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={9}
+            start={10}
           >
             <li className="leading-7">
               A 5% WITHDRAWAL FEE WILL BE APPLIED AND ALLOCATED TO THE REWARD
@@ -236,7 +243,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={10}
+            start={11}
           >
             <li className="leading-7">
               P2P TRANSFERS ARE FREE AND UNLIMITED. USER CAN DO P2P FOR MIN $10
@@ -248,7 +255,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={11}
+            start={12}
           >
             <li className="leading-7">
               USERS CAN COMPOUND USING THEIR WITHDRAWAL BALANCE, WITH A MINIMUM
@@ -262,7 +269,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={12}
+            start={13}
           >
             <li className="leading-7">
               1% OF EVERY TRANSACTION WILL BE ALLOCATED TO THE AUTO BURN
@@ -276,7 +283,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={13}
+            start={14}
           >
             <li className="leading-7">
               DAILY ONE-TIME SETTLEMENT IN USD AT THE LIVE MARKET PRICE WILL BE
@@ -292,7 +299,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={15}
+            start={16}
           >
             <li className="leading-7">CAPPING RANGES FROM 2X TO 3X</li>
             <li className="leading-7">
@@ -312,7 +319,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={19}
+            start={20}
           >
             <li className="leading-7">
               <strong>DYNAMIC ORACLE / PRICE GATING (ADVANCED)</strong>
@@ -400,7 +407,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={20}
+            start={21}
           >
             <li className="leading-7">
               IF YOU ACHIEVE A RANK BASED ON YOUR TEAM SIZE AND YOUR USERS LATER
@@ -415,7 +422,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={21}
+            start={22}
           >
             <li className="leading-7">
               IN ALL BONANZAS, YOUR VOLUME WILL BE CALCULATED USING A 40:60
@@ -435,7 +442,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={23}
+            start={24}
           >
             <li className="leading-7">
               <strong>WALLET UPDATE CONTRACT:</strong>
@@ -495,7 +502,7 @@ const TermAndCondition = () => {
 
           <ol
             className="pl-6 mb-6 space-y-3 list-decimal list-outside"
-            start={32}
+            start={33}
           >
             <li className="leading-7">
               The user expressly acknowledges and agrees that any investment
